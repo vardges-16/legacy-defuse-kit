@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "09477d6a-2d47-b51d-4d6d-166e21073992",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": null,
+  "displayName": "wh_gold",
+  "type": "data_warehouse",
+  "userDescription": null,
+  "metadata": null,
+  "elements": [
+    {
+      "id": "6dd54a45-1183-45bc-b673-8f03a75041e8",
+      "is_selected": false,
+      "display_name": "Schemas",
+      "type": "schema_grouping",
+      "description": null,
+      "children": []
+    }
+  ]
+}
