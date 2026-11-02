@@ -1,0 +1,38 @@
+{
+  "properties": {
+    "source": {
+      "type": "Snowflake",
+      "typeProperties": {
+        "connection": "5b5478e1-2f8d-49b7-bc68-96806dd2e5f2",
+        "database": "ZONTIQUE_BILLING",
+        "externalStorages": [
+          {
+            "type": "AzureDataLakeStorage",
+            "typeProperties": {
+              "connection": "f4e9d074-a48b-42d4-bc66-7876daaaa401"
+            }
+          }
+        ],
+        "filterRules": [
+          {
+            "target": "objectType",
+            "action": "allow",
+            "values": [
+              "Table",
+              "IcebergTable"
+            ]
+          }
+        ]
+      }
+    },
+    "target": {
+      "type": "MountedRelationalDatabase",
+      "typeProperties": {
+        "defaultSchema": "dbo",
+        "format": "Delta",
+        "retentionInDays": 1,
+        "enableDeltaChangeDataFeed": false
+      }
+    }
+  }
+}
