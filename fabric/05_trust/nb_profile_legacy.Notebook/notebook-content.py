@@ -57,6 +57,10 @@ WRITE_FORMAT = "delta"
 ENABLE_AI = False                      # True = AI semantic types + AI explanations of findings
 OUT = {"tables": "meta_profile_tables", "columns": "meta_profile_columns",
        "findings": "meta_profile_findings", "ai": "meta_ai_decisions"}
+PROFILE_FILES = False      # Bronze tables already hold the files; set True to profile raw files too
+KEY_COLUMNS = {"FOCUS_COST": ["RESOURCEID", "CHARGEPERIODSTART", "BILLEDCOST", "EFFECTIVECOST"]}  # must never be empty
+JSON_TAG_COLUMNS = {"FOCUS_COST": "TAGS"}       # JSON tag column per table
+EXPECTED_TAG_KEYS = ["SolutionId", "CostCenter"]
 
 # METADATA ********************
 
@@ -145,7 +149,7 @@ def group_files(files):
     return groups
 
 tables = list_tables()
-file_groups = group_files(list_files(FILES_ROOT))
+file_groups = group_files(list_files(FILES_ROOT)) if PROFILE_FILES else {}
 print(f"Tables: {len(tables)} -> {tables}")
 for (folder, ext), fl in file_groups.items():
     print(f"Files: {folder}/*{ext} ({len(fl)} files)")
@@ -346,8 +350,12 @@ def add(source, column, check, severity, metric, detail):
 
 for r in column_rows:
     s, c, n = r["source_name"], r["column_name"], r["row_count"] or 0
-    if n and r["null_pct"] is not None and r["null_pct"] >= NULL_RATE_WARN:
+    if n and r["null_pct"] is not None and r["null_pct"] >= 1.0:
+        add(s, c, "EMPTY_COLUMN", "info", 1.0, "Column is always empty (field not used by this source)")
+    elif n and r["null_pct"] is not None and r["null_pct"] >= NULL_RATE_WARN:
         add(s, c, "NULL_RATE", "warning", r["null_pct"], f"{r['null_count']} of {n} values are null")
+    if r["null_count"] and c in KEY_COLUMNS.get(s, []):
+        add(s, c, "KEY_COLUMN_NULLS", "warning", r["null_count"], f"{r['null_count']} rows have no {c} (key column)")
     if r["null_token_count"]:
         add(s, c, "NULL_TOKENS", "warning", r["null_token_count"], "Text placeholders such as N/A or null instead of real nulls")
     if r["blank_count"]:
@@ -380,6 +388,26 @@ for name, by_header in drift.items():
         detail = "; ".join(f"{len(fs)} file(s), first {sorted(fs)[0].rsplit('/',1)[-1]}: {h[:120]}" for h, fs in by_header.items())
         add(name, None, "SCHEMA_DRIFT", "warning", len(by_header), f"{len(by_header)} different headers: {detail}")
 
+# Tag coverage inside JSON tag columns, by rows and by cost
+for tbl, col in JSON_TAG_COLUMNS.items():
+    if tbl not in tables:
+        continue
+    t = spark.table(tbl)
+    total_rows = t.count()
+    cost_col = "EFFECTIVECOST" if "EFFECTIVECOST" in t.columns else None
+    total_cost = t.agg(F.sum(cost_col)).first()[0] if cost_col else None
+    for key in EXPECTED_TAG_KEYS:
+        missing = t.where(F.get_json_object(F.col(col).cast("string"), f"$.{key}").isNull())
+        miss_rows = missing.count()
+        if miss_rows:
+            detail = f"{miss_rows} of {total_rows} rows have no '{key}' tag"
+            metric = miss_rows / total_rows
+            if cost_col and total_cost:
+                miss_cost = missing.agg(F.sum(cost_col)).first()[0] or 0
+                metric = float(miss_cost) / float(total_cost)
+                detail += f"; {metric:.1%} of {cost_col} ({float(miss_cost):,.2f})"
+            add(tbl, col, "TAG_KEY_MISSING", "warning", metric, detail)
+            
 print(f"{len(findings)} findings")
 
 # METADATA ********************
