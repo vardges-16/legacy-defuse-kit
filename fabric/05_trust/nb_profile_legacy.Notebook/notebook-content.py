@@ -22,7 +22,7 @@
 
 # MARKDOWN ********************
 
-# # nb_profile_legacy: data profiling of the legacy sources (Bronze)
+# # nb_profile_legacy: data profiling of the legacy sources (Bronze) and of Silver
 # 
 # Legacy Defuse Kit, team de_dust2. Profiles **every table and every data file** in the default lakehouse (`lh_legacy`) and writes the results to Delta tables, so the Trust Ledger, the Power BI report and the data agent can use them.
 # 
@@ -36,6 +36,8 @@
 # 
 # **Outputs** (Delta tables in `lh_legacy`, appended per run): `meta_profile_tables`, `meta_profile_columns`, `meta_profile_findings`, and `meta_ai_decisions` when AI is on.
 # 
+# **Silver run (before/after):** set `LAYER = "silver"` and `SOURCE_LAKEHOUSE = "lh_silver"`. Results still go to `lh_legacy`, tagged with `layer`, and the last cell compares findings per check: Bronze vs Silver.
+# 
 # **Personal data:** columns that look like names or emails are masked in the stored results and never sent to AI (blueprint: PII hashed before AI processing).
 
 
@@ -43,7 +45,10 @@
 
 # Parameters
 RUN_LABEL = "baseline"                 # free text to tell runs apart
-EXCLUDE_TABLE_PREFIXES = ("meta_",)    # don't profile our own output tables
+LAYER = "bronze"                       # bronze | silver: stored with every result row
+SOURCE_LAKEHOUSE = None                # None = default lakehouse (lh_legacy); "lh_silver" = profile Silver
+WORKSPACE = "ldk-workspace"            # used to reach SOURCE_LAKEHOUSE through OneLake
+EXCLUDE_TABLE_PREFIXES = ("meta_", "silver_quarantine", "silver_merge_log")  # our own output / log tables
 FILES_ROOT = "Files"                   # folder in the default lakehouse to scan for data files
 FILE_FORMATS = {".csv": "csv", ".json": "json", ".parquet": "parquet"}
 CSV_SEPARATOR = ","
@@ -108,7 +113,23 @@ KEY_NAME_RE = re.compile(r"(?i)(^id$|_id$|^line_id$|^job_id$)")
 # CELL ********************
 
 # 1. Discover sources: tables + data files grouped by folder and extension
+ONELAKE = f"abfss://{WORKSPACE}@onelake.dfs.fabric.microsoft.com"
+TABLE_PATHS = {}   # table name -> OneLake path, when SOURCE_LAKEHOUSE is set
+
 def list_tables():
+    if SOURCE_LAKEHOUSE:
+        for sub in ("Tables/dbo", "Tables"):          # schema-enabled lakehouse or not
+            base = f"{ONELAKE}/{SOURCE_LAKEHOUSE}.Lakehouse/{sub}"
+            try:
+                entries = [e for e in _fs.ls(base) if e.isDir and e.name != "dbo"]
+            except Exception:
+                continue
+            for e in entries:
+                if not e.name.startswith(EXCLUDE_TABLE_PREFIXES):
+                    TABLE_PATHS[e.name] = f"{base}/{e.name}"
+            if TABLE_PATHS:
+                break
+        return sorted(TABLE_PATHS)
     rows = spark.sql("SHOW TABLES").collect()
     out = []
     for r in rows:
@@ -117,6 +138,9 @@ def list_tables():
             continue
         out.append(name)
     return sorted(out)
+
+def read_table(name):
+    return spark.read.format("delta").load(TABLE_PATHS[name]) if name in TABLE_PATHS else spark.table(name)
 
 def list_files(root):
     files = []
@@ -150,7 +174,7 @@ def group_files(files):
 
 tables = list_tables()
 file_groups = group_files(list_files(FILES_ROOT)) if PROFILE_FILES else {}
-print(f"Tables: {len(tables)} -> {tables}")
+print(f"Layer {LAYER}, tables: {len(tables)} -> {tables}")
 for (folder, ext), fl in file_groups.items():
     print(f"Files: {folder}/*{ext} ({len(fl)} files)")
 
@@ -267,7 +291,7 @@ def profile_dataset(df, source_name, source_kind, file_count=None):
             vmin, vmax = a[p + "min"], a[p + "max"]
         date_formats = [k for k in DATE_RES if (a[p + "date_" + k] or 0) > 0]
         col_rows.append({
-            "run_id": RUN_ID, "run_label": RUN_LABEL, "profiled_at": RUN_TS,
+            "run_id": RUN_ID, "run_label": RUN_LABEL, "layer": LAYER, "profiled_at": RUN_TS,
             "source_name": source_name, "source_kind": source_kind, "column_name": c,
             "data_type": dtypes[c], "row_count": total, "null_count": total - nonnull,
             "null_pct": round((total - nonnull) / total, 4) if total else None,
@@ -291,7 +315,7 @@ def profile_dataset(df, source_name, source_kind, file_count=None):
         k = df.where(F.col(f"`{key_col}`").isNotNull())
         dup_key = k.count() - k.select(f"`{key_col}`").distinct().count()
     table_row = {
-        "run_id": RUN_ID, "run_label": RUN_LABEL, "profiled_at": RUN_TS,
+        "run_id": RUN_ID, "run_label": RUN_LABEL, "layer": LAYER, "profiled_at": RUN_TS,
         "source_name": source_name, "source_kind": source_kind, "row_count": total,
         "column_count": len(cols), "file_count": file_count, "duplicate_rows": dup_rows,
         "key_column": key_col, "duplicate_keys": dup_key,
@@ -313,7 +337,7 @@ table_rows, column_rows, drift = [], [], {}
 for t in tables:
     print("Profiling table", t)
     try:
-        tr, cr = profile_dataset(spark.table(t), t, "table")
+        tr, cr = profile_dataset(read_table(t), t, "table")
         table_rows.append(tr); column_rows += cr
     except Exception as e:
         print("  FAILED:", e)
@@ -343,7 +367,7 @@ print(f"Profiled {len(table_rows)} sources, {len(column_rows)} columns")
 # 5. Rule-based findings (deterministic, no AI)
 findings = []
 def add(source, column, check, severity, metric, detail):
-    findings.append({"run_id": RUN_ID, "run_label": RUN_LABEL, "profiled_at": RUN_TS,
+    findings.append({"run_id": RUN_ID, "run_label": RUN_LABEL, "layer": LAYER, "profiled_at": RUN_TS,
                      "source_name": source, "column_name": column, "check_code": check,
                      "severity": severity, "metric_value": float(metric) if metric is not None else None,
                      "detail": detail, "ai_explanation": None})
@@ -392,7 +416,7 @@ for name, by_header in drift.items():
 for tbl, col in JSON_TAG_COLUMNS.items():
     if tbl not in tables:
         continue
-    t = spark.table(tbl)
+    t = read_table(tbl)
     total_rows = t.count()
     cost_col = "EFFECTIVECOST" if "EFFECTIVECOST" in t.columns else None
     total_cost = t.agg(F.sum(cost_col)).first()[0] if cost_col else None
@@ -436,7 +460,7 @@ if ENABLE_AI:
                               error_col="ai_error").collect()
         sem = {(r["source_name"], r["column_name"]): r["semantic_type"] for r in cls}
         for r in cls:
-            ai_log.append({"run_id": RUN_ID, "logged_at": RUN_TS, "purpose": "classify column semantic type",
+            ai_log.append({"run_id": RUN_ID, "layer": LAYER, "logged_at": RUN_TS, "purpose": "classify column semantic type",
                            "subject": f"{r['source_name']}.{r['column_name']}", "input_text": r["description"],
                            "output_text": r["semantic_type"], "error": r["ai_error"]})
         for r in column_rows:
@@ -455,7 +479,7 @@ if ENABLE_AI:
             response_format="text").collect()
         for r in exp:
             findings[r["idx"]]["ai_explanation"] = r["ai_explanation"]
-            ai_log.append({"run_id": RUN_ID, "logged_at": RUN_TS, "purpose": "explain profiling finding",
+            ai_log.append({"run_id": RUN_ID, "layer": LAYER, "logged_at": RUN_TS, "purpose": "explain profiling finding",
                            "subject": f"{r['source_name']}.{r['column_name']}:{r['check_code']}",
                            "input_text": r["detail"], "output_text": r["ai_explanation"], "error": r["ai_error"]})
     print(f"AI layer done: {len(ai_log)} AI calls logged")
@@ -474,6 +498,7 @@ else:
 # 7. Save results (append, one run_id per run)
 TABLE_SCHEMA = T.StructType([
     T.StructField("run_id", T.StringType()), T.StructField("run_label", T.StringType()),
+    T.StructField("layer", T.StringType()),
     T.StructField("profiled_at", T.TimestampType()), T.StructField("source_name", T.StringType()),
     T.StructField("source_kind", T.StringType()), T.StructField("row_count", T.LongType()),
     T.StructField("column_count", T.IntegerType()), T.StructField("file_count", T.IntegerType()),
@@ -481,6 +506,7 @@ TABLE_SCHEMA = T.StructType([
     T.StructField("duplicate_keys", T.LongType())])
 COLUMN_SCHEMA = T.StructType([
     T.StructField("run_id", T.StringType()), T.StructField("run_label", T.StringType()),
+    T.StructField("layer", T.StringType()),
     T.StructField("profiled_at", T.TimestampType()), T.StructField("source_name", T.StringType()),
     T.StructField("source_kind", T.StringType()), T.StructField("column_name", T.StringType()),
     T.StructField("data_type", T.StringType()), T.StructField("row_count", T.LongType()),
@@ -497,12 +523,14 @@ COLUMN_SCHEMA = T.StructType([
     T.StructField("semantic_type", T.StringType())])
 FINDING_SCHEMA = T.StructType([
     T.StructField("run_id", T.StringType()), T.StructField("run_label", T.StringType()),
+    T.StructField("layer", T.StringType()),
     T.StructField("profiled_at", T.TimestampType()), T.StructField("source_name", T.StringType()),
     T.StructField("column_name", T.StringType()), T.StructField("check_code", T.StringType()),
     T.StructField("severity", T.StringType()), T.StructField("metric_value", T.DoubleType()),
     T.StructField("detail", T.StringType()), T.StructField("ai_explanation", T.StringType())])
 AI_SCHEMA = T.StructType([
-    T.StructField("run_id", T.StringType()), T.StructField("logged_at", T.TimestampType()),
+    T.StructField("run_id", T.StringType()), T.StructField("layer", T.StringType()),
+    T.StructField("logged_at", T.TimestampType()),
     T.StructField("purpose", T.StringType()), T.StructField("subject", T.StringType()),
     T.StructField("input_text", T.StringType()), T.StructField("output_text", T.StringType()),
     T.StructField("error", T.StringType())])
@@ -511,7 +539,7 @@ def save(rows, schema, name):
     if not rows:
         print("nothing to save for", name); return
     clean = [{f.name: r.get(f.name) for f in schema.fields} for r in rows]
-    spark.createDataFrame(clean, schema).write.format(WRITE_FORMAT).mode("append").saveAsTable(name)
+    spark.createDataFrame(clean, schema).write.format(WRITE_FORMAT).mode("append").option("mergeSchema", "true").saveAsTable(name)
     print(f"saved {len(rows)} rows -> {name}")
 
 save(table_rows, TABLE_SCHEMA, OUT["tables"])
@@ -533,6 +561,12 @@ f = spark.table(OUT["findings"]).where(F.col("run_id") == RUN_ID)
 display(f.groupBy("source_name", "severity").count().orderBy("source_name", "severity"))
 display(f.orderBy(F.desc("severity"), "source_name", "column_name"))
 display(spark.table(OUT["tables"]).where(F.col("run_id") == RUN_ID))
+
+# Before / after: number of findings per check, latest run of each layer (older rows without layer = bronze)
+fa = spark.table(OUT["findings"]).withColumn("layer", F.coalesce(F.col("layer"), F.lit("bronze")))
+latest = fa.groupBy("layer").agg(F.max("run_id").alias("run_id"))
+display(fa.join(latest, ["layer", "run_id"]).groupBy("check_code")
+          .pivot("layer", ["bronze", "silver"]).count().na.fill(0).orderBy("check_code"))
 
 # METADATA ********************
 
