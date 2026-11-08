@@ -1,5 +1,44 @@
 [
   {
+    "name": "license_products",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/license_products",
+        "itemId": "5ad5fc2d-f341-9ac7-4020-96c127028095",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "MountedRelationalDatabase"
+      }
+    }
+  },
+  {
+    "name": "license_entitlements",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/license_entitlements",
+        "itemId": "5ad5fc2d-f341-9ac7-4020-96c127028095",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "MountedRelationalDatabase"
+      }
+    }
+  },
+  {
+    "name": "installations",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/installations",
+        "itemId": "5ad5fc2d-f341-9ac7-4020-96c127028095",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "MountedRelationalDatabase"
+      }
+    }
+  },
+  {
     "name": "FOCUS_COST",
     "path": "/Tables/dbo",
     "target": {
@@ -9,6 +48,18 @@
         "itemId": "5ddd25b2-7a79-a75b-4f7f-bb42480ae7ec",
         "workspaceId": "00000000-0000-0000-0000-000000000000",
         "artifactType": "MountedRelationalDatabase"
+      }
+    }
+  },
+  {
+    "name": "fin",
+    "path": "/Files",
+    "target": {
+      "type": "AdlsGen2",
+      "adlsGen2": {
+        "connectionId": "f4e9d074-a48b-42d4-bc66-7876daaaa401",
+        "location": "https://saodlepam2446996datalake.dfs.core.windows.net",
+        "subpath": "/fin-inputs"
       }
     }
   },

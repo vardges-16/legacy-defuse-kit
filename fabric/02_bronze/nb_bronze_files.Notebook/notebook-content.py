@@ -22,23 +22,21 @@
 
 # CELL ********************
 
-# Bronze load: CMDB CSV files -> Delta tables in lh_legacy, exactly as received
+# Bronze load: legacy CSV files -> Delta tables in lh_legacy, exactly as received
 from pyspark.sql import functions as F
 import datetime, uuid
 
-SOURCES = {                                   # target table : folder in lh_legacy
-    "bronze_cmdb_asset_groups": "Files/cmdb/object=assetgroups",
-    "bronze_cmdb_assets":       "Files/cmdb/object=assets",
+SOURCES = {   # target table : (source system, folder in lh_legacy)
+    "bronze_cmdb_asset_groups": ("cmdb",      "Files/cmdb/object=assetgroups"),
+    "bronze_cmdb_assets":       ("cmdb",      "Files/cmdb/object=assets"),
+    "bronze_fin_budget":        ("financial", "Files/fin"),
 }
 RUN_ID = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:6]
 ledger = []
 
-for table, path in SOURCES.items():
-    raw = (spark.read
-           .option("header", True)
-           .option("inferSchema", False)          # keep every value as text: bad data stays visible
-           .option("recursiveFileLookup", True)
-           .csv(path))
+for table, (system, path) in SOURCES.items():
+    raw = (spark.read.option("header", True).option("inferSchema", False)
+           .option("recursiveFileLookup", True).csv(path))
     cols = raw.columns
     df = (raw
           .withColumn("_source_file", F.col("_metadata.file_path"))
@@ -50,7 +48,7 @@ for table, path in SOURCES.items():
 
     loaded = spark.table(table)
     rows, files = loaded.count(), loaded.select("_source_file").distinct().count()
-    ledger.append((RUN_ID, "cmdb", path, table, files, rows, datetime.datetime.utcnow()))
+    ledger.append((RUN_ID, system, path, table, files, rows, datetime.datetime.utcnow()))
     print(f"{table}: {rows} rows from {files} file(s)")
 
 (spark.createDataFrame(ledger,
@@ -58,6 +56,28 @@ for table, path in SOURCES.items():
     "file_count long, row_count long, logged_at timestamp")
  .write.format("delta").mode("append").saveAsTable("meta_load_ledger"))
 display(spark.table("meta_load_ledger").orderBy(F.desc("logged_at")))
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Mirrored sources: no copy, just record what Bronze sees
+MIRRORED = {   # table in lh_legacy : (source system, source)
+    "FOCUS_COST":           ("snowflake", "ZONTIQUE_BILLING.RAW.FOCUS_COST"),
+    "installations":        ("license",   "sql-odl-epam-2446996-database.dbo.installations"),
+    "license_entitlements": ("license",   "sql-odl-epam-2446996-database.dbo.license_entitlements"),
+    "license_products":     ("license",   "sql-odl-epam-2446996-database.dbo.license_products"),
+}
+m_ledger = [(RUN_ID, sys_, src, t, 0, spark.table(t).count(), datetime.datetime.utcnow())
+            for t, (sys_, src) in MIRRORED.items()]
+(spark.createDataFrame(m_ledger, "run_id string, source_system string, source_path string, target_table string, file_count long, row_count long, logged_at timestamp")
+ .write.format("delta").mode("append").saveAsTable("meta_load_ledger"))
+display(spark.table("meta_load_ledger").filter(F.col("run_id") == RUN_ID))
 
 # METADATA ********************
 
