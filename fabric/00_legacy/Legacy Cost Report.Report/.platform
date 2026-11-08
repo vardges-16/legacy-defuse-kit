@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Legacy Cost Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2708479a-d139-4378-bdb9-039da3343ebc"
+  }
+}

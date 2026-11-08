@@ -1,0 +1,65 @@
+table 'Cost by App'
+	lineageTag: 5741103a-254a-4865-a971-0c5025210e96
+
+	measure 'Total Cost (tagged)' = SUM('Cost by App'[TOTAL_COST_USD])
+		formatString: #,0
+		lineageTag: 83888c40-d0e6-4563-8634-fbdc46c0a46c
+
+	measure Applications = DISTINCTCOUNT('Cost by App'[SOLUTION_ID])
+		formatString: 0
+		lineageTag: b90e2686-d61a-459f-a39f-8cab149a1ef4
+
+	measure 'Unmapped Cost' = CALCULATE([Total Cost (tagged)], FILTER(ALL('Cost by App'[cost_center_code]), ISBLANK('Cost by App'[cost_center_code])))
+		formatString: #,0
+		lineageTag: c04e0a16-6334-40fd-8216-39acaea97811
+
+	measure 'Actual Month' = MAX('Cost by App'[USAGE_MONTH])
+		lineageTag: 4be133ce-c6b0-4b5e-aa06-a44d2e3d4c30
+
+	column SOLUTION_ID
+		dataType: string
+		lineageTag: 5b12e69d-1dce-48e5-bc29-f64cd04f1514
+		summarizeBy: none
+		sourceColumn: SOLUTION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column USAGE_MONTH
+		dataType: string
+		lineageTag: f059cd1d-8177-4ee4-befe-17ff4aeaebee
+		summarizeBy: none
+		sourceColumn: USAGE_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL_COST_USD
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 72f8bfa5-cc05-4f0f-bc98-715c9c1e9f61
+		summarizeBy: sum
+		sourceColumn: TOTAL_COST_USD
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center_code = LOOKUPVALUE('App Cost Center Map'[cost_center_code], 'App Cost Center Map'[SOLUTION_ID], 'Cost by App'[SOLUTION_ID])
+		dataType: string
+		lineageTag: 2131bcb6-a6d8-466f-905a-ac30d5440eab
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Cost by App' = m
+		mode: import
+		source =
+				let
+				    // Legacy: direct connection to the Snowflake billing view (tag-based, BilledCost)
+				    Source = Snowflake.Databases("dijxdsb-cr18840.snowflakecomputing.com", "LDK_WH"),
+				    Db = Source{[Name = "ZONTIQUE_BILLING", Kind = "Database"]}[Data],
+				    Raw = Db{[Name = "RAW", Kind = "Schema"]}[Data],
+				    View = Raw{[Name = "V_COST_BY_APP", Kind = "View"]}[Data],
+				    Typed = Table.TransformColumnTypes(View, {{"SOLUTION_ID", type text}, {"USAGE_MONTH", type text}, {"TOTAL_COST_USD", type number}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,30 @@
+table 'App Cost Center Map'
+	lineageTag: c7d5e89f-fe76-423b-8137-56bfc5d619a2
+
+	column SOLUTION_ID
+		dataType: string
+		lineageTag: 0545de57-a575-4773-ae4c-7c4bfb7813d7
+		summarizeBy: none
+		sourceColumn: SOLUTION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center_code
+		dataType: string
+		lineageTag: 79613210-525c-44e4-ae98-122581619903
+		summarizeBy: none
+		sourceColumn: cost_center_code
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'App Cost Center Map' = m
+		mode: import
+		source =
+				let
+				    // Legacy: mapping kept by hand in Finance's Excel and pasted here (last updated 2023)
+				    Source = #table(type table [SOLUTION_ID = text, cost_center_code = text], {{"SOL-03740087954b", "3150"}, {"SOL-e3c95e352780", "3170"}, {"SOL-35ab1cde6979", "0610"}, {"SOL-b96d469ca197", "2110"}, {"SOL-e279d76c5f8c", "3120"}, {"SOL-a7afd645143d", "0410"}, {"SOL-21b48693a79e", "3510"}, {"SOL-6bbf0af53bea", "2310"}, {"SOL-90834fec6443", "3110"}, {"SOL-e9a220bd9a9e", "0450"}, {"SOL-7667ac3c69e6", "0999"}, {"SOL-c3ffa9fe7783", "3550"}, {"SOL-4a5283a4a6a5", "2150"}, {"SOL-833aa614079e", "0650"}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+
