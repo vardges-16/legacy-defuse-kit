@@ -13,8 +13,7 @@
 
 # # nb_silver_backup: VM Backups -> Silver
 # Out: `silver_backup_jobs`, `silver_backup_storage`.
-#
-# | Defect | Action |
+# # | Defect | Action |
 # |---|---|
 # | VM name written differently (`VM-...`, `....zontique.local`) | fix: canonical lower-case short name |
 # | timestamps as `dd.MM.yyyy HH:mm` | fix: multi-format parse |
