@@ -3,7 +3,8 @@
 One shared truth (organisation, applications, cloud scopes, resources, VMs) feeds all five
 legacy systems, so they join. Every planted defect is written to an answer key.
 
-Period: actuals 2026-07-01 .. 2026-10-31 (as of 2026-10-31); budget FY2026 (Jan..Dec). USD.
+Period: cloud cost 2024-01-01 .. 2026-10-31, one export file per provider and month (as of 2026-10-31);
+budget FY2024..FY2026; VM Backups keep the last 4 months (2026-07 .. 2026-10). USD.
 
 Output (<out>/):
   snowflake/cost/focus_<provider>_<yyyymm>.csv   FOCUS 1.2 cost exports, Azure + Google Cloud, daily lines
@@ -23,9 +24,17 @@ args = [a for a in sys.argv[1:] if not a.startswith("--")]
 OUT = args[0] if args else "out"
 SEED = int(sys.argv[sys.argv.index("--seed") + 1]) if "--seed" in sys.argv else 42
 rnd = random.Random(SEED)
-START, END = date(2026, 7, 1), date(2026, 10, 31)
+START, END = date(2024, 1, 1), date(2026, 10, 31)
 DAYS = [START + timedelta(d) for d in range((END - START).days + 1)]
-MONTHS = [date(2026, m, 1) for m in (7, 8, 9, 10)]
+MONTHS = sorted({d.replace(day=1) for d in DAYS})
+RECENT = date(2026, 7, 1)                       # start of the "current" period (backups, growth, planted events)
+BK_DAYS = [d for d in DAYS if d >= RECENT]
+BK_MONTHS = [m for m in MONTHS if m >= RECENT]
+FISCAL_YEARS = (2024, 2025, 2026)
+
+
+def rdate(a, b):
+    return a + timedelta(rnd.randint(0, (b - a).days))
 
 
 def mkey(d):
@@ -119,7 +128,8 @@ def add_scope(provider, app_id, tier, env, region, name=None, in_cmdb=True):
         name = name or f"prj-{code}-{ {'prod': 'p', 'test': 'n', 'dev': 'd'}[env] }-{tier}-{hexid()}".replace(" ", "")
         sub_id, sub_name = name, name
     s = dict(provider=provider, name=name, app=app_id, tier=tier, env=env, region=region, sub_id=sub_id,
-             sub_name=sub_name, in_cmdb=in_cmdb, cmdb_status="Active", cmdb_deleted=None)
+             sub_name=sub_name, in_cmdb=in_cmdb, cmdb_status="Active", cmdb_deleted=None,
+             created=rdate(date(2023, 1, 1), date(2026, 3, 1)))   # billing starts when the scope is created
     scopes.append(s)
     return s
 
@@ -319,9 +329,11 @@ for r in resources:
     s = r["scope"]
     p = s["provider"]
     for i, d in enumerate(DAYS):
+        if d < s["created"]:
+            continue
         if r["deleted"] and d >= r["deleted"]:
             break
-        growth = 1 + 0.0025 * i
+        growth = (0.75 + 0.25 * i / (RECENT - START).days) if d < RECENT else 1 + 0.0025 * (d - RECENT).days
         if r["vm"]:
             nonprod = s["env"] in ("dev", "test")
             hours = (0 if d.weekday() >= 5 else 12) if nonprod else 24
@@ -508,10 +520,6 @@ def ts_between(a, b):
     return t.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def rdate(a, b):
-    return a + timedelta(rnd.randint(0, (b - a).days))
-
-
 assets = []
 for a in APPS:
     first, last = a[6].split()[0].lower(), a[6].split()[1].lower()
@@ -522,7 +530,7 @@ for a in APPS:
                        criticality=a[4], deleted_date="", mapping_last_verified=""))
 scope_rows = []
 for s in cmdb_scopes:
-    created = rdate(date(2023, 1, 1), date(2026, 5, 1))
+    created = s["created"]
     row = dict(asset_name=s["name"], asset_type="AzureResourceGroup" if s["provider"] == "Azure" else "GcpProject",
                asset_group_id=GRP[s["app"]], status=s["cmdb_status"], created_date=str(created),
                last_modified_utc=ts_between(date(2025, 8, 1), date(2026, 10, 30)), cloud_provider=s["provider"],
@@ -635,25 +643,30 @@ for p, d, row, r in truth_lines:
 BUD_COLS = ["enterprise_code", "enterprise_name", "business_unit_code", "business_unit_name", "business_code", "business_name",
             "department_code", "department_name", "cost_center_code", "cost_center_name", "budget_owner_id", "fiscal_year",
             "monthStart", "monthEnd", "budget_month", "budget_cost", "currency"]
-OVERRUN = {"3170": 0.55, "2110": 0.80, "3590": 0.70, "0450": 0.85}   # budget set too low -> overrun
+OVERRUN = {"3170": 0.55, "2110": 0.80, "3590": 0.70, "0450": 0.85}   # FY2026 budget set too low -> overrun
 budget = []
 for cc, o in CC.items():
-    run_rate = cc_month[(cc, "2026-07")]
-    factor = OVERRUN.get(cc, rnd.uniform(1.0, 1.2))
-    base = round(run_rate * factor / 500) * 500
-    for m in range(1, 13):
-        amt = base * (1.0 if m <= 6 else 1.03)
-        budget.append(dict(enterprise_code="ZONTIQUE", enterprise_name="Zontique Inc.", business_unit_code=o[6],
-                           business_unit_name=o[7], business_code=o[4], business_name=o[5], department_code=o[2],
-                           department_name=o[3], cost_center_code=cc, cost_center_name=o[1], budget_owner_id=o[8],
-                           fiscal_year="2026", monthStart="1", monthEnd="12", budget_month=f"2026-{m:02d}-01",
-                           budget_cost=f"{round(amt, -1):.2f}", currency="USD"))
+    for fy in FISCAL_YEARS:
+        if fy == 2026:
+            run_rate, factor = cc_month[(cc, "2026-07")], OVERRUN.get(cc, rnd.uniform(1.0, 1.2))
+        else:
+            run_rate = sum(cc_month[(cc, f"{fy}-{m:02d}")] for m in range(1, 13)) / 12
+            factor = rnd.uniform(1.0, 1.15)
+        base = max(500, round(run_rate * factor / 500) * 500)
+        for m in range(1, 13):
+            amt = base * (1.0 if m <= 6 else 1.03)
+            budget.append(dict(enterprise_code="ZONTIQUE", enterprise_name="Zontique Inc.", business_unit_code=o[6],
+                               business_unit_name=o[7], business_code=o[4], business_name=o[5], department_code=o[2],
+                               department_name=o[3], cost_center_code=cc, cost_center_name=o[1], budget_owner_id=o[8],
+                               fiscal_year=str(fy), monthStart="1", monthEnd="12", budget_month=f"{fy}-{m:02d}-01",
+                               budget_cost=f"{round(amt, -1):.2f}", currency="USD"))
 clean_budget = [dict(b) for b in budget]
-for m in range(1, 13):   # B07 cost center with budget but no application in the CMDB
-    budget.append(dict(budget[0], business_unit_code="CORP", business_unit_name="Corporate Services", business_code="CORP-FUN",
-                       business_name="Corporate Functions", department_code="DEP-STRAT", department_name="Corporate Strategy",
-                       cost_center_code="3600", cost_center_name="Corporate Strategy", budget_owner_id="EMP-3008",
-                       budget_month=f"2026-{m:02d}-01", budget_cost="4000.00"))
+for fy in FISCAL_YEARS:   # B07 cost center with budget but no application in the CMDB
+    for m in range(1, 13):
+        budget.append(dict(budget[0], business_unit_code="CORP", business_unit_name="Corporate Services", business_code="CORP-FUN",
+                           business_name="Corporate Functions", department_code="DEP-STRAT", department_name="Corporate Strategy",
+                           cost_center_code="3600", cost_center_name="Corporate Strategy", budget_owner_id="EMP-3008",
+                           fiscal_year=str(fy), budget_month=f"{fy}-{m:02d}-01", budget_cost="4000.00"))
 ak("financial", "B07", "BUDGET", "3600", "cost_center_code", "3600", "", "Flag", "budget for a cost center with no application or spend")
 for b in budget:
     b["_key"] = f"{b['cost_center_code']}|{b['budget_month'][:7]}"
@@ -728,13 +741,13 @@ def vault(v):
     return f"rsv-{'prod' if v['env'] in ('prod', 'shared') else 'nonprod'}-{v['region']}"
 
 
-d09_days = set(rnd.sample([d for d in DAYS if d not in MISSING_DAYS], 2))
-jobs_by_day = {d: [] for d in DAYS}
+d09_days = set(rnd.sample([d for d in BK_DAYS if d not in MISSING_DAYS], 2))
+jobs_by_day = {d: [] for d in BK_DAYS}
 for v in vms:
     if not v["protected"]:
         continue
     daily = v["env"] in ("prod", "shared")
-    for d in DAYS:
+    for d in BK_DAYS:
         if v["deleted"] and d >= v["deleted"]:
             break
         if not daily and d.weekday() != 6:
@@ -752,7 +765,7 @@ for v in vms:
         jobs_by_day[d].append(job)
 os.makedirs(f"{OUT}/vm_backups/jobs", exist_ok=True)
 job_files, raw_rows, unique_jobs = {}, 0, set()
-for d in DAYS:
+for d in BK_DAYS:
     if d in MISSING_DAYS:
         ak("vm-backups", "D08", "BACKUP_JOBS", f"backup_jobs_{d:%Y%m%d}.csv", "", "", "", "Flag", "daily file missing (completeness gap)")
         continue
@@ -786,7 +799,7 @@ ak("vm-backups", "D07", "BACKUP_JOBS", f"backup_jobs_{DRIFT_FROM:%Y%m%d}.csv", "
    "schema drift: column renamed, new column SOURCE_REGION from this day on")
 os.makedirs(f"{OUT}/vm_backups/storage", exist_ok=True)
 storage_totals, orphan_totals, orphan_vms, backup_cost_vm = {}, {}, set(), defaultdict(float)
-for ms in MONTHS:
+for ms in BK_MONTHS:
     month, fn = mkey(ms), f"backup_storage_{ms:%Y%m}.csv"
     total = orphan = 0.0
     with open(f"{OUT}/vm_backups/storage/{fn}", "w", newline="", encoding="utf-8") as f:
@@ -980,11 +993,13 @@ write_key("cost", {
 write_key("cmdb", {"seed": SEED, "assets_rows_delivered": len(all_assets), "applications_true": len(APPS), "scopes_true": len(cmdb_scopes),
                    "asset_groups_delivered": len(groups), "asset_groups_true": len(APPS),
                    "scope_owner_true": {s["name"]: APP[s["app"]][2] for s in cmdb_scopes}})
-write_key("financial", {"seed": SEED, "rows_delivered": len(budget), "rows_true": len(clean_budget) + 12,
-                  "budget_fy2026_true_by_cc": {cc: round(sum(float(b["budget_cost"]) for b in clean_budget if b["cost_center_code"] == cc), 2) for cc in CC},
-                  "budget_fy2026_true_total": round(sum(float(b["budget_cost"]) for b in clean_budget), 2),
+write_key("financial", {"seed": SEED, "rows_delivered": len(budget), "rows_true": len(clean_budget) + 12 * len(FISCAL_YEARS),
+                  "budget_true_by_fy_cc": {f"{fy}|{cc}": round(sum(float(b["budget_cost"]) for b in clean_budget
+                                                                    if b["cost_center_code"] == cc and b["fiscal_year"] == str(fy)), 2)
+                                           for fy in FISCAL_YEARS for cc in CC},
+                  "budget_true_total": round(sum(float(b["budget_cost"]) for b in clean_budget), 2),
                   "overrun_cost_centers": sorted(OVERRUN)})
-write_key("vm-backups", {"seed": SEED, "period": [START, END], "vms_total": len(vms), "vms_protected": sum(v["protected"] for v in vms),
+write_key("vm-backups", {"seed": SEED, "period": [RECENT, END], "vms_total": len(vms), "vms_protected": sum(v["protected"] for v in vms),
                   "vms_not_in_cmdb": [v["name"] for v in vms if not v["in_cmdb"]], "job_files": len(job_files), "job_rows_raw": raw_rows,
                   "job_ids_unique": len(unique_jobs), "missing_job_files": sorted(f"backup_jobs_{d:%Y%m%d}.csv" for d in MISSING_DAYS),
                   "storage_rows_per_month": sum(v["protected"] for v in vms), "storage_cost_usd": storage_totals,

@@ -48,12 +48,13 @@ GRANT USAGE ON SCHEMA ZONTIQUE_LEGACY.FIN  TO ROLE LEDGER_READER_ROLE;
 -- =====================================================================
 -- UPLOAD (Snowsight): Ingestion > Add Data > Load files into a Stage
 --   database ZONTIQUE_LEGACY, schema LANDING, stage STG, then type the path:
---   cost/focus/          <- the 9 files in snowflake/cost/  (focus_azure_*, focus_gcp_*, incl. the _rerun_ file)
+--   cost/focus/          <- the 69 files in snowflake/cost/ (focus_azure_yyyymm, focus_gcp_yyyymm for 202401..202610,
+--                           plus the _rerun_ file). Select them all at once; each is under 9 MB.
 --   cmdb/assets/         <- snowflake/cmdb/assets.csv
 --   cmdb/asset_groups/   <- snowflake/cmdb/asset_groups.csv
 --   fin/budget/          <- snowflake/fin/financial_budget.csv
 -- =====================================================================
-LIST @ZONTIQUE_LEGACY.LANDING.STG;   -- expect 12 files
+LIST @ZONTIQUE_LEGACY.LANDING.STG;   -- expect 72 files
 
 
 -- =====================================================================
@@ -130,7 +131,8 @@ SELECT BUSINESS_UNIT_NAME, DEPARTMENT_NAME, COST_CENTER_CODE, COST_CENTER_NAME,
        TRY_TO_DOUBLE(BUDGET_COST) AS BUDGET_COST
 FROM ZONTIQUE_LEGACY.FIN.BUDGET;
 
--- 3.4 budget vs actual: actual only through the hand-made map; latest month only; duplicates summed
+-- 3.4 budget vs actual: actual only through the hand-made map; latest month only; duplicates summed;
+--     all fiscal years added together and divided by 12 (fiscal year never checked)
 CREATE VIEW ZONTIQUE_LEGACY.RPT.V_BUDGET_VS_ACTUAL AS
 WITH bud AS (
   SELECT COST_CENTER_CODE, COST_CENTER_NAME, SUM(BUDGET_COST) / 12 AS MONTHLY_BUDGET_USD
@@ -160,8 +162,8 @@ GRANT SELECT ON ALL VIEWS  IN SCHEMA ZONTIQUE_LEGACY.RPT TO ROLE LEGACY_REPORT_R
 
 -- =====================================================================
 -- PART 4: checks. Expected values: answer-keys/*/expected_totals.json
---   FOCUS_COST 44,183 rows / 9 files / BilledCost 526,182.15 (incl. the re-run day)
---   ASSETS 123, ASSET_GROUPS 21, BUDGET 193 rows / 1,251,956.69
+--   FOCUS_COST 275,649 rows / 69 files / BilledCost 2,584,712.12 (incl. the re-run day)
+--   ASSETS 123, ASSET_GROUPS 21, BUDGET 577 rows / 2,657,478.65
 -- =====================================================================
 SELECT 'COST.FOCUS_COST' AS T, COUNT(*) AS ROWS_, ROUND(SUM(TRY_TO_DOUBLE(BILLEDCOST)), 2) AS AMOUNT, COUNT(DISTINCT _SOURCE_FILE) AS FILES FROM ZONTIQUE_LEGACY.COST.FOCUS_COST
 UNION ALL SELECT 'CMDB.ASSETS', COUNT(*), NULL, COUNT(DISTINCT _SOURCE_FILE) FROM ZONTIQUE_LEGACY.CMDB.ASSETS

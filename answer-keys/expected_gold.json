@@ -1,684 +1,2952 @@
 {
   "budget_vs_actual_by_cc_month": {
+    "0410|2024-01": {
+      "budget": 3000.0,
+      "actual_effective": 2047.76,
+      "variance": -952.24
+    },
+    "0410|2024-02": {
+      "budget": 3000.0,
+      "actual_effective": 1930.17,
+      "variance": -1069.83
+    },
+    "0410|2024-03": {
+      "budget": 3000.0,
+      "actual_effective": 2046.87,
+      "variance": -953.13
+    },
+    "0410|2024-04": {
+      "budget": 3000.0,
+      "actual_effective": 2912.02,
+      "variance": -87.98
+    },
+    "0410|2024-05": {
+      "budget": 3000.0,
+      "actual_effective": 3210.17,
+      "variance": 210.17
+    },
+    "0410|2024-06": {
+      "budget": 3000.0,
+      "actual_effective": 3102.58,
+      "variance": 102.58
+    },
+    "0410|2024-07": {
+      "budget": 3090.0,
+      "actual_effective": 3240.64,
+      "variance": 150.64
+    },
+    "0410|2024-08": {
+      "budget": 3090.0,
+      "actual_effective": 3254.91,
+      "variance": 164.91
+    },
+    "0410|2024-09": {
+      "budget": 3090.0,
+      "actual_effective": 3159.47,
+      "variance": 69.47
+    },
+    "0410|2024-10": {
+      "budget": 3090.0,
+      "actual_effective": 3304.44,
+      "variance": 214.44
+    },
+    "0410|2024-11": {
+      "budget": 3090.0,
+      "actual_effective": 3201.26,
+      "variance": 111.26
+    },
+    "0410|2024-12": {
+      "budget": 3090.0,
+      "actual_effective": 3323.55,
+      "variance": 233.55
+    },
+    "0410|2025-01": {
+      "budget": 4500.0,
+      "actual_effective": 3336.88,
+      "variance": -1163.12
+    },
+    "0410|2025-02": {
+      "budget": 4500.0,
+      "actual_effective": 3021.47,
+      "variance": -1478.53
+    },
+    "0410|2025-03": {
+      "budget": 4500.0,
+      "actual_effective": 3344.72,
+      "variance": -1155.28
+    },
+    "0410|2025-04": {
+      "budget": 4500.0,
+      "actual_effective": 3286.06,
+      "variance": -1213.94
+    },
+    "0410|2025-05": {
+      "budget": 4500.0,
+      "actual_effective": 3829.51,
+      "variance": -670.49
+    },
+    "0410|2025-06": {
+      "budget": 4500.0,
+      "actual_effective": 4000.14,
+      "variance": -499.86
+    },
+    "0410|2025-07": {
+      "budget": 4640.0,
+      "actual_effective": 4152.08,
+      "variance": -487.92
+    },
+    "0410|2025-08": {
+      "budget": 4640.0,
+      "actual_effective": 4146.48,
+      "variance": -493.52
+    },
+    "0410|2025-09": {
+      "budget": 4640.0,
+      "actual_effective": 4072.22,
+      "variance": -567.78
+    },
+    "0410|2025-10": {
+      "budget": 4640.0,
+      "actual_effective": 4205.48,
+      "variance": -434.52
+    },
+    "0410|2025-11": {
+      "budget": 4640.0,
+      "actual_effective": 4085.09,
+      "variance": -554.91
+    },
+    "0410|2025-12": {
+      "budget": 4640.0,
+      "actual_effective": 4241.61,
+      "variance": -398.39
+    },
+    "0410|2026-01": {
+      "budget": 7000.0,
+      "actual_effective": 4995.44,
+      "variance": -2004.56
+    },
+    "0410|2026-02": {
+      "budget": 7000.0,
+      "actual_effective": 5689.26,
+      "variance": -1310.74
+    },
+    "0410|2026-03": {
+      "budget": 7000.0,
+      "actual_effective": 6325.09,
+      "variance": -674.91
+    },
+    "0410|2026-04": {
+      "budget": 7000.0,
+      "actual_effective": 6162.83,
+      "variance": -837.17
+    },
+    "0410|2026-05": {
+      "budget": 7000.0,
+      "actual_effective": 6405.14,
+      "variance": -594.86
+    },
+    "0410|2026-06": {
+      "budget": 7000.0,
+      "actual_effective": 6267.35,
+      "variance": -732.65
+    },
     "0410|2026-07": {
-      "budget": 9780.0,
-      "actual_effective": 8223.86,
-      "variance": -1556.14
+      "budget": 7210.0,
+      "actual_effective": 6644.99,
+      "variance": -565.01
     },
     "0410|2026-08": {
-      "budget": 9780.0,
-      "actual_effective": 8679.58,
-      "variance": -1100.42
+      "budget": 7210.0,
+      "actual_effective": 6971.98,
+      "variance": -238.02
     },
     "0410|2026-09": {
-      "budget": 9780.0,
-      "actual_effective": 8921.55,
-      "variance": -858.45
+      "budget": 7210.0,
+      "actual_effective": 6420.37,
+      "variance": -789.63
     },
     "0410|2026-10": {
-      "budget": 9780.0,
-      "actual_effective": 9700.84,
-      "variance": -79.16
+      "budget": 7210.0,
+      "actual_effective": 6722.17,
+      "variance": -487.83
+    },
+    "0420|2024-01": {
+      "budget": 500.0,
+      "actual_effective": 0.0,
+      "variance": -500.0
+    },
+    "0420|2024-02": {
+      "budget": 500.0,
+      "actual_effective": 0.0,
+      "variance": -500.0
+    },
+    "0420|2024-03": {
+      "budget": 500.0,
+      "actual_effective": 0.0,
+      "variance": -500.0
+    },
+    "0420|2024-04": {
+      "budget": 500.0,
+      "actual_effective": 0.0,
+      "variance": -500.0
+    },
+    "0420|2024-05": {
+      "budget": 500.0,
+      "actual_effective": 0.0,
+      "variance": -500.0
+    },
+    "0420|2024-06": {
+      "budget": 500.0,
+      "actual_effective": 0.0,
+      "variance": -500.0
+    },
+    "0420|2024-07": {
+      "budget": 520.0,
+      "actual_effective": 139.77,
+      "variance": -380.23
+    },
+    "0420|2024-08": {
+      "budget": 520.0,
+      "actual_effective": 487.08,
+      "variance": -32.92
+    },
+    "0420|2024-09": {
+      "budget": 520.0,
+      "actual_effective": 478.69,
+      "variance": -41.31
+    },
+    "0420|2024-10": {
+      "budget": 520.0,
+      "actual_effective": 496.96,
+      "variance": -23.04
+    },
+    "0420|2024-11": {
+      "budget": 520.0,
+      "actual_effective": 491.96,
+      "variance": -28.04
+    },
+    "0420|2024-12": {
+      "budget": 520.0,
+      "actual_effective": 507.36,
+      "variance": -12.64
+    },
+    "0420|2025-01": {
+      "budget": 500.0,
+      "actual_effective": 505.02,
+      "variance": 5.02
+    },
+    "0420|2025-02": {
+      "budget": 500.0,
+      "actual_effective": 471.3,
+      "variance": -28.7
+    },
+    "0420|2025-03": {
+      "budget": 500.0,
+      "actual_effective": 518.62,
+      "variance": 18.62
+    },
+    "0420|2025-04": {
+      "budget": 500.0,
+      "actual_effective": 513.34,
+      "variance": 13.34
+    },
+    "0420|2025-05": {
+      "budget": 500.0,
+      "actual_effective": 523.0,
+      "variance": 23.0
+    },
+    "0420|2025-06": {
+      "budget": 500.0,
+      "actual_effective": 508.22,
+      "variance": 8.22
+    },
+    "0420|2025-07": {
+      "budget": 520.0,
+      "actual_effective": 536.18,
+      "variance": 16.18
+    },
+    "0420|2025-08": {
+      "budget": 520.0,
+      "actual_effective": 541.46,
+      "variance": 21.46
+    },
+    "0420|2025-09": {
+      "budget": 520.0,
+      "actual_effective": 528.34,
+      "variance": 8.34
+    },
+    "0420|2025-10": {
+      "budget": 520.0,
+      "actual_effective": 553.71,
+      "variance": 33.71
+    },
+    "0420|2025-11": {
+      "budget": 520.0,
+      "actual_effective": 628.24,
+      "variance": 108.24
+    },
+    "0420|2025-12": {
+      "budget": 520.0,
+      "actual_effective": 665.37,
+      "variance": 145.37
+    },
+    "0420|2026-01": {
+      "budget": 2000.0,
+      "actual_effective": 946.85,
+      "variance": -1053.15
+    },
+    "0420|2026-02": {
+      "budget": 2000.0,
+      "actual_effective": 1357.8,
+      "variance": -642.2
+    },
+    "0420|2026-03": {
+      "budget": 2000.0,
+      "actual_effective": 1734.27,
+      "variance": -265.73
+    },
+    "0420|2026-04": {
+      "budget": 2000.0,
+      "actual_effective": 1688.56,
+      "variance": -311.44
+    },
+    "0420|2026-05": {
+      "budget": 2000.0,
+      "actual_effective": 1767.9,
+      "variance": -232.1
+    },
+    "0420|2026-06": {
+      "budget": 2000.0,
+      "actual_effective": 1727.45,
+      "variance": -272.55
     },
     "0420|2026-07": {
-      "budget": 3090.0,
-      "actual_effective": 2793.14,
-      "variance": -296.86
+      "budget": 2060.0,
+      "actual_effective": 1855.77,
+      "variance": -204.23
     },
     "0420|2026-08": {
-      "budget": 3090.0,
-      "actual_effective": 2921.3,
-      "variance": -168.7
+      "budget": 2060.0,
+      "actual_effective": 1982.24,
+      "variance": -77.76
     },
     "0420|2026-09": {
-      "budget": 3090.0,
-      "actual_effective": 2987.44,
-      "variance": -102.56
+      "budget": 2060.0,
+      "actual_effective": 2014.29,
+      "variance": -45.71
     },
     "0420|2026-10": {
-      "budget": 3090.0,
-      "actual_effective": 3185.37,
-      "variance": 95.37
+      "budget": 2060.0,
+      "actual_effective": 2213.54,
+      "variance": 153.54
+    },
+    "0450|2024-01": {
+      "budget": 1500.0,
+      "actual_effective": 163.33,
+      "variance": -1336.67
+    },
+    "0450|2024-02": {
+      "budget": 1500.0,
+      "actual_effective": 153.11,
+      "variance": -1346.89
+    },
+    "0450|2024-03": {
+      "budget": 1500.0,
+      "actual_effective": 588.69,
+      "variance": -911.31
+    },
+    "0450|2024-04": {
+      "budget": 1500.0,
+      "actual_effective": 966.73,
+      "variance": -533.27
+    },
+    "0450|2024-05": {
+      "budget": 1500.0,
+      "actual_effective": 1005.13,
+      "variance": -494.87
+    },
+    "0450|2024-06": {
+      "budget": 1500.0,
+      "actual_effective": 971.14,
+      "variance": -528.86
+    },
+    "0450|2024-07": {
+      "budget": 1540.0,
+      "actual_effective": 1403.67,
+      "variance": -136.33
+    },
+    "0450|2024-08": {
+      "budget": 1540.0,
+      "actual_effective": 2337.79,
+      "variance": 797.79
+    },
+    "0450|2024-09": {
+      "budget": 1540.0,
+      "actual_effective": 2296.69,
+      "variance": 756.69
+    },
+    "0450|2024-10": {
+      "budget": 1540.0,
+      "actual_effective": 2375.48,
+      "variance": 835.48
+    },
+    "0450|2024-11": {
+      "budget": 1540.0,
+      "actual_effective": 2307.64,
+      "variance": 767.64
+    },
+    "0450|2024-12": {
+      "budget": 1540.0,
+      "actual_effective": 2400.55,
+      "variance": 860.55
+    },
+    "0450|2025-01": {
+      "budget": 3500.0,
+      "actual_effective": 2416.41,
+      "variance": -1083.59
+    },
+    "0450|2025-02": {
+      "budget": 3500.0,
+      "actual_effective": 2186.33,
+      "variance": -1313.67
+    },
+    "0450|2025-03": {
+      "budget": 3500.0,
+      "actual_effective": 2422.72,
+      "variance": -1077.28
+    },
+    "0450|2025-04": {
+      "budget": 3500.0,
+      "actual_effective": 2361.98,
+      "variance": -1138.02
+    },
+    "0450|2025-05": {
+      "budget": 3500.0,
+      "actual_effective": 3247.61,
+      "variance": -252.39
+    },
+    "0450|2025-06": {
+      "budget": 3500.0,
+      "actual_effective": 3760.04,
+      "variance": 260.04
+    },
+    "0450|2025-07": {
+      "budget": 3600.0,
+      "actual_effective": 3937.41,
+      "variance": 337.41
+    },
+    "0450|2025-08": {
+      "budget": 3600.0,
+      "actual_effective": 3941.92,
+      "variance": 341.92
+    },
+    "0450|2025-09": {
+      "budget": 3600.0,
+      "actual_effective": 3854.16,
+      "variance": 254.16
+    },
+    "0450|2025-10": {
+      "budget": 3600.0,
+      "actual_effective": 3992.96,
+      "variance": 392.96
+    },
+    "0450|2025-11": {
+      "budget": 3600.0,
+      "actual_effective": 3880.81,
+      "variance": 280.81
+    },
+    "0450|2025-12": {
+      "budget": 3600.0,
+      "actual_effective": 4036.19,
+      "variance": 436.19
+    },
+    "0450|2026-01": {
+      "budget": 3500.0,
+      "actual_effective": 4056.05,
+      "variance": 556.05
+    },
+    "0450|2026-02": {
+      "budget": 3500.0,
+      "actual_effective": 3692.08,
+      "variance": 192.08
+    },
+    "0450|2026-03": {
+      "budget": 3500.0,
+      "actual_effective": 4126.57,
+      "variance": 626.57
+    },
+    "0450|2026-04": {
+      "budget": 3500.0,
+      "actual_effective": 3988.49,
+      "variance": 488.49
+    },
+    "0450|2026-05": {
+      "budget": 3500.0,
+      "actual_effective": 4146.82,
+      "variance": 646.82
+    },
+    "0450|2026-06": {
+      "budget": 3500.0,
+      "actual_effective": 4073.44,
+      "variance": 573.44
     },
     "0450|2026-07": {
-      "budget": 3090.0,
-      "actual_effective": 3679.42,
-      "variance": 589.42
+      "budget": 3600.0,
+      "actual_effective": 4301.17,
+      "variance": 701.17
     },
     "0450|2026-08": {
-      "budget": 3090.0,
-      "actual_effective": 3938.2,
-      "variance": 848.2
+      "budget": 3600.0,
+      "actual_effective": 4538.56,
+      "variance": 938.56
     },
     "0450|2026-09": {
-      "budget": 3090.0,
-      "actual_effective": 3991.76,
-      "variance": 901.76
+      "budget": 3600.0,
+      "actual_effective": 4623.21,
+      "variance": 1023.21
     },
     "0450|2026-10": {
-      "budget": 3090.0,
-      "actual_effective": 4315.88,
-      "variance": 1225.88
+      "budget": 3600.0,
+      "actual_effective": 4986.56,
+      "variance": 1386.56
+    },
+    "0610|2024-01": {
+      "budget": 6000.0,
+      "actual_effective": 4951.08,
+      "variance": -1048.92
+    },
+    "0610|2024-02": {
+      "budget": 6000.0,
+      "actual_effective": 4637.35,
+      "variance": -1362.65
+    },
+    "0610|2024-03": {
+      "budget": 6000.0,
+      "actual_effective": 4970.39,
+      "variance": -1029.61
+    },
+    "0610|2024-04": {
+      "budget": 6000.0,
+      "actual_effective": 5548.04,
+      "variance": -451.96
+    },
+    "0610|2024-05": {
+      "budget": 6000.0,
+      "actual_effective": 6252.03,
+      "variance": 252.03
+    },
+    "0610|2024-06": {
+      "budget": 6000.0,
+      "actual_effective": 6255.31,
+      "variance": 255.31
+    },
+    "0610|2024-07": {
+      "budget": 6180.0,
+      "actual_effective": 6478.11,
+      "variance": 298.11
+    },
+    "0610|2024-08": {
+      "budget": 6180.0,
+      "actual_effective": 6506.61,
+      "variance": 326.61
+    },
+    "0610|2024-09": {
+      "budget": 6180.0,
+      "actual_effective": 6289.04,
+      "variance": 109.04
+    },
+    "0610|2024-10": {
+      "budget": 6180.0,
+      "actual_effective": 6534.96,
+      "variance": 354.96
+    },
+    "0610|2024-11": {
+      "budget": 6180.0,
+      "actual_effective": 6334.2,
+      "variance": 154.2
+    },
+    "0610|2024-12": {
+      "budget": 6180.0,
+      "actual_effective": 6572.48,
+      "variance": 392.48
+    },
+    "0610|2025-01": {
+      "budget": 7500.0,
+      "actual_effective": 6788.64,
+      "variance": -711.36
+    },
+    "0610|2025-02": {
+      "budget": 7500.0,
+      "actual_effective": 6339.05,
+      "variance": -1160.95
+    },
+    "0610|2025-03": {
+      "budget": 7500.0,
+      "actual_effective": 7041.87,
+      "variance": -458.13
+    },
+    "0610|2025-04": {
+      "budget": 7500.0,
+      "actual_effective": 6834.11,
+      "variance": -665.89
+    },
+    "0610|2025-05": {
+      "budget": 7500.0,
+      "actual_effective": 7090.82,
+      "variance": -409.18
+    },
+    "0610|2025-06": {
+      "budget": 7500.0,
+      "actual_effective": 6885.87,
+      "variance": -614.13
+    },
+    "0610|2025-07": {
+      "budget": 7720.0,
+      "actual_effective": 7242.72,
+      "variance": -477.28
+    },
+    "0610|2025-08": {
+      "budget": 7720.0,
+      "actual_effective": 8376.92,
+      "variance": 656.92
+    },
+    "0610|2025-09": {
+      "budget": 7720.0,
+      "actual_effective": 8159.33,
+      "variance": 439.33
+    },
+    "0610|2025-10": {
+      "budget": 7720.0,
+      "actual_effective": 8455.63,
+      "variance": 735.63
+    },
+    "0610|2025-11": {
+      "budget": 7720.0,
+      "actual_effective": 8190.43,
+      "variance": 470.43
+    },
+    "0610|2025-12": {
+      "budget": 7720.0,
+      "actual_effective": 8525.84,
+      "variance": 805.84
+    },
+    "0610|2026-01": {
+      "budget": 8500.0,
+      "actual_effective": 8547.95,
+      "variance": 47.95
+    },
+    "0610|2026-02": {
+      "budget": 8500.0,
+      "actual_effective": 7767.38,
+      "variance": -732.62
+    },
+    "0610|2026-03": {
+      "budget": 8500.0,
+      "actual_effective": 8588.57,
+      "variance": 88.57
+    },
+    "0610|2026-04": {
+      "budget": 8500.0,
+      "actual_effective": 8362.68,
+      "variance": -137.32
+    },
+    "0610|2026-05": {
+      "budget": 8500.0,
+      "actual_effective": 8701.14,
+      "variance": 201.14
+    },
+    "0610|2026-06": {
+      "budget": 8500.0,
+      "actual_effective": 8447.65,
+      "variance": -52.35
     },
     "0610|2026-07": {
       "budget": 8760.0,
-      "actual_effective": 7312.09,
-      "variance": -1447.91
+      "actual_effective": 8604.19,
+      "variance": -155.81
     },
     "0610|2026-08": {
       "budget": 8760.0,
-      "actual_effective": 7502.08,
-      "variance": -1257.92
+      "actual_effective": 8276.52,
+      "variance": -483.48
     },
     "0610|2026-09": {
       "budget": 8760.0,
-      "actual_effective": 7202.01,
-      "variance": -1557.99
+      "actual_effective": 8309.58,
+      "variance": -450.42
     },
     "0610|2026-10": {
       "budget": 8760.0,
-      "actual_effective": 7565.33,
-      "variance": -1194.67
+      "actual_effective": 8869.48,
+      "variance": 109.48
+    },
+    "0650|2024-01": {
+      "budget": 1000.0,
+      "actual_effective": 0.0,
+      "variance": -1000.0
+    },
+    "0650|2024-02": {
+      "budget": 1000.0,
+      "actual_effective": 0.0,
+      "variance": -1000.0
+    },
+    "0650|2024-03": {
+      "budget": 1000.0,
+      "actual_effective": 412.05,
+      "variance": -587.95
+    },
+    "0650|2024-04": {
+      "budget": 1000.0,
+      "actual_effective": 458.53,
+      "variance": -541.47
+    },
+    "0650|2024-05": {
+      "budget": 1000.0,
+      "actual_effective": 512.73,
+      "variance": -487.27
+    },
+    "0650|2024-06": {
+      "budget": 1000.0,
+      "actual_effective": 552.52,
+      "variance": -447.48
+    },
+    "0650|2024-07": {
+      "budget": 1030.0,
+      "actual_effective": 1214.75,
+      "variance": 184.75
+    },
+    "0650|2024-08": {
+      "budget": 1030.0,
+      "actual_effective": 1218.25,
+      "variance": 188.25
+    },
+    "0650|2024-09": {
+      "budget": 1030.0,
+      "actual_effective": 1182.39,
+      "variance": 152.39
+    },
+    "0650|2024-10": {
+      "budget": 1030.0,
+      "actual_effective": 1382.63,
+      "variance": 352.63
+    },
+    "0650|2024-11": {
+      "budget": 1030.0,
+      "actual_effective": 1361.23,
+      "variance": 331.23
+    },
+    "0650|2024-12": {
+      "budget": 1030.0,
+      "actual_effective": 1415.65,
+      "variance": 385.65
+    },
+    "0650|2025-01": {
+      "budget": 1500.0,
+      "actual_effective": 1419.67,
+      "variance": -80.33
+    },
+    "0650|2025-02": {
+      "budget": 1500.0,
+      "actual_effective": 1308.9,
+      "variance": -191.1
+    },
+    "0650|2025-03": {
+      "budget": 1500.0,
+      "actual_effective": 1469.17,
+      "variance": -30.83
+    },
+    "0650|2025-04": {
+      "budget": 1500.0,
+      "actual_effective": 1433.91,
+      "variance": -66.09
+    },
+    "0650|2025-05": {
+      "budget": 1500.0,
+      "actual_effective": 1482.15,
+      "variance": -17.85
+    },
+    "0650|2025-06": {
+      "budget": 1500.0,
+      "actual_effective": 1441.75,
+      "variance": -58.25
+    },
+    "0650|2025-07": {
+      "budget": 1540.0,
+      "actual_effective": 1498.53,
+      "variance": -41.47
+    },
+    "0650|2025-08": {
+      "budget": 1540.0,
+      "actual_effective": 1497.21,
+      "variance": -42.79
+    },
+    "0650|2025-09": {
+      "budget": 1540.0,
+      "actual_effective": 1459.41,
+      "variance": -80.59
+    },
+    "0650|2025-10": {
+      "budget": 1540.0,
+      "actual_effective": 1516.22,
+      "variance": -23.78
+    },
+    "0650|2025-11": {
+      "budget": 1540.0,
+      "actual_effective": 1469.38,
+      "variance": -70.62
+    },
+    "0650|2025-12": {
+      "budget": 1540.0,
+      "actual_effective": 1529.33,
+      "variance": -10.67
+    },
+    "0650|2026-01": {
+      "budget": 2000.0,
+      "actual_effective": 1531.06,
+      "variance": -468.94
+    },
+    "0650|2026-02": {
+      "budget": 2000.0,
+      "actual_effective": 1386.82,
+      "variance": -613.18
+    },
+    "0650|2026-03": {
+      "budget": 2000.0,
+      "actual_effective": 1540.94,
+      "variance": -459.06
+    },
+    "0650|2026-04": {
+      "budget": 2000.0,
+      "actual_effective": 1507.79,
+      "variance": -492.21
+    },
+    "0650|2026-05": {
+      "budget": 2000.0,
+      "actual_effective": 1553.86,
+      "variance": -446.14
+    },
+    "0650|2026-06": {
+      "budget": 2000.0,
+      "actual_effective": 1510.64,
+      "variance": -489.36
     },
     "0650|2026-07": {
-      "budget": 2580.0,
-      "actual_effective": 2184.12,
-      "variance": -395.88
+      "budget": 2060.0,
+      "actual_effective": 1589.28,
+      "variance": -470.72
     },
     "0650|2026-08": {
-      "budget": 2580.0,
-      "actual_effective": 2222.64,
-      "variance": -357.36
+      "budget": 2060.0,
+      "actual_effective": 1639.55,
+      "variance": -420.45
     },
     "0650|2026-09": {
-      "budget": 2580.0,
-      "actual_effective": 2233.45,
-      "variance": -346.55
+      "budget": 2060.0,
+      "actual_effective": 1637.88,
+      "variance": -422.12
     },
     "0650|2026-10": {
-      "budget": 2580.0,
-      "actual_effective": 2363.23,
-      "variance": -216.77
+      "budget": 2060.0,
+      "actual_effective": 1745.13,
+      "variance": -314.87
+    },
+    "2110|2024-01": {
+      "budget": 5000.0,
+      "actual_effective": 103.52,
+      "variance": -4896.48
+    },
+    "2110|2024-02": {
+      "budget": 5000.0,
+      "actual_effective": 95.91,
+      "variance": -4904.09
+    },
+    "2110|2024-03": {
+      "budget": 5000.0,
+      "actual_effective": 102.46,
+      "variance": -4897.54
+    },
+    "2110|2024-04": {
+      "budget": 5000.0,
+      "actual_effective": 435.84,
+      "variance": -4564.16
+    },
+    "2110|2024-05": {
+      "budget": 5000.0,
+      "actual_effective": 2716.73,
+      "variance": -2283.27
+    },
+    "2110|2024-06": {
+      "budget": 5000.0,
+      "actual_effective": 6094.19,
+      "variance": 1094.19
+    },
+    "2110|2024-07": {
+      "budget": 5150.0,
+      "actual_effective": 7443.93,
+      "variance": 2293.93
+    },
+    "2110|2024-08": {
+      "budget": 5150.0,
+      "actual_effective": 7488.67,
+      "variance": 2338.67
+    },
+    "2110|2024-09": {
+      "budget": 5150.0,
+      "actual_effective": 7312.65,
+      "variance": 2162.65
+    },
+    "2110|2024-10": {
+      "budget": 5150.0,
+      "actual_effective": 8233.53,
+      "variance": 3083.53
+    },
+    "2110|2024-11": {
+      "budget": 5150.0,
+      "actual_effective": 8572.33,
+      "variance": 3422.33
+    },
+    "2110|2024-12": {
+      "budget": 5150.0,
+      "actual_effective": 9024.03,
+      "variance": 3874.03
+    },
+    "2110|2025-01": {
+      "budget": 13000.0,
+      "actual_effective": 9325.46,
+      "variance": -3674.54
+    },
+    "2110|2025-02": {
+      "budget": 13000.0,
+      "actual_effective": 8550.6,
+      "variance": -4449.4
+    },
+    "2110|2025-03": {
+      "budget": 13000.0,
+      "actual_effective": 9491.4,
+      "variance": -3508.6
+    },
+    "2110|2025-04": {
+      "budget": 13000.0,
+      "actual_effective": 9202.92,
+      "variance": -3797.08
+    },
+    "2110|2025-05": {
+      "budget": 13000.0,
+      "actual_effective": 9661.4,
+      "variance": -3338.6
+    },
+    "2110|2025-06": {
+      "budget": 13000.0,
+      "actual_effective": 9495.03,
+      "variance": -3504.97
+    },
+    "2110|2025-07": {
+      "budget": 13390.0,
+      "actual_effective": 10468.51,
+      "variance": -2921.49
+    },
+    "2110|2025-08": {
+      "budget": 13390.0,
+      "actual_effective": 14779.65,
+      "variance": 1389.65
+    },
+    "2110|2025-09": {
+      "budget": 13390.0,
+      "actual_effective": 14358.69,
+      "variance": 968.69
+    },
+    "2110|2025-10": {
+      "budget": 13390.0,
+      "actual_effective": 15036.63,
+      "variance": 1646.63
+    },
+    "2110|2025-11": {
+      "budget": 13390.0,
+      "actual_effective": 14813.35,
+      "variance": 1423.35
+    },
+    "2110|2025-12": {
+      "budget": 13390.0,
+      "actual_effective": 15708.15,
+      "variance": 2318.15
+    },
+    "2110|2026-01": {
+      "budget": 14500.0,
+      "actual_effective": 16320.97,
+      "variance": 1820.97
+    },
+    "2110|2026-02": {
+      "budget": 14500.0,
+      "actual_effective": 14913.58,
+      "variance": 413.58
+    },
+    "2110|2026-03": {
+      "budget": 14500.0,
+      "actual_effective": 17160.59,
+      "variance": 2660.59
+    },
+    "2110|2026-04": {
+      "budget": 14500.0,
+      "actual_effective": 16797.88,
+      "variance": 2297.88
+    },
+    "2110|2026-05": {
+      "budget": 14500.0,
+      "actual_effective": 17486.14,
+      "variance": 2986.14
+    },
+    "2110|2026-06": {
+      "budget": 14500.0,
+      "actual_effective": 17087.44,
+      "variance": 2587.44
     },
     "2110|2026-07": {
-      "budget": 24720.0,
-      "actual_effective": 30135.49,
-      "variance": 5415.49
+      "budget": 14940.0,
+      "actual_effective": 18280.48,
+      "variance": 3340.48
     },
     "2110|2026-08": {
-      "budget": 24720.0,
-      "actual_effective": 31857.31,
-      "variance": 7137.31
+      "budget": 14940.0,
+      "actual_effective": 19283.12,
+      "variance": 4343.12
     },
     "2110|2026-09": {
-      "budget": 24720.0,
-      "actual_effective": 32720.45,
-      "variance": 8000.45
+      "budget": 14940.0,
+      "actual_effective": 19871.22,
+      "variance": 4931.22
     },
     "2110|2026-10": {
-      "budget": 24720.0,
-      "actual_effective": 34923.06,
-      "variance": 10203.06
+      "budget": 14940.0,
+      "actual_effective": 21573.81,
+      "variance": 6633.81
+    },
+    "2150|2024-01": {
+      "budget": 3000.0,
+      "actual_effective": 3174.79,
+      "variance": 174.79
+    },
+    "2150|2024-02": {
+      "budget": 3000.0,
+      "actual_effective": 2978.29,
+      "variance": -21.71
+    },
+    "2150|2024-03": {
+      "budget": 3000.0,
+      "actual_effective": 3194.29,
+      "variance": 194.29
+    },
+    "2150|2024-04": {
+      "budget": 3000.0,
+      "actual_effective": 3093.25,
+      "variance": 93.25
+    },
+    "2150|2024-05": {
+      "budget": 3000.0,
+      "actual_effective": 3199.79,
+      "variance": 199.79
+    },
+    "2150|2024-06": {
+      "budget": 3000.0,
+      "actual_effective": 3105.89,
+      "variance": 105.89
+    },
+    "2150|2024-07": {
+      "budget": 3090.0,
+      "actual_effective": 3219.16,
+      "variance": 129.16
+    },
+    "2150|2024-08": {
+      "budget": 3090.0,
+      "actual_effective": 3222.02,
+      "variance": 132.02
+    },
+    "2150|2024-09": {
+      "budget": 3090.0,
+      "actual_effective": 3132.87,
+      "variance": 42.87
+    },
+    "2150|2024-10": {
+      "budget": 3090.0,
+      "actual_effective": 3242.31,
+      "variance": 152.31
+    },
+    "2150|2024-11": {
+      "budget": 3090.0,
+      "actual_effective": 3145.5,
+      "variance": 55.5
+    },
+    "2150|2024-12": {
+      "budget": 3090.0,
+      "actual_effective": 3256.46,
+      "variance": 166.46
+    },
+    "2150|2025-01": {
+      "budget": 3500.0,
+      "actual_effective": 3275.49,
+      "variance": -224.51
+    },
+    "2150|2025-02": {
+      "budget": 3500.0,
+      "actual_effective": 2952.35,
+      "variance": -547.65
+    },
+    "2150|2025-03": {
+      "budget": 3500.0,
+      "actual_effective": 3272.94,
+      "variance": -227.06
+    },
+    "2150|2025-04": {
+      "budget": 3500.0,
+      "actual_effective": 3187.82,
+      "variance": -312.18
+    },
+    "2150|2025-05": {
+      "budget": 3500.0,
+      "actual_effective": 3292.9,
+      "variance": -207.1
+    },
+    "2150|2025-06": {
+      "budget": 3500.0,
+      "actual_effective": 3202.34,
+      "variance": -297.66
+    },
+    "2150|2025-07": {
+      "budget": 3600.0,
+      "actual_effective": 3312.9,
+      "variance": -287.1
+    },
+    "2150|2025-08": {
+      "budget": 3600.0,
+      "actual_effective": 3457.53,
+      "variance": -142.47
+    },
+    "2150|2025-09": {
+      "budget": 3600.0,
+      "actual_effective": 3487.11,
+      "variance": -112.89
+    },
+    "2150|2025-10": {
+      "budget": 3600.0,
+      "actual_effective": 3623.11,
+      "variance": 23.11
+    },
+    "2150|2025-11": {
+      "budget": 3600.0,
+      "actual_effective": 3499.39,
+      "variance": -100.61
+    },
+    "2150|2025-12": {
+      "budget": 3600.0,
+      "actual_effective": 3639.39,
+      "variance": 39.39
+    },
+    "2150|2026-01": {
+      "budget": 4500.0,
+      "actual_effective": 3652.13,
+      "variance": -847.87
+    },
+    "2150|2026-02": {
+      "budget": 4500.0,
+      "actual_effective": 3354.83,
+      "variance": -1145.17
+    },
+    "2150|2026-03": {
+      "budget": 4500.0,
+      "actual_effective": 3744.51,
+      "variance": -755.49
+    },
+    "2150|2026-04": {
+      "budget": 4500.0,
+      "actual_effective": 3633.27,
+      "variance": -866.73
+    },
+    "2150|2026-05": {
+      "budget": 4500.0,
+      "actual_effective": 3754.81,
+      "variance": -745.19
+    },
+    "2150|2026-06": {
+      "budget": 4500.0,
+      "actual_effective": 3662.64,
+      "variance": -837.36
     },
     "2150|2026-07": {
-      "budget": 1030.0,
-      "actual_effective": 889.36,
-      "variance": -140.64
+      "budget": 4640.0,
+      "actual_effective": 3832.07,
+      "variance": -807.93
     },
     "2150|2026-08": {
-      "budget": 1030.0,
-      "actual_effective": 910.84,
-      "variance": -119.16
+      "budget": 4640.0,
+      "actual_effective": 3913.09,
+      "variance": -726.91
     },
     "2150|2026-09": {
-      "budget": 1030.0,
-      "actual_effective": 911.1,
-      "variance": -118.9
+      "budget": 4640.0,
+      "actual_effective": 3887.06,
+      "variance": -752.94
     },
     "2150|2026-10": {
+      "budget": 4640.0,
+      "actual_effective": 4110.78,
+      "variance": -529.22
+    },
+    "2310|2024-01": {
+      "budget": 1000.0,
+      "actual_effective": 205.96,
+      "variance": -794.04
+    },
+    "2310|2024-02": {
+      "budget": 1000.0,
+      "actual_effective": 191.4,
+      "variance": -808.6
+    },
+    "2310|2024-03": {
+      "budget": 1000.0,
+      "actual_effective": 205.78,
+      "variance": -794.22
+    },
+    "2310|2024-04": {
+      "budget": 1000.0,
+      "actual_effective": 199.64,
+      "variance": -800.36
+    },
+    "2310|2024-05": {
+      "budget": 1000.0,
+      "actual_effective": 208.79,
+      "variance": -791.21
+    },
+    "2310|2024-06": {
+      "budget": 1000.0,
+      "actual_effective": 301.67,
+      "variance": -698.33
+    },
+    "2310|2024-07": {
       "budget": 1030.0,
-      "actual_effective": 968.85,
-      "variance": -61.15
+      "actual_effective": 598.35,
+      "variance": -431.65
+    },
+    "2310|2024-08": {
+      "budget": 1030.0,
+      "actual_effective": 836.41,
+      "variance": -193.59
+    },
+    "2310|2024-09": {
+      "budget": 1030.0,
+      "actual_effective": 2128.92,
+      "variance": 1098.92
+    },
+    "2310|2024-10": {
+      "budget": 1030.0,
+      "actual_effective": 2278.14,
+      "variance": 1248.14
+    },
+    "2310|2024-11": {
+      "budget": 1030.0,
+      "actual_effective": 2373.3,
+      "variance": 1343.3
+    },
+    "2310|2024-12": {
+      "budget": 1030.0,
+      "actual_effective": 3238.07,
+      "variance": 2208.07
+    },
+    "2310|2025-01": {
+      "budget": 3500.0,
+      "actual_effective": 3262.17,
+      "variance": -237.83
+    },
+    "2310|2025-02": {
+      "budget": 3500.0,
+      "actual_effective": 2947.62,
+      "variance": -552.38
+    },
+    "2310|2025-03": {
+      "budget": 3500.0,
+      "actual_effective": 3278.55,
+      "variance": -221.45
+    },
+    "2310|2025-04": {
+      "budget": 3500.0,
+      "actual_effective": 3204.24,
+      "variance": -295.76
+    },
+    "2310|2025-05": {
+      "budget": 3500.0,
+      "actual_effective": 3312.17,
+      "variance": -187.83
+    },
+    "2310|2025-06": {
+      "budget": 3500.0,
+      "actual_effective": 3224.13,
+      "variance": -275.87
+    },
+    "2310|2025-07": {
+      "budget": 3600.0,
+      "actual_effective": 3368.52,
+      "variance": -231.48
+    },
+    "2310|2025-08": {
+      "budget": 3600.0,
+      "actual_effective": 3372.32,
+      "variance": -227.68
+    },
+    "2310|2025-09": {
+      "budget": 3600.0,
+      "actual_effective": 3278.75,
+      "variance": -321.25
+    },
+    "2310|2025-10": {
+      "budget": 3600.0,
+      "actual_effective": 3413.86,
+      "variance": -186.14
+    },
+    "2310|2025-11": {
+      "budget": 3600.0,
+      "actual_effective": 3383.22,
+      "variance": -216.78
+    },
+    "2310|2025-12": {
+      "budget": 3600.0,
+      "actual_effective": 3541.2,
+      "variance": -58.8
+    },
+    "2310|2026-01": {
+      "budget": 5000.0,
+      "actual_effective": 4512.26,
+      "variance": -487.74
+    },
+    "2310|2026-02": {
+      "budget": 5000.0,
+      "actual_effective": 4291.07,
+      "variance": -708.93
+    },
+    "2310|2026-03": {
+      "budget": 5000.0,
+      "actual_effective": 4801.74,
+      "variance": -198.26
+    },
+    "2310|2026-04": {
+      "budget": 5000.0,
+      "actual_effective": 4716.61,
+      "variance": -283.39
+    },
+    "2310|2026-05": {
+      "budget": 5000.0,
+      "actual_effective": 4836.61,
+      "variance": -163.39
+    },
+    "2310|2026-06": {
+      "budget": 5000.0,
+      "actual_effective": 4751.96,
+      "variance": -248.04
     },
     "2310|2026-07": {
-      "budget": 9270.0,
-      "actual_effective": 8764.03,
-      "variance": -505.97
+      "budget": 5150.0,
+      "actual_effective": 5051.55,
+      "variance": -98.45
     },
     "2310|2026-08": {
-      "budget": 9270.0,
-      "actual_effective": 9068.44,
-      "variance": -201.56
+      "budget": 5150.0,
+      "actual_effective": 5059.88,
+      "variance": -90.12
     },
     "2310|2026-09": {
-      "budget": 9270.0,
-      "actual_effective": 9215.37,
-      "variance": -54.63
+      "budget": 5150.0,
+      "actual_effective": 4954.6,
+      "variance": -195.4
     },
     "2310|2026-10": {
-      "budget": 9270.0,
-      "actual_effective": 9826.34,
-      "variance": 556.34
+      "budget": 5150.0,
+      "actual_effective": 5255.33,
+      "variance": 105.33
+    },
+    "3110|2024-01": {
+      "budget": 1000.0,
+      "actual_effective": 395.14,
+      "variance": -604.86
+    },
+    "3110|2024-02": {
+      "budget": 1000.0,
+      "actual_effective": 363.33,
+      "variance": -636.67
+    },
+    "3110|2024-03": {
+      "budget": 1000.0,
+      "actual_effective": 399.64,
+      "variance": -600.36
+    },
+    "3110|2024-04": {
+      "budget": 1000.0,
+      "actual_effective": 390.36,
+      "variance": -609.64
+    },
+    "3110|2024-05": {
+      "budget": 1000.0,
+      "actual_effective": 917.29,
+      "variance": -82.71
+    },
+    "3110|2024-06": {
+      "budget": 1000.0,
+      "actual_effective": 969.85,
+      "variance": -30.15
+    },
+    "3110|2024-07": {
+      "budget": 1030.0,
+      "actual_effective": 1017.01,
+      "variance": -12.99
+    },
+    "3110|2024-08": {
+      "budget": 1030.0,
+      "actual_effective": 1016.0,
+      "variance": -14.0
+    },
+    "3110|2024-09": {
+      "budget": 1030.0,
+      "actual_effective": 995.7,
+      "variance": -34.3
+    },
+    "3110|2024-10": {
+      "budget": 1030.0,
+      "actual_effective": 1032.49,
+      "variance": 2.49
+    },
+    "3110|2024-11": {
+      "budget": 1030.0,
+      "actual_effective": 1001.66,
+      "variance": -28.34
+    },
+    "3110|2024-12": {
+      "budget": 1030.0,
+      "actual_effective": 1039.6,
+      "variance": 9.6
+    },
+    "3110|2025-01": {
+      "budget": 3500.0,
+      "actual_effective": 2392.84,
+      "variance": -1107.16
+    },
+    "3110|2025-02": {
+      "budget": 3500.0,
+      "actual_effective": 2888.04,
+      "variance": -611.96
+    },
+    "3110|2025-03": {
+      "budget": 3500.0,
+      "actual_effective": 3260.97,
+      "variance": -239.03
+    },
+    "3110|2025-04": {
+      "budget": 3500.0,
+      "actual_effective": 3162.79,
+      "variance": -337.21
+    },
+    "3110|2025-05": {
+      "budget": 3500.0,
+      "actual_effective": 3307.67,
+      "variance": -192.33
+    },
+    "3110|2025-06": {
+      "budget": 3500.0,
+      "actual_effective": 3210.29,
+      "variance": -289.71
+    },
+    "3110|2025-07": {
+      "budget": 3600.0,
+      "actual_effective": 3334.91,
+      "variance": -265.09
+    },
+    "3110|2025-08": {
+      "budget": 3600.0,
+      "actual_effective": 3355.1,
+      "variance": -244.9
+    },
+    "3110|2025-09": {
+      "budget": 3600.0,
+      "actual_effective": 3266.97,
+      "variance": -333.03
+    },
+    "3110|2025-10": {
+      "budget": 3600.0,
+      "actual_effective": 3406.87,
+      "variance": -193.13
+    },
+    "3110|2025-11": {
+      "budget": 3600.0,
+      "actual_effective": 3285.83,
+      "variance": -314.17
+    },
+    "3110|2025-12": {
+      "budget": 3600.0,
+      "actual_effective": 3450.48,
+      "variance": -149.52
+    },
+    "3110|2026-01": {
+      "budget": 4000.0,
+      "actual_effective": 3482.79,
+      "variance": -517.21
+    },
+    "3110|2026-02": {
+      "budget": 4000.0,
+      "actual_effective": 3126.21,
+      "variance": -873.79
+    },
+    "3110|2026-03": {
+      "budget": 4000.0,
+      "actual_effective": 3514.13,
+      "variance": -485.87
+    },
+    "3110|2026-04": {
+      "budget": 4000.0,
+      "actual_effective": 3418.37,
+      "variance": -581.63
+    },
+    "3110|2026-05": {
+      "budget": 4000.0,
+      "actual_effective": 3544.21,
+      "variance": -455.79
+    },
+    "3110|2026-06": {
+      "budget": 4000.0,
+      "actual_effective": 3443.54,
+      "variance": -556.46
     },
     "3110|2026-07": {
-      "budget": 5150.0,
-      "actual_effective": 4666.54,
-      "variance": -483.46
+      "budget": 4120.0,
+      "actual_effective": 3699.98,
+      "variance": -420.02
     },
     "3110|2026-08": {
-      "budget": 5150.0,
-      "actual_effective": 4913.94,
-      "variance": -236.06
+      "budget": 4120.0,
+      "actual_effective": 3895.34,
+      "variance": -224.66
     },
     "3110|2026-09": {
-      "budget": 5150.0,
-      "actual_effective": 5059.6,
-      "variance": -90.4
+      "budget": 4120.0,
+      "actual_effective": 3961.97,
+      "variance": -158.03
     },
     "3110|2026-10": {
-      "budget": 5150.0,
-      "actual_effective": 5464.62,
-      "variance": 314.62
+      "budget": 4120.0,
+      "actual_effective": 4303.19,
+      "variance": 183.19
+    },
+    "3120|2024-01": {
+      "budget": 1000.0,
+      "actual_effective": 1005.98,
+      "variance": 5.98
+    },
+    "3120|2024-02": {
+      "budget": 1000.0,
+      "actual_effective": 1007.28,
+      "variance": 7.28
+    },
+    "3120|2024-03": {
+      "budget": 1000.0,
+      "actual_effective": 1133.05,
+      "variance": 133.05
+    },
+    "3120|2024-04": {
+      "budget": 1000.0,
+      "actual_effective": 1113.24,
+      "variance": 113.24
+    },
+    "3120|2024-05": {
+      "budget": 1000.0,
+      "actual_effective": 1171.73,
+      "variance": 171.73
+    },
+    "3120|2024-06": {
+      "budget": 1000.0,
+      "actual_effective": 1130.48,
+      "variance": 130.48
+    },
+    "3120|2024-07": {
+      "budget": 1030.0,
+      "actual_effective": 1176.72,
+      "variance": 146.72
+    },
+    "3120|2024-08": {
+      "budget": 1030.0,
+      "actual_effective": 1204.19,
+      "variance": 174.19
+    },
+    "3120|2024-09": {
+      "budget": 1030.0,
+      "actual_effective": 1162.9,
+      "variance": 132.9
+    },
+    "3120|2024-10": {
+      "budget": 1030.0,
+      "actual_effective": 1206.17,
+      "variance": 176.17
+    },
+    "3120|2024-11": {
+      "budget": 1030.0,
+      "actual_effective": 1175.85,
+      "variance": 145.85
+    },
+    "3120|2024-12": {
+      "budget": 1030.0,
+      "actual_effective": 1236.05,
+      "variance": 206.05
+    },
+    "3120|2025-01": {
+      "budget": 1500.0,
+      "actual_effective": 1243.37,
+      "variance": -256.63
+    },
+    "3120|2025-02": {
+      "budget": 1500.0,
+      "actual_effective": 1136.41,
+      "variance": -363.59
+    },
+    "3120|2025-03": {
+      "budget": 1500.0,
+      "actual_effective": 1244.82,
+      "variance": -255.18
+    },
+    "3120|2025-04": {
+      "budget": 1500.0,
+      "actual_effective": 1227.61,
+      "variance": -272.39
+    },
+    "3120|2025-05": {
+      "budget": 1500.0,
+      "actual_effective": 1301.53,
+      "variance": -198.47
+    },
+    "3120|2025-06": {
+      "budget": 1500.0,
+      "actual_effective": 1299.48,
+      "variance": -200.52
+    },
+    "3120|2025-07": {
+      "budget": 1540.0,
+      "actual_effective": 1354.02,
+      "variance": -185.98
+    },
+    "3120|2025-08": {
+      "budget": 1540.0,
+      "actual_effective": 1360.6,
+      "variance": -179.4
+    },
+    "3120|2025-09": {
+      "budget": 1540.0,
+      "actual_effective": 1324.33,
+      "variance": -215.67
+    },
+    "3120|2025-10": {
+      "budget": 1540.0,
+      "actual_effective": 1380.63,
+      "variance": -159.37
+    },
+    "3120|2025-11": {
+      "budget": 1540.0,
+      "actual_effective": 1341.7,
+      "variance": -198.3
+    },
+    "3120|2025-12": {
+      "budget": 1540.0,
+      "actual_effective": 1527.08,
+      "variance": -12.92
+    },
+    "3120|2026-01": {
+      "budget": 2500.0,
+      "actual_effective": 2098.39,
+      "variance": -401.61
+    },
+    "3120|2026-02": {
+      "budget": 2500.0,
+      "actual_effective": 1915.89,
+      "variance": -584.11
+    },
+    "3120|2026-03": {
+      "budget": 2500.0,
+      "actual_effective": 2149.21,
+      "variance": -350.79
+    },
+    "3120|2026-04": {
+      "budget": 2500.0,
+      "actual_effective": 2083.75,
+      "variance": -416.25
+    },
+    "3120|2026-05": {
+      "budget": 2500.0,
+      "actual_effective": 2152.55,
+      "variance": -347.45
+    },
+    "3120|2026-06": {
+      "budget": 2500.0,
+      "actual_effective": 2095.79,
+      "variance": -404.21
     },
     "3120|2026-07": {
-      "budget": 3600.0,
-      "actual_effective": 3074.29,
-      "variance": -525.71
+      "budget": 2580.0,
+      "actual_effective": 2243.94,
+      "variance": -336.06
     },
     "3120|2026-08": {
-      "budget": 3600.0,
-      "actual_effective": 3242.28,
-      "variance": -357.72
+      "budget": 2580.0,
+      "actual_effective": 2364.21,
+      "variance": -215.79
     },
     "3120|2026-09": {
-      "budget": 3600.0,
-      "actual_effective": 3357.25,
-      "variance": -242.75
+      "budget": 2580.0,
+      "actual_effective": 2422.49,
+      "variance": -157.51
     },
     "3120|2026-10": {
-      "budget": 3600.0,
-      "actual_effective": 3612.86,
-      "variance": 12.86
+      "budget": 2580.0,
+      "actual_effective": 2629.13,
+      "variance": 49.13
+    },
+    "3150|2024-01": {
+      "budget": 4500.0,
+      "actual_effective": 4263.16,
+      "variance": -236.84
+    },
+    "3150|2024-02": {
+      "budget": 4500.0,
+      "actual_effective": 3997.43,
+      "variance": -502.57
+    },
+    "3150|2024-03": {
+      "budget": 4500.0,
+      "actual_effective": 4320.05,
+      "variance": -179.95
+    },
+    "3150|2024-04": {
+      "budget": 4500.0,
+      "actual_effective": 4226.62,
+      "variance": -273.38
+    },
+    "3150|2024-05": {
+      "budget": 4500.0,
+      "actual_effective": 4391.21,
+      "variance": -108.79
+    },
+    "3150|2024-06": {
+      "budget": 4500.0,
+      "actual_effective": 4218.16,
+      "variance": -281.84
+    },
+    "3150|2024-07": {
+      "budget": 4640.0,
+      "actual_effective": 4432.72,
+      "variance": -207.28
+    },
+    "3150|2024-08": {
+      "budget": 4640.0,
+      "actual_effective": 4416.37,
+      "variance": -223.63
+    },
+    "3150|2024-09": {
+      "budget": 4640.0,
+      "actual_effective": 4344.79,
+      "variance": -295.21
+    },
+    "3150|2024-10": {
+      "budget": 4640.0,
+      "actual_effective": 4547.37,
+      "variance": -92.63
+    },
+    "3150|2024-11": {
+      "budget": 4640.0,
+      "actual_effective": 4406.52,
+      "variance": -233.48
+    },
+    "3150|2024-12": {
+      "budget": 4640.0,
+      "actual_effective": 4611.25,
+      "variance": -28.75
+    },
+    "3150|2025-01": {
+      "budget": 5500.0,
+      "actual_effective": 4730.0,
+      "variance": -770.0
+    },
+    "3150|2025-02": {
+      "budget": 5500.0,
+      "actual_effective": 4668.35,
+      "variance": -831.65
+    },
+    "3150|2025-03": {
+      "budget": 5500.0,
+      "actual_effective": 5233.4,
+      "variance": -266.6
+    },
+    "3150|2025-04": {
+      "budget": 5500.0,
+      "actual_effective": 5078.04,
+      "variance": -421.96
+    },
+    "3150|2025-05": {
+      "budget": 5500.0,
+      "actual_effective": 5279.42,
+      "variance": -220.58
+    },
+    "3150|2025-06": {
+      "budget": 5500.0,
+      "actual_effective": 5162.15,
+      "variance": -337.85
+    },
+    "3150|2025-07": {
+      "budget": 5660.0,
+      "actual_effective": 5330.53,
+      "variance": -329.47
+    },
+    "3150|2025-08": {
+      "budget": 5660.0,
+      "actual_effective": 5403.66,
+      "variance": -256.34
+    },
+    "3150|2025-09": {
+      "budget": 5660.0,
+      "actual_effective": 5240.54,
+      "variance": -419.46
+    },
+    "3150|2025-10": {
+      "budget": 5660.0,
+      "actual_effective": 5443.17,
+      "variance": -216.83
+    },
+    "3150|2025-11": {
+      "budget": 5660.0,
+      "actual_effective": 5590.28,
+      "variance": -69.72
+    },
+    "3150|2025-12": {
+      "budget": 5660.0,
+      "actual_effective": 6892.27,
+      "variance": 1232.27
+    },
+    "3150|2026-01": {
+      "budget": 7500.0,
+      "actual_effective": 6914.53,
+      "variance": -585.47
+    },
+    "3150|2026-02": {
+      "budget": 7500.0,
+      "actual_effective": 6318.39,
+      "variance": -1181.61
+    },
+    "3150|2026-03": {
+      "budget": 7500.0,
+      "actual_effective": 6989.71,
+      "variance": -510.29
+    },
+    "3150|2026-04": {
+      "budget": 7500.0,
+      "actual_effective": 6833.14,
+      "variance": -666.86
+    },
+    "3150|2026-05": {
+      "budget": 7500.0,
+      "actual_effective": 7049.99,
+      "variance": -450.01
+    },
+    "3150|2026-06": {
+      "budget": 7500.0,
+      "actual_effective": 6887.47,
+      "variance": -612.53
     },
     "3150|2026-07": {
-      "budget": 6180.0,
-      "actual_effective": 5214.96,
-      "variance": -965.04
+      "budget": 7720.0,
+      "actual_effective": 7280.49,
+      "variance": -439.51
     },
     "3150|2026-08": {
-      "budget": 6180.0,
-      "actual_effective": 5488.56,
-      "variance": -691.44
+      "budget": 7720.0,
+      "actual_effective": 7558.71,
+      "variance": -161.29
     },
     "3150|2026-09": {
-      "budget": 6180.0,
-      "actual_effective": 5731.02,
-      "variance": -448.98
+      "budget": 7720.0,
+      "actual_effective": 7648.7,
+      "variance": -71.3
     },
     "3150|2026-10": {
-      "budget": 6180.0,
-      "actual_effective": 6213.66,
-      "variance": 33.66
+      "budget": 7720.0,
+      "actual_effective": 8212.52,
+      "variance": 492.52
+    },
+    "3170|2024-01": {
+      "budget": 13500.0,
+      "actual_effective": 12400.2,
+      "variance": -1099.8
+    },
+    "3170|2024-02": {
+      "budget": 13500.0,
+      "actual_effective": 11703.58,
+      "variance": -1796.42
+    },
+    "3170|2024-03": {
+      "budget": 13500.0,
+      "actual_effective": 12619.89,
+      "variance": -880.11
+    },
+    "3170|2024-04": {
+      "budget": 13500.0,
+      "actual_effective": 12200.51,
+      "variance": -1299.49
+    },
+    "3170|2024-05": {
+      "budget": 13500.0,
+      "actual_effective": 12830.2,
+      "variance": -669.8
+    },
+    "3170|2024-06": {
+      "budget": 13500.0,
+      "actual_effective": 12577.06,
+      "variance": -922.94
+    },
+    "3170|2024-07": {
+      "budget": 13900.0,
+      "actual_effective": 13045.65,
+      "variance": -854.35
+    },
+    "3170|2024-08": {
+      "budget": 13900.0,
+      "actual_effective": 13163.41,
+      "variance": -736.59
+    },
+    "3170|2024-09": {
+      "budget": 13900.0,
+      "actual_effective": 12808.05,
+      "variance": -1091.95
+    },
+    "3170|2024-10": {
+      "budget": 13900.0,
+      "actual_effective": 13478.03,
+      "variance": -421.97
+    },
+    "3170|2024-11": {
+      "budget": 13900.0,
+      "actual_effective": 15440.45,
+      "variance": 1540.45
+    },
+    "3170|2024-12": {
+      "budget": 13900.0,
+      "actual_effective": 16602.56,
+      "variance": 2702.56
+    },
+    "3170|2025-01": {
+      "budget": 18000.0,
+      "actual_effective": 16822.75,
+      "variance": -1177.25
+    },
+    "3170|2025-02": {
+      "budget": 18000.0,
+      "actual_effective": 15316.21,
+      "variance": -2683.79
+    },
+    "3170|2025-03": {
+      "budget": 18000.0,
+      "actual_effective": 17407.3,
+      "variance": -592.7
+    },
+    "3170|2025-04": {
+      "budget": 18000.0,
+      "actual_effective": 16958.69,
+      "variance": -1041.31
+    },
+    "3170|2025-05": {
+      "budget": 18000.0,
+      "actual_effective": 17711.03,
+      "variance": -288.97
+    },
+    "3170|2025-06": {
+      "budget": 18000.0,
+      "actual_effective": 17246.14,
+      "variance": -753.86
+    },
+    "3170|2025-07": {
+      "budget": 18540.0,
+      "actual_effective": 17899.12,
+      "variance": -640.88
+    },
+    "3170|2025-08": {
+      "budget": 18540.0,
+      "actual_effective": 18051.26,
+      "variance": -488.74
+    },
+    "3170|2025-09": {
+      "budget": 18540.0,
+      "actual_effective": 17708.85,
+      "variance": -831.15
+    },
+    "3170|2025-10": {
+      "budget": 18540.0,
+      "actual_effective": 18724.87,
+      "variance": 184.87
+    },
+    "3170|2025-11": {
+      "budget": 18540.0,
+      "actual_effective": 18183.08,
+      "variance": -356.92
+    },
+    "3170|2025-12": {
+      "budget": 18540.0,
+      "actual_effective": 19020.95,
+      "variance": 480.95
+    },
+    "3170|2026-01": {
+      "budget": 11000.0,
+      "actual_effective": 19062.7,
+      "variance": 8062.7
+    },
+    "3170|2026-02": {
+      "budget": 11000.0,
+      "actual_effective": 17312.03,
+      "variance": 6312.03
+    },
+    "3170|2026-03": {
+      "budget": 11000.0,
+      "actual_effective": 19408.63,
+      "variance": 8408.63
+    },
+    "3170|2026-04": {
+      "budget": 11000.0,
+      "actual_effective": 18818.24,
+      "variance": 7818.24
+    },
+    "3170|2026-05": {
+      "budget": 11000.0,
+      "actual_effective": 19456.96,
+      "variance": 8456.96
+    },
+    "3170|2026-06": {
+      "budget": 11000.0,
+      "actual_effective": 19027.67,
+      "variance": 8027.67
     },
     "3170|2026-07": {
-      "budget": 11840.0,
-      "actual_effective": 20974.3,
-      "variance": 9134.3
+      "budget": 11330.0,
+      "actual_effective": 20397.48,
+      "variance": 9067.48
     },
     "3170|2026-08": {
-      "budget": 11840.0,
-      "actual_effective": 22005.51,
-      "variance": 10165.51
+      "budget": 11330.0,
+      "actual_effective": 21720.47,
+      "variance": 10390.47
     },
     "3170|2026-09": {
-      "budget": 11840.0,
-      "actual_effective": 28518.94,
-      "variance": 16678.94
+      "budget": 11330.0,
+      "actual_effective": 28094.07,
+      "variance": 16764.07
     },
     "3170|2026-10": {
-      "budget": 11840.0,
-      "actual_effective": 31289.54,
-      "variance": 19449.54
+      "budget": 11330.0,
+      "actual_effective": 31055.48,
+      "variance": 19725.48
+    },
+    "3510|2024-01": {
+      "budget": 4000.0,
+      "actual_effective": 2768.14,
+      "variance": -1231.86
+    },
+    "3510|2024-02": {
+      "budget": 4000.0,
+      "actual_effective": 3258.3,
+      "variance": -741.7
+    },
+    "3510|2024-03": {
+      "budget": 4000.0,
+      "actual_effective": 3505.3,
+      "variance": -494.7
+    },
+    "3510|2024-04": {
+      "budget": 4000.0,
+      "actual_effective": 3502.94,
+      "variance": -497.06
+    },
+    "3510|2024-05": {
+      "budget": 4000.0,
+      "actual_effective": 3707.72,
+      "variance": -292.28
+    },
+    "3510|2024-06": {
+      "budget": 4000.0,
+      "actual_effective": 3584.25,
+      "variance": -415.75
+    },
+    "3510|2024-07": {
+      "budget": 4120.0,
+      "actual_effective": 3806.81,
+      "variance": -313.19
+    },
+    "3510|2024-08": {
+      "budget": 4120.0,
+      "actual_effective": 4021.28,
+      "variance": -98.72
+    },
+    "3510|2024-09": {
+      "budget": 4120.0,
+      "actual_effective": 3902.5,
+      "variance": -217.5
+    },
+    "3510|2024-10": {
+      "budget": 4120.0,
+      "actual_effective": 4093.2,
+      "variance": -26.8
+    },
+    "3510|2024-11": {
+      "budget": 4120.0,
+      "actual_effective": 3962.7,
+      "variance": -157.3
+    },
+    "3510|2024-12": {
+      "budget": 4120.0,
+      "actual_effective": 4166.03,
+      "variance": 46.03
+    },
+    "3510|2025-01": {
+      "budget": 5000.0,
+      "actual_effective": 4323.28,
+      "variance": -676.72
+    },
+    "3510|2025-02": {
+      "budget": 5000.0,
+      "actual_effective": 3963.79,
+      "variance": -1036.21
+    },
+    "3510|2025-03": {
+      "budget": 5000.0,
+      "actual_effective": 4386.31,
+      "variance": -613.69
+    },
+    "3510|2025-04": {
+      "budget": 5000.0,
+      "actual_effective": 4290.09,
+      "variance": -709.91
+    },
+    "3510|2025-05": {
+      "budget": 5000.0,
+      "actual_effective": 4457.06,
+      "variance": -542.94
+    },
+    "3510|2025-06": {
+      "budget": 5000.0,
+      "actual_effective": 4345.48,
+      "variance": -654.52
+    },
+    "3510|2025-07": {
+      "budget": 5150.0,
+      "actual_effective": 4507.54,
+      "variance": -642.46
+    },
+    "3510|2025-08": {
+      "budget": 5150.0,
+      "actual_effective": 4710.58,
+      "variance": -439.42
+    },
+    "3510|2025-09": {
+      "budget": 5150.0,
+      "actual_effective": 5314.28,
+      "variance": 164.28
+    },
+    "3510|2025-10": {
+      "budget": 5150.0,
+      "actual_effective": 5526.12,
+      "variance": 376.12
+    },
+    "3510|2025-11": {
+      "budget": 5150.0,
+      "actual_effective": 5380.36,
+      "variance": 230.36
+    },
+    "3510|2025-12": {
+      "budget": 5150.0,
+      "actual_effective": 5582.73,
+      "variance": 432.73
+    },
+    "3510|2026-01": {
+      "budget": 6500.0,
+      "actual_effective": 5628.83,
+      "variance": -871.17
+    },
+    "3510|2026-02": {
+      "budget": 6500.0,
+      "actual_effective": 5087.53,
+      "variance": -1412.47
+    },
+    "3510|2026-03": {
+      "budget": 6500.0,
+      "actual_effective": 5660.22,
+      "variance": -839.78
+    },
+    "3510|2026-04": {
+      "budget": 6500.0,
+      "actual_effective": 5538.67,
+      "variance": -961.33
+    },
+    "3510|2026-05": {
+      "budget": 6500.0,
+      "actual_effective": 5736.93,
+      "variance": -763.07
+    },
+    "3510|2026-06": {
+      "budget": 6500.0,
+      "actual_effective": 5591.87,
+      "variance": -908.13
     },
     "3510|2026-07": {
-      "budget": 5660.0,
-      "actual_effective": 5552.8,
-      "variance": -107.2
+      "budget": 6700.0,
+      "actual_effective": 5954.63,
+      "variance": -745.37
     },
     "3510|2026-08": {
-      "budget": 5660.0,
-      "actual_effective": 5732.85,
-      "variance": 72.85
+      "budget": 6700.0,
+      "actual_effective": 6248.32,
+      "variance": -451.68
     },
     "3510|2026-09": {
-      "budget": 5660.0,
-      "actual_effective": 5747.69,
-      "variance": 87.69
+      "budget": 6700.0,
+      "actual_effective": 6333.16,
+      "variance": -366.84
     },
     "3510|2026-10": {
-      "budget": 5660.0,
-      "actual_effective": 6093.66,
-      "variance": 433.66
+      "budget": 6700.0,
+      "actual_effective": 6856.5,
+      "variance": 156.5
+    },
+    "3550|2024-01": {
+      "budget": 500.0,
+      "actual_effective": 570.95,
+      "variance": 70.95
+    },
+    "3550|2024-02": {
+      "budget": 500.0,
+      "actual_effective": 538.11,
+      "variance": 38.11
+    },
+    "3550|2024-03": {
+      "budget": 500.0,
+      "actual_effective": 586.96,
+      "variance": 86.96
+    },
+    "3550|2024-04": {
+      "budget": 500.0,
+      "actual_effective": 572.0,
+      "variance": 72.0
+    },
+    "3550|2024-05": {
+      "budget": 500.0,
+      "actual_effective": 612.74,
+      "variance": 112.74
+    },
+    "3550|2024-06": {
+      "budget": 500.0,
+      "actual_effective": 640.46,
+      "variance": 140.46
+    },
+    "3550|2024-07": {
+      "budget": 520.0,
+      "actual_effective": 790.29,
+      "variance": 270.29
+    },
+    "3550|2024-08": {
+      "budget": 520.0,
+      "actual_effective": 795.53,
+      "variance": 275.53
+    },
+    "3550|2024-09": {
+      "budget": 520.0,
+      "actual_effective": 772.78,
+      "variance": 252.78
+    },
+    "3550|2024-10": {
+      "budget": 520.0,
+      "actual_effective": 806.44,
+      "variance": 286.44
+    },
+    "3550|2024-11": {
+      "budget": 520.0,
+      "actual_effective": 784.59,
+      "variance": 264.59
+    },
+    "3550|2024-12": {
+      "budget": 520.0,
+      "actual_effective": 812.05,
+      "variance": 292.05
+    },
+    "3550|2025-01": {
+      "budget": 1000.0,
+      "actual_effective": 833.95,
+      "variance": -166.05
+    },
+    "3550|2025-02": {
+      "budget": 1000.0,
+      "actual_effective": 757.23,
+      "variance": -242.77
+    },
+    "3550|2025-03": {
+      "budget": 1000.0,
+      "actual_effective": 838.69,
+      "variance": -161.31
+    },
+    "3550|2025-04": {
+      "budget": 1000.0,
+      "actual_effective": 827.03,
+      "variance": -172.97
+    },
+    "3550|2025-05": {
+      "budget": 1000.0,
+      "actual_effective": 859.27,
+      "variance": -140.73
+    },
+    "3550|2025-06": {
+      "budget": 1000.0,
+      "actual_effective": 841.87,
+      "variance": -158.13
+    },
+    "3550|2025-07": {
+      "budget": 1030.0,
+      "actual_effective": 873.84,
+      "variance": -156.16
+    },
+    "3550|2025-08": {
+      "budget": 1030.0,
+      "actual_effective": 882.83,
+      "variance": -147.17
+    },
+    "3550|2025-09": {
+      "budget": 1030.0,
+      "actual_effective": 858.49,
+      "variance": -171.51
+    },
+    "3550|2025-10": {
+      "budget": 1030.0,
+      "actual_effective": 892.18,
+      "variance": -137.82
+    },
+    "3550|2025-11": {
+      "budget": 1030.0,
+      "actual_effective": 862.24,
+      "variance": -167.76
+    },
+    "3550|2025-12": {
+      "budget": 1030.0,
+      "actual_effective": 909.58,
+      "variance": -120.42
+    },
+    "3550|2026-01": {
+      "budget": 2500.0,
+      "actual_effective": 2059.15,
+      "variance": -440.85
+    },
+    "3550|2026-02": {
+      "budget": 2500.0,
+      "actual_effective": 1944.33,
+      "variance": -555.67
+    },
+    "3550|2026-03": {
+      "budget": 2500.0,
+      "actual_effective": 2166.42,
+      "variance": -333.58
+    },
+    "3550|2026-04": {
+      "budget": 2500.0,
+      "actual_effective": 2093.42,
+      "variance": -406.58
+    },
+    "3550|2026-05": {
+      "budget": 2500.0,
+      "actual_effective": 2162.94,
+      "variance": -337.06
+    },
+    "3550|2026-06": {
+      "budget": 2500.0,
+      "actual_effective": 2119.01,
+      "variance": -380.99
     },
     "3550|2026-07": {
-      "budget": 4120.0,
-      "actual_effective": 3514.93,
-      "variance": -605.07
+      "budget": 2580.0,
+      "actual_effective": 2242.83,
+      "variance": -337.17
     },
     "3550|2026-08": {
-      "budget": 4120.0,
-      "actual_effective": 3230.48,
-      "variance": -889.52
+      "budget": 2580.0,
+      "actual_effective": 2301.49,
+      "variance": -278.51
     },
     "3550|2026-09": {
-      "budget": 4120.0,
-      "actual_effective": 2797.73,
-      "variance": -1322.27
+      "budget": 2580.0,
+      "actual_effective": 2314.25,
+      "variance": -265.75
     },
     "3550|2026-10": {
-      "budget": 4120.0,
-      "actual_effective": 2960.23,
-      "variance": -1159.77
+      "budget": 2580.0,
+      "actual_effective": 2465.72,
+      "variance": -114.28
+    },
+    "3590|2024-01": {
+      "budget": 2500.0,
+      "actual_effective": 1951.61,
+      "variance": -548.39
+    },
+    "3590|2024-02": {
+      "budget": 2500.0,
+      "actual_effective": 1827.22,
+      "variance": -672.78
+    },
+    "3590|2024-03": {
+      "budget": 2500.0,
+      "actual_effective": 2216.86,
+      "variance": -283.14
+    },
+    "3590|2024-04": {
+      "budget": 2500.0,
+      "actual_effective": 2298.53,
+      "variance": -201.47
+    },
+    "3590|2024-05": {
+      "budget": 2500.0,
+      "actual_effective": 2396.37,
+      "variance": -103.63
+    },
+    "3590|2024-06": {
+      "budget": 2500.0,
+      "actual_effective": 2336.88,
+      "variance": -163.12
+    },
+    "3590|2024-07": {
+      "budget": 2580.0,
+      "actual_effective": 2442.73,
+      "variance": -137.27
+    },
+    "3590|2024-08": {
+      "budget": 2580.0,
+      "actual_effective": 2452.3,
+      "variance": -127.7
+    },
+    "3590|2024-09": {
+      "budget": 2580.0,
+      "actual_effective": 2390.0,
+      "variance": -190.0
+    },
+    "3590|2024-10": {
+      "budget": 2580.0,
+      "actual_effective": 2506.26,
+      "variance": -73.74
+    },
+    "3590|2024-11": {
+      "budget": 2580.0,
+      "actual_effective": 2446.18,
+      "variance": -133.82
+    },
+    "3590|2024-12": {
+      "budget": 2580.0,
+      "actual_effective": 2521.72,
+      "variance": -58.28
+    },
+    "3590|2025-01": {
+      "budget": 3500.0,
+      "actual_effective": 2617.56,
+      "variance": -882.44
+    },
+    "3590|2025-02": {
+      "budget": 3500.0,
+      "actual_effective": 2465.25,
+      "variance": -1034.75
+    },
+    "3590|2025-03": {
+      "budget": 3500.0,
+      "actual_effective": 3138.38,
+      "variance": -361.62
+    },
+    "3590|2025-04": {
+      "budget": 3500.0,
+      "actual_effective": 3141.05,
+      "variance": -358.95
+    },
+    "3590|2025-05": {
+      "budget": 3500.0,
+      "actual_effective": 3416.49,
+      "variance": -83.51
+    },
+    "3590|2025-06": {
+      "budget": 3500.0,
+      "actual_effective": 3461.53,
+      "variance": -38.47
+    },
+    "3590|2025-07": {
+      "budget": 3600.0,
+      "actual_effective": 3580.29,
+      "variance": -19.71
+    },
+    "3590|2025-08": {
+      "budget": 3600.0,
+      "actual_effective": 3618.41,
+      "variance": 18.41
+    },
+    "3590|2025-09": {
+      "budget": 3600.0,
+      "actual_effective": 3530.1,
+      "variance": -69.9
+    },
+    "3590|2025-10": {
+      "budget": 3600.0,
+      "actual_effective": 3661.1,
+      "variance": 61.1
+    },
+    "3590|2025-11": {
+      "budget": 3600.0,
+      "actual_effective": 3563.27,
+      "variance": -36.73
+    },
+    "3590|2025-12": {
+      "budget": 3600.0,
+      "actual_effective": 3719.93,
+      "variance": 119.93
+    },
+    "3590|2026-01": {
+      "budget": 3500.0,
+      "actual_effective": 3740.91,
+      "variance": 240.91
+    },
+    "3590|2026-02": {
+      "budget": 3500.0,
+      "actual_effective": 3972.45,
+      "variance": 472.45
+    },
+    "3590|2026-03": {
+      "budget": 3500.0,
+      "actual_effective": 4424.45,
+      "variance": 924.45
+    },
+    "3590|2026-04": {
+      "budget": 3500.0,
+      "actual_effective": 4310.79,
+      "variance": 810.79
+    },
+    "3590|2026-05": {
+      "budget": 3500.0,
+      "actual_effective": 4454.97,
+      "variance": 954.97
+    },
+    "3590|2026-06": {
+      "budget": 3500.0,
+      "actual_effective": 4396.52,
+      "variance": 896.52
     },
     "3590|2026-07": {
-      "budget": 2580.0,
-      "actual_effective": 3385.83,
-      "variance": 805.83
+      "budget": 3600.0,
+      "actual_effective": 4675.35,
+      "variance": 1075.35
     },
     "3590|2026-08": {
-      "budget": 2580.0,
-      "actual_effective": 3532.11,
-      "variance": 952.11
+      "budget": 3600.0,
+      "actual_effective": 4945.47,
+      "variance": 1345.47
     },
     "3590|2026-09": {
-      "budget": 2580.0,
-      "actual_effective": 3570.21,
-      "variance": 990.21
+      "budget": 3600.0,
+      "actual_effective": 5072.95,
+      "variance": 1472.95
     },
     "3590|2026-10": {
-      "budget": 2580.0,
-      "actual_effective": 3816.23,
-      "variance": 1236.23
+      "budget": 3600.0,
+      "actual_effective": 5537.94,
+      "variance": 1937.94
     }
   },
   "unallocated_by_month": {
-    "2026-07": 10522.88,
-    "2026-08": 10855.12,
-    "2026-09": 10914.94,
-    "2026-10": 11661.68
+    "2024-01": 2435.46,
+    "2024-02": 2273.19,
+    "2024-03": 2446.83,
+    "2024-04": 2376.74,
+    "2024-05": 2474.27,
+    "2024-06": 2403.42,
+    "2024-07": 2496.63,
+    "2024-08": 2503.61,
+    "2024-09": 2502.1,
+    "2024-10": 4406.12,
+    "2024-11": 5868.68,
+    "2024-12": 6468.27,
+    "2025-01": 6472.71,
+    "2025-02": 5875.83,
+    "2025-03": 6541.19,
+    "2025-04": 6365.63,
+    "2025-05": 6575.51,
+    "2025-06": 7640.42,
+    "2025-07": 7991.81,
+    "2025-08": 7984.64,
+    "2025-09": 7800.3,
+    "2025-10": 8056.64,
+    "2025-11": 7953.81,
+    "2025-12": 8271.72,
+    "2026-01": 8294.27,
+    "2026-02": 7530.81,
+    "2026-03": 8311.25,
+    "2026-04": 8117.42,
+    "2026-05": 8403.49,
+    "2026-06": 8172.12,
+    "2026-07": 8576.94,
+    "2026-08": 8848.62,
+    "2026-09": 8844.93,
+    "2026-10": 9389.92
   },
   "backup_cost_by_vm_month": {
-    "vm-bill-mon-prod-01|2026-07": 66.4,
-    "vm-bill-mon-prod-01|2026-08": 66.4,
-    "vm-bill-mon-prod-01|2026-09": 66.4,
-    "vm-bill-mon-prod-01|2026-10": 66.4,
-    "vm-bill-sec-prod-01|2026-07": 26.2,
-    "vm-bill-sec-prod-01|2026-08": 26.2,
-    "vm-bill-sec-prod-01|2026-09": 26.2,
-    "vm-bill-sec-prod-01|2026-10": 26.2,
-    "vm-bill-sec-test-01|2026-07": 1.4,
-    "vm-bill-sec-test-01|2026-08": 1.4,
-    "vm-bill-sec-test-01|2026-09": 1.4,
-    "vm-bill-sec-test-01|2026-10": 1.4,
-    "vm-brweb-api-prod-01|2026-07": 51.75,
-    "vm-brweb-api-prod-01|2026-08": 51.75,
-    "vm-brweb-api-prod-01|2026-09": 51.75,
-    "vm-brweb-api-prod-01|2026-10": 51.75,
-    "vm-brweb-api-prod-02|2026-07": 16.15,
-    "vm-brweb-api-prod-02|2026-08": 16.15,
-    "vm-brweb-api-prod-02|2026-09": 16.15,
-    "vm-brweb-api-prod-02|2026-10": 16.15,
-    "vm-brweb-data-prod-01|2026-07": 60.65,
-    "vm-brweb-data-prod-01|2026-08": 60.65,
-    "vm-brweb-data-prod-01|2026-09": 60.65,
-    "vm-brweb-data-prod-01|2026-10": 60.65,
-    "vm-brweb-data-prod-02|2026-07": 83.7,
-    "vm-brweb-data-prod-02|2026-08": 83.7,
-    "vm-brweb-data-prod-02|2026-09": 83.7,
-    "vm-brweb-data-prod-02|2026-10": 83.7,
-    "vm-brweb-mon-dev-01|2026-07": 10.35,
-    "vm-brweb-mon-dev-01|2026-08": 10.35,
-    "vm-brweb-mon-dev-01|2026-09": 10.35,
-    "vm-brweb-mon-dev-01|2026-10": 10.35,
-    "vm-cntrct-sec-dev-01|2026-07": 11.95,
-    "vm-cntrct-sec-dev-01|2026-08": 11.95,
-    "vm-cntrct-sec-dev-01|2026-09": 11.95,
-    "vm-cntrct-sec-dev-01|2026-10": 11.95,
-    "vm-cntrct-web-prod-01|2026-07": 84.4,
-    "vm-cntrct-web-prod-01|2026-08": 84.4,
-    "vm-cntrct-web-prod-01|2026-09": 84.4,
-    "vm-cntrct-web-prod-01|2026-10": 84.4,
-    "vm-cntrct-web-prod-02|2026-07": 51.2,
-    "vm-cntrct-web-prod-02|2026-08": 51.2,
-    "vm-cntrct-web-prod-02|2026-09": 51.2,
-    "vm-cntrct-web-prod-02|2026-10": 51.2,
-    "vm-csdesk-api-test-01|2026-07": 4.0,
-    "vm-csdesk-api-test-01|2026-08": 4.0,
-    "vm-csdesk-api-test-01|2026-09": 4.0,
-    "vm-csdesk-api-test-01|2026-10": 4.0,
-    "vm-csdesk-mon-prod-01|2026-07": 66.05,
-    "vm-csdesk-mon-prod-01|2026-08": 66.05,
-    "vm-csdesk-mon-prod-01|2026-09": 66.05,
-    "vm-csdesk-mon-prod-01|2026-10": 66.05,
-    "vm-csdesk-sec-prod-01|2026-07": 68.1,
-    "vm-csdesk-sec-prod-01|2026-08": 68.1,
-    "vm-csdesk-sec-prod-01|2026-09": 68.1,
-    "vm-csdesk-sec-prod-01|2026-10": 68.1,
-    "vm-dmdpln-api-prod-01|2026-07": 64.65,
-    "vm-dmdpln-api-prod-01|2026-08": 64.65,
-    "vm-dmdpln-api-prod-01|2026-09": 64.65,
-    "vm-dmdpln-api-prod-01|2026-10": 64.65,
-    "vm-dmdpln-api-prod-02|2026-07": 91.55,
-    "vm-dmdpln-api-prod-02|2026-08": 91.55,
-    "vm-dmdpln-api-prod-02|2026-09": 91.55,
-    "vm-dmdpln-api-prod-02|2026-10": 91.55,
-    "vm-dmdpln-app-prod-01|2026-07": 74.85,
-    "vm-dmdpln-app-prod-01|2026-08": 74.85,
-    "vm-dmdpln-app-prod-01|2026-09": 74.85,
-    "vm-dmdpln-app-prod-01|2026-10": 74.85,
-    "vm-dmdpln-app-prod-02|2026-07": 78.85,
-    "vm-dmdpln-app-prod-02|2026-08": 78.85,
-    "vm-dmdpln-app-prod-02|2026-09": 78.85,
-    "vm-dmdpln-app-prod-02|2026-10": 78.85,
-    "vm-dmdpln-mon-prod-01|2026-07": 11.8,
-    "vm-dmdpln-mon-prod-01|2026-08": 11.8,
-    "vm-dmdpln-mon-prod-01|2026-09": 11.8,
-    "vm-dmdpln-mon-prod-01|2026-10": 11.8,
-    "vm-ecomm-api-prod-01|2026-07": 7.15,
-    "vm-ecomm-api-prod-01|2026-08": 7.15,
-    "vm-ecomm-api-prod-01|2026-09": 7.15,
-    "vm-ecomm-api-prod-01|2026-10": 7.15,
-    "vm-ecomm-api-prod-02|2026-07": 49.6,
-    "vm-ecomm-api-prod-02|2026-08": 49.6,
-    "vm-ecomm-api-prod-02|2026-09": 49.6,
-    "vm-ecomm-api-prod-02|2026-10": 49.6,
-    "vm-ecomm-data-prod-01|2026-07": 21.4,
-    "vm-ecomm-data-prod-01|2026-08": 21.4,
-    "vm-ecomm-data-prod-01|2026-09": 21.4,
-    "vm-ecomm-data-prod-01|2026-10": 21.4,
-    "vm-ecomm-data-prod-02|2026-07": 72.25,
-    "vm-ecomm-data-prod-02|2026-08": 72.25,
-    "vm-ecomm-data-prod-02|2026-09": 72.25,
-    "vm-ecomm-data-prod-02|2026-10": 72.25,
-    "vm-ecomm-mon-prod-01|2026-07": 2.6,
-    "vm-ecomm-mon-prod-01|2026-08": 2.6,
-    "vm-ecomm-mon-prod-01|2026-09": 2.6,
-    "vm-ecomm-mon-prod-01|2026-10": 2.6,
-    "vm-ecomm-web-prod-01|2026-07": 74.85,
-    "vm-ecomm-web-prod-01|2026-08": 74.85,
-    "vm-ecomm-web-prod-01|2026-09": 74.85,
-    "vm-ecomm-web-prod-01|2026-10": 74.85,
-    "vm-ecomm-web-prod-02|2026-07": 72.9,
-    "vm-ecomm-web-prod-02|2026-08": 72.9,
-    "vm-ecomm-web-prod-02|2026-09": 72.9,
-    "vm-ecomm-web-prod-02|2026-10": 72.9,
-    "vm-edisc-app-prod-01|2026-07": 49.5,
-    "vm-edisc-app-prod-01|2026-08": 49.5,
-    "vm-edisc-app-prod-01|2026-09": 49.5,
-    "vm-edisc-app-prod-01|2026-10": 49.5,
-    "vm-edisc-app-prod-02|2026-07": 26.8,
-    "vm-edisc-app-prod-02|2026-08": 26.8,
-    "vm-edisc-app-prod-02|2026-09": 26.8,
-    "vm-edisc-app-prod-02|2026-10": 26.8,
-    "vm-edisc-mon-test-01|2026-07": 6.0,
-    "vm-edisc-mon-test-01|2026-08": 6.0,
-    "vm-edisc-mon-test-01|2026-09": 6.0,
-    "vm-edisc-mon-test-01|2026-10": 6.0,
-    "vm-edisc-sec-prod-01|2026-07": 12.4,
-    "vm-edisc-sec-prod-01|2026-08": 12.4,
-    "vm-edisc-sec-prod-01|2026-09": 12.4,
-    "vm-edisc-sec-prod-01|2026-10": 12.4,
-    "vm-edplat-api-prod-01|2026-07": 57.15,
-    "vm-edplat-api-prod-01|2026-08": 57.15,
-    "vm-edplat-api-prod-01|2026-09": 57.15,
-    "vm-edplat-api-prod-01|2026-10": 57.15,
-    "vm-edplat-api-prod-02|2026-07": 13.45,
-    "vm-edplat-api-prod-02|2026-08": 13.45,
-    "vm-edplat-api-prod-02|2026-09": 13.45,
-    "vm-edplat-api-prod-02|2026-10": 13.45,
-    "vm-edplat-data-prod-01|2026-07": 21.75,
-    "vm-edplat-data-prod-01|2026-08": 21.75,
-    "vm-edplat-data-prod-01|2026-09": 21.75,
-    "vm-edplat-data-prod-01|2026-10": 21.75,
-    "vm-edplat-data-prod-02|2026-07": 86.6,
-    "vm-edplat-data-prod-02|2026-08": 86.6,
-    "vm-edplat-data-prod-02|2026-09": 86.6,
-    "vm-edplat-data-prod-02|2026-10": 86.6,
-    "vm-edplat-mon-test-01|2026-07": 14.55,
-    "vm-edplat-mon-test-01|2026-08": 14.55,
-    "vm-edplat-mon-test-01|2026-09": 14.55,
-    "vm-edplat-mon-test-01|2026-10": 14.55,
-    "vm-edplat-web-prod-01|2026-07": 44.25,
-    "vm-edplat-web-prod-01|2026-08": 39.8,
-    "vm-edplat-web-prod-01|2026-09": 39.8,
-    "vm-edplat-web-prod-01|2026-10": 39.8,
-    "vm-edplat-web-prod-02|2026-07": 94.45,
-    "vm-edplat-web-prod-02|2026-08": 94.45,
-    "vm-edplat-web-prod-02|2026-09": 94.45,
-    "vm-edplat-web-prod-02|2026-10": 94.45,
-    "vm-endpt-web-prod-01|2026-07": 99.05,
-    "vm-endpt-web-prod-01|2026-08": 99.05,
-    "vm-endpt-web-prod-01|2026-09": 99.05,
-    "vm-endpt-web-prod-01|2026-10": 99.05,
-    "vm-endpt-web-prod-02|2026-07": 84.45,
-    "vm-endpt-web-prod-02|2026-08": 84.45,
-    "vm-endpt-web-prod-02|2026-09": 84.45,
-    "vm-endpt-web-prod-02|2026-10": 84.45,
-    "vm-ftpgw-web-prod-01|2026-07": 69.7,
-    "vm-ftpgw-web-prod-01|2026-08": 69.7,
-    "vm-ftpgw-web-prod-01|2026-09": 69.7,
-    "vm-ftpgw-web-prod-01|2026-10": 69.7,
-    "vm-ftpgw-web-prod-02|2026-07": 60.05,
-    "vm-ftpgw-web-prod-02|2026-08": 60.05,
-    "vm-ftpgw-web-prod-02|2026-09": 60.05,
-    "vm-ftpgw-web-prod-02|2026-10": 60.05,
-    "vm-gledg-sec-prod-01|2026-07": 28.15,
-    "vm-gledg-sec-prod-01|2026-08": 28.15,
-    "vm-gledg-sec-prod-01|2026-09": 28.15,
-    "vm-gledg-sec-prod-01|2026-10": 28.15,
-    "vm-gledg-web-prod-01|2026-07": 34.25,
-    "vm-gledg-web-prod-01|2026-08": 34.25,
-    "vm-gledg-web-prod-01|2026-09": 34.25,
-    "vm-gledg-web-prod-01|2026-10": 34.25,
-    "vm-gledg-web-prod-02|2026-07": 33.45,
-    "vm-gledg-web-prod-02|2026-08": 33.45,
-    "vm-gledg-web-prod-02|2026-09": 33.45,
-    "vm-gledg-web-prod-02|2026-10": 33.45,
-    "vm-hrport-api-prod-01|2026-07": 43.35,
-    "vm-hrport-api-prod-01|2026-08": 43.35,
-    "vm-hrport-api-prod-01|2026-09": 43.35,
-    "vm-hrport-api-prod-01|2026-10": 43.35,
-    "vm-hrport-api-prod-02|2026-07": 53.15,
-    "vm-hrport-api-prod-02|2026-08": 53.15,
-    "vm-hrport-api-prod-02|2026-09": 53.15,
-    "vm-hrport-api-prod-02|2026-10": 53.15,
-    "vm-hrport-mon-test-01|2026-07": 5.05,
-    "vm-hrport-mon-test-01|2026-08": 5.05,
-    "vm-hrport-mon-test-01|2026-09": 5.05,
-    "vm-hrport-mon-test-01|2026-10": 5.05,
-    "vm-hrport-web-prod-01|2026-07": 21.15,
-    "vm-hrport-web-prod-01|2026-08": 21.15,
-    "vm-hrport-web-prod-01|2026-09": 21.15,
-    "vm-hrport-web-prod-01|2026-10": 21.15,
-    "vm-hrport-web-prod-02|2026-07": 77.75,
-    "vm-hrport-web-prod-02|2026-08": 77.75,
-    "vm-hrport-web-prod-02|2026-09": 70.0,
-    "vm-hrport-web-prod-02|2026-10": 70.0,
-    "vm-itsmgt-data-prod-01|2026-07": 94.2,
-    "vm-itsmgt-data-prod-01|2026-08": 94.2,
-    "vm-itsmgt-data-prod-01|2026-09": 94.2,
-    "vm-itsmgt-data-prod-01|2026-10": 94.2,
-    "vm-itsmgt-data-prod-02|2026-07": 63.95,
-    "vm-itsmgt-data-prod-02|2026-08": 63.95,
-    "vm-itsmgt-data-prod-02|2026-09": 63.95,
-    "vm-itsmgt-data-prod-02|2026-10": 63.95,
-    "vm-itsmgt-sec-prod-01|2026-07": 54.65,
-    "vm-itsmgt-sec-prod-01|2026-08": 54.65,
-    "vm-itsmgt-sec-prod-01|2026-09": 54.65,
-    "vm-itsmgt-sec-prod-01|2026-10": 54.65,
-    "vm-legerp-app-prod-01|2026-07": 77.35,
-    "vm-legerp-app-prod-01|2026-08": 77.35,
-    "vm-legerp-app-prod-01|2026-09": 77.35,
-    "vm-legerp-app-prod-01|2026-10": 77.35,
-    "vm-legerp-app-prod-02|2026-07": 97.1,
-    "vm-legerp-app-prod-02|2026-08": 97.1,
-    "vm-legerp-app-prod-02|2026-09": 97.1,
-    "vm-legerp-app-prod-02|2026-10": 97.1,
-    "vm-legerp-data-prod-01|2026-07": 63.65,
-    "vm-legerp-data-prod-01|2026-08": 63.65,
-    "vm-legerp-data-prod-01|2026-09": 63.65,
-    "vm-legerp-data-prod-01|2026-10": 63.65,
-    "vm-legerp-data-prod-02|2026-07": 24.9,
-    "vm-legerp-data-prod-02|2026-08": 24.9,
-    "vm-legerp-data-prod-02|2026-09": 24.9,
-    "vm-legerp-data-prod-02|2026-10": 24.9,
-    "vm-mfgexe-app-prod-01|2026-07": 57.15,
-    "vm-mfgexe-app-prod-01|2026-08": 57.15,
-    "vm-mfgexe-app-prod-01|2026-09": 57.15,
-    "vm-mfgexe-app-prod-01|2026-10": 57.15,
-    "vm-mfgexe-app-prod-02|2026-07": 42.55,
-    "vm-mfgexe-app-prod-02|2026-08": 42.55,
-    "vm-mfgexe-app-prod-02|2026-09": 42.55,
-    "vm-mfgexe-app-prod-02|2026-10": 42.55,
-    "vm-mfgexe-mon-prod-01|2026-07": 72.55,
-    "vm-mfgexe-mon-prod-01|2026-08": 72.55,
-    "vm-mfgexe-mon-prod-01|2026-09": 72.55,
-    "vm-mfgexe-mon-prod-01|2026-10": 72.55,
-    "vm-mfgexe-web-prod-01|2026-07": 6.3,
-    "vm-mfgexe-web-prod-01|2026-08": 6.3,
-    "vm-mfgexe-web-prod-01|2026-09": 6.3,
-    "vm-mfgexe-web-prod-01|2026-10": 6.3,
-    "vm-mfgexe-web-prod-02|2026-07": 25.35,
-    "vm-mfgexe-web-prod-02|2026-08": 25.35,
-    "vm-mfgexe-web-prod-02|2026-09": 25.35,
-    "vm-mfgexe-web-prod-02|2026-10": 25.35,
-    "vm-mktaut-app-prod-01|2026-07": 68.7,
-    "vm-mktaut-app-prod-01|2026-08": 68.7,
-    "vm-mktaut-app-prod-01|2026-09": 68.7,
-    "vm-mktaut-app-prod-01|2026-10": 68.7,
-    "vm-mktaut-app-prod-02|2026-07": 76.8,
-    "vm-mktaut-app-prod-02|2026-08": 76.8,
-    "vm-mktaut-app-prod-02|2026-09": 76.8,
-    "vm-mktaut-app-prod-02|2026-10": 76.8,
-    "vm-mktaut-data-prod-01|2026-07": 59.5,
-    "vm-mktaut-data-prod-01|2026-08": 59.5,
-    "vm-mktaut-data-prod-01|2026-09": 59.5,
-    "vm-mktaut-data-prod-01|2026-10": 59.5,
-    "vm-mktaut-data-prod-02|2026-07": 44.05,
-    "vm-mktaut-data-prod-02|2026-08": 44.05,
-    "vm-mktaut-data-prod-02|2026-09": 44.05,
-    "vm-mktaut-data-prod-02|2026-10": 44.05,
-    "vm-plat-data-shared-01|2026-07": 6.95,
-    "vm-plat-data-shared-01|2026-08": 6.95,
-    "vm-plat-data-shared-01|2026-09": 6.95,
-    "vm-plat-data-shared-01|2026-10": 6.95,
-    "vm-plat-data-shared-02|2026-07": 12.05,
-    "vm-plat-data-shared-02|2026-08": 12.05,
-    "vm-plat-data-shared-02|2026-09": 12.05,
-    "vm-plat-data-shared-02|2026-10": 12.05,
-    "vm-plat-mon-test-01|2026-07": 6.7,
-    "vm-plat-mon-test-01|2026-08": 6.7,
-    "vm-plat-mon-test-01|2026-09": 6.7,
-    "vm-plat-mon-test-01|2026-10": 6.7,
-    "vm-plat-sec-shared-01|2026-07": 11.15,
-    "vm-plat-sec-shared-01|2026-08": 11.15,
-    "vm-plat-sec-shared-01|2026-09": 11.15,
-    "vm-plat-sec-shared-01|2026-10": 11.15,
-    "vm-plmnt-sec-test-01|2026-07": 7.7,
-    "vm-plmnt-sec-test-01|2026-08": 7.7,
-    "vm-plmnt-sec-test-01|2026-09": 7.7,
-    "vm-plmnt-sec-test-01|2026-10": 7.7,
-    "vm-plmnt-web-prod-01|2026-07": 73.8,
-    "vm-plmnt-web-prod-01|2026-08": 73.8,
-    "vm-plmnt-web-prod-01|2026-09": 73.8,
-    "vm-plmnt-web-prod-01|2026-10": 73.8,
-    "vm-plmnt-web-prod-02|2026-07": 67.6,
-    "vm-plmnt-web-prod-02|2026-08": 67.6,
-    "vm-plmnt-web-prod-02|2026-09": 67.6,
-    "vm-plmnt-web-prod-02|2026-10": 67.6,
-    "vm-qmsys-api-dev-01|2026-07": 3.75,
-    "vm-qmsys-api-dev-01|2026-08": 3.75,
-    "vm-qmsys-api-dev-01|2026-09": 3.75,
-    "vm-qmsys-api-dev-01|2026-10": 3.75,
-    "vm-qmsys-mon-prod-01|2026-07": 15.5,
-    "vm-qmsys-mon-prod-01|2026-08": 15.5,
-    "vm-qmsys-mon-prod-01|2026-09": 15.5,
-    "vm-qmsys-mon-prod-01|2026-10": 15.5,
-    "vm-qmsys-sec-prod-01|2026-07": 68.65,
-    "vm-qmsys-sec-prod-01|2026-08": 68.65,
-    "vm-qmsys-sec-prod-01|2026-09": 68.65,
-    "vm-qmsys-sec-prod-01|2026-10": 68.65,
-    "vm-sapfi-app-prod-01|2026-07": 43.15,
-    "vm-sapfi-app-prod-01|2026-08": 43.15,
-    "vm-sapfi-app-prod-01|2026-09": 43.15,
-    "vm-sapfi-app-prod-01|2026-10": 43.15,
-    "vm-sapfi-app-prod-02|2026-07": 73.4,
-    "vm-sapfi-app-prod-02|2026-08": 73.4,
-    "vm-sapfi-app-prod-02|2026-09": 73.4,
-    "vm-sapfi-app-prod-02|2026-10": 73.4,
-    "vm-sapfi-data-prod-01|2026-07": 57.75,
-    "vm-sapfi-data-prod-01|2026-08": 57.75,
-    "vm-sapfi-data-prod-01|2026-09": 57.75,
-    "vm-sapfi-data-prod-01|2026-10": 57.75,
-    "vm-sapfi-data-prod-02|2026-07": 6.0,
-    "vm-sapfi-data-prod-02|2026-08": 6.0,
-    "vm-sapfi-data-prod-02|2026-09": 6.0,
-    "vm-sapfi-data-prod-02|2026-10": 6.0,
-    "vm-slscrm-api-prod-01|2026-07": 50.15,
-    "vm-slscrm-api-prod-01|2026-08": 50.15,
-    "vm-slscrm-api-prod-01|2026-09": 50.15,
-    "vm-slscrm-api-prod-01|2026-10": 50.15,
-    "vm-slscrm-api-prod-02|2026-07": 94.1,
-    "vm-slscrm-api-prod-02|2026-08": 94.1,
-    "vm-slscrm-api-prod-02|2026-09": 94.1,
-    "vm-slscrm-api-prod-02|2026-10": 94.1,
-    "vm-slscrm-app-dev-01|2026-07": 10.8,
-    "vm-slscrm-app-dev-01|2026-08": 10.8,
-    "vm-slscrm-app-dev-01|2026-09": 10.8,
-    "vm-slscrm-app-dev-01|2026-10": 10.8,
-    "vm-slscrm-web-prod-01|2026-07": 42.25,
-    "vm-slscrm-web-prod-01|2026-08": 42.25,
-    "vm-slscrm-web-prod-01|2026-09": 42.25,
-    "vm-slscrm-web-prod-01|2026-10": 42.25,
-    "vm-slscrm-web-prod-02|2026-07": 50.7,
-    "vm-slscrm-web-prod-02|2026-08": 50.7,
-    "vm-slscrm-web-prod-02|2026-09": 50.7,
-    "vm-slscrm-web-prod-02|2026-10": 50.7,
-    "vm-supprt-app-prod-01|2026-07": 83.2,
-    "vm-supprt-app-prod-01|2026-08": 83.2,
-    "vm-supprt-app-prod-01|2026-09": 83.2,
-    "vm-supprt-app-prod-01|2026-10": 83.2,
-    "vm-supprt-app-prod-02|2026-07": 85.9,
-    "vm-supprt-app-prod-02|2026-08": 85.9,
-    "vm-supprt-app-prod-02|2026-09": 85.9,
-    "vm-supprt-app-prod-02|2026-10": 85.9,
-    "vm-supprt-mon-prod-01|2026-07": 17.5,
-    "vm-supprt-mon-prod-01|2026-08": 17.5,
-    "vm-supprt-mon-prod-01|2026-09": 17.5,
-    "vm-supprt-mon-prod-01|2026-10": 17.5,
-    "vm-supprt-web-test-01|2026-07": 2.85,
-    "vm-supprt-web-test-01|2026-08": 2.85,
-    "vm-supprt-web-test-01|2026-09": 2.85,
-    "vm-supprt-web-test-01|2026-10": 2.85,
-    "vm-wmsys-app-prod-01|2026-07": 69.5,
-    "vm-wmsys-app-prod-01|2026-08": 69.5,
-    "vm-wmsys-app-prod-01|2026-09": 69.5,
-    "vm-wmsys-app-prod-01|2026-10": 69.5,
-    "vm-wmsys-app-prod-02|2026-07": 28.15,
-    "vm-wmsys-app-prod-02|2026-08": 28.15,
-    "vm-wmsys-app-prod-02|2026-09": 28.15,
-    "vm-wmsys-app-prod-02|2026-10": 28.15,
-    "vm-wmsys-sec-prod-01|2026-07": 42.2,
-    "vm-wmsys-sec-prod-01|2026-08": 42.2,
-    "vm-wmsys-sec-prod-01|2026-09": 42.2,
-    "vm-wmsys-sec-prod-01|2026-10": 42.2,
-    "vm-wmsys-web-prod-01|2026-07": 24.8,
-    "vm-wmsys-web-prod-01|2026-08": 24.8,
-    "vm-wmsys-web-prod-01|2026-09": 24.8,
-    "vm-wmsys-web-prod-01|2026-10": 22.3,
-    "vm-wmsys-web-prod-02|2026-07": 12.45,
-    "vm-wmsys-web-prod-02|2026-08": 12.45,
-    "vm-wmsys-web-prod-02|2026-09": 12.45,
-    "vm-wmsys-web-prod-02|2026-10": 12.45
+    "vm-bill-api-prod-01|2026-07": 28.7,
+    "vm-bill-api-prod-01|2026-08": 28.7,
+    "vm-bill-api-prod-01|2026-09": 28.7,
+    "vm-bill-api-prod-01|2026-10": 28.7,
+    "vm-bill-api-prod-02|2026-07": 17.15,
+    "vm-bill-api-prod-02|2026-08": 17.15,
+    "vm-bill-api-prod-02|2026-09": 17.15,
+    "vm-bill-api-prod-02|2026-10": 17.15,
+    "vm-bill-sec-prod-01|2026-07": 23.85,
+    "vm-bill-sec-prod-01|2026-08": 23.85,
+    "vm-bill-sec-prod-01|2026-09": 23.85,
+    "vm-bill-sec-prod-01|2026-10": 23.85,
+    "vm-brweb-api-prod-01|2026-07": 73.9,
+    "vm-brweb-api-prod-01|2026-08": 73.9,
+    "vm-brweb-api-prod-01|2026-09": 73.9,
+    "vm-brweb-api-prod-01|2026-10": 73.9,
+    "vm-brweb-api-prod-02|2026-07": 57.1,
+    "vm-brweb-api-prod-02|2026-08": 57.1,
+    "vm-brweb-api-prod-02|2026-09": 57.1,
+    "vm-brweb-api-prod-02|2026-10": 57.1,
+    "vm-brweb-app-test-01|2026-07": 14.4,
+    "vm-brweb-app-test-01|2026-08": 14.4,
+    "vm-brweb-app-test-01|2026-09": 14.4,
+    "vm-brweb-app-test-01|2026-10": 14.4,
+    "vm-brweb-sec-prod-01|2026-07": 91.65,
+    "vm-brweb-sec-prod-01|2026-08": 91.65,
+    "vm-brweb-sec-prod-01|2026-09": 91.65,
+    "vm-brweb-sec-prod-01|2026-10": 91.65,
+    "vm-cntrct-web-prod-01|2026-07": 48.3,
+    "vm-cntrct-web-prod-01|2026-08": 48.3,
+    "vm-cntrct-web-prod-01|2026-09": 48.3,
+    "vm-cntrct-web-prod-01|2026-10": 48.3,
+    "vm-cntrct-web-prod-02|2026-07": 89.3,
+    "vm-cntrct-web-prod-02|2026-08": 89.3,
+    "vm-cntrct-web-prod-02|2026-09": 89.3,
+    "vm-cntrct-web-prod-02|2026-10": 89.3,
+    "vm-csdesk-data-dev-01|2026-07": 9.85,
+    "vm-csdesk-data-dev-01|2026-08": 9.85,
+    "vm-csdesk-data-dev-01|2026-09": 9.85,
+    "vm-csdesk-data-dev-01|2026-10": 9.85,
+    "vm-csdesk-data-prod-01|2026-07": 96.65,
+    "vm-csdesk-data-prod-01|2026-08": 96.65,
+    "vm-csdesk-data-prod-01|2026-09": 96.65,
+    "vm-csdesk-data-prod-01|2026-10": 96.65,
+    "vm-csdesk-data-prod-02|2026-07": 89.2,
+    "vm-csdesk-data-prod-02|2026-08": 89.2,
+    "vm-csdesk-data-prod-02|2026-09": 89.2,
+    "vm-csdesk-data-prod-02|2026-10": 89.2,
+    "vm-csdesk-web-prod-01|2026-07": 64.15,
+    "vm-csdesk-web-prod-01|2026-08": 64.15,
+    "vm-csdesk-web-prod-01|2026-09": 64.15,
+    "vm-csdesk-web-prod-01|2026-10": 64.15,
+    "vm-csdesk-web-prod-02|2026-07": 66.45,
+    "vm-csdesk-web-prod-02|2026-08": 66.45,
+    "vm-csdesk-web-prod-02|2026-09": 66.45,
+    "vm-csdesk-web-prod-02|2026-10": 66.45,
+    "vm-dmdpln-app-prod-01|2026-07": 25.05,
+    "vm-dmdpln-app-prod-01|2026-08": 25.05,
+    "vm-dmdpln-app-prod-01|2026-09": 25.05,
+    "vm-dmdpln-app-prod-01|2026-10": 25.05,
+    "vm-dmdpln-app-prod-02|2026-07": 84.6,
+    "vm-dmdpln-app-prod-02|2026-08": 84.6,
+    "vm-dmdpln-app-prod-02|2026-09": 84.6,
+    "vm-dmdpln-app-prod-02|2026-10": 84.6,
+    "vm-dmdpln-sec-prod-01|2026-07": 29.5,
+    "vm-dmdpln-sec-prod-01|2026-08": 29.5,
+    "vm-dmdpln-sec-prod-01|2026-09": 29.5,
+    "vm-dmdpln-sec-prod-01|2026-10": 29.5,
+    "vm-ecomm-api-prod-01|2026-07": 12.65,
+    "vm-ecomm-api-prod-01|2026-08": 12.65,
+    "vm-ecomm-api-prod-01|2026-09": 12.65,
+    "vm-ecomm-api-prod-01|2026-10": 12.65,
+    "vm-ecomm-api-prod-02|2026-07": 98.3,
+    "vm-ecomm-api-prod-02|2026-08": 98.3,
+    "vm-ecomm-api-prod-02|2026-09": 98.3,
+    "vm-ecomm-api-prod-02|2026-10": 98.3,
+    "vm-ecomm-api-test-01|2026-07": 4.1,
+    "vm-ecomm-api-test-01|2026-08": 4.1,
+    "vm-ecomm-api-test-01|2026-09": 4.1,
+    "vm-ecomm-api-test-01|2026-10": 4.1,
+    "vm-ecomm-data-prod-01|2026-07": 34.95,
+    "vm-ecomm-data-prod-01|2026-08": 34.95,
+    "vm-ecomm-data-prod-01|2026-09": 34.95,
+    "vm-ecomm-data-prod-01|2026-10": 34.95,
+    "vm-ecomm-data-prod-02|2026-07": 9.7,
+    "vm-ecomm-data-prod-02|2026-08": 9.7,
+    "vm-ecomm-data-prod-02|2026-09": 9.7,
+    "vm-ecomm-data-prod-02|2026-10": 9.7,
+    "vm-ecomm-mon-prod-01|2026-07": 75.6,
+    "vm-ecomm-mon-prod-01|2026-08": 75.6,
+    "vm-ecomm-mon-prod-01|2026-09": 75.6,
+    "vm-ecomm-mon-prod-01|2026-10": 75.6,
+    "vm-ecomm-sec-prod-01|2026-07": 22.65,
+    "vm-ecomm-sec-prod-01|2026-08": 22.65,
+    "vm-ecomm-sec-prod-01|2026-09": 22.65,
+    "vm-ecomm-sec-prod-01|2026-10": 22.65,
+    "vm-edisc-data-prod-01|2026-07": 16.75,
+    "vm-edisc-data-prod-01|2026-08": 16.75,
+    "vm-edisc-data-prod-01|2026-09": 16.75,
+    "vm-edisc-data-prod-01|2026-10": 16.75,
+    "vm-edisc-data-prod-02|2026-07": 61.25,
+    "vm-edisc-data-prod-02|2026-08": 61.25,
+    "vm-edisc-data-prod-02|2026-09": 61.25,
+    "vm-edisc-data-prod-02|2026-10": 61.25,
+    "vm-edplat-api-prod-01|2026-07": 90.25,
+    "vm-edplat-api-prod-01|2026-08": 90.25,
+    "vm-edplat-api-prod-01|2026-09": 90.25,
+    "vm-edplat-api-prod-01|2026-10": 90.25,
+    "vm-edplat-api-prod-02|2026-07": 93.65,
+    "vm-edplat-api-prod-02|2026-08": 93.65,
+    "vm-edplat-api-prod-02|2026-09": 93.65,
+    "vm-edplat-api-prod-02|2026-10": 93.65,
+    "vm-edplat-app-test-01|2026-07": 7.3,
+    "vm-edplat-app-test-01|2026-08": 7.3,
+    "vm-edplat-app-test-01|2026-09": 7.3,
+    "vm-edplat-app-test-01|2026-10": 7.3,
+    "vm-edplat-data-prod-01|2026-07": 60.4,
+    "vm-edplat-data-prod-01|2026-08": 60.4,
+    "vm-edplat-data-prod-01|2026-09": 60.4,
+    "vm-edplat-data-prod-01|2026-10": 60.4,
+    "vm-edplat-data-prod-02|2026-07": 75.05,
+    "vm-edplat-data-prod-02|2026-08": 75.05,
+    "vm-edplat-data-prod-02|2026-09": 75.05,
+    "vm-edplat-data-prod-02|2026-10": 75.05,
+    "vm-edplat-mon-prod-01|2026-07": 5.0,
+    "vm-edplat-mon-prod-01|2026-08": 5.0,
+    "vm-edplat-mon-prod-01|2026-09": 5.0,
+    "vm-edplat-mon-prod-01|2026-10": 5.0,
+    "vm-endpt-api-test-01|2026-07": 3.1,
+    "vm-endpt-api-test-01|2026-08": 3.1,
+    "vm-endpt-api-test-01|2026-09": 3.1,
+    "vm-endpt-api-test-01|2026-10": 3.1,
+    "vm-endpt-app-dev-01|2026-07": 1.7,
+    "vm-endpt-app-dev-01|2026-08": 1.7,
+    "vm-endpt-app-dev-01|2026-09": 1.7,
+    "vm-endpt-app-dev-01|2026-10": 1.7,
+    "vm-endpt-data-prod-01|2026-07": 15.95,
+    "vm-endpt-data-prod-01|2026-08": 15.95,
+    "vm-endpt-data-prod-01|2026-09": 15.95,
+    "vm-endpt-data-prod-01|2026-10": 15.95,
+    "vm-endpt-data-prod-02|2026-07": 38.1,
+    "vm-endpt-data-prod-02|2026-08": 38.1,
+    "vm-endpt-data-prod-02|2026-09": 38.1,
+    "vm-endpt-data-prod-02|2026-10": 38.1,
+    "vm-endpt-mon-prod-01|2026-07": 32.35,
+    "vm-endpt-mon-prod-01|2026-08": 32.35,
+    "vm-endpt-mon-prod-01|2026-09": 32.35,
+    "vm-endpt-mon-prod-01|2026-10": 32.35,
+    "vm-ftpgw-web-prod-01|2026-07": 47.8,
+    "vm-ftpgw-web-prod-01|2026-08": 47.8,
+    "vm-ftpgw-web-prod-01|2026-09": 47.8,
+    "vm-ftpgw-web-prod-01|2026-10": 47.8,
+    "vm-ftpgw-web-prod-02|2026-07": 16.65,
+    "vm-ftpgw-web-prod-02|2026-08": 16.65,
+    "vm-ftpgw-web-prod-02|2026-09": 16.65,
+    "vm-ftpgw-web-prod-02|2026-10": 16.65,
+    "vm-gledg-data-prod-01|2026-07": 89.25,
+    "vm-gledg-data-prod-01|2026-08": 89.25,
+    "vm-gledg-data-prod-01|2026-09": 89.25,
+    "vm-gledg-data-prod-01|2026-10": 89.25,
+    "vm-gledg-data-prod-02|2026-07": 48.7,
+    "vm-gledg-data-prod-02|2026-08": 48.7,
+    "vm-gledg-data-prod-02|2026-09": 48.7,
+    "vm-gledg-data-prod-02|2026-10": 48.7,
+    "vm-hrport-api-prod-01|2026-07": 24.3,
+    "vm-hrport-api-prod-01|2026-08": 24.3,
+    "vm-hrport-api-prod-01|2026-09": 24.3,
+    "vm-hrport-api-prod-01|2026-10": 24.3,
+    "vm-hrport-api-prod-02|2026-07": 69.1,
+    "vm-hrport-api-prod-02|2026-08": 69.1,
+    "vm-hrport-api-prod-02|2026-09": 69.1,
+    "vm-hrport-api-prod-02|2026-10": 69.1,
+    "vm-itsmgt-data-prod-01|2026-07": 40.35,
+    "vm-itsmgt-data-prod-01|2026-08": 40.35,
+    "vm-itsmgt-data-prod-01|2026-09": 40.35,
+    "vm-itsmgt-data-prod-01|2026-10": 40.35,
+    "vm-itsmgt-data-prod-02|2026-07": 70.5,
+    "vm-itsmgt-data-prod-02|2026-08": 70.5,
+    "vm-itsmgt-data-prod-02|2026-09": 70.5,
+    "vm-itsmgt-data-prod-02|2026-10": 70.5,
+    "vm-itsmgt-web-prod-01|2026-07": 4.9,
+    "vm-itsmgt-web-prod-01|2026-08": 4.9,
+    "vm-itsmgt-web-prod-01|2026-09": 4.9,
+    "vm-itsmgt-web-prod-01|2026-10": 4.9,
+    "vm-itsmgt-web-prod-02|2026-07": 77.4,
+    "vm-itsmgt-web-prod-02|2026-08": 77.4,
+    "vm-itsmgt-web-prod-02|2026-09": 77.4,
+    "vm-itsmgt-web-prod-02|2026-10": 77.4,
+    "vm-legerp-app-prod-01|2026-07": 69.65,
+    "vm-legerp-app-prod-01|2026-08": 69.65,
+    "vm-legerp-app-prod-01|2026-09": 69.65,
+    "vm-legerp-app-prod-01|2026-10": 69.65,
+    "vm-legerp-app-prod-02|2026-07": 22.4,
+    "vm-legerp-app-prod-02|2026-08": 22.4,
+    "vm-legerp-app-prod-02|2026-09": 22.4,
+    "vm-legerp-app-prod-02|2026-10": 22.4,
+    "vm-legerp-data-prod-01|2026-07": 50.25,
+    "vm-legerp-data-prod-01|2026-08": 50.25,
+    "vm-legerp-data-prod-01|2026-09": 50.25,
+    "vm-legerp-data-prod-01|2026-10": 50.25,
+    "vm-legerp-data-prod-02|2026-07": 17.5,
+    "vm-legerp-data-prod-02|2026-08": 17.5,
+    "vm-legerp-data-prod-02|2026-09": 17.5,
+    "vm-legerp-data-prod-02|2026-10": 17.5,
+    "vm-mfgexe-app-prod-01|2026-07": 67.05,
+    "vm-mfgexe-app-prod-01|2026-08": 67.05,
+    "vm-mfgexe-app-prod-01|2026-09": 67.05,
+    "vm-mfgexe-app-prod-01|2026-10": 67.05,
+    "vm-mfgexe-app-prod-02|2026-07": 44.2,
+    "vm-mfgexe-app-prod-02|2026-08": 44.2,
+    "vm-mfgexe-app-prod-02|2026-09": 44.2,
+    "vm-mfgexe-app-prod-02|2026-10": 44.2,
+    "vm-mfgexe-mon-prod-01|2026-07": 62.45,
+    "vm-mfgexe-mon-prod-01|2026-08": 62.45,
+    "vm-mfgexe-mon-prod-01|2026-09": 62.45,
+    "vm-mfgexe-mon-prod-01|2026-10": 62.45,
+    "vm-mfgexe-web-prod-01|2026-07": 3.15,
+    "vm-mfgexe-web-prod-01|2026-08": 3.15,
+    "vm-mfgexe-web-prod-01|2026-09": 3.15,
+    "vm-mfgexe-web-prod-01|2026-10": 3.15,
+    "vm-mfgexe-web-prod-02|2026-07": 51.45,
+    "vm-mfgexe-web-prod-02|2026-08": 51.45,
+    "vm-mfgexe-web-prod-02|2026-09": 51.45,
+    "vm-mfgexe-web-prod-02|2026-10": 46.3,
+    "vm-mfgexe-web-test-01|2026-07": 5.1,
+    "vm-mfgexe-web-test-01|2026-08": 5.1,
+    "vm-mfgexe-web-test-01|2026-09": 5.1,
+    "vm-mfgexe-web-test-01|2026-10": 5.1,
+    "vm-mktaut-data-test-01|2026-07": 8.25,
+    "vm-mktaut-data-test-01|2026-08": 8.25,
+    "vm-mktaut-data-test-01|2026-09": 8.25,
+    "vm-mktaut-data-test-01|2026-10": 8.25,
+    "vm-mktaut-mon-prod-01|2026-07": 98.6,
+    "vm-mktaut-mon-prod-01|2026-08": 98.6,
+    "vm-mktaut-mon-prod-01|2026-09": 88.75,
+    "vm-mktaut-mon-prod-01|2026-10": 88.75,
+    "vm-mktaut-web-prod-01|2026-07": 81.65,
+    "vm-mktaut-web-prod-01|2026-08": 81.65,
+    "vm-mktaut-web-prod-01|2026-09": 81.65,
+    "vm-mktaut-web-prod-01|2026-10": 81.65,
+    "vm-mktaut-web-prod-02|2026-07": 36.2,
+    "vm-mktaut-web-prod-02|2026-08": 36.2,
+    "vm-mktaut-web-prod-02|2026-09": 36.2,
+    "vm-mktaut-web-prod-02|2026-10": 36.2,
+    "vm-plat-app-shared-01|2026-07": 5.65,
+    "vm-plat-app-shared-01|2026-08": 5.65,
+    "vm-plat-app-shared-01|2026-09": 5.65,
+    "vm-plat-app-shared-01|2026-10": 5.65,
+    "vm-plat-app-shared-02|2026-07": 6.5,
+    "vm-plat-app-shared-02|2026-08": 6.5,
+    "vm-plat-app-shared-02|2026-09": 6.5,
+    "vm-plat-app-shared-02|2026-10": 6.5,
+    "vm-plat-data-shared-01|2026-07": 4.25,
+    "vm-plat-data-shared-01|2026-08": 4.25,
+    "vm-plat-data-shared-01|2026-09": 4.25,
+    "vm-plat-data-shared-01|2026-10": 4.25,
+    "vm-plat-data-shared-02|2026-07": 6.45,
+    "vm-plat-data-shared-02|2026-08": 6.45,
+    "vm-plat-data-shared-02|2026-09": 6.45,
+    "vm-plat-data-shared-02|2026-10": 6.45,
+    "vm-plat-mon-shared-01|2026-07": 11.7,
+    "vm-plat-mon-shared-01|2026-08": 11.7,
+    "vm-plat-mon-shared-01|2026-09": 11.7,
+    "vm-plat-mon-shared-01|2026-10": 11.7,
+    "vm-plmnt-sec-prod-01|2026-07": 35.55,
+    "vm-plmnt-sec-prod-01|2026-08": 35.55,
+    "vm-plmnt-sec-prod-01|2026-09": 35.55,
+    "vm-plmnt-sec-prod-01|2026-10": 35.55,
+    "vm-qmsys-api-prod-01|2026-07": 24.3,
+    "vm-qmsys-api-prod-01|2026-08": 24.3,
+    "vm-qmsys-api-prod-01|2026-09": 24.3,
+    "vm-qmsys-api-prod-01|2026-10": 24.3,
+    "vm-qmsys-api-prod-02|2026-07": 24.35,
+    "vm-qmsys-api-prod-02|2026-08": 24.35,
+    "vm-qmsys-api-prod-02|2026-09": 24.35,
+    "vm-qmsys-api-prod-02|2026-10": 24.35,
+    "vm-qmsys-web-prod-01|2026-07": 84.95,
+    "vm-qmsys-web-prod-01|2026-08": 84.95,
+    "vm-qmsys-web-prod-01|2026-09": 84.95,
+    "vm-qmsys-web-prod-01|2026-10": 84.95,
+    "vm-qmsys-web-prod-02|2026-07": 19.5,
+    "vm-qmsys-web-prod-02|2026-08": 19.5,
+    "vm-qmsys-web-prod-02|2026-09": 19.5,
+    "vm-qmsys-web-prod-02|2026-10": 19.5,
+    "vm-sapfi-app-prod-01|2026-07": 92.45,
+    "vm-sapfi-app-prod-01|2026-08": 92.45,
+    "vm-sapfi-app-prod-01|2026-09": 92.45,
+    "vm-sapfi-app-prod-01|2026-10": 92.45,
+    "vm-sapfi-app-prod-02|2026-07": 34.05,
+    "vm-sapfi-app-prod-02|2026-08": 34.05,
+    "vm-sapfi-app-prod-02|2026-09": 34.05,
+    "vm-sapfi-app-prod-02|2026-10": 34.05,
+    "vm-sapfi-data-prod-01|2026-07": 58.35,
+    "vm-sapfi-data-prod-01|2026-08": 58.35,
+    "vm-sapfi-data-prod-01|2026-09": 58.35,
+    "vm-sapfi-data-prod-01|2026-10": 58.35,
+    "vm-sapfi-data-prod-02|2026-07": 58.6,
+    "vm-sapfi-data-prod-02|2026-08": 58.6,
+    "vm-sapfi-data-prod-02|2026-09": 58.6,
+    "vm-sapfi-data-prod-02|2026-10": 58.6,
+    "vm-slscrm-app-prod-01|2026-07": 89.4,
+    "vm-slscrm-app-prod-01|2026-08": 89.4,
+    "vm-slscrm-app-prod-01|2026-09": 89.4,
+    "vm-slscrm-app-prod-01|2026-10": 89.4,
+    "vm-slscrm-app-prod-02|2026-07": 61.4,
+    "vm-slscrm-app-prod-02|2026-08": 61.4,
+    "vm-slscrm-app-prod-02|2026-09": 61.4,
+    "vm-slscrm-app-prod-02|2026-10": 61.4,
+    "vm-slscrm-mon-prod-01|2026-07": 24.2,
+    "vm-slscrm-mon-prod-01|2026-08": 24.2,
+    "vm-slscrm-mon-prod-01|2026-09": 24.2,
+    "vm-slscrm-mon-prod-01|2026-10": 24.2,
+    "vm-slscrm-sec-prod-01|2026-07": 3.7,
+    "vm-slscrm-sec-prod-01|2026-08": 3.7,
+    "vm-slscrm-sec-prod-01|2026-09": 3.7,
+    "vm-slscrm-sec-prod-01|2026-10": 3.7,
+    "vm-supprt-api-prod-01|2026-07": 99.05,
+    "vm-supprt-api-prod-01|2026-08": 99.05,
+    "vm-supprt-api-prod-01|2026-09": 99.05,
+    "vm-supprt-api-prod-01|2026-10": 99.05,
+    "vm-supprt-api-prod-02|2026-07": 84.95,
+    "vm-supprt-api-prod-02|2026-08": 84.95,
+    "vm-supprt-api-prod-02|2026-09": 84.95,
+    "vm-supprt-api-prod-02|2026-10": 84.95,
+    "vm-supprt-app-prod-01|2026-07": 12.0,
+    "vm-supprt-app-prod-01|2026-08": 12.0,
+    "vm-supprt-app-prod-01|2026-09": 12.0,
+    "vm-supprt-app-prod-01|2026-10": 12.0,
+    "vm-supprt-app-prod-02|2026-07": 86.25,
+    "vm-supprt-app-prod-02|2026-08": 86.25,
+    "vm-supprt-app-prod-02|2026-09": 86.25,
+    "vm-supprt-app-prod-02|2026-10": 86.25,
+    "vm-supprt-sec-test-01|2026-07": 13.6,
+    "vm-supprt-sec-test-01|2026-08": 13.6,
+    "vm-supprt-sec-test-01|2026-09": 13.6,
+    "vm-supprt-sec-test-01|2026-10": 13.6,
+    "vm-wmsys-api-prod-01|2026-07": 2.6,
+    "vm-wmsys-api-prod-01|2026-08": 2.6,
+    "vm-wmsys-api-prod-01|2026-09": 2.6,
+    "vm-wmsys-api-prod-01|2026-10": 2.6,
+    "vm-wmsys-api-prod-02|2026-07": 15.5,
+    "vm-wmsys-api-prod-02|2026-08": 15.5,
+    "vm-wmsys-api-prod-02|2026-09": 15.5,
+    "vm-wmsys-api-prod-02|2026-10": 15.5,
+    "vm-wmsys-data-dev-01|2026-07": 9.15,
+    "vm-wmsys-data-dev-01|2026-08": 9.15,
+    "vm-wmsys-data-dev-01|2026-09": 9.15,
+    "vm-wmsys-data-dev-01|2026-10": 9.15,
+    "vm-wmsys-sec-prod-01|2026-07": 53.1,
+    "vm-wmsys-sec-prod-01|2026-08": 47.8,
+    "vm-wmsys-sec-prod-01|2026-09": 47.8,
+    "vm-wmsys-sec-prod-01|2026-10": 47.8,
+    "vm-wmsys-web-prod-01|2026-07": 55.55,
+    "vm-wmsys-web-prod-01|2026-08": 55.55,
+    "vm-wmsys-web-prod-01|2026-09": 55.55,
+    "vm-wmsys-web-prod-01|2026-10": 55.55,
+    "vm-wmsys-web-prod-02|2026-07": 3.35,
+    "vm-wmsys-web-prod-02|2026-08": 3.35,
+    "vm-wmsys-web-prod-02|2026-09": 3.35,
+    "vm-wmsys-web-prod-02|2026-10": 3.35
   }
 }

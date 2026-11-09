@@ -12,14 +12,14 @@
 # MARKDOWN ********************
 
 # # nb_silver_budget: Financial budget -> Silver
-# Out: `silver_budget` (one row per cost center and month, FY2026).
+# Out: `silver_budget` (one row per cost center and month, FY2024 to FY2026).
 #
 # | Defect | Action |
 # |---|---|
 # | cost center without leading zero (`420`) | fix: pad to 4 digits |
 # | month as `MM/dd/yyyy` | fix: multi-format parse |
 # | department name variant | fix: canonical name per department code (rule, no AI needed) |
-# | amount entered in thousands | fix x1000 when it is ~1/1000 of the cost center's normal month; flagged |
+# | amount entered in thousands | fix x1000 when it is ~1/1000 of the cost center's normal month in that fiscal year; flagged |
 # | negative amount | quarantine |
 # | line delivered twice | merge |
 # | months missing / cost center unknown to the CMDB | flag (`meta_completeness`, `cc_has_application`) |
@@ -66,9 +66,9 @@ good = b.join(bad.select("_row_hash"), "_row_hash", "left_anti")
 # duplicates: one line per cost center and month
 good, n_m = dedupe(good, ENTITY, ["cost_center_code", "budget_month_dt"], RUN_ID)
 
-# amounts entered in thousands: ~1/1000 of the cost center's median month
-med = good.groupBy("cost_center_code").agg(F.expr("percentile_approx(budget_cost_num, 0.5)").alias("_median"))
-good = (good.join(med, "cost_center_code")
+# amounts entered in thousands: ~1/1000 of the cost center's median month of that fiscal year
+med = good.groupBy("cost_center_code", "fiscal_year").agg(F.expr("percentile_approx(budget_cost_num, 0.5)").alias("_median"))
+good = (good.join(med, ["cost_center_code", "fiscal_year"])
             .withColumn("amount_scaled_x1000", (F.col("budget_cost_num") * 1000 / F.col("_median")).between(0.5, 2.0))
             .withColumn("budget_cost_usd", F.when(F.col("amount_scaled_x1000"), F.col("budget_cost_num") * 1000)
                         .otherwise(F.col("budget_cost_num"))))
@@ -94,11 +94,12 @@ n_out = silver_write(out, "silver_budget")
 log_step(RUN_ID, "silver", ENTITY, "BUDGET", "silver_budget", rows_out=n_out, rows_in=n_in, quarantined=n_q, merged=n_m,
          amount=silver("silver_budget").select(F.sum("budget_cost_usd")).first()[0], notebook=NB)
 
-# completeness: 12 months per cost center
-months = silver("silver_budget").groupBy("cost_center_code").agg(F.collect_set(F.month("budget_month")).alias("m")).collect()
+# completeness: 12 months per cost center and fiscal year
+months = (silver("silver_budget").groupBy("cost_center_code", F.year("budget_month").alias("y"))
+          .agg(F.collect_set(F.month("budget_month")).alias("m")).collect())
 for r in months:
     for mth in sorted(set(range(1, 13)) - set(r["m"])):
-        log_gap(RUN_ID, ENTITY, "MISSING_BUDGET_MONTH", f"{r['cost_center_code']}|2026-{mth:02d}", layer="silver")
+        log_gap(RUN_ID, ENTITY, "MISSING_BUDGET_MONTH", f"{r['cost_center_code']}|{r['y']}-{mth:02d}", layer="silver")
 
 # METADATA ********************
 

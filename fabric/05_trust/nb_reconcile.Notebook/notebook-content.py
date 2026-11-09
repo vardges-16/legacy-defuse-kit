@@ -75,7 +75,7 @@ ENTITIES = {
                              silver=["silver_license_products"]),
     "license_entitlements": dict(source=dict(rows=13, note="checked by hand in Azure SQL"), bronze="license_entitlements",
                                  silver=["silver_license_entitlements"]),
-    "license_installations": dict(source=dict(rows=178, note="checked by hand in Azure SQL"), bronze="installations",
+    "license_installations": dict(source=dict(rows=177, note="checked by hand in Azure SQL"), bronze="installations",
                                   silver=["silver_license_installations"]),
 }
 

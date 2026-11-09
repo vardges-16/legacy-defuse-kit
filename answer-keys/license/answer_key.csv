@@ -1,78 +1,78 @@
 defect_id,table_name,record_id,field,delivered_value,expected_value,expected_action,detail
-D07,license_entitlements,product 3,quantity,242,322,Flag,BYOL cores installed exceed entitled cores (over-deployment)
-D07,license_entitlements,product 7,quantity,76,128,Flag,BYOL cores installed exceed entitled cores (over-deployment)
-D08,license_entitlements,5002,end_date,2026-06-30,,Flag,entitlement expired before 2026-10-31 but still the only coverage
-D08,license_entitlements,5003,end_date,2026-06-30,,Flag,entitlement expired before 2026-10-31 but still the only coverage
-D01,installations,100048,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100046,raw_product_name,SQL2022 Standard Ed.,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100142,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100095,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100165,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100167,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100065,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100168,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100012,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100070,raw_product_name,SQL2022 Standard Ed.,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100157,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100122,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100018,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100023,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100124,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100041,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100139,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100112,raw_product_name,MS SQL Svr 2019 Std,SQL Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100063,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100117,raw_product_name,MS SQL Svr 2022 Std,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100010,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100075,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100099,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100050,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100115,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100076,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100061,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D07,license_entitlements,product 3,quantity,148,198,Flag,BYOL cores installed exceed entitled cores (over-deployment)
+D07,license_entitlements,product 7,quantity,88,146,Flag,BYOL cores installed exceed entitled cores (over-deployment)
+D08,license_entitlements,5010,end_date,2026-06-30,,Flag,entitlement expired before 2026-10-31 but still the only coverage
+D08,license_entitlements,5001,end_date,2026-06-30,,Flag,entitlement expired before 2026-10-31 but still the only coverage
+D01,installations,100109,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100040,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100031,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100025,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100140,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100115,raw_product_name,SQL2019 STD,SQL Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100072,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100059,raw_product_name,SQL2022 Standard Ed.,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100035,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100162,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100130,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100159,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100013,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100064,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100091,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100071,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100083,raw_product_name,Windows Server 2019 DataCenter,Windows Server 2019 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100132,raw_product_name,MSSQL 2022 EE,SQL Server 2022 Enterprise,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100150,raw_product_name,MS SQL Svr 2019 Std,SQL Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100030,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100063,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100169,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100023,raw_product_name,Win2019 DC,Windows Server 2019 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100043,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100048,raw_product_name,SQL2019 STD,SQL Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100050,raw_product_name,SQL2022 Standard Ed.,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
 D01,installations,100148,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100147,raw_product_name,MSSQL 2022 EE,SQL Server 2022 Enterprise,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100101,raw_product_name,MS SQL Svr 2022 Std,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100034,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100045,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100167,raw_product_name,MS SQL Svr 2022 Std,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100092,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
 D01,installations,100137,raw_product_name,SQL2022 Standard Ed.,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100044,raw_product_name,Windows Server 2019 DataCenter,Windows Server 2019 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100128,raw_product_name,MS SQL Svr 2022 Std,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100114,raw_product_name,Win2019 DC,Windows Server 2019 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100082,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100086,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100089,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100147,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100011,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100036,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100031,raw_product_name,SQL2019 STD,SQL Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100161,raw_product_name,Windows Server 2019 DataCenter,Windows Server 2019 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100025,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100164,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100153,raw_product_name,SQL Server 2022 Ent.,SQL Server 2022 Enterprise,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100091,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100079,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100152,raw_product_name,Windows Server 2019 DataCenter,Windows Server 2019 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100027,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100060,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100104,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100069,raw_product_name,Win Srv 2019 Std,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
-D01,installations,100136,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
-D05,installations,100163,core_count,,16,Fix,core count empty: take it from the VM size
-D05,installations,100111,core_count,,16,Fix,core count empty: take it from the VM size
-D05,installations,100073,core_count,,2,Fix,core count empty: take it from the VM size
-D05,installations,100029,core_count,,2,Fix,core count empty: take it from the VM size
-D05,installations,100042,core_count,,8,Fix,core count empty: take it from the VM size
-D06,installations,100052,license_model,BYOL,PAYG,Flag,vm-mktaut-app-prod-02 has pay-as-you-go Windows charges in FOCUS: paying twice
-D06,installations,100040,license_model,BYOL,PAYG,Flag,vm-plat-sec-shared-01 has pay-as-you-go Windows charges in FOCUS: paying twice
-D06,installations,100081,license_model,BYOL,PAYG,Flag,vm-endpt-web-prod-01 has pay-as-you-go Windows charges in FOCUS: paying twice
-D06,installations,100005,license_model,BYOL,PAYG,Flag,vm-slscrm-app-dev-01 has pay-as-you-go Windows charges in FOCUS: paying twice
-D03,installations,100046,last_seen_date,2026-10-31,,Flag,VM deleted 2026-07-22 but still reported as installed
-D03,installations,100068,last_seen_date,2026-10-29,,Flag,VM deleted 2026-08-18 but still reported as installed
+D01,installations,100007,raw_product_name,MS SQL Svr 2019 Std,SQL Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100018,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100049,raw_product_name,SQL Server 2022 Ent.,SQL Server 2022 Enterprise,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100004,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100037,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100157,raw_product_name,WS2022 Standard,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100033,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100090,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100028,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100038,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100106,raw_product_name,Windows Server 2022 Datacenter Edition,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100060,raw_product_name,Win Srv 2022 Std,Windows Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100079,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100081,raw_product_name,MS SQL Svr 2022 Std,SQL Server 2022 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100105,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100111,raw_product_name,Win Srv 2022 DC,Windows Server 2022 Datacenter,AI-classify,"discovery name variant, product_id empty"
+D01,installations,100047,raw_product_name,Microsoft Windows Server 2019 Standard Edition,Windows Server 2019 Standard,AI-classify,"discovery name variant, product_id empty"
+D05,installations,100051,core_count,,8,Fix,core count empty: take it from the VM size
+D05,installations,100110,core_count,,16,Fix,core count empty: take it from the VM size
+D05,installations,100006,core_count,,4,Fix,core count empty: take it from the VM size
+D05,installations,100065,core_count,,16,Fix,core count empty: take it from the VM size
+D05,installations,100039,core_count,,2,Fix,core count empty: take it from the VM size
+D06,installations,100104,license_model,BYOL,PAYG,Flag,vm-edisc-data-dev-01 has pay-as-you-go Windows charges in FOCUS: paying twice
+D06,installations,100107,license_model,BYOL,PAYG,Flag,vm-qmsys-web-prod-01 has pay-as-you-go Windows charges in FOCUS: paying twice
+D06,installations,100102,license_model,BYOL,PAYG,Flag,vm-itsmgt-web-prod-01 has pay-as-you-go Windows charges in FOCUS: paying twice
+D06,installations,100044,license_model,BYOL,PAYG,Flag,vm-cntrct-data-dev-01 has pay-as-you-go Windows charges in FOCUS: paying twice
+D03,installations,100018,last_seen_date,2026-10-30,,Flag,VM deleted 2026-10-06 but still reported as installed
 D03,installations,100074,last_seen_date,2026-10-28,,Flag,VM deleted 2026-09-09 but still reported as installed
-D03,installations,100077,last_seen_date,2026-10-30,,Flag,VM deleted 2026-10-06 but still reported as installed
-D03,installations,100102,last_seen_date,2026-10-29,,Flag,VM deleted 2026-07-22 but still reported as installed
-D02,installations,100171,host_name,srv-hr-76,,Flag,host not in the CMDB or FOCUS (unmanaged)
-D02,installations,100172,host_name,srv-ops-60,,Flag,host not in the CMDB or FOCUS (unmanaged)
-D02,installations,100173,host_name,srv-lab-37,,Flag,host not in the CMDB or FOCUS (unmanaged)
-D02,installations,100174,host_name,srv-ops-53,,Flag,host not in the CMDB or FOCUS (unmanaged)
-D02,installations,100175,host_name,srv-lab-94,,Flag,host not in the CMDB or FOCUS (unmanaged)
-D04,installations,100176,,,100149,Merge,duplicate installation row
-D04,installations,100177,,,100140,Merge,duplicate installation row
-D04,installations,100178,,,100028,Merge,duplicate installation row
+D03,installations,100093,last_seen_date,2026-10-30,,Flag,VM deleted 2026-07-22 but still reported as installed
+D03,installations,100110,last_seen_date,2026-10-30,,Flag,VM deleted 2026-07-22 but still reported as installed
+D03,installations,100160,last_seen_date,2026-10-30,,Flag,VM deleted 2026-08-18 but still reported as installed
+D02,installations,100170,host_name,srv-hr-64,,Flag,host not in the CMDB or FOCUS (unmanaged)
+D02,installations,100171,host_name,srv-lab-86,,Flag,host not in the CMDB or FOCUS (unmanaged)
+D02,installations,100172,host_name,srv-lab-14,,Flag,host not in the CMDB or FOCUS (unmanaged)
+D02,installations,100173,host_name,srv-lab-78,,Flag,host not in the CMDB or FOCUS (unmanaged)
+D02,installations,100174,host_name,srv-lab-45,,Flag,host not in the CMDB or FOCUS (unmanaged)
+D04,installations,100175,,,100169,Merge,duplicate installation row
+D04,installations,100176,,,100036,Merge,duplicate installation row
+D04,installations,100177,,,100164,Merge,duplicate installation row

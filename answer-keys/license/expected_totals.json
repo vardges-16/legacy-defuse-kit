@@ -3,34 +3,34 @@
   "rows_delivered": {
     "license_products": 8,
     "license_entitlements": 13,
-    "installations": 178
+    "installations": 177
   },
-  "installations_true": 170,
+  "installations_true": 169,
   "byol_cores_installed_true": {
-    "1": 206,
-    "2": 28,
-    "3": 322,
-    "4": 132,
-    "5": 60,
-    "7": 128,
-    "8": 100
+    "1": 146,
+    "2": 72,
+    "3": 198,
+    "4": 228,
+    "5": 100,
+    "7": 146,
+    "8": 52
   },
   "cores_entitled": {
-    "1": 258,
-    "2": 30,
-    "3": 242,
-    "4": 164,
-    "5": 74,
-    "7": 76,
-    "8": 126
+    "1": 162,
+    "2": 82,
+    "3": 148,
+    "4": 242,
+    "5": 124,
+    "7": 88,
+    "8": 62
   },
   "double_licensed_vms": [
-    "vm-endpt-web-prod-01",
-    "vm-mktaut-app-prod-02",
-    "vm-plat-sec-shared-01",
-    "vm-slscrm-app-dev-01"
+    "vm-cntrct-data-dev-01",
+    "vm-edisc-data-dev-01",
+    "vm-itsmgt-web-prod-01",
+    "vm-qmsys-web-prod-01"
   ],
-  "annual_entitlement_cost_usd": 1425900,
+  "annual_entitlement_cost_usd": 1139080,
   "defect_counts": {
     "D01": 51,
     "D02": 5,

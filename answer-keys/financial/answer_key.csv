@@ -3,19 +3,19 @@ B07,BUDGET,3600,cost_center_code,3600,,Flag,budget for a cost center with no app
 B05,BUDGET,2150|2026-08,,,,Flag,budget month missing
 B05,BUDGET,2150|2026-09,,,,Flag,budget month missing
 B02,BUDGET,0420|*,cost_center_code,420,0420,Fix,leading zero lost on all rows of the cost center
-B03,BUDGET,0450|2026-12,budget_cost,3.09,3090.00,Flag,amount entered in thousands
-B03,BUDGET,3120|2026-09,budget_cost,3.60,3600.00,Flag,amount entered in thousands
-B04,BUDGET,0410|2026-01,budget_cost,-9500.00,9500.00,Quarantine,negative amount
-B06,BUDGET,2110|2026-10,budget_month,10/01/2026,2026-10-01,Fix,month not in yyyy-MM-dd
-B06,BUDGET,3170|2026-01,budget_month,01/01/2026,2026-01-01,Fix,month not in yyyy-MM-dd
-B06,BUDGET,0410|2026-04,budget_month,04/01/2026,2026-04-01,Fix,month not in yyyy-MM-dd
-B06,BUDGET,3170|2026-08,budget_month,08/01/2026,2026-08-01,Fix,month not in yyyy-MM-dd
-B08,BUDGET,3550|2026-06,department_name,HUMAN RESOURCES,Human Resources,Fix,department name variant
-B08,BUDGET,0610|2026-05,department_name,SUPPLY CHAIN,Supply Chain,Fix,department name variant
-B08,BUDGET,0450|2026-08,department_name,QUALITY CONTROL,Quality Control,Fix,department name variant
-B08,BUDGET,2150|2026-10,department_name,CUSTOMER SERVICE,Customer Service,Fix,department name variant
-B08,BUDGET,3110|2026-10,department_name,IT Ops,IT Operations,Fix,department name variant
-B08,BUDGET,3550|2026-08,department_name,HUMAN RESOURCES,Human Resources,Fix,department name variant
-B01,BUDGET,3600|2026-06,,,,Merge,line delivered twice
-B01,BUDGET,2110|2026-01,,,,Merge,line delivered twice
-B01,BUDGET,3600|2026-09,,,,Merge,line delivered twice
+B03,BUDGET,3590|2025-03,budget_cost,3.50,3500.00,Flag,amount entered in thousands
+B03,BUDGET,2310|2026-07,budget_cost,5.15,5150.00,Flag,amount entered in thousands
+B04,BUDGET,0410|2026-04,budget_cost,-7000.00,7000.00,Quarantine,negative amount
+B06,BUDGET,0420|2026-04,budget_month,04/01/2026,2026-04-01,Fix,month not in yyyy-MM-dd
+B06,BUDGET,3550|2025-05,budget_month,05/01/2025,2025-05-01,Fix,month not in yyyy-MM-dd
+B06,BUDGET,3590|2024-06,budget_month,06/01/2024,2024-06-01,Fix,month not in yyyy-MM-dd
+B06,BUDGET,3110|2026-07,budget_month,07/01/2026,2026-07-01,Fix,month not in yyyy-MM-dd
+B08,BUDGET,2110|2025-09,department_name,SALES,Sales,Fix,department name variant
+B08,BUDGET,3170|2026-09,department_name,Data and Analytics,Data & Analytics,Fix,department name variant
+B08,BUDGET,2150|2024-10,department_name,CUSTOMER SERVICE,Customer Service,Fix,department name variant
+B08,BUDGET,3150|2025-03,department_name,PLATFORM ENGINEERING,Platform Engineering,Fix,department name variant
+B08,BUDGET,2310|2025-12,department_name,MARKETING,Marketing,Fix,department name variant
+B08,BUDGET,3510|2024-07,department_name,FINANCE,Finance,Fix,department name variant
+B01,BUDGET,3550|2024-01,,,,Merge,line delivered twice
+B01,BUDGET,3170|2026-05,,,,Merge,line delivered twice
+B01,BUDGET,0420|2025-07,,,,Merge,line delivered twice

@@ -13,18 +13,18 @@ BEGIN
     -- ---------------------------------------------------------- dimensions
     DROP TABLE IF EXISTS dbo.dim_date;
     CREATE TABLE dbo.dim_date AS
-    SELECT CAST(DATEADD(DAY, i, '2026-01-01') AS DATE)                    AS date_key,
-           YEAR(DATEADD(DAY, i, '2026-01-01'))                            AS [year],
-           MONTH(DATEADD(DAY, i, '2026-01-01'))                           AS month_no,
-           CAST(DATEFROMPARTS(YEAR(DATEADD(DAY, i, '2026-01-01')), MONTH(DATEADD(DAY, i, '2026-01-01')), 1) AS DATE) AS month_start,
-           LEFT(DATENAME(MONTH, DATEADD(DAY, i, '2026-01-01')), 3) + ' ' + CAST(YEAR(DATEADD(DAY, i, '2026-01-01')) AS VARCHAR(4)) AS month_name,
-           DATEPART(QUARTER, DATEADD(DAY, i, '2026-01-01'))               AS quarter_no,
-           CASE WHEN DATEPART(WEEKDAY, DATEADD(DAY, i, '2026-01-01')) IN (1, 7) THEN 1 ELSE 0 END AS is_weekend
+    SELECT CAST(DATEADD(DAY, i, '2024-01-01') AS DATE)                    AS date_key,
+           YEAR(DATEADD(DAY, i, '2024-01-01'))                            AS [year],
+           MONTH(DATEADD(DAY, i, '2024-01-01'))                           AS month_no,
+           CAST(DATEFROMPARTS(YEAR(DATEADD(DAY, i, '2024-01-01')), MONTH(DATEADD(DAY, i, '2024-01-01')), 1) AS DATE) AS month_start,
+           LEFT(DATENAME(MONTH, DATEADD(DAY, i, '2024-01-01')), 3) + ' ' + CAST(YEAR(DATEADD(DAY, i, '2024-01-01')) AS VARCHAR(4)) AS month_name,
+           DATEPART(QUARTER, DATEADD(DAY, i, '2024-01-01'))               AS quarter_no,
+           CASE WHEN DATEPART(WEEKDAY, DATEADD(DAY, i, '2024-01-01')) IN (1, 7) THEN 1 ELSE 0 END AS is_weekend
     FROM (SELECT a.v + 10 * b.v + 100 * c.v AS i
           FROM (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9)) a(v)
           CROSS JOIN (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9)) b(v)
-          CROSS JOIN (VALUES (0),(1),(2),(3)) c(v)) n
-    WHERE i < 365;
+          CROSS JOIN (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9),(10)) c(v)) n
+    WHERE i < 1096;   -- 2024-01-01 .. 2026-12-31
 
     DROP TABLE IF EXISTS dbo.dim_cost_center;
     CREATE TABLE dbo.dim_cost_center AS

@@ -2,14 +2,15 @@
 
 One generator, one shared truth, five legacy systems that join. Replaces the v2 specs in this folder.
 
-`python generators/generate_zontique.py data/generated` (seed 42, same output every run, about 3 s). Data files go to `data/generated/` (git-ignored); answer keys are committed in `answer-keys/`.
+`python generators/generate_zontique.py data/generated` (seed 42, same output every run, about 15 s). Data files go to `data/generated/` (git-ignored); answer keys are committed in `answer-keys/`.
 
 ## Scope
 
 | Item | Value |
 |---|---|
-| Actuals | 2026-07-01 to 2026-10-31, daily, USD; `as_of` 2026-10-31 |
-| Budget | FY2026, per cost center and month |
+| Cloud cost | 2024-01-01 to 2026-10-31, daily lines, one export file per provider and month (`focus_<provider>_yyyymm.csv`), USD; `as_of` 2026-10-31. A scope starts billing on its CMDB creation date, so spend grows from about $36k to $126k a month |
+| VM Backups | Last 4 months only (2026-07 to 2026-10): the backup system keeps no older exports |
+| Budget | FY2024 to FY2026, per cost center and month |
 | Organisation | 3 business units, 15 cost centers (0410 to 3590), 20 applications (APP-001 to APP-020) |
 | Cloud | Azure (4 subscriptions, resource groups `rg-<app>-<tier>-<env>-<region>-001`) and Google Cloud (projects `prj-<app>-<p/n/d>-<tier>-<hex>`) |
 | Join keys | Application code (`MFGEXE`...) in tags and scope names; resource group / project; VM name; cost center |
@@ -18,11 +19,11 @@ One generator, one shared truth, five legacy systems that join. Replaces the v2 
 
 | # | System | Lands in | Files | Rows |
 |---|---|---|---|---|
-| 1 | Cloud cost, **FOCUS 1.2** (Azure + Google Cloud) | Snowflake `COST.FOCUS_COST` | `snowflake/cost/focus_{azure,gcp}_yyyymm.csv` (9 files, 59 columns) | 44,183 |
+| 1 | Cloud cost, **FOCUS 1.2** (Azure + Google Cloud) | Snowflake `COST.FOCUS_COST` | `snowflake/cost/focus_{azure,gcp}_yyyymm.csv` (69 files, 59 columns) | 275,649 |
 | 2 | Cloud CMDB | Snowflake `CMDB.ASSETS`, `CMDB.ASSET_GROUPS` | `snowflake/cmdb/*.csv` | 123 / 21 |
-| 3 | Financial budget | Snowflake `FIN.BUDGET` | `snowflake/fin/financial_budget.csv` | 193 |
-| 4 | License & Inventory | Azure SQL `dbo` (3 tables) | `azure_sql/license_load.sql` (+ CSV) | 8 / 13 / 178 |
-| 5 | VM Backups | OneLake `lh_bronze` Files (daily drop) | `vm_backups/jobs/` (120 daily files), `storage/` (4 monthly) | 11,247 / 372 |
+| 3 | Financial budget | Snowflake `FIN.BUDGET` | `snowflake/fin/financial_budget.csv` | 577 |
+| 4 | License & Inventory | Azure SQL `dbo` (3 tables) | `azure_sql/license_load.sql` (+ CSV) | 8 / 13 / 177 |
+| 5 | VM Backups | OneLake `lh_bronze` Files (daily drop) | `vm_backups/jobs/` (120 daily files), `storage/` (4 monthly) | 11,098 / 360 |
 
 Snowflake build: `legacy/snowflake/zontique_legacy.sql`.
 
@@ -51,10 +52,10 @@ FOCUS facts (not defects): reservation purchases carry `BilledCost`, covered usa
 
 ## The story the clean data tells (`answer-keys/expected_gold.json`)
 
-- About $120–145k cloud spend a month, growing.
-- **Data & Analytics (3170)** runs at 2.6× budget by October (AI services spike from September).
-- **Sales (2110)** at +40%; **Legal & Compliance (3590)** and **Quality Control (0450)** overrun.
-- About $11k a month of spend is unallocated (shadow IT); retired applications still bill (zombies).
+- Cloud spend grows from about $36k a month (January 2024) to about $126k (October 2026).
+- **Data & Analytics (3170)** runs at 2.7× budget by October 2026 (AI services spike from September).
+- **Sales (2110)** at +44%; **Legal & Compliance (3590)** and **Quality Control (0450)** overrun.
+- Part of the spend is unallocated (shadow IT); retired applications still bill (zombies).
 - Orphaned backup storage, 4 double-licensed VMs, 2 under-licensed products.
 
 The legacy RPT views and the Legacy Cost Report miss most of this, by design.
