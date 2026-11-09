@@ -76,5 +76,17 @@
         "artifactType": "MountedRelationalDatabase"
       }
     }
+  },
+  {
+    "name": "vm-backups",
+    "path": "/Files/landing",
+    "target": {
+      "type": "AdlsGen2",
+      "adlsGen2": {
+        "connectionId": "3856e63f-0842-472e-a6c4-dd23b322cb45",
+        "location": "https://saodlepam2446996datalake.dfs.core.windows.net",
+        "subpath": "/vm-backups"
+      }
+    }
   }
 ]
