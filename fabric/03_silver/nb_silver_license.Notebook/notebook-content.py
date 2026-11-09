@@ -13,8 +13,7 @@
 
 # # nb_silver_license: License & Inventory (Azure SQL) -> Silver
 # Out: `silver_license_products`, `silver_license_entitlements`, `silver_license_installations`.
-#
-# | Defect | Action |
+# # | Defect | Action |
 # |---|---|
 # | discovery product name variant, product id empty ("Win Srv 2022 DC") | rules, then **AI classify** into the 8 catalog products (gated) |
 # | duplicate installation row | merge (same content, new id) |

@@ -13,8 +13,7 @@
 
 # # nb_silver_cost: FOCUS 1.2 cost (Azure + Google Cloud) -> Silver
 # Out: `silver_cost`, one row per cost line, typed, attributed to an application and cost center.
-#
-# | Step | Defects handled | How |
+# # | Step | Defects handled | How |
 # |---|---|---|
 # | Export re-run | the same day delivered twice | merge on a content hash (all FOCUS columns, not the export run id) |
 # | Dates | `MM/dd/yyyy HH:mm` in one file | multi-format parse |
