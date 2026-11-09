@@ -9,12 +9,12 @@ flowchart TB
   subgraph SRC["Legacy systems"]
     SF["Snowflake ZONTIQUE_LEGACY<br/>Cost (FOCUS 1.2, monthly files 2024-01..2026-10)<br/>CMDB, Financial budget"]
     SQL["Azure SQL<br/>License and Inventory"]
-    CSV["VM Backups<br/>daily and monthly CSV files"]
+    CSV["VM Backups<br/>Azure Storage vm-backups<br/>daily job files (4 months), monthly storage files (from 2024-01)"]
   end
   subgraph ING["Ingestion"]
     M1["mir_snowflake<br/>Fabric Mirroring"]
     M2["mir_license<br/>Fabric Mirroring"]
-    UP["Files landing<br/>lh_bronze/Files/landing/vm_backups"]
+    UP["OneLake shortcut<br/>lh_bronze/Files/landing/vm_backups"]
   end
   subgraph BRZ["Bronze: lh_bronze (as received)"]
     B1["Schema shortcuts cost, cmdb, fin<br/>table shortcuts dbo (license)"]
@@ -57,8 +57,8 @@ Solid arrows carry data; dotted arrows are what each layer writes to the Trust L
 | Layer | Item | What it does |
 |---|---|---|
 | Legacy | Snowflake `ZONTIQUE_LEGACY` (`COST`, `CMDB`, `FIN`, `RPT`), Azure SQL `dbo`, Legacy Cost Report | The "before": flawed legacy views and a report that reads them directly |
-| Ingestion | `mir_snowflake`, `mir_license` | Fabric Mirroring, near real time, no code |
-| Bronze | `lh_bronze` | Data exactly as received (all text for Snowflake). Shortcuts to the mirrors; `nb_bronze_files` lands the VM Backup files |
+| Ingestion | `mir_snowflake`, `mir_license`, storage account `saodlepam2446996datalake` (container `vm-backups`) | Fabric Mirroring (no code) for the databases; OneLake shortcut for the backup files |
+| Bronze | `lh_bronze` | Data exactly as received (all text for Snowflake). Shortcuts to the mirrors; a OneLake shortcut exposes the `vm-backups` storage container, and `nb_bronze_files` reads the files |
 | Silver | `lh_silver` + 5 notebooks | Typed, de-duplicated, attributed to application and cost center; every Bronze row ends in Silver, quarantine or the merge log |
 | Contracts | `nb_silver_contract` | Materialized lake views that fail the run if a "ready for Gold" rule is broken |
 | Gold | `wh_gold`, `usp_build_gold` | Star schema, rebuilt each run. Tables only (Direct Lake on OneLake can't read views) |

@@ -9,7 +9,8 @@ One generator, one shared truth, five legacy systems that join. Replaces the v2 
 | Item | Value |
 |---|---|
 | Cloud cost | 2024-01-01 to 2026-10-31, daily lines, one export file per provider and month (`focus_<provider>_yyyymm.csv`), USD; `as_of` 2026-10-31. A scope starts billing on its CMDB creation date, so spend grows from about $36k to $126k a month |
-| VM Backups | Last 4 months only (2026-07 to 2026-10): the backup system keeps no older exports |
+| VM Backups | **Storage reports monthly from 2024-01 to 2026-10** (same period as cost and budget; a VM appears from its creation month, retained storage grows over time). **Daily job logs only for the last 4 months** (2026-07 to 2026-10): the backup tool keeps no older job history |
+| CMDB, License | Snapshots as of 2026-10-31 (the CMDB carries creation dates; License carries install and last-seen dates) |
 | Budget | FY2024 to FY2026, per cost center and month |
 | Organisation | 3 business units, 15 cost centers (0410 to 3590), 20 applications (APP-001 to APP-020) |
 | Cloud | Azure (4 subscriptions, resource groups `rg-<app>-<tier>-<env>-<region>-001`) and Google Cloud (projects `prj-<app>-<p/n/d>-<tier>-<hex>`) |
@@ -23,7 +24,7 @@ One generator, one shared truth, five legacy systems that join. Replaces the v2 
 | 2 | Cloud CMDB | Snowflake `CMDB.ASSETS`, `CMDB.ASSET_GROUPS` | `snowflake/cmdb/*.csv` | 123 / 21 |
 | 3 | Financial budget | Snowflake `FIN.BUDGET` | `snowflake/fin/financial_budget.csv` | 577 |
 | 4 | License & Inventory | Azure SQL `dbo` (3 tables) | `azure_sql/license_load.sql` (+ CSV) | 8 / 13 / 177 |
-| 5 | VM Backups | OneLake `lh_bronze` Files (daily drop) | `vm_backups/jobs/` (120 daily files), `storage/` (4 monthly) | 11,098 / 360 |
+| 5 | VM Backups | Azure Storage container `vm-backups`, read through a OneLake shortcut at `lh_bronze` Files `landing/vm_backups` | `jobs/` (120 daily files, 2026-07 to 2026-10), `storage/` (34 monthly files, 2024-01 to 2026-10) | 11,098 / 2,395 (90 per month in 2026-07 to 2026-10) |
 
 Snowflake build: `legacy/snowflake/zontique_legacy.sql`.
 
@@ -57,5 +58,6 @@ FOCUS facts (not defects): reservation purchases carry `BilledCost`, covered usa
 - **Sales (2110)** at +44%; **Legal & Compliance (3590)** and **Quality Control (0450)** overrun.
 - Part of the spend is unallocated (shadow IT); retired applications still bill (zombies).
 - Orphaned backup storage, 4 double-licensed VMs, 2 under-licensed products.
+- Backup storage cost grows with the estate, from about $670 (2024-01) to about $3,840 (2026-10) a month.
 
 The legacy RPT views and the Legacy Cost Report miss most of this, by design.

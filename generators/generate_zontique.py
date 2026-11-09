@@ -718,7 +718,7 @@ for r in az_vms:
     s = r["scope"]
     protected = s["env"] in ("prod", "shared") or rnd.random() < (0.5 if s["env"] == "test" else 0.3)
     vms.append(dict(name=r["name"], rid=r["id"], env=s["env"], region=s["region"], deleted=r["deleted"],
-                    protected=protected, in_cmdb=s["in_cmdb"], base_gb=rnd.randint(40, 2000) if s["env"] == "prod" else rnd.randint(20, 300)))
+                    protected=protected, in_cmdb=s["in_cmdb"], created=s["created"], base_gb=rnd.randint(40, 2000) if s["env"] == "prod" else rnd.randint(20, 300)))
 for v in vms:
     if not v["in_cmdb"]:
         ak("vm-backups", "D02", "BACKUP_JOBS", v["name"], "", "", "", "Flag", "VM in a resource group the CMDB doesn't know")
@@ -799,19 +799,30 @@ ak("vm-backups", "D07", "BACKUP_JOBS", f"backup_jobs_{DRIFT_FROM:%Y%m%d}.csv", "
    "schema drift: column renamed, new column SOURCE_REGION from this day on")
 os.makedirs(f"{OUT}/vm_backups/storage", exist_ok=True)
 storage_totals, orphan_totals, orphan_vms, backup_cost_vm = {}, {}, set(), defaultdict(float)
-for ms in BK_MONTHS:
+storage_rows = {}
+srng = random.Random(SEED + 7)   # separate stream for months before RECENT: keeps every later random draw unchanged
+for ms in MONTHS:
     month, fn = mkey(ms), f"backup_storage_{ms:%Y%m}.csv"
     total = orphan = 0.0
+    n_rows = 0
     with open(f"{OUT}/vm_backups/storage/{fn}", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["MONTH", "VM_NAME", "VM_RESOURCE_ID", "VAULT_NAME", "PROTECTION_STATE", "RETAINED_STORAGE_GB", "STORAGE_COST_USD"])
         for v in vms:
-            if not v["protected"]:
+            nxt = (ms.replace(day=28) + timedelta(4)).replace(day=1)
+            if not v["protected"] or v["created"] >= nxt:      # not protected, or the VM does not exist yet
                 continue
             stopped = v["deleted"] is not None and v["deleted"] <= ms
-            gb = v["base_gb"] if not stopped else round(v["base_gb"] * 0.9, 0)
+            if ms < RECENT:   # retained storage grows from about 30% at creation to the current size
+                age, span = (ms - v["created"]).days, max(1, (RECENT - v["created"]).days)
+                ratio = min(1.0, 0.3 + 0.7 * max(0, age) / span)
+            else:
+                ratio = 1.0
+            gb = round(v["base_gb"] * ratio, 0) if not stopped else round(v["base_gb"] * 0.9, 0)
             cost = round(gb * GB_PRICE, 2)
-            w.writerow([month, shown(v), v["rid"], vault(v), "ProtectionStopped" if stopped else "Protected", gb, f"{cost:.2f}"])
+            name_shown = shown(v) if ms >= RECENT else (variant[v["name"]] if v["name"] in variant and srng.random() < 0.5 else v["name"])
+            w.writerow([month, name_shown, v["rid"], vault(v), "ProtectionStopped" if stopped else "Protected", gb, f"{cost:.2f}"])
+            n_rows += 1
             total += cost
             backup_cost_vm[(v["name"], month)] += cost
             if stopped:
@@ -820,6 +831,7 @@ for ms in BK_MONTHS:
                 ak("vm-backups", "D01", "BACKUP_STORAGE", f"{v['name']}|{month}", "PROTECTION_STATE", "ProtectionStopped", "", "Flag",
                    f"VM deleted {v['deleted']} (no cost lines after that day); backup storage still billed {cost:.2f} USD")
     storage_totals[month], orphan_totals[month] = round(total, 2), round(orphan, 2)
+    storage_rows[month] = n_rows
 
 # ======================================================================= License & Inventory (Azure SQL)
 PRODUCTS = [(1, "Windows Server 2019 Standard", "Windows Server", "Standard"), (2, "Windows Server 2019 Datacenter", "Windows Server", "Datacenter"),
@@ -999,10 +1011,10 @@ write_key("financial", {"seed": SEED, "rows_delivered": len(budget), "rows_true"
                                            for fy in FISCAL_YEARS for cc in CC},
                   "budget_true_total": round(sum(float(b["budget_cost"]) for b in clean_budget), 2),
                   "overrun_cost_centers": sorted(OVERRUN)})
-write_key("vm-backups", {"seed": SEED, "period": [RECENT, END], "vms_total": len(vms), "vms_protected": sum(v["protected"] for v in vms),
+write_key("vm-backups", {"seed": SEED, "jobs_period": [RECENT, END], "storage_period": [START, END], "vms_total": len(vms), "vms_protected": sum(v["protected"] for v in vms),
                   "vms_not_in_cmdb": [v["name"] for v in vms if not v["in_cmdb"]], "job_files": len(job_files), "job_rows_raw": raw_rows,
                   "job_ids_unique": len(unique_jobs), "missing_job_files": sorted(f"backup_jobs_{d:%Y%m%d}.csv" for d in MISSING_DAYS),
-                  "storage_rows_per_month": sum(v["protected"] for v in vms), "storage_cost_usd": storage_totals,
+                  "storage_rows_per_month": storage_rows, "storage_cost_usd": storage_totals,
                   "orphaned_backup_cost_usd": orphan_totals, "orphaned_vms": sorted(orphan_vms), "unprotected_prod_vms": sorted(failing)})
 true_byol = defaultdict(int)
 for x in installs:
