@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "MirroredDatabase",
+    "displayName": "mir_snowflake"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8f826672-8475-8ab4-40c7-45e1f633dfe0"
+  }
+}

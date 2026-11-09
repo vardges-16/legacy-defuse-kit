@@ -1,0 +1,54 @@
+{
+  "properties": {
+    "source": {
+      "type": "Snowflake",
+      "typeProperties": {
+        "connection": "5b5478e1-2f8d-49b7-bc68-96806dd2e5f2",
+        "database": "ZONTIQUE_LEGACY"
+      }
+    },
+    "target": {
+      "type": "MountedRelationalDatabase",
+      "typeProperties": {
+        "defaultSchema": "dbo",
+        "format": "Delta",
+        "retentionInDays": 1,
+        "enableDeltaChangeDataFeed": false
+      }
+    },
+    "mountedTables": [
+      {
+        "source": {
+          "typeProperties": {
+            "schemaName": "CMDB",
+            "tableName": "ASSET_GROUPS"
+          }
+        }
+      },
+      {
+        "source": {
+          "typeProperties": {
+            "schemaName": "CMDB",
+            "tableName": "ASSETS"
+          }
+        }
+      },
+      {
+        "source": {
+          "typeProperties": {
+            "schemaName": "COST",
+            "tableName": "FOCUS_COST"
+          }
+        }
+      },
+      {
+        "source": {
+          "typeProperties": {
+            "schemaName": "FIN",
+            "tableName": "BUDGET"
+          }
+        }
+      }
+    ]
+  }
+}
