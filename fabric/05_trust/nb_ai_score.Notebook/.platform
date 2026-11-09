@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_ai_score",
+    "description": "Cleansing and AI quality against the answer keys"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "717d21a9-a873-4078-9506-6bd53f5c6e00"
+  }
+}

@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "nb_bronze_files"
+    "displayName": "nb_bronze_files",
+    "description": "Bronze intake: VM Backup files with schema drift + counts of mirrored tables"
   },
   "config": {
     "version": "2.0",

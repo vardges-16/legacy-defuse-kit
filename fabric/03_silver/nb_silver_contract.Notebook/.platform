@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_silver_contract",
+    "description": "Data contracts: materialized lake views with FAIL constraints"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5684cd2f-fa12-4a31-a13a-4e80400f5844"
+  }
+}

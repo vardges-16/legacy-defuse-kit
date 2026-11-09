@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_silver_cost",
+    "description": "FOCUS cost -> Silver (AI: application tags, service names)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bd20fc37-118b-48b7-be2b-e8b4f7a11bd1"
+  }
+}

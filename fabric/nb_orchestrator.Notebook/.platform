@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_orchestrator",
+    "description": "Runs Bronze + Silver + contracts in one session (runMultiple DAG)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0ea5704f-ee70-42c0-b7ae-b5b2af78b020"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_ai_review",
+    "description": "Human review of AI decisions the gate didn't accept"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "661b60c7-4726-4860-ab5b-a6d96a2bbdbc"
+  }
+}

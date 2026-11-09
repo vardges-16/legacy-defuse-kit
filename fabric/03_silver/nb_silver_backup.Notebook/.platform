@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_silver_backup",
+    "description": "VM Backups -> Silver"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "36ce8f06-4c22-4ad9-888a-57d9b44473de"
+  }
+}

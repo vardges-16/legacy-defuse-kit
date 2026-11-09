@@ -3,7 +3,7 @@
   "metadata": {
     "type": "Notebook",
     "displayName": "nb_ledger_utils",
-    "description": "Shared Trust Ledger helpers (%run nb_ledger_utils)"
+    "description": "Shared Trust Ledger, Silver and AI helpers (%run nb_ledger_utils)"
   },
   "config": {
     "version": "2.0",
