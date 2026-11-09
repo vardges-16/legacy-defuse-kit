@@ -1,5 +1,18 @@
 [
   {
+    "name": "FIN",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/FIN",
+        "itemId": "8f826672-8475-8ab4-40c7-45e1f633dfe0",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "MountedRelationalDatabase"
+      }
+    }
+  },
+  {
     "name": "license_products",
     "path": "/Tables/dbo",
     "target": {
@@ -33,6 +46,32 @@
       "oneLake": {
         "path": "Tables/dbo/installations",
         "itemId": "5ad5fc2d-f341-9ac7-4020-96c127028095",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "MountedRelationalDatabase"
+      }
+    }
+  },
+  {
+    "name": "COST",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/COST",
+        "itemId": "8f826672-8475-8ab4-40c7-45e1f633dfe0",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "MountedRelationalDatabase"
+      }
+    }
+  },
+  {
+    "name": "CMDB",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/CMDB",
+        "itemId": "8f826672-8475-8ab4-40c7-45e1f633dfe0",
         "workspaceId": "00000000-0000-0000-0000-000000000000",
         "artifactType": "MountedRelationalDatabase"
       }
