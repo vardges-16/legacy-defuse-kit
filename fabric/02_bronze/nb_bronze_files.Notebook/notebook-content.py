@@ -22,40 +22,18 @@
 
 # CELL ********************
 
-# Bronze load: legacy CSV files -> Delta tables in lh_legacy, exactly as received
-from pyspark.sql import functions as F
-import datetime, uuid
+%run nb_ledger_utils
 
-SOURCES = {   # target table : (source system, folder in lh_legacy)
-    "bronze_cmdb_asset_groups": ("cmdb",      "Files/cmdb/object=assetgroups"),
-    "bronze_cmdb_assets":       ("cmdb",      "Files/cmdb/object=assets"),
-    "bronze_fin_budget":        ("financial", "Files/fin"),
-}
-RUN_ID = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:6]
-ledger = []
+# METADATA ********************
 
-for table, (system, path) in SOURCES.items():
-    raw = (spark.read.option("header", True).option("inferSchema", False)
-           .option("recursiveFileLookup", True).csv(path))
-    cols = raw.columns
-    df = (raw
-          .withColumn("_source_file", F.col("_metadata.file_path"))
-          .withColumn("_ingested_at", F.current_timestamp())
-          .withColumn("_run_id", F.lit(RUN_ID))
-          .withColumn("_row_hash", F.sha2(F.concat_ws("||",
-              *[F.coalesce(F.col(f"`{c}`"), F.lit("<null>")) for c in cols]), 256)))
-    df.write.format("delta").mode("overwrite").option("overwriteSchema", True).saveAsTable(table)
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
-    loaded = spark.table(table)
-    rows, files = loaded.count(), loaded.select("_source_file").distinct().count()
-    ledger.append((RUN_ID, system, path, table, files, rows, datetime.datetime.utcnow()))
-    print(f"{table}: {rows} rows from {files} file(s)")
+# PARAMETERS CELL ********************
 
-(spark.createDataFrame(ledger,
-    "run_id string, source_system string, source_path string, target_table string, "
-    "file_count long, row_count long, logged_at timestamp")
- .write.format("delta").mode("append").saveAsTable("meta_load_ledger"))
-display(spark.table("meta_load_ledger").orderBy(F.desc("logged_at")))
+PIPELINE_RUN_ID = ""   # set by the pipeline; empty = new id
 
 # METADATA ********************
 
@@ -66,18 +44,35 @@ display(spark.table("meta_load_ledger").orderBy(F.desc("logged_at")))
 
 # CELL ********************
 
-# Mirrored sources: no copy, just record what Bronze sees
-MIRRORED = {   # table in lh_legacy : (source system, source)
-    "FOCUS_COST":           ("snowflake", "ZONTIQUE_BILLING.RAW.FOCUS_COST"),
-    "installations":        ("license",   "sql-odl-epam-2446996-database.dbo.installations"),
-    "license_entitlements": ("license",   "sql-odl-epam-2446996-database.dbo.license_entitlements"),
-    "license_products":     ("license",   "sql-odl-epam-2446996-database.dbo.license_products"),
+# Bronze = mirrored tables (Snowflake, Azure SQL) seen through table shortcuts in lh_bronze.
+# No copy: record one ledger row per table with what Bronze sees.
+RUN_ID = new_run_id(PIPELINE_RUN_ID)
+MIRRORED = {   # table in lh_bronze : (entity, source system, source)
+    "FOCUS_COST":           ("cost",                  "snowflake", "ZONTIQUE_LEGACY.COST.FOCUS_COST"),
+    "BUDGET":               ("budget",                "snowflake", "ZONTIQUE_LEGACY.FIN.BUDGET"),
+    "ASSETS":               ("cmdb_assets",           "snowflake", "ZONTIQUE_LEGACY.CMDB.ASSETS"),
+    "ASSET_GROUPS":         ("cmdb_asset_groups",     "snowflake", "ZONTIQUE_LEGACY.CMDB.ASSET_GROUPS"),
+    "BACKUP_JOBS":          ("vm_backup_jobs",        "snowflake", "ZONTIQUE_LEGACY.VMB.BACKUP_JOBS"),
+    "BACKUP_STORAGE":       ("vm_backup_storage",     "snowflake", "ZONTIQUE_LEGACY.VMB.BACKUP_STORAGE"),
+    "installations":        ("license_installations", "license",   "sql-odl-epam-2446996-database.dbo.installations"),
+    "license_entitlements": ("license_entitlements",  "license",   "sql-odl-epam-2446996-database.dbo.license_entitlements"),
+    "license_products":     ("license_products",      "license",   "sql-odl-epam-2446996-database.dbo.license_products"),
 }
-m_ledger = [(RUN_ID, sys_, src, t, 0, spark.table(t).count(), datetime.datetime.utcnow())
-            for t, (sys_, src) in MIRRORED.items()]
-(spark.createDataFrame(m_ledger, "run_id string, source_system string, source_path string, target_table string, file_count long, row_count long, logged_at timestamp")
- .write.format("delta").mode("append").saveAsTable("meta_load_ledger"))
-display(spark.table("meta_load_ledger").filter(F.col("run_id") == RUN_ID))
+AMOUNTS = {"FOCUS_COST": "BilledCost", "BUDGET": "budget_cost", "BACKUP_STORAGE": "storage_cost_usd"}
+
+for table, (entity, system, src) in MIRRORED.items():
+    df = read_item(f"lh_bronze.Lakehouse/Tables/dbo/{table}")
+    if df is None:
+        print(f"skip {table}: no shortcut in lh_bronze yet")
+        continue
+    amt_col = next((c for c in df.columns if c.lower() == AMOUNTS.get(table, "").lower()), None)
+    amount = df.select(F.sum(F.col(f"`{amt_col}`").cast("double"))).first()[0] if amt_col else None
+    rows = df.count()
+    log_step(RUN_ID, "bronze", entity, src, table, rows_out=rows, amount=amount,
+             source_system=system, notebook="nb_bronze_files")
+    print(f"{table}: {rows} rows" + (f", {amt_col} {amount:,.2f}" if amount is not None else ""))
+
+display(trust_read("meta_load_ledger").filter(F.col("run_id") == RUN_ID))
 
 # METADATA ********************
 

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_trust_setup",
+    "description": "Create lh_trust ledger tables, copy old meta_* once"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "30a69b14-4ab3-46f4-b108-933efb0d2b35"
+  }
+}

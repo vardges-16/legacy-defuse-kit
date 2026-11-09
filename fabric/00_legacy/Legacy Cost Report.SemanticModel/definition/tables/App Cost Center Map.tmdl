@@ -22,7 +22,7 @@ table 'App Cost Center Map'
 		source =
 				let
 				    // Legacy: mapping kept by hand in Finance's Excel and pasted here (last updated 2023)
-				    Source = #table(type table [SOLUTION_ID = text, cost_center_code = text], {{"SOL-03740087954b", "3150"}, {"SOL-e3c95e352780", "3170"}, {"SOL-35ab1cde6979", "0610"}, {"SOL-b96d469ca197", "2110"}, {"SOL-e279d76c5f8c", "3120"}, {"SOL-a7afd645143d", "0410"}, {"SOL-21b48693a79e", "3510"}, {"SOL-6bbf0af53bea", "2310"}, {"SOL-90834fec6443", "3110"}, {"SOL-e9a220bd9a9e", "0450"}, {"SOL-7667ac3c69e6", "0999"}, {"SOL-c3ffa9fe7783", "3550"}, {"SOL-4a5283a4a6a5", "2150"}, {"SOL-833aa614079e", "0650"}})
+				    Source = #table(type table [SOLUTION_ID = text, cost_center_code = text], {{"MFGEXE", "0410"}, {"PLMNT", "0420"}, {"QMSYS", "0450"}, {"DMDPLN", "0610"}, {"SUPPRT", "0650"}, {"SLSCRM", "2110"}, {"ECOMM", "2150"}, {"MKTAUT", "2310"}, {"ITSMGT", "3110"}, {"ENDPT", "3120"}, {"PLAT", "3150"}, {"EDPLAT", "3170"}, {"BILL", "3510"}, {"HRPORT", "3550"}, {"GLEDG", "0999"}})
 				in
 				    Source
 

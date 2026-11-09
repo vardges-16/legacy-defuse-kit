@@ -1,0 +1,52 @@
+defect_id,table_name,record_id,field,delivered_value,expected_value,expected_action,detail
+M01,ASSETS,APP-021,asset_name,IT SERVICE MANAGEMENT,APP-012,Merge,"duplicate application, upper-case name"
+M02,ASSETS,APP-010,department,Mktg,Marketing,AI-classify,department name not the finance name
+M02,ASSETS,APP-006,department,Procurement Dept,Procurement,AI-classify,department name not the finance name
+M02,ASSETS,APP-015,department,Data and Analytics,Data & Analytics,AI-classify,department name not the finance name
+M02,ASSETS,APP-013,department,IT Ops,IT Operations,AI-classify,department name not the finance name
+M11,ASSETS,APP-002,cost_center,420,0420,Fix,leading zero lost (file opened in Excel)
+M11,ASSETS,APP-005,cost_center,610,0610,Fix,leading zero lost (file opened in Excel)
+M09,ASSETS,APP-015,owner_email,,gabrielle.cameron@zontique.com,Flag,owner email missing or malformed (PII)
+M09,ASSETS,APP-009,owner_email,christian.carter(at)zontique.com,christian.carter@zontique.com,Flag,owner email missing or malformed (PII)
+M07,ASSETS,APP-017,status,Retired,,Flag,Retired application still owns 1 active scope(s): rg-gledg-app-test-northeurope-001
+M07,ASSETS,APP-018,status,Deprecated,,Flag,"Deprecated application still owns 4 active scope(s): prj-hrport-n-api-7b95, rg-hrport-api-prod-westeurope-001, rg-hrport-web-prod-centralus-001, rg-hrport-mon-test-uksouth-001"
+M07,ASSETS,APP-019,status,Deprecated,,Flag,"Deprecated application still owns 4 active scope(s): rg-cntrct-web-prod-westeurope-001, rg-cntrct-net-prod-centralus-001, rg-cntrct-sec-dev-westeurope-001, prj-cntrct-n-data-9348"
+M07,ASSETS,APP-020,status,Retired,,Flag,"Retired application still owns 2 active scope(s): rg-edisc-mon-test-northeurope-001, prj-edisc-p-web-896a"
+M08,ASSETS,AST-0017,status,Deleted,Active,Flag,rg-gledg-web-prod-northeurope-001 marked Deleted on 2026-04-22 but still has cost lines
+M08,ASSETS,AST-0032,status,Deleted,Active,Flag,rg-gledg-sec-prod-uksouth-001 marked Deleted on 2026-06-28 but still has cost lines
+M08,ASSETS,AST-0060,status,Deleted,Active,Flag,rg-edisc-app-prod-centralus-001 marked Deleted on 2026-05-17 but still has cost lines
+M08,ASSETS,AST-0080,status,Deleted,Active,Flag,rg-edisc-sec-prod-uksouth-001 marked Deleted on 2026-05-09 but still has cost lines
+M05,ASSETS,AST-0055,asset_group_id,,GRP-008,AI-extract,no group: the application code is in the name prj-ecomm-d-data-31ca
+M05,ASSETS,AST-0075,asset_group_id,,GRP-018,AI-extract,no group: the application code is in the name rg-hrport-web-prod-centralus-001
+M05,ASSETS,AST-0089,asset_group_id,,GRP-018,AI-extract,no group: the application code is in the name rg-hrport-mon-test-uksouth-001
+M05,ASSETS,AST-0034,asset_group_id,,GRP-006,AI-extract,no group: the application code is in the name rg-supprt-web-test-southeastasia-001
+M06,ASSETS,AST-0048,asset_group_id,GRP-012,GRP-002,Flag,stale mapping: the name prj-plmnt-n-web-7702 points to another application
+M06,ASSETS,AST-0013,asset_group_id,GRP-015,GRP-016,Flag,stale mapping: the name prj-bill-n-api-49ea points to another application
+M06,ASSETS,AST-0077,asset_group_id,GRP-004,GRP-011,Flag,stale mapping: the name prj-brweb-p-web-75df points to another application
+M06,ASSETS,AST-0020,asset_group_id,GRP-006,GRP-001,Flag,stale mapping: the name rg-mfgexe-net-prod-westeurope-001 points to another application
+M06,ASSETS,AST-0027,asset_group_id,GRP-012,GRP-010,Flag,stale mapping: the name rg-mktaut-data-prod-westeurope-001 points to another application
+M10,ASSETS,AST-0026,mapping_last_verified,2024-05-03,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0051,mapping_last_verified,2023-03-15,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0096,mapping_last_verified,2024-11-19,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0046,mapping_last_verified,2024-11-11,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0006,mapping_last_verified,2023-10-30,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0092,mapping_last_verified,2023-11-22,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0057,mapping_last_verified,2023-07-25,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0036,mapping_last_verified,2024-11-23,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0052,mapping_last_verified,2025-01-02,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0084,mapping_last_verified,2025-01-20,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0019,mapping_last_verified,2024-03-07,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0010,mapping_last_verified,2024-07-23,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0090,mapping_last_verified,2024-09-02,,Flag,mapping older than 18 months
+M10,ASSETS,AST-0065,mapping_last_verified,2023-01-12,,Flag,mapping older than 18 months
+M04,ASSETS,AST-0100,asset_name,RG-ENDPT-SEC-TEST-EASTUS2-001,AST-0021,Merge,"duplicate scope, upper-case name"
+M04,ASSETS,AST-0101,asset_name,RG-ENDPT-NET-PROD-WESTEUROPE-001,AST-0082,Merge,"duplicate scope, upper-case name"
+M04,ASSETS,AST-0102,asset_name,RG-DMDPLN-APP-TEST-NORTHEUROPE-001,AST-0038,Merge,"duplicate scope, upper-case name"
+M03,ASSETS,AST-0074,created_date,N/A,2025-07-07,Fix,date not in yyyy-MM-dd
+M03,ASSETS,AST-0055,created_date,N/A,2024-01-18,Fix,date not in yyyy-MM-dd
+M03,ASSETS,AST-0071,created_date,02/02/2025,2025-02-02,Fix,date not in yyyy-MM-dd
+M03,ASSETS,AST-0030,created_date,21/08/2024,2024-08-21,Fix,date not in yyyy-MM-dd
+M03,ASSETS,AST-0090,created_date,12/14/2025,2025-12-14,Fix,date not in yyyy-MM-dd
+M03,ASSETS,APP-019,created_date,11/25/2023,2023-11-25,Fix,date not in yyyy-MM-dd
+M12,ASSETS,*,last_modified_utc,+00:00,Z,Fix,about 10% of timestamps use +00:00 instead of Z
+M13,ASSET_GROUPS,GRP-021,,,GRP-015,Merge,"second group for the same application, no scopes"

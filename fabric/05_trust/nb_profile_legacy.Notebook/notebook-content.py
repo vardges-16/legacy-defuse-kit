@@ -9,7 +9,7 @@
 # META   "dependencies": {
 # META     "lakehouse": {
 # META       "default_lakehouse": "0eec7aa2-09fd-454f-9d23-5c1b67ed94f8",
-# META       "default_lakehouse_name": "lh_legacy",
+# META       "default_lakehouse_name": "lh_bronze",
 # META       "default_lakehouse_workspace_id": "84598118-e0d7-451b-b901-affefb6f0cca",
 # META       "known_lakehouses": [
 # META         {
@@ -24,19 +24,19 @@
 
 # # nb_profile_legacy: data profiling of the legacy sources (Bronze) and of Silver
 # 
-# Legacy Defuse Kit, team de_dust2. Profiles **every table and every data file** in the default lakehouse (`lh_legacy`) and writes the results to Delta tables, so the Trust Ledger, the Power BI report and the data agent can use them.
+# Legacy Defuse Kit, team de_dust2. Profiles **every table and every data file** in the default lakehouse (`lh_bronze`) and writes the results to Delta tables, so the Trust Ledger, the Power BI report and the data agent can use them.
 # 
 # **Before running**
-# 1. Attach `lh_legacy` as the **default lakehouse** (left pane, Lakehouses).
-# 2. Make every source visible in `lh_legacy`:
-#    - Snowflake: shortcut in **Tables** to the mirrored database `ZONTIQUE_BILLING` tables.
-#    - Storage containers (`cmdb-inputs`, `fin-inputs`, later `vm-backups`): shortcut in **Files** to each container.
+# 1. Attach `lh_bronze` as the **default lakehouse** (left pane, Lakehouses).
+# 2. Make every source visible in `lh_bronze`:
+#    - Snowflake: shortcut in **Tables** to the mirrored Snowflake database `ZONTIQUE_LEGACY` tables.
+#    - No storage accounts: all files are loaded into Snowflake.
 #    - Azure SQL database: mirror it, then shortcut its tables into **Tables**.
 # 3. Optional AI layer: set `ENABLE_AI = True` (needs a paid F2+ capacity, the Copilot / Azure OpenAI tenant setting, Runtime 1.3+).
 # 
-# **Outputs** (Delta tables in `lh_legacy`, appended per run): `meta_profile_tables`, `meta_profile_columns`, `meta_profile_findings`, and `meta_ai_decisions` when AI is on.
+# **Outputs** (Delta tables in `lh_trust`, appended per run): `meta_profile_tables`, `meta_profile_columns`, `meta_profile_findings`, and `meta_ai_decisions` when AI is on.
 # 
-# **Silver run (before/after):** set `LAYER = "silver"` and `SOURCE_LAKEHOUSE = "lh_silver"`. Results still go to `lh_legacy`, tagged with `layer`, and the last cell compares findings per check: Bronze vs Silver.
+# **Silver run (before/after):** set `LAYER = "silver"` and `SOURCE_LAKEHOUSE = "lh_silver"`. Results still go to `lh_bronze`, tagged with `layer`, and the last cell compares findings per check: Bronze vs Silver.
 # 
 # **Personal data:** columns that look like names or emails are masked in the stored results and never sent to AI (blueprint: PII hashed before AI processing).
 
@@ -46,7 +46,7 @@
 # Parameters
 RUN_LABEL = "baseline"                 # free text to tell runs apart
 LAYER = "bronze"                       # bronze | silver: stored with every result row
-SOURCE_LAKEHOUSE = None                # None = default lakehouse (lh_legacy); "lh_silver" = profile Silver
+SOURCE_LAKEHOUSE = None                # None = default lakehouse (lh_bronze); "lh_silver" = profile Silver
 WORKSPACE = "ldk-workspace"            # used to reach SOURCE_LAKEHOUSE through OneLake
 EXCLUDE_TABLE_PREFIXES = ("meta_", "silver_quarantine", "silver_merge_log")  # our own output / log tables
 FILES_ROOT = "Files"                   # folder in the default lakehouse to scan for data files
@@ -60,6 +60,7 @@ PII_NAME_REGEX = r"(?i)(e_?mail|owner_name|display_name|full_name|first_name|las
 MAX_DRIFT_FILES = 400                  # max files per folder checked for header drift
 WRITE_FORMAT = "delta"
 ENABLE_AI = False                      # True = AI semantic types + AI explanations of findings
+TRUST_PATH = "abfss://ldk-workspace@onelake.dfs.fabric.microsoft.com/lh_trust.Lakehouse/Tables/dbo"  # results go here
 OUT = {"tables": "meta_profile_tables", "columns": "meta_profile_columns",
        "findings": "meta_profile_findings", "ai": "meta_ai_decisions"}
 PROFILE_FILES = False      # Bronze tables already hold the files; set True to profile raw files too
@@ -449,6 +450,10 @@ LABELS = ["identifier", "person name", "email address", "date or timestamp", "mo
 ai_log = []
 
 if ENABLE_AI:
+    import synapse.ml.spark.aifunc as aifunc          # Runtime 2.0: set the model explicitly
+    aifunc.default_conf.set_deployment_name("gpt-5-mini")
+    aifunc.default_conf.set_reasoning_effort("low")
+    aifunc.default_conf.reset_temperature()
     # Never send personal data: PII columns are labelled locally and skipped
     desc_rows = [(r["source_name"], r["column_name"],
                   f"column name: {r['column_name']}; data type: {r['data_type']}; "
@@ -539,7 +544,7 @@ def save(rows, schema, name):
     if not rows:
         print("nothing to save for", name); return
     clean = [{f.name: r.get(f.name) for f in schema.fields} for r in rows]
-    spark.createDataFrame(clean, schema).write.format(WRITE_FORMAT).mode("append").option("mergeSchema", "true").saveAsTable(name)
+    spark.createDataFrame(clean, schema).write.format(WRITE_FORMAT).mode("append").option("mergeSchema", "true").save(f"{TRUST_PATH}/{name}")
     print(f"saved {len(rows)} rows -> {name}")
 
 save(table_rows, TABLE_SCHEMA, OUT["tables"])
@@ -557,13 +562,13 @@ save(ai_log, AI_SCHEMA, OUT["ai"])
 # CELL ********************
 
 # 8. Summary of this run
-f = spark.table(OUT["findings"]).where(F.col("run_id") == RUN_ID)
+f = spark.read.format(WRITE_FORMAT).load(f"{TRUST_PATH}/{OUT['findings']}").where(F.col("run_id") == RUN_ID)
 display(f.groupBy("source_name", "severity").count().orderBy("source_name", "severity"))
 display(f.orderBy(F.desc("severity"), "source_name", "column_name"))
-display(spark.table(OUT["tables"]).where(F.col("run_id") == RUN_ID))
+display(spark.read.format(WRITE_FORMAT).load(f"{TRUST_PATH}/{OUT['tables']}").where(F.col("run_id") == RUN_ID))
 
 # Before / after: number of findings per check, latest run of each layer (older rows without layer = bronze)
-fa = spark.table(OUT["findings"]).withColumn("layer", F.coalesce(F.col("layer"), F.lit("bronze")))
+fa = spark.read.format(WRITE_FORMAT).load(f"{TRUST_PATH}/{OUT['findings']}").withColumn("layer", F.coalesce(F.col("layer"), F.lit("bronze")))
 latest = fa.groupBy("layer").agg(F.max("run_id").alias("run_id"))
 display(fa.join(latest, ["layer", "run_id"]).groupBy("check_code")
           .pivot("layer", ["bronze", "silver"]).count().na.fill(0).orderBy("check_code"))

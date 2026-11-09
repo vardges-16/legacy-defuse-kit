@@ -1,0 +1,64 @@
+{
+  "seed": 42,
+  "period": [
+    "2026-07-01",
+    "2026-10-31"
+  ],
+  "vms_total": 107,
+  "vms_protected": 93,
+  "vms_not_in_cmdb": [
+    "vm-sapfi-app-prod-01",
+    "vm-sapfi-app-prod-02",
+    "vm-sapfi-data-prod-01",
+    "vm-sapfi-data-prod-02",
+    "vm-legerp-app-prod-01",
+    "vm-legerp-app-prod-02",
+    "vm-legerp-data-prod-01",
+    "vm-legerp-data-prod-02",
+    "vm-ftpgw-web-prod-01",
+    "vm-ftpgw-web-prod-02"
+  ],
+  "job_files": 120,
+  "job_rows_raw": 11247,
+  "job_ids_unique": 9713,
+  "missing_job_files": [
+    "backup_jobs_20260727.csv",
+    "backup_jobs_20260921.csv",
+    "backup_jobs_20261012.csv"
+  ],
+  "storage_rows_per_month": 93,
+  "storage_cost_usd": {
+    "2026-07": 4258.65,
+    "2026-08": 4254.2,
+    "2026-09": 4246.45,
+    "2026-10": 4243.95
+  },
+  "orphaned_backup_cost_usd": {
+    "2026-07": 0.0,
+    "2026-08": 39.8,
+    "2026-09": 109.8,
+    "2026-10": 132.1
+  },
+  "orphaned_vms": [
+    "vm-edplat-web-prod-01",
+    "vm-hrport-web-prod-02",
+    "vm-wmsys-web-prod-01"
+  ],
+  "unprotected_prod_vms": [
+    "vm-bill-mon-prod-01",
+    "vm-dmdpln-api-prod-01",
+    "vm-edisc-app-prod-02",
+    "vm-mktaut-app-prod-02"
+  ],
+  "defect_counts": {
+    "D01": 6,
+    "D02": 10,
+    "D03": 4,
+    "D04": 16,
+    "D05": 54,
+    "D06": 1534,
+    "D07": 1,
+    "D08": 3,
+    "D09": 2
+  }
+}

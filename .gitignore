@@ -1,0 +1,3 @@
+
+# generated legacy data (recreate: python generators/generate_zontique.py data/generated)
+data/generated/

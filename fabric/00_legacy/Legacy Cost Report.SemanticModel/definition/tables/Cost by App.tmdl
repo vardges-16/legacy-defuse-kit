@@ -52,11 +52,11 @@ table 'Cost by App'
 		mode: import
 		source =
 				let
-				    // Legacy: direct connection to the Snowflake billing view (tag-based, BilledCost)
+				    // Legacy: the old company's Snowflake view (tag-based, BilledCost)
 				    Source = Snowflake.Databases("dijxdsb-cr18840.snowflakecomputing.com", "LDK_WH"),
-				    Db = Source{[Name = "ZONTIQUE_BILLING", Kind = "Database"]}[Data],
-				    Raw = Db{[Name = "RAW", Kind = "Schema"]}[Data],
-				    View = Raw{[Name = "V_COST_BY_APP", Kind = "View"]}[Data],
+				    Db = Source{[Name = "ZONTIQUE_LEGACY", Kind = "Database"]}[Data],
+				    Rpt = Db{[Name = "RPT", Kind = "Schema"]}[Data],
+				    View = Rpt{[Name = "V_COST_BY_APP", Kind = "View"]}[Data],
 				    Typed = Table.TransformColumnTypes(View, {{"SOLUTION_ID", type text}, {"USAGE_MONTH", type text}, {"TOTAL_COST_USD", type number}})
 				in
 				    Typed
