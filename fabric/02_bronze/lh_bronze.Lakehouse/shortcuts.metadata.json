@@ -37,41 +37,5 @@
         "artifactType": "MountedRelationalDatabase"
       }
     }
-  },
-  {
-    "name": "FOCUS_COST",
-    "path": "/Tables/dbo",
-    "target": {
-      "type": "OneLake",
-      "oneLake": {
-        "path": "Tables/RAW/FOCUS_COST",
-        "itemId": "480ae7ec-bb42-4f7f-a75b-7a795ddd25b2",
-        "workspaceId": "84598118-e0d7-451b-b901-affefb6f0cca"
-      }
-    }
-  },
-  {
-    "name": "fin",
-    "path": "/Files",
-    "target": {
-      "type": "AdlsGen2",
-      "adlsGen2": {
-        "connectionId": "f4e9d074-a48b-42d4-bc66-7876daaaa401",
-        "location": "https://saodlepam2446996datalake.dfs.core.windows.net",
-        "subpath": "/fin-inputs"
-      }
-    }
-  },
-  {
-    "name": "cmdb",
-    "path": "/Files",
-    "target": {
-      "type": "AdlsGen2",
-      "adlsGen2": {
-        "connectionId": "f27b2a77-fad5-42a4-bf42-1052a39ef936",
-        "location": "https://saodlepam2446996datalake.dfs.core.windows.net",
-        "subpath": "/cmdb-inputs"
-      }
-    }
   }
 ]
