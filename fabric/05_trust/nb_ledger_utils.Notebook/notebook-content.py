@@ -53,7 +53,7 @@ BRONZE = {
     "backup_jobs":          "lh_bronze.Lakehouse/Tables/bkp/backup_jobs",
     "backup_storage":       "lh_bronze.Lakehouse/Tables/bkp/backup_storage",
 }
-BKP_LANDING = "lh_bronze.Lakehouse/Files/landing/vm_backups"
+BKP_LANDING = "lh_bronze.Lakehouse/Files/landing/vm-backups"
 
 # Source system (Snowflake) for the "source = Bronze" check; password in Key Vault
 SF = dict(account="dijxdsb-cr18840", user="LEDGER_READER", role="LEDGER_READER_ROLE", warehouse="LDK_WH",

@@ -12,7 +12,7 @@
 # MARKDOWN ********************
 
 # # nb_bronze_files: Bronze intake
-# * **VM Backups** (files): daily job files and monthly storage files from `lh_bronze` Files `landing/vm_backups/`
+# * **VM Backups** (files): daily job files and monthly storage files from `lh_bronze` Files `landing/vm-backups/`
 #   -> `bkp.backup_jobs`, `bkp.backup_storage`. Every value stays text, as received. The schema drift
 #   (`BACKUP_SIZE_GB` renamed `BackupSizeGB`, new `SOURCE_REGION`) is absorbed by an alias map, so no value is lost.
 #   Each file is recorded in `meta_file_manifest`; missing days in `meta_completeness`.

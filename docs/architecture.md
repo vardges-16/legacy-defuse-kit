@@ -14,7 +14,7 @@ flowchart TB
   subgraph ING["Ingestion"]
     M1["mir_snowflake<br/>Fabric Mirroring"]
     M2["mir_license<br/>Fabric Mirroring"]
-    UP["OneLake shortcut<br/>lh_bronze/Files/landing/vm_backups"]
+    UP["OneLake shortcut<br/>lh_bronze/Files/landing/vm-backups"]
   end
   subgraph BRZ["Bronze: lh_bronze (as received)"]
     B1["Schema shortcuts cost, cmdb, fin<br/>table shortcuts dbo (license)"]

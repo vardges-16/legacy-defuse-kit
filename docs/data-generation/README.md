@@ -24,7 +24,7 @@ One generator, one shared truth, five legacy systems that join. Replaces the v2 
 | 2 | Cloud CMDB | Snowflake `CMDB.ASSETS`, `CMDB.ASSET_GROUPS` | `snowflake/cmdb/*.csv` | 123 / 21 |
 | 3 | Financial budget | Snowflake `FIN.BUDGET` | `snowflake/fin/financial_budget.csv` | 577 |
 | 4 | License & Inventory | Azure SQL `dbo` (3 tables) | `azure_sql/license_load.sql` (+ CSV) | 8 / 13 / 177 |
-| 5 | VM Backups | Azure Storage container `vm-backups`, read through a OneLake shortcut at `lh_bronze` Files `landing/vm_backups` | `jobs/` (120 daily files, 2026-07 to 2026-10), `storage/` (34 monthly files, 2024-01 to 2026-10) | 11,098 / 2,395 (90 per month in 2026-07 to 2026-10) |
+| 5 | VM Backups | Azure Storage container `vm-backups`, read through a OneLake shortcut at `lh_bronze` Files `landing/vm-backups` | `jobs/` (120 daily files, 2026-07 to 2026-10), `storage/` (34 monthly files, 2024-01 to 2026-10) | 11,098 / 2,395 (90 per month in 2026-07 to 2026-10) |
 
 Snowflake build: `legacy/snowflake/zontique_legacy.sql`.
 
