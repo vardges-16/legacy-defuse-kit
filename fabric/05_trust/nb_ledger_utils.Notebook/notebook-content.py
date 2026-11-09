@@ -14,7 +14,8 @@
 # # nb_ledger_utils: shared Trust Ledger, Silver and AI helpers
 # Use in any notebook with one cell: `%run nb_ledger_utils`. Everything is read and written by OneLake path,
 # so it works whatever the notebook's default lakehouse is.
-# # | Function | Use it to |
+#
+# | Function | Use it to |
 # |---|---|
 # | `new_run_id(PIPELINE_RUN_ID)` | one run id per notebook run (the pipeline run id when called from a pipeline) |
 # | `bronze(name)` | read a Bronze table (see `BRONZE`), add `_row_hash`, lower-case the column names |
@@ -43,13 +44,13 @@ AS_OF = "2026-10-31"          # data cut-off of the legacy extract
 
 # Bronze objects -> OneLake path. Change only here if the shortcuts are named differently.
 BRONZE = {
-    "FOCUS_COST":           "lh_bronze.Lakehouse/Tables/cost/FOCUS_COST",
-    "ASSETS":               "lh_bronze.Lakehouse/Tables/cmdb/ASSETS",
-    "ASSET_GROUPS":         "lh_bronze.Lakehouse/Tables/cmdb/ASSET_GROUPS",
-    "BUDGET":               "lh_bronze.Lakehouse/Tables/fin/BUDGET",
-    "license_products":     "lh_bronze.Lakehouse/Tables/lic/license_products",
-    "license_entitlements": "lh_bronze.Lakehouse/Tables/lic/license_entitlements",
-    "installations":        "lh_bronze.Lakehouse/Tables/lic/installations",
+    "FOCUS_COST":           "lh_bronze.Lakehouse/Tables/COST/FOCUS_COST",
+    "ASSETS":               "lh_bronze.Lakehouse/Tables/CMDB/ASSETS",
+    "ASSET_GROUPS":         "lh_bronze.Lakehouse/Tables/CMDB/ASSET_GROUPS",
+    "BUDGET":               "lh_bronze.Lakehouse/Tables/FIN/BUDGET",
+    "license_products":     "lh_bronze.Lakehouse/Tables/dbo/license_products",
+    "license_entitlements": "lh_bronze.Lakehouse/Tables/dbo/license_entitlements",
+    "installations":        "lh_bronze.Lakehouse/Tables/dbo/installations",
     "backup_jobs":          "lh_bronze.Lakehouse/Tables/bkp/backup_jobs",
     "backup_storage":       "lh_bronze.Lakehouse/Tables/bkp/backup_storage",
 }
