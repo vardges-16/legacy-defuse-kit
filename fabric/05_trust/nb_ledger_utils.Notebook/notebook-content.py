@@ -14,8 +14,7 @@
 # # nb_ledger_utils: shared Trust Ledger, Silver and AI helpers
 # Use in any notebook with one cell: `%run nb_ledger_utils`. Everything is read and written by OneLake path,
 # so it works whatever the notebook's default lakehouse is.
-#
-# | Function | Use it to |
+# # | Function | Use it to |
 # |---|---|
 # | `new_run_id(PIPELINE_RUN_ID)` | one run id per notebook run (the pipeline run id when called from a pipeline) |
 # | `bronze(name)` | read a Bronze table (see `BRONZE`), add `_row_hash`, lower-case the column names |
