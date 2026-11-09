@@ -13,8 +13,7 @@
 
 # # nb_silver_budget: Financial budget -> Silver
 # Out: `silver_budget` (one row per cost center and month, FY2024 to FY2026).
-#
-# | Defect | Action |
+# # | Defect | Action |
 # |---|---|
 # | cost center without leading zero (`420`) | fix: pad to 4 digits |
 # | month as `MM/dd/yyyy` | fix: multi-format parse |
