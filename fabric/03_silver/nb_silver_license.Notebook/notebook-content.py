@@ -6,14 +6,19 @@
 # META   "kernel_info": {
 # META     "name": "synapse_pyspark"
 # META   },
-# META   "dependencies": {}
+# META   "dependencies": {
+# META     "environment": {
+# META       "environmentId": "fca9e1b6-f5b2-ac39-4093-43fd7058507c",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
+# META     }
+# META   }
 # META }
 
 # MARKDOWN ********************
 
 # # nb_silver_license: License & Inventory (Azure SQL) -> Silver
 # Out: `silver_license_products`, `silver_license_entitlements`, `silver_license_installations`.
-# # | Defect | Action |
+# | Defect | Action |
 # |---|---|
 # | discovery product name variant, product id empty ("Win Srv 2022 DC") | rules, then **AI classify** into the 8 catalog products (gated) |
 # | duplicate installation row | merge (same content, new id) |

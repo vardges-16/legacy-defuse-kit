@@ -6,14 +6,19 @@
 # META   "kernel_info": {
 # META     "name": "synapse_pyspark"
 # META   },
-# META   "dependencies": {}
+# META   "dependencies": {
+# META     "environment": {
+# META       "environmentId": "fca9e1b6-f5b2-ac39-4093-43fd7058507c",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
+# META     }
+# META   }
 # META }
 
 # MARKDOWN ********************
 
 # # nb_silver_cost: FOCUS 1.2 cost (Azure + Google Cloud) -> Silver
 # Out: `silver_cost`, one row per cost line, typed, attributed to an application and cost center.
-# # | Step | Defects handled | How |
+# | Step | Defects handled | How |
 # |---|---|---|
 # | Export re-run | the same day delivered twice | merge on a content hash (all FOCUS columns, not the export run id) |
 # | Dates | `MM/dd/yyyy HH:mm` in one file | multi-format parse |
@@ -23,6 +28,7 @@
 # | Services | `GCE`, `Big Query`, empty ServiceCategory | rules, then **AI classify** into the known FOCUS service names |
 # | Flags | shadow IT, zombie spend, subscription renamed | flags + completeness gaps (missing day) |
 # FOCUS rule: **EffectiveCost** for chargeback and budgets, **BilledCost** for the invoice.
+
 
 # CELL ********************
 
