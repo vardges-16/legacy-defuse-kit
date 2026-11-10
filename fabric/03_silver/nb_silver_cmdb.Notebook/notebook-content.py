@@ -11,9 +11,12 @@
 
 # MARKDOWN ********************
 
+
+# MARKDOWN ********************
+
 # # nb_silver_cmdb: Cloud CMDB -> Silver
 # Out: `silver_cmdb_applications`, `silver_cmdb_scopes` (Azure resource groups + GCP projects), `silver_cmdb_asset_groups`.
-# # | Step | Defects handled | How |
+# | Step | Defects handled | How |
 # |---|---|---|
 # | Dates, timestamps, cost center | mixed date formats, `+00:00`, lost leading zero | rules |
 # | Duplicates | duplicate application / scope (upper-case name), second group for one app | merge, logged |
