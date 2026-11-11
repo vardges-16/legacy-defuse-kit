@@ -6,7 +6,12 @@
 # META   "kernel_info": {
 # META     "name": "synapse_pyspark"
 # META   },
-# META   "dependencies": {}
+# META   "dependencies": {
+# META     "environment": {
+# META       "environmentId": "e9ad44cc-27b2-b904-44c6-8fb17be9c76d",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
+# META     }
+# META   }
 # META }
 
 # MARKDOWN ********************
@@ -18,17 +23,6 @@
 # * Bronze = Silver + quarantined + merged, and every Bronze `_row_hash` is found in one of them (no silent loss).
 # * Silver amount = Gold amount.
 # Writes one row per check to `meta_reconciliation` and one row per entity to `meta_trust_summary` (PASS / FAIL / PENDING).
-
-# CELL ********************
-
-%pip install -q snowflake-connector-python
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # CELL ********************
 
