@@ -188,15 +188,15 @@
           "ifTrueActivities": [
             {
               "type": "Fail",
-              "name": "fail_run",
-              "dependsOn": [],
               "typeProperties": {
                 "message": {
                   "value": "@concat('Run failed. Steps: ', json(activity('run_audit').output.result.exitValue).steps, ' | reconcile FAIL checks: ', string(json(activity('run_audit').output.result.exitValue).reconcile_fail))",
                   "type": "Expression"
                 },
                 "errorCode": "LDK_RUN_FAILED"
-              }
+              },
+              "name": "fail_run",
+              "dependsOn": []
             }
           ],
           "ifFalseActivities": []
