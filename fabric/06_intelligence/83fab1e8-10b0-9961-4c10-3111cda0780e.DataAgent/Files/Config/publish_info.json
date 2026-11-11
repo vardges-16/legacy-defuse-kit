@@ -1,0 +1,4 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/publishInfo/1.0.0/schema.json",
+  "description": "Answers questions about Zontique's IT and cloud spend and proves whether that data can be trusted. Spend: cloud cost by application, cost center, business unit, provider and month (Jan 2024 - Oct 2026, USD, EffectiveCost), budget vs actual, unallocated cost, shadow IT and zombie spend, license compliance (under-licensed products, double-licensed VMs) and VM backup coverage and cost. Trust: latest reconciliation from legacy sources to Gold (rows lost, failed checks), quarantined and merged rows with reasons, missing data, pipeline run status and step errors, and AI cleansing accuracy. Data: wh_gold (Gold star schema) and lh_trust (Trust Ledger), read-only."
+}

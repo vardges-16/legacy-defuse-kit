@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/fewShots/1.0.0/schema.json",
+  "fewShots": [
+    {
+      "id": "ba988675-589c-4382-a772-0f152b5a0b87",
+      "question": "What is our total cloud spend?",
+      "query": "SELECT SUM(effective_cost) AS effective_cost_usd, SUM(billed_cost) AS billed_cost_usd FROM dbo.fact_cost"
+    },
+    {
+      "id": "1a66385d-1228-47d8-8c00-cfde26fc92de",
+      "question": "Show monthly spend",
+      "query": "SELECT d.month_start, SUM(f.effective_cost) AS effective_cost_usd FROM dbo.fact_cost f JOIN dbo.dim_date d ON f.date_key = d.date_key GROUP BY d.month_start ORDER BY d.month_start"
+    },
+    {
+      "id": "79baabbb-d610-4ddb-824e-3618c53ae152",
+      "question": "Top 10 applications by spend",
+      "query": "SELECT TOP 10 a.application_name, SUM(f.effective_cost) AS effective_cost_usd FROM dbo.fact_cost f JOIN dbo.dim_application a ON f.application_code = a.application_code GROUP BY a.application_name ORDER BY effective_cost_usd DESC"
+    },
+    {
+      "id": "628da871-7716-4d78-bb84-9f448cc54ef3",
+      "question": "How much spend is unallocated?",
+      "query": "SELECT SUM(CASE WHEN allocation_method = 'UNALLOCATED' THEN effective_cost ELSE 0 END) AS unallocated_usd, SUM(CASE WHEN allocation_method = 'UNALLOCATED' THEN effective_cost ELSE 0 END) / SUM(effective_cost) AS unallocated_share FROM dbo.fact_cost"
+    },
+    {
+      "id": "9068c2f5-a842-4f35-a3b6-9f9efea1d889",
+      "question": "Which cost centers are over budget in 2026?",
+      "query": "SELECT c.cost_center_name, c.business_unit_name, SUM(b.budget_cost) AS budget_usd, SUM(b.actual_cost) AS actual_usd, SUM(b.actual_cost) - SUM(b.budget_cost) AS variance_usd FROM dbo.fact_budget_vs_actual b JOIN dbo.dim_cost_center c ON b.cost_center_code = c.cost_center_code WHERE YEAR(b.month_start) = 2026 GROUP BY c.cost_center_name, c.business_unit_name HAVING SUM(b.actual_cost) > SUM(b.budget_cost) ORDER BY variance_usd DESC"
+    },
+    {
+      "id": "8525bb05-d25c-406c-96af-7e0a9ff477a2",
+      "question": "Where is our shadow IT and zombie spend?",
+      "query": "SELECT scope_key, provider,\r\n       SUM(CASE WHEN is_shadow_it = 1 THEN effective_cost ELSE 0 END) AS shadow_it_usd,\r\n       SUM(CASE WHEN is_zombie_spend = 1 THEN effective_cost ELSE 0 END) AS zombie_usd\r\nFROM dbo.fact_cost\r\nGROUP BY scope_key, provider\r\nHAVING SUM(CASE WHEN is_shadow_it = 1 OR is_zombie_spend = 1 THEN effective_cost ELSE 0 END) > 0\r\nORDER BY SUM(CASE WHEN is_shadow_it = 1 OR is_zombie_spend = 1 THEN effective_cost ELSE 0 END) DESC"
+    },
+    {
+      "id": "deed273e-b96e-4c16-a33c-a58e046ba8d0",
+      "question": "Which products are under-licensed?",
+      "query": "SELECT p.product_name, l.byol_cores_installed, l.cores_entitled_active, l.core_shortfall FROM dbo.fact_license_position l JOIN dbo.dim_product p ON l.product_id = p.product_id WHERE l.core_shortfall > 0 ORDER BY l.core_shortfall DESC"
+    },
+    {
+      "id": "595fb2fb-84a0-4f86-ba42-518b864daa11",
+      "question": "Which production VMs have no recent backup?",
+      "query": "SELECT vm_name, resource_group, application_code, last_success FROM dbo.fact_vm_backup_coverage WHERE is_unprotected_prod = 1 ORDER BY vm_name"
+    },
+    {
+      "id": "45da6eec-12d5-4ee0-96b0-7e4a7482caa9",
+      "question": "How much do we pay for backups of deleted VMs?",
+      "query": "SELECT month_start, SUM(storage_cost_usd) AS orphaned_backup_usd FROM dbo.fact_backup_cost WHERE is_orphaned = 1 GROUP BY month_start ORDER BY month_start"
+    }
+  ]
+}

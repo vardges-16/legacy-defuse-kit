@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/fewShots/1.0.0/schema.json",
+  "fewShots": [
+    {
+      "id": "73063590-b282-49c9-8fc0-124fd04fda55",
+      "question": "Was any data lost in the latest run?",
+      "query": "SELECT entity, status, source_rows, bronze_rows, silver_rows, quarantined_rows, merged_rows, lost_rows FROM dbo.meta_trust_summary WHERE checked_at = (SELECT MAX(checked_at) FROM dbo.meta_trust_summary) ORDER BY entity"
+    },
+    {
+      "id": "7afdcd81-fd85-4329-8c76-eb7a07e3f6aa",
+      "question": "Which reconciliation checks failed or are pending?",
+      "query": "SELECT entity, check_name, left_layer, left_value, right_layer, right_value, difference, status, note FROM dbo.meta_reconciliation WHERE checked_at = (SELECT MAX(checked_at) FROM dbo.meta_reconciliation) AND status <> 'PASS' ORDER BY entity, check_name"
+    },
+    {
+      "id": "fa28ca37-642e-4841-8edd-4ab10b658fa7",
+      "question": "When did the pipeline last run and did it succeed?",
+      "query": "SELECT TOP 1 run_id, status, started_at, ended_at, duration_s, failed_steps, skipped_steps, reconcile_fail FROM dbo.meta_pipeline_runs ORDER BY started_at DESC"
+    },
+    {
+      "id": "b53a70bf-8cb1-4b6d-8f27-88a09207da36",
+      "question": "Why did the last failed run fail?",
+      "query": "SELECT activity_name, status, error_code, error_message FROM dbo.meta_pipeline_activity_runs WHERE run_id = (SELECT TOP 1 run_id FROM dbo.meta_pipeline_runs WHERE status = 'Failed' ORDER BY started_at DESC) AND status <> 'Succeeded'"
+    },
+    {
+      "id": "2c160256-a673-4b49-b3e0-27002d1e2da9",
+      "question": "Why were rows quarantined?",
+      "query": "SELECT q.entity, q.reason_code, COUNT(*) AS rows_quarantined FROM dbo.meta_quarantine q JOIN (SELECT entity, run_id FROM (SELECT entity, run_id, ROW_NUMBER() OVER (PARTITION BY entity ORDER BY logged_at DESC) AS rn FROM dbo.meta_quarantine) x WHERE rn = 1) l ON q.entity = l.entity AND q.run_id = l.run_id GROUP BY q.entity, q.reason_code ORDER BY rows_quarantined DESC"
+    },
+    {
+      "id": "bce9b624-afcc-48ac-95f3-406c49b49420",
+      "question": "How many duplicates were merged and why?",
+      "query": "SELECT m.entity, m.reason_code, COUNT(*) AS rows_merged FROM dbo.meta_merge_log m JOIN (SELECT entity, run_id FROM (SELECT entity, run_id, ROW_NUMBER() OVER (PARTITION BY entity ORDER BY logged_at DESC) AS rn FROM dbo.meta_merge_log) x WHERE rn = 1) l ON m.entity = l.entity AND m.run_id = l.run_id GROUP BY m.entity, m.reason_code ORDER BY rows_merged DESC"
+    },
+    {
+      "id": "fe15ae36-5df0-47c6-83d1-5dc4367c59d3",
+      "question": "Which data is missing?",
+      "query": "SELECT DISTINCT entity, gap_type, expected_key, detail FROM dbo.meta_completeness ORDER BY entity, expected_key"
+    },
+    {
+      "id": "1395a211-0a6c-44f5-bee2-3c8fafc54ee7",
+      "question": "How accurate is the AI cleansing?",
+      "query": "SELECT system, defect_id, method, cases, correct, precision, recall, f1 FROM dbo.meta_ai_scorecard WHERE run_id = (SELECT TOP 1 run_id FROM dbo.meta_ai_scorecard ORDER BY scored_at DESC) ORDER BY system, defect_id, method"
+    }
+  ]
+}

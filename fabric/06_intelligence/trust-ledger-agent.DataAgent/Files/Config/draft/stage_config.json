@@ -1,4 +1,0 @@
-{
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/stageConfiguration/1.0.0/schema.json",
-  "aiInstructions": "Gold tables hold cleaned records from five legacy systems. trust_ledger records, per source and stage, the row counts and the reconciliation result against the answer key. A record ‘failed’ when counts don’t match."
-}
