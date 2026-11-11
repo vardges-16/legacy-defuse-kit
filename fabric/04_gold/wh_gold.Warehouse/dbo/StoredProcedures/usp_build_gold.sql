@@ -17,7 +17,7 @@ BEGIN
            YEAR(DATEADD(DAY, i, '2024-01-01'))                            AS [year],
            MONTH(DATEADD(DAY, i, '2024-01-01'))                           AS month_no,
            CAST(DATEFROMPARTS(YEAR(DATEADD(DAY, i, '2024-01-01')), MONTH(DATEADD(DAY, i, '2024-01-01')), 1) AS DATE) AS month_start,
-           LEFT(DATENAME(MONTH, DATEADD(DAY, i, '2024-01-01')), 3) + ' ' + CAST(YEAR(DATEADD(DAY, i, '2024-01-01')) AS VARCHAR(4)) AS month_name,
+           CAST(LEFT(CAST(DATENAME(MONTH, DATEADD(DAY, i, '2024-01-01')) AS VARCHAR(20)), 3) + ' ' + CAST(YEAR(DATEADD(DAY, i, '2024-01-01')) AS VARCHAR(4)) AS VARCHAR(8)) AS month_name,
            DATEPART(QUARTER, DATEADD(DAY, i, '2024-01-01'))               AS quarter_no,
            CASE WHEN DATEPART(WEEKDAY, DATEADD(DAY, i, '2024-01-01')) IN (1, 7) THEN 1 ELSE 0 END AS is_weekend
     FROM (SELECT a.v + 10 * b.v + 100 * c.v AS i

@@ -1,0 +1,37 @@
+CREATE TABLE [dbo].[fact_cost] (
+    [date_key]                 DATE           NULL,
+    [billing_period_start]     DATE           NULL,
+    [provider]                 VARCHAR (8000) NULL,
+    [billing_account_name]     VARCHAR (8000) NULL,
+    [sub_account_id]           VARCHAR (8000) NULL,
+    [sub_account_name]         VARCHAR (8000) NULL,
+    [scope_key]                VARCHAR (8000) NULL,
+    [resource_id]              VARCHAR (8000) NULL,
+    [resource_name]            VARCHAR (8000) NULL,
+    [resource_type]            VARCHAR (8000) NULL,
+    [region_id]                VARCHAR (8000) NULL,
+    [service_name]             VARCHAR (8000) NULL,
+    [service_category]         VARCHAR (8000) NULL,
+    [charge_category]          VARCHAR (8000) NULL,
+    [charge_frequency]         VARCHAR (8000) NULL,
+    [pricing_category]         VARCHAR (8000) NULL,
+    [commitment_discount_name] VARCHAR (8000) NULL,
+    [application_code]         VARCHAR (8000) NULL,
+    [cost_center_code]         VARCHAR (8000) NULL,
+    [allocation_method]        VARCHAR (8000) NULL,
+    [billed_cost]              FLOAT (53)     NULL,
+    [effective_cost]           FLOAT (53)     NULL,
+    [list_cost]                FLOAT (53)     NULL,
+    [contracted_cost]          FLOAT (53)     NULL,
+    [consumed_quantity]        FLOAT (53)     NULL,
+    [consumed_unit]            VARCHAR (8000) NULL,
+    [is_shadow_it]             BIT            NULL,
+    [is_zombie_spend]          BIT            NULL,
+    [tag_missing]              BIT            NULL,
+    [tag_app_conflict]         BIT            NULL,
+    [tag_cc_conflict]          BIT            NULL,
+    [_row_hash]                VARCHAR (8000) NULL
+);
+
+
+GO

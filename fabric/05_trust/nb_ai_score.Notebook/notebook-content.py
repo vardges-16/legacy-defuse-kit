@@ -14,7 +14,7 @@
 # # nb_ai_score: cleansing quality against the answer keys
 # The answer keys (planted defects with the expected value) are ground truth for **scoring only**: they are read here
 # and nowhere else. Upload once to `lh_trust` Files `answer_keys/` (same layout as the repo folder `answer-keys/`).
-# # * `meta_ai_scorecard`: per cleansing task (rules + AI), how many planted cases were resolved, precision, recall, F1,
+# * `meta_ai_scorecard`: per cleansing task (rules + AI), how many planted cases were resolved, precision, recall, F1,
 #   split by method (RULE / AI / UNRESOLVED).
 # * `meta_defect_detection`: per planted defect type, how many the pipeline caught.
 

@@ -32,6 +32,20 @@
 
 # CELL ********************
 
+for t in ["silver_cost", "silver_budget", "silver_cmdb_scopes", "silver_backup_jobs"]:
+    spark.sql(f"CREATE TABLE IF NOT EXISTS lh_silver.dbo.{t} USING DELTA "
+              f"LOCATION 'abfss://ldk-workspace@onelake.dfs.fabric.microsoft.com/lh_silver.Lakehouse/Tables/dbo/{t}'")
+    print("registered", t, spark.table(f"lh_silver.dbo.{t}").count())
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 # MAGIC %%sql
 # MAGIC CREATE SCHEMA IF NOT EXISTS lh_silver.contract
 

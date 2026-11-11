@@ -1,0 +1,141 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "0ea5704f-ee70-42c0-b7ae-b5b2af78b020",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "PIPELINE_RUN_ID": {
+              "value": "",
+              "type": "string"
+            },
+            "RUN_CONTRACTS": {
+              "value": true,
+              "type": "bool"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "bronze_silver",
+        "dependsOn": []
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "EXEC dbo.usp_build_gold;",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "linkedService": {
+          "name": "wh_gold",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "09477d6a-2d47-b51d-4d6d-166e21073992",
+              "endpoint": "qoyplostjq5etcxxu2xjqeqbjq-dcavtbgx4anuloibv77pw3ymzi.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "gold_build",
+        "dependsOn": [
+          {
+            "activity": "bronze_silver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "d564dde3-e683-4013-a62c-ffa490756b5e",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "PIPELINE_RUN_ID": {
+              "value": "",
+              "type": "string"
+            },
+            "TOLERANCE": {
+              "value": "0.01",
+              "type": "float"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "reconcile",
+        "dependsOn": [
+          {
+            "activity": "gold_build",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "717d21a9-a873-4078-9506-6bd53f5c6e00",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "PIPELINE_RUN_ID": {
+              "value": "",
+              "type": "string"
+            },
+            "ANSWER_KEYS": {
+              "value": "lh_trust.Lakehouse/Files/answer_keys",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "ai_score",
+        "dependsOn": [
+          {
+            "activity": "reconcile",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

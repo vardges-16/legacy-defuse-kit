@@ -60,7 +60,7 @@ c = bronze("FOCUS_COST")
 n_in = c.count()
 
 # 1. export re-run duplicates: same content, different x_exportrunid -> keep the first export
-focus_cols = [x for x in c.columns if x not in ("x_exportrunid",) and x.lower() not in LEDGER_COLS]
+focus_cols = [x for x in c.columns if x.lower() not in ("x_exportrunid", "metadata$row_id") and x.lower() not in LEDGER_COLS]
 c = c.withColumn("_content_hash", F.sha2(F.concat_ws("||", *[F.coalesce(F.col(x), F.lit("<null>")) for x in focus_cols]), 256))
 c, n_m = dedupe(c, ENTITY, ["_content_hash"], RUN_ID, order_by=[F.col("x_exportrunid"), F.col("_row_hash")], reason="EXPORT_RERUN")
 
@@ -239,6 +239,92 @@ for p in [r[0] for r in s.select("provider").distinct().collect()]:
     for r in cal.join(have, "charge_date", "left_anti").collect():
         log_gap(RUN_ID, ENTITY, "MISSING_DAY", f"{p}|{r[0]}", "no usage lines for this provider and day", layer="silver")
 s.groupBy("allocation_method").agg(F.count("*").alias("rows"), F.round(F.sum("effective_cost"), 2).alias("effective_cost")).show(truncate=False)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+b = bronze("FOCUS_COST")
+print([c for c in b.columns if "export" in c.lower() or "source" in c.lower() or "loaded" in c.lower()])
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+b = bronze("FOCUS_COST")
+focus = [x for x in b.columns if x not in ("x_exportrunid",) and x.lower() not in LEDGER_COLS]
+h = b.withColumn("_h", F.sha2(F.concat_ws("||", *[F.coalesce(F.col(x).cast("string"), F.lit("<null>")) for x in focus]), 256))
+dup_keys = h.groupBy("_h").count().filter("count > 1").select("_h")
+print("duplicate content groups:", dup_keys.count())
+pairs = h.join(dup_keys, "_h")
+for x in focus:
+    n = pairs.groupBy("_h").agg(F.countDistinct(F.col(x).cast("string")).alias("n")).filter("n > 1").count()
+    if n:
+        print("differs in", x, n, "groups")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+b = bronze("FOCUS_COST")
+b.groupBy("x_exportrunid").count().orderBy("x_exportrunid").show(50, False)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+b = bronze("FOCUS_COST")
+drop = ["x_exportrunid", "_source_file", "_loaded_at"]
+cols = [c for c in b.columns if c not in drop]
+r1 = b.filter(F.col("x_exportrunid") == "azure-202608-r1").select(cols)
+r2 = b.filter(F.col("x_exportrunid") == "azure-202608-r2").select(cols)
+mism = r2.exceptAll(r1)
+print("r2 rows with no exact match in r1:", mism.count())
+ids = [row.resourceid for row in mism.select("resourceid").limit(1).collect()]
+if ids:
+    print("--- r1 row ---")
+    r1.filter(F.col("resourceid") == ids[0]).show(truncate=False, vertical=True)
+    print("--- r2 row ---")
+    r2.filter(F.col("resourceid") == ids[0]).show(truncate=False, vertical=True)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql import functions as F
+b = bronze("FOCUS_COST")
+focus = [x for x in b.columns if x.lower() not in ("x_exportrunid", "metadata$row_id") and x.lower() not in LEDGER_COLS]
+h = b.withColumn("_h", F.sha2(F.concat_ws("||", *[F.coalesce(F.col(x).cast("string"), F.lit("<null>")) for x in focus]), 256))
+dup_keys = h.groupBy("_h").count().filter("count > 1").select("_h")
+print("duplicate content groups:", dup_keys.count())
 
 # METADATA ********************
 
