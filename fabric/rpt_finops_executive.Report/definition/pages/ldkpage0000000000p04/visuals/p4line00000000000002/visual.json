@@ -3,11 +3,11 @@
   "name": "p4line00000000000002",
   "position": {
     "x": 656,
-    "y": 220,
-    "z": 47000,
-    "height": 250,
+    "y": 272,
+    "z": 58000,
+    "height": 216,
     "width": 600,
-    "tabOrder": 47000
+    "tabOrder": 58000
   },
   "visual": {
     "visualType": "lineChart",

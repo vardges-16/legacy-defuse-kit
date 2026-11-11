@@ -3,11 +3,11 @@
   "name": "p3line00000000000001",
   "position": {
     "x": 24,
-    "y": 220,
-    "z": 34000,
-    "height": 250,
+    "y": 272,
+    "z": 42000,
+    "height": 216,
     "width": 616,
-    "tabOrder": 34000
+    "tabOrder": 42000
   },
   "visual": {
     "visualType": "lineChart",

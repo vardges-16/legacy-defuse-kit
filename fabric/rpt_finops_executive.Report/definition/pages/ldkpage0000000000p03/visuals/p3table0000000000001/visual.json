@@ -3,11 +3,11 @@
   "name": "p3table0000000000001",
   "position": {
     "x": 24,
-    "y": 486,
-    "z": 36000,
-    "height": 220,
+    "y": 502,
+    "z": 44000,
+    "height": 204,
     "width": 1232,
-    "tabOrder": 36000
+    "tabOrder": 44000
   },
   "visual": {
     "visualType": "tableEx",

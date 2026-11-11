@@ -3,11 +3,11 @@
   "name": "p4col000000000000001",
   "position": {
     "x": 24,
-    "y": 220,
-    "z": 46000,
-    "height": 250,
+    "y": 272,
+    "z": 57000,
+    "height": 216,
     "width": 616,
-    "tabOrder": 46000
+    "tabOrder": 57000
   },
   "visual": {
     "visualType": "clusteredColumnChart",

@@ -3,11 +3,11 @@
   "name": "p3kpi400000000000000",
   "position": {
     "x": 1020,
-    "y": 100,
-    "z": 33000,
-    "height": 104,
+    "y": 166,
+    "z": 41000,
+    "height": 92,
     "width": 233,
-    "tabOrder": 33000
+    "tabOrder": 41000
   },
   "visual": {
     "visualType": "card",

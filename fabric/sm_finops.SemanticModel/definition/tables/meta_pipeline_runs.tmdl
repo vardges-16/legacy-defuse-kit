@@ -11,7 +11,7 @@ table meta_pipeline_runs
 	/// Status of the latest pipeline run (Succeeded or Failed).
 	measure 'Last Run Status' =
 			VAR t = [Last Run Start]
-			RETURN CALCULATE(MAX(meta_pipeline_runs[status]), REMOVEFILTERS(meta_pipeline_runs), meta_pipeline_runs[started_at] = t)
+			RETURN CALCULATE(SELECTEDVALUE(meta_pipeline_runs[status], "unknown"), REMOVEFILTERS(meta_pipeline_runs), meta_pipeline_runs[started_at] = t)
 		displayFolder: Trust
 		lineageTag: 68ed1a14-6661-49c9-9e87-705f0b29d367
 

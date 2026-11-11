@@ -3,11 +3,11 @@
   "name": "p1bar000000000000004",
   "position": {
     "x": 648,
-    "y": 486,
-    "z": 12000,
-    "height": 220,
+    "y": 502,
+    "z": 16000,
+    "height": 204,
     "width": 608,
-    "tabOrder": 12000
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "clusteredBarChart",
