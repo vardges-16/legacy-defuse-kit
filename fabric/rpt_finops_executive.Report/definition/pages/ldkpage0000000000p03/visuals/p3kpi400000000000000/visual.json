@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p3kpi400000000000000",
   "position": {
-    "x": 1020,
-    "y": 166,
-    "z": 41000,
-    "height": 92,
-    "width": 233,
-    "tabOrder": 41000
+    "x": 1064,
+    "y": 96,
+    "z": 44000,
+    "height": 96,
+    "width": 190,
+    "tabOrder": 44000
   },
   "visual": {
     "visualType": "card",
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "fact_cost.Zombie Spend",
-              "displayName": "Zombie spend (retired apps)"
+              "displayName": "Zombie spend"
             }
           ]
         }
@@ -51,14 +51,28 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'DIN'"
+                  "Value": "'Segoe UI Semibold'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "22D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
                 }
               }
             }

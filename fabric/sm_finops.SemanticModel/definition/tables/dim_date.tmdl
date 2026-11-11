@@ -36,7 +36,7 @@ table dim_date
 
 	column month_start
 		dataType: dateTime
-		formatString: General Date
+		formatString: mmm yyyy
 		lineageTag: b29bd53f-e3d3-408d-9a34-eee5dec7aec5
 		sourceLineageTag: month_start
 		summarizeBy: none

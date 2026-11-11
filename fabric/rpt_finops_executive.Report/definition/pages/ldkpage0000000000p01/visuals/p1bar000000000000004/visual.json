@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p1bar000000000000004",
   "position": {
-    "x": 648,
-    "y": 502,
-    "z": 16000,
-    "height": 204,
-    "width": 608,
-    "tabOrder": 16000
+    "x": 756,
+    "y": 474,
+    "z": 17000,
+    "height": 232,
+    "width": 500,
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -41,10 +41,10 @@
                       "Entity": "fact_cost"
                     }
                   },
-                  "Property": "Effective Cost"
+                  "Property": "Actual"
                 }
               },
-              "queryRef": "fact_cost.Effective Cost"
+              "queryRef": "fact_cost.Actual"
             }
           ]
         }
@@ -59,7 +59,7 @@
                     "Entity": "fact_cost"
                   }
                 },
-                "Property": "Effective Cost"
+                "Property": "Actual"
               }
             },
             "direction": "Descending"
@@ -146,7 +146,7 @@
             "position": {
               "expr": {
                 "Literal": {
-                  "Value": "'TopLeft'"
+                  "Value": "'TopRight'"
                 }
               }
             },
@@ -181,7 +181,7 @@
       "dataPoint": [
         {
           "properties": {
-            "fill": {
+            "defaultColor": {
               "solid": {
                 "color": {
                   "expr": {
@@ -192,9 +192,6 @@
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "fact_cost.Effective Cost"
           }
         }
       ],

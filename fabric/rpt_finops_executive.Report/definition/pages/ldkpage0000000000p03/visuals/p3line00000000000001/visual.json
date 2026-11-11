@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p3line00000000000001",
   "position": {
-    "x": 24,
-    "y": 272,
-    "z": 42000,
-    "height": 216,
-    "width": 616,
-    "tabOrder": 42000
+    "x": 240,
+    "y": 208,
+    "z": 45000,
+    "height": 250,
+    "width": 500,
+    "tabOrder": 45000
   },
   "visual": {
     "visualType": "lineChart",
@@ -23,10 +23,10 @@
                       "Entity": "dim_date"
                     }
                   },
-                  "Property": "month_name"
+                  "Property": "month_start"
                 }
               },
-              "queryRef": "dim_date.month_name",
+              "queryRef": "dim_date.month_start",
               "active": true
             }
           ]
@@ -72,7 +72,7 @@
                     "Entity": "dim_date"
                   }
                 },
-                "Property": "month_name"
+                "Property": "month_start"
               }
             },
             "direction": "Ascending"
@@ -88,6 +88,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Continuous'"
                 }
               }
             },
@@ -202,7 +209,7 @@
             "position": {
               "expr": {
                 "Literal": {
-                  "Value": "'TopLeft'"
+                  "Value": "'TopRight'"
                 }
               }
             },

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p4kpi400000000000000",
   "position": {
-    "x": 856,
-    "y": 166,
-    "z": 55000,
-    "height": 92,
-    "width": 192,
-    "tabOrder": 55000
+    "x": 928,
+    "y": 96,
+    "z": 59000,
+    "height": 96,
+    "width": 156,
+    "tabOrder": 59000
   },
   "visual": {
     "visualType": "card",
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "fact_vm_backup_coverage.Unprotected Prod VMs",
-              "displayName": "Prod VMs without recent backup"
+              "displayName": "Unprotected prod VMs"
             }
           ]
         }
@@ -51,14 +51,14 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'DIN'"
+                  "Value": "'Segoe UI Semibold'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "22D"
                 }
               }
             }

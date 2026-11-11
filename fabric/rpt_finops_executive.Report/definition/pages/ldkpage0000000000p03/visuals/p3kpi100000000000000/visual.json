@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p3kpi100000000000000",
   "position": {
-    "x": 273,
-    "y": 166,
-    "z": 38000,
-    "height": 92,
-    "width": 233,
-    "tabOrder": 38000
+    "x": 446,
+    "y": 96,
+    "z": 41000,
+    "height": 96,
+    "width": 190,
+    "tabOrder": 41000
   },
   "visual": {
     "visualType": "card",
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "fact_cost.Untagged Cost",
-              "displayName": "Untagged (allocated via CMDB)"
+              "displayName": "Untagged (via CMDB)"
             }
           ]
         }
@@ -51,14 +51,28 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'DIN'"
+                  "Value": "'Segoe UI Semibold'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "22D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
                 }
               }
             }

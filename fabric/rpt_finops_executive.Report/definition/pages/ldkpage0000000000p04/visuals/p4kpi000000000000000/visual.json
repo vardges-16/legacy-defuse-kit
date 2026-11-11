@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p4kpi000000000000000",
   "position": {
-    "x": 24,
-    "y": 166,
-    "z": 51000,
-    "height": 92,
-    "width": 192,
-    "tabOrder": 51000
+    "x": 240,
+    "y": 96,
+    "z": 55000,
+    "height": 96,
+    "width": 156,
+    "tabOrder": 55000
   },
   "visual": {
     "visualType": "card",
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "fact_license_position.Entitlement Cost",
-              "displayName": "Annual license entitlements"
+              "displayName": "License entitlements / yr"
             }
           ]
         }
@@ -51,14 +51,28 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'DIN'"
+                  "Value": "'Segoe UI Semibold'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "22D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
                 }
               }
             }

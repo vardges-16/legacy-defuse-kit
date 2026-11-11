@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p4slicer100000000000",
   "position": {
-    "x": 440,
-    "y": 100,
-    "z": 49000,
-    "height": 54,
-    "width": 400,
-    "tabOrder": 49000
+    "x": 16,
+    "y": 206,
+    "z": 50000,
+    "height": 70,
+    "width": 188,
+    "tabOrder": 50000
   },
   "visual": {
     "visualType": "slicer",
@@ -206,14 +206,14 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "6D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "6D"
                 }
               }
             },

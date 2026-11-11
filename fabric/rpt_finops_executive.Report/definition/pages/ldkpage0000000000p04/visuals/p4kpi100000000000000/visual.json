@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p4kpi100000000000000",
   "position": {
-    "x": 232,
-    "y": 166,
-    "z": 52000,
-    "height": 92,
-    "width": 192,
-    "tabOrder": 52000
+    "x": 412,
+    "y": 96,
+    "z": 56000,
+    "height": 96,
+    "width": 156,
+    "tabOrder": 56000
   },
   "visual": {
     "visualType": "card",
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "fact_license_position.Under-licensed Cores",
-              "displayName": "Cores beyond entitlement"
+              "displayName": "Cores over entitlement"
             }
           ]
         }
@@ -51,14 +51,14 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'DIN'"
+                  "Value": "'Segoe UI Semibold'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "22D"
                 }
               }
             }

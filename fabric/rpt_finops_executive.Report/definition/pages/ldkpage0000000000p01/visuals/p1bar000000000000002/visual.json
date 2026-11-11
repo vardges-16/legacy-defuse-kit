@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p1bar000000000000002",
   "position": {
-    "x": 800,
-    "y": 272,
-    "z": 14000,
-    "height": 216,
-    "width": 456,
-    "tabOrder": 14000
+    "x": 872,
+    "y": 208,
+    "z": 15000,
+    "height": 250,
+    "width": 384,
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_cost"
+                      "Entity": "dim_cost_center"
                     }
                   },
-                  "Property": "allocation_method"
+                  "Property": "cost_center_name"
                 }
               },
-              "queryRef": "fact_cost.allocation_method",
+              "queryRef": "dim_cost_center.cost_center_name",
               "active": true
             }
           ]
@@ -41,10 +41,10 @@
                       "Entity": "fact_cost"
                     }
                   },
-                  "Property": "Effective Cost"
+                  "Property": "Actual"
                 }
               },
-              "queryRef": "fact_cost.Effective Cost"
+              "queryRef": "fact_cost.Actual"
             }
           ]
         }
@@ -59,7 +59,7 @@
                     "Entity": "fact_cost"
                   }
                 },
-                "Property": "Effective Cost"
+                "Property": "Actual"
               }
             },
             "direction": "Descending"
@@ -146,7 +146,7 @@
             "position": {
               "expr": {
                 "Literal": {
-                  "Value": "'TopLeft'"
+                  "Value": "'TopRight'"
                 }
               }
             },
@@ -181,7 +181,7 @@
       "dataPoint": [
         {
           "properties": {
-            "fill": {
+            "defaultColor": {
               "solid": {
                 "color": {
                   "expr": {
@@ -192,9 +192,6 @@
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "fact_cost.Effective Cost"
           }
         }
       ],
@@ -360,7 +357,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Who owns the spend'"
+                  "Value": "'Top cost centers'"
                 }
               }
             },

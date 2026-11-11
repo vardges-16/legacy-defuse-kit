@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p2table0000000000001",
   "position": {
-    "x": 560,
-    "y": 286,
-    "z": 29000,
-    "height": 420,
-    "width": 696,
-    "tabOrder": 29000
+    "x": 676,
+    "y": 208,
+    "z": 31000,
+    "height": 498,
+    "width": 580,
+    "tabOrder": 31000
   },
   "visual": {
     "visualType": "tableEx",

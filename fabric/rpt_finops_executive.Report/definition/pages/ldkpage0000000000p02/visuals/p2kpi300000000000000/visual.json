@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p2kpi300000000000000",
   "position": {
-    "x": 771,
-    "y": 174,
-    "z": 26000,
+    "x": 858,
+    "y": 96,
+    "z": 28000,
     "height": 96,
-    "width": 233,
-    "tabOrder": 26000
+    "width": 190,
+    "tabOrder": 28000
   },
   "visual": {
     "visualType": "card",
@@ -51,14 +51,14 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'DIN'"
+                  "Value": "'Segoe UI Semibold'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "22D"
                 }
               }
             }

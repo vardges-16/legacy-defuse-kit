@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p4trust0000000000000",
   "position": {
-    "x": 800,
-    "y": 18,
-    "z": 46000,
+    "x": 816,
+    "y": 16,
+    "z": 53000,
     "height": 40,
-    "width": 456,
-    "tabOrder": 46000
+    "width": 440,
+    "tabOrder": 53000
   },
   "visual": {
     "visualType": "card",

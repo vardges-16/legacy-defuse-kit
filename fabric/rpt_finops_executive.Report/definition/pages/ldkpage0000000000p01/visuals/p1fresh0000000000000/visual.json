@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p1fresh0000000000000",
   "position": {
-    "x": 800,
-    "y": 62,
-    "z": 3000,
-    "height": 28,
-    "width": 456,
-    "tabOrder": 3000
+    "x": 816,
+    "y": 58,
+    "z": 8000,
+    "height": 26,
+    "width": 440,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "card",
@@ -160,14 +160,14 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "0D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "0D"
                 }
               }
             },

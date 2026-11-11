@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p3slicer100000000000",
   "position": {
-    "x": 336,
-    "y": 100,
+    "x": 16,
+    "y": 206,
     "z": 34000,
-    "height": 54,
-    "width": 296,
+    "height": 70,
+    "width": 188,
     "tabOrder": 34000
   },
   "visual": {
@@ -206,14 +206,14 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "6D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "6D"
                 }
               }
             },

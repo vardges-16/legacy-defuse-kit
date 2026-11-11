@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "p4col000000000000001",
   "position": {
-    "x": 24,
-    "y": 272,
-    "z": 57000,
-    "height": 216,
-    "width": 616,
-    "tabOrder": 57000
+    "x": 240,
+    "y": 208,
+    "z": 61000,
+    "height": 250,
+    "width": 500,
+    "tabOrder": 61000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -202,7 +202,7 @@
             "position": {
               "expr": {
                 "Literal": {
-                  "Value": "'TopLeft'"
+                  "Value": "'TopRight'"
                 }
               }
             },
@@ -434,7 +434,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'BYOL cores installed vs entitled, by product'"
+                  "Value": "'BYOL cores installed vs entitled'"
                 }
               }
             },
