@@ -8,7 +8,10 @@
           "workspaceId": "00000000-0000-0000-0000-000000000000",
           "parameters": {
             "PIPELINE_RUN_ID": {
-              "value": "",
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
               "type": "string"
             },
             "RUN_CONTRACTS": {
@@ -77,7 +80,10 @@
           "workspaceId": "00000000-0000-0000-0000-000000000000",
           "parameters": {
             "PIPELINE_RUN_ID": {
-              "value": "",
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
               "type": "string"
             },
             "TOLERANCE": {
@@ -110,7 +116,10 @@
           "workspaceId": "00000000-0000-0000-0000-000000000000",
           "parameters": {
             "PIPELINE_RUN_ID": {
-              "value": "",
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
               "type": "string"
             },
             "ANSWER_KEYS": {
@@ -130,6 +139,72 @@
         "dependsOn": [
           {
             "activity": "reconcile",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "985cab94-60d0-4220-9eaa-20de4aab94ce",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "PIPELINE_RUN_ID": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "run_audit",
+        "dependsOn": [
+          {
+            "activity": "ai_score",
+            "dependencyConditions": [
+              "Completed",
+              "Skipped"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "IfCondition",
+        "typeProperties": {
+          "expression": {
+            "value": "@greater(json(activity('run_audit').output.result.exitValue).failed, 0)",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "type": "Fail",
+              "name": "fail_run",
+              "dependsOn": [],
+              "typeProperties": {
+                "message": {
+                  "value": "@concat('Run failed. Steps: ', json(activity('run_audit').output.result.exitValue).steps, ' | reconcile FAIL checks: ', string(json(activity('run_audit').output.result.exitValue).reconcile_fail))",
+                  "type": "Expression"
+                },
+                "errorCode": "LDK_RUN_FAILED"
+              }
+            }
+          ],
+          "ifFalseActivities": []
+        },
+        "name": "if_run_failed",
+        "dependsOn": [
+          {
+            "activity": "run_audit",
             "dependencyConditions": [
               "Succeeded"
             ]
