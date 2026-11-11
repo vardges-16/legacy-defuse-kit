@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Environment",
+    "displayName": "env_ldk_reconcile",
+    "description": "Environment"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e9ad44cc-27b2-b904-44c6-8fb17be9c76d"
+  }
+}
