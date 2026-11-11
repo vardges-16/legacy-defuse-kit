@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Bridged tokens — kept in `@theme static` so the CSS vars are always
+   emitted, not tree-shaken when no Tailwind utility consumes them.
+   Required because <VegaVisual> and <DataGrid> read these at runtime via
+   `useCssTheme()` and project them into a JS theme object (Vega's SVG output
+   cannot resolve `var()` references). */
+@theme static {
+  --color-brand: #0e5c4f; /* bar/area fills, button-like brand surfaces */
+  --color-brand-foreground: #0e5c4f; /* line/point marks, branded text & emphasis */
+  --color-hover: #ecebe4; /* row/cell hover surface in DataGrid + visuals */
+}
+
+@theme {
+  /* Color tokens — light theme
+     Usage: bg-*, text-*, border-* (e.g. bg-primary text-primary-foreground)
+     Each token has a -foreground pair for text on that surface. */
+  --color-background: #f5f4ef; /* page background */
+  --color-foreground: #16191d; /* default text */
+
+  --color-card: #ffffff; /* card surfaces */
+  --color-card-foreground: #16191d;
+
+  --color-popover: #ffffff; /* popover/dropdown surfaces */
+  --color-popover-foreground: #16191d;
+
+  --color-primary: #0e5c4f; /* primary actions & buttons */
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #eeede6; /* secondary actions */
+  --color-secondary-foreground: #16191d;
+
+  --color-muted: #ebe9e1; /* subtle backgrounds */
+  --color-muted-foreground: #5d6168; /* subdued text */
+
+  --color-accent: #ecebe4; /* accent highlights */
+  --color-accent-foreground: #16191d;
+
+  --color-destructive: #b4322a; /* errors & destructive actions */
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #dcdad1; /* default border */
+  --color-input: #dcdad1; /* input field borders */
+  --color-ring: #0e5c4f; /* focus rings */
+
+  /* Status tokens — Trust Ledger signal colours (pass / pending / fail / merged) */
+  --color-ok: #13804f;
+  --color-ok-soft: #e1f2e8;
+  --color-warn: #a8660b;
+  --color-warn-soft: #fbefd9;
+  --color-bad: #b4322a;
+  --color-bad-soft: #f9e2df;
+  --color-info: #2f6db3;
+  --color-info-soft: #e1ecf8;
+
+  --shadow-card: 0 1px 0 rgb(16 24 32 / 0.04), 0 8px 24px -12px rgb(16 24 32 / 0.12);
+
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 12px;
+  --radius-3xl: 16px;
+  --radius-4xl: 24px;
+  --radius-5xl: 32px;
+  --radius-6xl: 40px;
+  --radius-full: 9999px;
+  --radius: 6px;
+
+  /* Spacing — 4px grid; use only these tokens, no interpolation. *-nudge = base − 2px.
+     Usage: p-*, m-*, gap-* (e.g. p-400 gap-300) */
+  --spacing-none: 0;
+  --spacing-100-nudge: 2px;
+  --spacing-100: 4px;
+  --spacing-200-nudge: 6px;
+  --spacing-200: 8px;
+  --spacing-300-nudge: 10px;
+  --spacing-300: 12px;
+  --spacing-400: 16px;
+  --spacing-500: 20px;
+  --spacing-600: 24px;
+  --spacing-700: 28px;
+  --spacing-800: 32px;
+
+  /* Font Sizes — 100-based scale 
+     Usage: text-* (e.g. text-300, text-hero-900) */
+  --text-100: 10px;
+  --text-200: 12px;
+  --text-300: 14px;
+  --text-400: 16px;
+  --text-500: 20px;
+  --text-600: 24px;
+  --text-hero-700: 28px;
+  --text-hero-800: 32px;
+  --text-hero-900: 40px;
+  --text-hero-1000: 68px;
+
+  /* Line Heights — paired with font sizes
+     Usage: leading-* (e.g. leading-300) */
+  --leading-100: 14px;
+  --leading-200: 16px;
+  --leading-300: 20px;
+  --leading-400: 22px;
+  --leading-500: 28px;
+  --leading-600: 32px;
+  --leading-hero-700: 36px;
+  --leading-hero-800: 40px;
+  --leading-hero-900: 52px;
+  --leading-hero-1000: 92px;
+
+  /* Font Weights
+     Usage: font-* (e.g. font-semibold) */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Font Families
+     Usage: font-* (e.g. font-heading, font-base) */
+  --font-heading: 'Space Grotesk', 'Segoe UI', sans-serif; /* headings, titles, display text */
+  --font-base: 'IBM Plex Sans', 'Segoe UI', sans-serif; /* body text, labels, UI controls */
+  --font-monospace: 'IBM Plex Mono', Consolas, monospace; /* code, ids, eyebrows */
+  --font-numeric: 'Space Grotesk', 'IBM Plex Sans', sans-serif; /* KPI values, numeric displays */
+
+  /* Icon Sizes — 100-based scale
+     Usage: icon-size-* custom utility (e.g. icon-size-200) */
+  --icon-size-100: 12px;
+  --icon-size-200: 16px;
+  --icon-size-300: 20px;
+  --icon-size-400: 24px;
+  --icon-size-500: 28px;
+  --icon-size-600: 32px;
+  --icon-size-700: 48px;
+}
+
+@utility icon-size-* {
+  width: --value(--icon-size-*);
+  height: --value(--icon-size-*);
+}
+
+@layer base {
+  .dark {
+    /* Color tokens — dark theme */
+    --color-background: #0e1114;
+    --color-foreground: #e9ecef;
+
+    --color-card: #151a1f;
+    --color-card-foreground: #e9ecef;
+
+    --color-popover: #151a1f;
+    --color-popover-foreground: #e9ecef;
+
+    --color-primary: #3ccfa6;
+    --color-primary-foreground: #06221b;
+
+    --color-secondary: #1b2127;
+    --color-secondary-foreground: #e9ecef;
+
+    --color-muted: #1d242b;
+    --color-muted-foreground: #8e98a3;
+
+    --color-accent: #212931;
+    --color-accent-foreground: #e9ecef;
+
+    --color-destructive: #f0645a;
+    --color-destructive-foreground: #1a0705;
+
+    --color-border: #29323b;
+    --color-input: #29323b;
+    --color-ring: #3ccfa6;
+
+    --color-brand: #3ccfa6;
+    --color-brand-foreground: #3ccfa6;
+    --color-hover: #212931;
+
+    --color-ok: #3ccf8e;
+    --color-ok-soft: #12302a;
+    --color-warn: #f2b35a;
+    --color-warn-soft: #33270f;
+    --color-bad: #f0645a;
+    --color-bad-soft: #3a1714;
+    --color-info: #6aa8f0;
+    --color-info-soft: #13253b;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-base);
+  }
+
+  select,
+  input,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
