@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["DirectLake - wh_gold"]
+annotation PBI_QueryOrder = ["DirectLake - wh_gold","DirectLake - lh_trust"]
 
 annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb"]
 
@@ -26,4 +26,5 @@ ref table fact_cost
 ref table fact_license_installation
 ref table fact_license_position
 ref table fact_vm_backup_coverage
-
+ref table meta_trust_summary
+ref table meta_pipeline_runs

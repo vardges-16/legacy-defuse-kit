@@ -2,12 +2,37 @@ table fact_license_position
 	lineageTag: 99911d0c-0064-418c-a55f-dc49e7846329
 	sourceLineageTag: [dbo].[fact_license_position]
 
+	/// BYOL cores installed on cloud hosts.
+	measure 'Cores Installed' = SUM(fact_license_position[byol_cores_installed])
+		formatString: #,0
+		displayFolder: License
+		lineageTag: 1cf42c28-c467-4a9f-babc-2255c37d155a
+
+	/// Cores covered by active entitlements.
+	measure 'Cores Entitled' = SUM(fact_license_position[cores_entitled_active])
+		formatString: #,0
+		displayFolder: License
+		lineageTag: 6b49cc00-eb9f-462c-af67-7700e8688478
+
+	/// Cores installed beyond entitlement (compliance exposure), summed per product.
+	measure 'Under-licensed Cores' = SUMX(fact_license_position, MAX(fact_license_position[core_shortfall], 0))
+		formatString: #,0
+		displayFolder: License
+		lineageTag: 6665cb96-2a8e-4c24-8e7a-af632050a8da
+
+	/// Annual cost of all license entitlements.
+	measure 'Entitlement Cost' = SUM(fact_license_position[annual_entitlement_cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: License
+		lineageTag: c4e2aa09-534b-4d6d-8148-59ae43fd720b
+
 	column product_id
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: eee26ccb-2da8-43f7-b5d0-8d0c84acf8d7
 		sourceLineageTag: product_id
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: product_id
 
 		annotation SummarizationSetBy = Automatic
@@ -17,7 +42,7 @@ table fact_license_position
 		formatString: 0
 		lineageTag: daa622e1-fc8e-4ece-bbc3-d5ad2788c532
 		sourceLineageTag: byol_cores_installed
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: byol_cores_installed
 
 		annotation SummarizationSetBy = Automatic
@@ -27,7 +52,7 @@ table fact_license_position
 		formatString: 0
 		lineageTag: 3f20fb81-5be8-4d80-8658-495f934c3f7b
 		sourceLineageTag: cores_entitled_active
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: cores_entitled_active
 
 		annotation SummarizationSetBy = Automatic
@@ -37,7 +62,7 @@ table fact_license_position
 		formatString: 0
 		lineageTag: 8088fa74-1299-4700-b5a8-843177e3142d
 		sourceLineageTag: cores_expired
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: cores_expired
 
 		annotation SummarizationSetBy = Automatic
@@ -47,16 +72,17 @@ table fact_license_position
 		formatString: 0
 		lineageTag: 41fd1fdb-dee3-49f4-baf3-3cb3fc542e26
 		sourceLineageTag: core_shortfall
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: core_shortfall
 
 		annotation SummarizationSetBy = Automatic
 
 	column annual_entitlement_cost
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 97fe996c-af43-4549-9737-490a3f860d86
 		sourceLineageTag: annual_entitlement_cost
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: annual_entitlement_cost
 
 		annotation SummarizationSetBy = Automatic

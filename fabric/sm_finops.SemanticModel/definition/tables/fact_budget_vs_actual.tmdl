@@ -1,6 +1,7 @@
 table fact_budget_vs_actual
 	lineageTag: 3684e138-e9f0-4910-b67e-464dc876b6bd
 	sourceLineageTag: [dbo].[fact_budget_vs_actual]
+	isHidden
 
 	column month_start
 		dataType: dateTime
@@ -23,9 +24,10 @@ table fact_budget_vs_actual
 
 	column budget_cost
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: ce795592-5720-4b27-9a08-0e5559101e56
 		sourceLineageTag: budget_cost
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: budget_cost
 
 		annotation SummarizationSetBy = Automatic
@@ -34,9 +36,10 @@ table fact_budget_vs_actual
 
 	column actual_cost
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 559ccaf7-d4ca-4a53-82e0-a41bbcc3b354
 		sourceLineageTag: actual_cost
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: actual_cost
 
 		annotation SummarizationSetBy = Automatic
@@ -45,9 +48,10 @@ table fact_budget_vs_actual
 
 	column variance
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 6097d738-987c-4b9c-a865-6a622fc71d52
 		sourceLineageTag: variance
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: variance
 
 		annotation SummarizationSetBy = Automatic

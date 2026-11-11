@@ -2,8 +2,48 @@ table fact_budget
 	lineageTag: db46a452-e9ee-40b8-a8da-b6d8a0d081b0
 	sourceLineageTag: [dbo].[fact_budget]
 
+	/// Approved budget in USD (cleansed: fiscal year mapped to months, x1000 scaling fixed).
+	measure Budget = SUM(fact_budget[budget_cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Budget
+		lineageTag: deff900a-f086-4ae1-b6e5-5d276c97d9ab
+
+	/// Actual minus budget. Positive = over budget.
+	measure 'Budget Variance' = IF(NOT ISBLANK([Budget]) || NOT ISBLANK([Actual]), [Actual] - [Budget])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Budget
+		lineageTag: 1a6b1868-baab-4a19-ae74-30c75df08598
+
+	/// Variance as a share of budget.
+	measure 'Budget Variance %' = DIVIDE([Budget Variance], [Budget])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Budget
+		lineageTag: 88f4aab9-49c3-484b-b0cb-e4259049dfb0
+
+	/// Actual as a share of budget.
+	measure 'Budget Used %' = DIVIDE([Actual], [Budget])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Budget
+		lineageTag: 40cdfb1c-f059-40db-8180-8a28af20c54f
+
+	/// Over or within budget, as text for tables.
+	measure 'Budget Status' =
+			SWITCH(TRUE(),
+			    ISBLANK([Budget]), "no budget",
+			    [Budget Variance] > 0, "▲ over",
+			    "▼ within")
+		displayFolder: Budget
+		lineageTag: 312cde9f-b96b-4669-8269-03d99d3376f8
+
+	/// Number of cost centers whose actual exceeds budget in the current selection.
+	measure 'Cost Centers Over Budget' = COUNTROWS(FILTER(VALUES(dim_cost_center[cost_center_code]), [Budget Variance] > 0))
+		formatString: #,0
+		displayFolder: Budget
+		lineageTag: ca28f324-725a-4b59-9a82-4a7dbc31b58d
+
 	column month_start
 		dataType: dateTime
+		isHidden
 		formatString: General Date
 		lineageTag: a7fca481-779f-4c1b-ba73-e28a252e7c28
 		sourceLineageTag: month_start
@@ -14,6 +54,7 @@ table fact_budget
 
 	column cost_center_code
 		dataType: string
+		isHidden
 		lineageTag: 254d33cf-5a22-47ac-a455-f2ca75375b47
 		sourceLineageTag: cost_center_code
 		summarizeBy: none
@@ -26,16 +67,17 @@ table fact_budget
 		formatString: 0
 		lineageTag: 39983c12-766d-4730-85db-faef9d49afd2
 		sourceLineageTag: fiscal_year
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: fiscal_year
 
 		annotation SummarizationSetBy = Automatic
 
 	column budget_cost
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 7dc85203-414f-4d72-bee1-81f2f44538ff
 		sourceLineageTag: budget_cost
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: budget_cost
 
 		annotation SummarizationSetBy = Automatic
@@ -44,6 +86,7 @@ table fact_budget
 
 	column amount_scaled_x1000
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 4e0a352a-861b-433e-8a05-1a1b6035f6f9
 		sourceLineageTag: amount_scaled_x1000
@@ -54,6 +97,7 @@ table fact_budget
 
 	column _row_hash
 		dataType: string
+		isHidden
 		lineageTag: 578da7ea-dfe3-4354-8095-2fe1440def3e
 		sourceLineageTag: _row_hash
 		summarizeBy: none

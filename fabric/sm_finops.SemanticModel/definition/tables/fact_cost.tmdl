@@ -2,8 +2,120 @@ table fact_cost
 	lineageTag: 19646791-f535-4e27-a35c-36f74907a17f
 	sourceLineageTag: [dbo].[fact_cost]
 
+	/// Amortized cost after discounts and commitments (FOCUS EffectiveCost). Use for chargeback and budgets.
+	measure 'Effective Cost' = SUM(fact_cost[effective_cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Cost
+		lineageTag: e4cf1662-61ec-4700-a2b6-5804ffd78fb2
+
+	/// Invoiced cost (FOCUS BilledCost). Use to reconcile with the provider invoice.
+	measure 'Billed Cost' = SUM(fact_cost[billed_cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Cost
+		lineageTag: 8d2b232e-be63-43d0-9c23-82ed2c86a885
+
+	/// Cost at public list prices.
+	measure 'List Cost' = SUM(fact_cost[list_cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Cost
+		lineageTag: 38b3329e-6b6e-402d-aa7a-a9c8a10b615d
+
+	/// Discounts and commitments: list cost minus effective cost.
+	measure 'Savings vs List' = [List Cost] - [Effective Cost]
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Cost
+		lineageTag: 37d74fa0-2c9a-4637-8c81-8110e3191f31
+
+	/// Effective cost of the previous month.
+	measure 'Effective Cost PM' = CALCULATE([Effective Cost], DATEADD(dim_date[date_key], -1, MONTH))
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Cost
+		lineageTag: 47e44323-1cb2-404f-a966-6ba8907d8180
+
+	/// Month-over-month change of effective cost.
+	measure 'MoM %' = DIVIDE([Effective Cost] - [Effective Cost PM], [Effective Cost PM])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Cost
+		lineageTag: 81c79fe5-d2fb-4194-b924-0ae235947361
+
+	/// Effective cost of the latest month with cost data in the current selection.
+	measure 'Last Month Cost' =
+			VAR lastDay = MAX(fact_cost[date_key])
+			VAR monthStart = DATE(YEAR(lastDay), MONTH(lastDay), 1)
+			RETURN CALCULATE([Effective Cost], REMOVEFILTERS(dim_date), dim_date[month_start] = monthStart)
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Cost
+		lineageTag: 431b8a55-1f95-4ab9-8872-c25b6aaf35cd
+
+	/// Latest month's effective cost times 12.
+	measure 'Annual Run-rate' = [Last Month Cost] * 12
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Cost
+		lineageTag: bd290de3-9710-4423-8113-7bd0dcd2187d
+
+	/// Number of CMDB applications with cost.
+	measure 'Applications Billed' = CALCULATE(DISTINCTCOUNT(fact_cost[application_code]), fact_cost[application_code] <> "UNALLOCATED")
+		formatString: #,0
+		displayFolder: Cost
+		lineageTag: 9d2d4c5c-37a4-4705-9bf5-c1149e063f18
+
+	/// Cost that could not be assigned to an application or cost center (no CMDB scope, no usable tag).
+	measure 'Unallocated Cost' = CALCULATE([Effective Cost], fact_cost[allocation_method] = "UNALLOCATED")
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Allocation
+		lineageTag: f2e95281-79bf-4ea4-a1a8-824a1e98248e
+
+	/// Share of effective cost that is unallocated.
+	measure 'Unallocated %' = DIVIDE([Unallocated Cost], [Effective Cost])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Allocation
+		lineageTag: 12b09574-02be-416f-9d90-93e3cacdb1fd
+
+	/// Share of effective cost assigned to an owner.
+	measure 'Allocated %' = 1 - [Unallocated %]
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Allocation
+		lineageTag: 41cb521e-5270-451e-a84a-7d8b99efeb7b
+
+	/// Cost on resources without an application tag (allocated through the CMDB scope where possible).
+	measure 'Untagged Cost' = CALCULATE([Effective Cost], fact_cost[tag_missing] = TRUE())
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Hygiene
+		lineageTag: 0840c190-f371-4dc1-b972-54eaaca99cb6
+
+	/// Cost where the resource tag disagrees with the CMDB (application or cost center).
+	measure 'Tag Conflict Cost' = [Effective Cost] - CALCULATE([Effective Cost], fact_cost[tag_app_conflict] = FALSE(), fact_cost[tag_cc_conflict] = FALSE())
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Hygiene
+		lineageTag: e75b931f-df31-44ee-a13a-ccc0db8ee7e2
+
+	/// Cost in cloud scopes that are not registered in the CMDB.
+	measure 'Shadow IT Cost' = CALCULATE([Effective Cost], fact_cost[is_shadow_it] = TRUE())
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Hygiene
+		lineageTag: b690345b-68a1-4134-aca5-c908d609ab51
+
+	/// Cost still running for retired applications.
+	measure 'Zombie Spend' = CALCULATE([Effective Cost], fact_cost[is_zombie_spend] = TRUE())
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Hygiene
+		lineageTag: 2f34a468-fd3c-4a24-9586-dd931beda47a
+
+	/// Shadow IT plus zombie spend.
+	measure 'At-risk Spend' = [Shadow IT Cost] + [Zombie Spend]
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Hygiene
+		lineageTag: fc6d97ef-b624-4226-b321-791b0f536a38
+
+	/// Effective cost that carries a cost center: the actual that is compared with budget.
+	measure Actual = CALCULATE([Effective Cost], NOT ISBLANK(fact_cost[cost_center_code]))
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Budget
+		lineageTag: 6cbd201b-9b46-4496-94fb-0fe09289d52b
+
 	column date_key
 		dataType: dateTime
+		isHidden
 		formatString: General Date
 		lineageTag: abb09cb8-9c92-4ee4-bc1c-39e05431d004
 		sourceLineageTag: date_key
@@ -60,6 +172,7 @@ table fact_cost
 
 	column scope_key
 		dataType: string
+		isHidden
 		lineageTag: e9bc21e4-16c0-4e75-a96f-5c84a3f01bad
 		sourceLineageTag: scope_key
 		summarizeBy: none
@@ -159,6 +272,7 @@ table fact_cost
 
 	column application_code
 		dataType: string
+		isHidden
 		lineageTag: 2bf7d034-40dc-4245-b0a9-a6cfd11bf7be
 		sourceLineageTag: application_code
 		summarizeBy: none
@@ -168,6 +282,7 @@ table fact_cost
 
 	column cost_center_code
 		dataType: string
+		isHidden
 		lineageTag: 7d4be821-f023-49e1-81b0-508308976d1c
 		sourceLineageTag: cost_center_code
 		summarizeBy: none
@@ -186,9 +301,10 @@ table fact_cost
 
 	column billed_cost
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: bafade40-577a-4d2d-b7e3-404e18d30528
 		sourceLineageTag: billed_cost
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: billed_cost
 
 		annotation SummarizationSetBy = Automatic
@@ -197,9 +313,10 @@ table fact_cost
 
 	column effective_cost
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: cf82f90e-bb7f-41cd-820d-1d942ef4be1e
 		sourceLineageTag: effective_cost
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: effective_cost
 
 		annotation SummarizationSetBy = Automatic
@@ -208,9 +325,10 @@ table fact_cost
 
 	column list_cost
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 212471ea-4b9c-40f0-aeb1-b44bd5bbbe84
 		sourceLineageTag: list_cost
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: list_cost
 
 		annotation SummarizationSetBy = Automatic
@@ -219,9 +337,10 @@ table fact_cost
 
 	column contracted_cost
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: e5de863a-06dd-4ac9-bd92-be98440bd3d8
 		sourceLineageTag: contracted_cost
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: contracted_cost
 
 		annotation SummarizationSetBy = Automatic
@@ -232,7 +351,7 @@ table fact_cost
 		dataType: double
 		lineageTag: 8fade5e6-ce8c-4ef5-a338-298b0d39f0ce
 		sourceLineageTag: consumed_quantity
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: consumed_quantity
 
 		annotation SummarizationSetBy = Automatic
@@ -300,6 +419,7 @@ table fact_cost
 
 	column _row_hash
 		dataType: string
+		isHidden
 		lineageTag: 56ea51ce-8a9e-4fee-89d2-d6f716ca1080
 		sourceLineageTag: _row_hash
 		summarizeBy: none

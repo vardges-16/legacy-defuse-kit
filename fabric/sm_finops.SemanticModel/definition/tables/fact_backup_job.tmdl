@@ -2,6 +2,24 @@ table fact_backup_job
 	lineageTag: aba3e197-df75-466d-bfe8-200c6a52f659
 	sourceLineageTag: [dbo].[fact_backup_job]
 
+	/// Backup job runs (deduplicated).
+	measure 'Backup Jobs' = COUNTROWS(fact_backup_job)
+		formatString: #,0
+		displayFolder: Backup
+		lineageTag: b6e46519-2395-401b-a8d3-196b9d92ddbd
+
+	/// Backup jobs that failed.
+	measure 'Failed Jobs' = CALCULATE([Backup Jobs], fact_backup_job[status] = "Failed")
+		formatString: #,0
+		displayFolder: Backup
+		lineageTag: b1245fa5-0532-4e30-b75d-97a7c93f18be
+
+	/// Share of backup jobs that completed.
+	measure 'Job Success %' = DIVIDE(CALCULATE([Backup Jobs], fact_backup_job[status] IN {"Completed", "CompletedWithWarnings"}), [Backup Jobs])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Backup
+		lineageTag: 408cac6b-fb2a-4c89-8a28-c55fbfe3b255
+
 	column job_id
 		dataType: string
 		lineageTag: bfa38936-f354-4383-a152-fab4d58357ac
@@ -13,6 +31,7 @@ table fact_backup_job
 
 	column date_key
 		dataType: dateTime
+		isHidden
 		formatString: General Date
 		lineageTag: fe068d9f-c12f-4212-8043-5e0b9dd31adb
 		sourceLineageTag: date_key
@@ -32,6 +51,7 @@ table fact_backup_job
 
 	column application_code
 		dataType: string
+		isHidden
 		lineageTag: 1dff0da5-3dc2-4466-ab7a-56bfd0a2dc77
 		sourceLineageTag: application_code
 		summarizeBy: none
@@ -61,7 +81,7 @@ table fact_backup_job
 		dataType: double
 		lineageTag: 1609fd2e-918e-43cd-9c35-1e4b1ef5b135
 		sourceLineageTag: backup_size_gb
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: backup_size_gb
 
 		annotation SummarizationSetBy = Automatic
@@ -79,6 +99,7 @@ table fact_backup_job
 
 	column _row_hash
 		dataType: string
+		isHidden
 		lineageTag: 3614e8e3-a5cc-4f1f-87e4-55a938b4613a
 		sourceLineageTag: _row_hash
 		summarizeBy: none

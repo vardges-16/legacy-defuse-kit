@@ -7,7 +7,7 @@ table dim_product
 		formatString: 0
 		lineageTag: be8c00d4-4f9b-4ea0-ba2e-9309e4b53fa2
 		sourceLineageTag: product_id
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: product_id
 
 		annotation SummarizationSetBy = Automatic

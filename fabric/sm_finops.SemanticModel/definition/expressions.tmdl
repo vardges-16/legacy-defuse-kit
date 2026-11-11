@@ -7,3 +7,13 @@ expression 'DirectLake - wh_gold' =
 
 	annotation PBI_IncludeFutureArtifacts = False
 
+
+expression 'DirectLake - lh_trust' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/84598118-e0d7-451b-b901-affefb6f0cca/4deb63e1-7a6b-4d89-bbba-230cbba39cf7", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: 1c151557-d7db-4a99-ba9a-28c8a2a02888
+
+	annotation PBI_IncludeFutureArtifacts = False
+

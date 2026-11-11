@@ -1,6 +1,7 @@
 table dim_service
 	lineageTag: c0b6568e-06db-48da-80f0-f20b54f03dfe
 	sourceLineageTag: [dbo].[dim_service]
+	isHidden
 
 	column provider
 		dataType: string

@@ -67,6 +67,7 @@ table dim_application
 
 	column owner_email_hash
 		dataType: string
+		isHidden
 		lineageTag: 9b0ba9b5-933b-4502-a25d-8505c6941778
 		sourceLineageTag: owner_email_hash
 		summarizeBy: none

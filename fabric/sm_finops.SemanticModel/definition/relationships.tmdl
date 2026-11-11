@@ -1,0 +1,56 @@
+relationship 5befd66f-e29b-4624-95ce-f7f962d66af4
+	fromColumn: fact_cost.date_key
+	toColumn: dim_date.date_key
+
+relationship 4907e1e1-bb7f-4c61-beea-f8fa40fd552d
+	fromColumn: fact_cost.application_code
+	toColumn: dim_application.application_code
+
+relationship 9f1d1d6f-339c-44fe-b2d5-ed0969d2506c
+	fromColumn: fact_cost.cost_center_code
+	toColumn: dim_cost_center.cost_center_code
+
+relationship 8c706509-3f17-4dcd-94fd-92e9dbbeb0fb
+	fromColumn: fact_cost.scope_key
+	toColumn: dim_scope.scope_key
+
+relationship 19c1ca45-2d6b-48a8-a277-f6863b544504
+	fromColumn: fact_budget.month_start
+	toColumn: dim_date.date_key
+
+relationship 626ec504-a778-4f8b-8835-80b42124323a
+	fromColumn: fact_budget.cost_center_code
+	toColumn: dim_cost_center.cost_center_code
+
+relationship f4a15490-6314-45fb-a082-fabeaa935465
+	fromColumn: fact_backup_cost.month_start
+	toColumn: dim_date.date_key
+
+relationship 90b0ea5d-a304-4736-8bb7-0a9a87bf1a22
+	fromColumn: fact_backup_cost.application_code
+	toColumn: dim_application.application_code
+
+relationship 988fe186-1a18-43e1-a179-c52de90a4ba0
+	fromColumn: fact_backup_cost.cost_center_code
+	toColumn: dim_cost_center.cost_center_code
+
+relationship b6fb5278-d38f-419d-a711-45b6013a8fdd
+	fromColumn: fact_backup_job.date_key
+	toColumn: dim_date.date_key
+
+relationship 77907164-f800-40f0-b0cc-0da718eecba5
+	fromColumn: fact_backup_job.application_code
+	toColumn: dim_application.application_code
+
+relationship e7a5aa43-d8c3-41a1-8416-133189437c9a
+	fromColumn: fact_vm_backup_coverage.application_code
+	toColumn: dim_application.application_code
+
+relationship eda6db50-aa6e-44d1-af81-f75efcebf1d1
+	fromColumn: fact_license_installation.product_id
+	toColumn: dim_product.product_id
+
+relationship 30b67e12-5d0b-452f-886a-5a0dcf065186
+	fromColumn: fact_license_position.product_id
+	toColumn: dim_product.product_id
+

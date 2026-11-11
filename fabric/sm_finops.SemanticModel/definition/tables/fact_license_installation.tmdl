@@ -2,12 +2,30 @@ table fact_license_installation
 	lineageTag: 5b2813ab-f97e-4250-9903-ef80591023c2
 	sourceLineageTag: [dbo].[fact_license_installation]
 
+	/// Software installations (deduplicated).
+	measure Installations = COUNTROWS(fact_license_installation)
+		formatString: #,0
+		displayFolder: License
+		lineageTag: 4087f25c-e5d2-4c22-a499-94978737574c
+
+	/// VMs paying for a license twice (BYOL and pay-as-you-go).
+	measure 'Double-licensed VMs' = CALCULATE(DISTINCTCOUNT(fact_license_installation[host_name]), fact_license_installation[double_licensing] = TRUE())
+		formatString: #,0
+		displayFolder: License
+		lineageTag: a8b24e99-10f8-478a-96a8-a96143b4b5fb
+
+	/// Installations still reported on VMs that were deleted.
+	measure 'Ghost Installations' = CALCULATE([Installations], fact_license_installation[vm_deleted_still_seen] = TRUE())
+		formatString: #,0
+		displayFolder: License
+		lineageTag: f6a188f1-b791-4ecf-85dc-023ac059500c
+
 	column installation_id
 		dataType: int64
 		formatString: 0
 		lineageTag: a302c823-79c9-4086-9f83-57f838668696
 		sourceLineageTag: installation_id
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: installation_id
 
 		annotation SummarizationSetBy = Automatic
@@ -23,10 +41,11 @@ table fact_license_installation
 
 	column product_id
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: caf44524-31f8-4397-a976-577ce7fa5ef7
 		sourceLineageTag: product_id
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: product_id
 
 		annotation SummarizationSetBy = Automatic
@@ -45,7 +64,7 @@ table fact_license_installation
 		formatString: 0
 		lineageTag: 32b492c8-8fd1-4864-a6af-fea3992fbac9
 		sourceLineageTag: cores
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: cores
 
 		annotation SummarizationSetBy = Automatic
@@ -120,6 +139,7 @@ table fact_license_installation
 
 	column _row_hash
 		dataType: string
+		isHidden
 		lineageTag: 8ea021b6-02af-491d-9fe3-a018d6391b3b
 		sourceLineageTag: _row_hash
 		summarizeBy: none

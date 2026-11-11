@@ -1,0 +1,207 @@
+table meta_trust_summary
+	lineageTag: 8ab81a91-6774-47f1-a5a2-cb307d00382f
+	sourceLineageTag: [dbo].[meta_trust_summary]
+
+	/// Time of the latest reconciliation.
+	measure 'Last Check' = CALCULATE(MAX(meta_trust_summary[checked_at]), REMOVEFILTERS(meta_trust_summary))
+		formatString: dd mmm yyyy hh:nn
+		displayFolder: Trust
+		lineageTag: c3342512-7f0c-4323-a7e5-fd4a8bc1d290
+
+	/// Entities whose latest reconciliation passed (source = Bronze = Silver = Gold).
+	measure 'Entities Reconciled' =
+			VAR t = [Last Check]
+			RETURN CALCULATE(COUNTROWS(meta_trust_summary), REMOVEFILTERS(meta_trust_summary), meta_trust_summary[checked_at] = t, meta_trust_summary[status] = "PASS")
+		formatString: #,0
+		displayFolder: Trust
+		lineageTag: 94536ba9-65f0-498e-815f-a32a59fa1bca
+
+	/// Entities in the latest reconciliation.
+	measure 'Entities Checked' =
+			VAR t = [Last Check]
+			RETURN CALCULATE(COUNTROWS(meta_trust_summary), REMOVEFILTERS(meta_trust_summary), meta_trust_summary[checked_at] = t)
+		formatString: #,0
+		displayFolder: Trust
+		lineageTag: fcc0cd8c-4148-4237-9e29-030e22b974a9
+
+	/// Rows that disappeared between layers in the latest reconciliation. Must be 0.
+	measure 'Rows Lost' =
+			VAR t = [Last Check]
+			RETURN CALCULATE(SUM(meta_trust_summary[lost_rows]), REMOVEFILTERS(meta_trust_summary), meta_trust_summary[checked_at] = t) + 0
+		formatString: #,0
+		displayFolder: Trust
+		lineageTag: 64f28390-4e41-4734-a754-570ce81f2892
+
+	/// One-line trust statement for report headers.
+	measure 'Data Verified' =
+			VAR ok = [Entities Reconciled]
+			VAR n = [Entities Checked]
+			VAR lost = [Rows Lost]
+			RETURN IF(n > 0 && ok = n && lost = 0,
+			    "✓ Data verified · " & ok & "/" & n & " sources reconciled · 0 rows lost",
+			    "⚠ Check the Trust Ledger · " & ok & "/" & n & " reconciled · " & FORMAT(lost, "#,0") & " rows lost")
+		displayFolder: Trust
+		lineageTag: 0e6b5bb0-c6e2-42c1-83c0-25d7ddf854c7
+
+	column run_id
+		dataType: string
+		lineageTag: af88dc1b-97df-4596-a112-f93e2b15ff10
+		sourceLineageTag: run_id
+		summarizeBy: none
+		sourceColumn: run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column checked_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8b311407-b65c-4e35-9e92-177d1f257879
+		sourceLineageTag: checked_at
+		summarizeBy: none
+		sourceColumn: checked_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity
+		dataType: string
+		lineageTag: a68ce8c5-b1f0-4a85-924e-d9fdd28d8d9a
+		sourceLineageTag: entity
+		summarizeBy: none
+		sourceColumn: entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: bfda8af5-61eb-4a33-acc9-a30d75d22690
+		sourceLineageTag: status
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_rows
+		dataType: int64
+		lineageTag: 63faef11-f63b-4378-a9c7-ed80bb273f84
+		sourceLineageTag: source_rows
+		summarizeBy: none
+		sourceColumn: source_rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column bronze_rows
+		dataType: int64
+		lineageTag: 61a1a777-b1e3-40e8-b725-c6fc17372c78
+		sourceLineageTag: bronze_rows
+		summarizeBy: none
+		sourceColumn: bronze_rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column silver_rows
+		dataType: int64
+		lineageTag: 87ab43c4-e898-4dd7-b080-ca327cb0cd99
+		sourceLineageTag: silver_rows
+		summarizeBy: none
+		sourceColumn: silver_rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarantined_rows
+		dataType: int64
+		lineageTag: 430124a9-0244-4d41-ba0b-092694079423
+		sourceLineageTag: quarantined_rows
+		summarizeBy: none
+		sourceColumn: quarantined_rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column merged_rows
+		dataType: int64
+		lineageTag: c0f58f15-a73c-43ae-a957-d3a3078e2373
+		sourceLineageTag: merged_rows
+		summarizeBy: none
+		sourceColumn: merged_rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column lost_rows
+		dataType: int64
+		lineageTag: 9b665c79-ce58-414a-854b-92fedcc3f1af
+		sourceLineageTag: lost_rows
+		summarizeBy: none
+		sourceColumn: lost_rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column bronze_amount
+		dataType: double
+		lineageTag: 04f2cbe8-efd6-4de0-87a3-6525efa56058
+		sourceLineageTag: bronze_amount
+		summarizeBy: none
+		sourceColumn: bronze_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column silver_amount
+		dataType: double
+		lineageTag: 3248e28f-a778-4d87-b87d-a90147581844
+		sourceLineageTag: silver_amount
+		summarizeBy: none
+		sourceColumn: silver_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column gold_amount
+		dataType: double
+		lineageTag: bfc85726-3b88-460e-ad65-c93d9ce24a78
+		sourceLineageTag: gold_amount
+		summarizeBy: none
+		sourceColumn: gold_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column checks_pass
+		dataType: int64
+		lineageTag: f10f7c30-04a4-49d0-9e40-ab13b6cc48a9
+		sourceLineageTag: checks_pass
+		summarizeBy: none
+		sourceColumn: checks_pass
+
+		annotation SummarizationSetBy = Automatic
+
+	column checks_fail
+		dataType: int64
+		lineageTag: d2070ff0-8ce7-48f6-976c-32b66d276f23
+		sourceLineageTag: checks_fail
+		summarizeBy: none
+		sourceColumn: checks_fail
+
+		annotation SummarizationSetBy = Automatic
+
+	column checks_pending
+		dataType: int64
+		lineageTag: 093bc41b-fc9e-40ba-a781-8f87ae9cdf23
+		sourceLineageTag: checks_pending
+		summarizeBy: none
+		sourceColumn: checks_pending
+
+		annotation SummarizationSetBy = Automatic
+
+	column silver_run_id
+		dataType: string
+		isHidden
+		lineageTag: 08dd7682-5c94-4cf8-aed6-b22bcf8f17a3
+		sourceLineageTag: silver_run_id
+		summarizeBy: none
+		sourceColumn: silver_run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition meta_trust_summary = entity
+		mode: directLake
+		source
+			entityName: meta_trust_summary
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_trust'
+

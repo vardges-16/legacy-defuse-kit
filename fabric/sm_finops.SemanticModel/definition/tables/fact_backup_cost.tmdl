@@ -2,8 +2,21 @@ table fact_backup_cost
 	lineageTag: 71b7a0ea-5ed7-42b7-b1c0-5d308071cf17
 	sourceLineageTag: [dbo].[fact_backup_cost]
 
+	/// Monthly backup storage cost (vault retention).
+	measure 'Backup Storage Cost' = SUM(fact_backup_cost[storage_cost_usd])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Backup
+		lineageTag: a8f8b4b2-6c92-441b-874b-051874353723
+
+	/// Backup storage still paid for VMs that no longer exist.
+	measure 'Orphaned Backup Cost' = CALCULATE([Backup Storage Cost], fact_backup_cost[is_orphaned] = TRUE())
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Backup
+		lineageTag: 82815711-9e43-4f40-896d-3fc2ef491ccb
+
 	column month_start
 		dataType: dateTime
+		isHidden
 		formatString: General Date
 		lineageTag: f913155a-c692-4764-9f4a-0e897ea9e58a
 		sourceLineageTag: month_start
@@ -32,6 +45,7 @@ table fact_backup_cost
 
 	column application_code
 		dataType: string
+		isHidden
 		lineageTag: 0059d398-e0dc-4841-9a2d-ae1219ccbd6c
 		sourceLineageTag: application_code
 		summarizeBy: none
@@ -41,6 +55,7 @@ table fact_backup_cost
 
 	column cost_center_code
 		dataType: string
+		isHidden
 		lineageTag: d4ba6e70-15d4-49d9-a3e7-6f23c13a2572
 		sourceLineageTag: cost_center_code
 		summarizeBy: none
@@ -71,7 +86,7 @@ table fact_backup_cost
 		dataType: double
 		lineageTag: df4ccca6-5a08-48eb-ab19-bb10f370fd2f
 		sourceLineageTag: retained_storage_gb
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: retained_storage_gb
 
 		annotation SummarizationSetBy = Automatic
@@ -80,9 +95,10 @@ table fact_backup_cost
 
 	column storage_cost_usd
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: de2101c0-7d28-4b60-a39b-12275113e788
 		sourceLineageTag: storage_cost_usd
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: storage_cost_usd
 
 		annotation SummarizationSetBy = Automatic
@@ -101,6 +117,7 @@ table fact_backup_cost
 
 	column _row_hash
 		dataType: string
+		isHidden
 		lineageTag: 999a44c6-e739-420f-93f1-1608067dac05
 		sourceLineageTag: _row_hash
 		summarizeBy: none
