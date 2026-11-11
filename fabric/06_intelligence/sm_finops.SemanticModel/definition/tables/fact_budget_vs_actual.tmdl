@@ -1,0 +1,67 @@
+table fact_budget_vs_actual
+	isHidden
+	lineageTag: 3684e138-e9f0-4910-b67e-464dc876b6bd
+	sourceLineageTag: [dbo].[fact_budget_vs_actual]
+
+	column month_start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 495d2769-2b10-46a2-8ab5-df5b7e7f31dd
+		sourceLineageTag: month_start
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center_code
+		dataType: string
+		lineageTag: d6e69ed4-609b-41a2-b460-4a1cb799f442
+		sourceLineageTag: cost_center_code
+		summarizeBy: none
+		sourceColumn: cost_center_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column budget_cost
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: ce795592-5720-4b27-9a08-0e5559101e56
+		sourceLineageTag: budget_cost
+		summarizeBy: none
+		sourceColumn: budget_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column actual_cost
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 559ccaf7-d4ca-4a53-82e0-a41bbcc3b354
+		sourceLineageTag: actual_cost
+		summarizeBy: none
+		sourceColumn: actual_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column variance
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 6097d738-987c-4b9c-a865-6a622fc71d52
+		sourceLineageTag: variance
+		summarizeBy: none
+		sourceColumn: variance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_budget_vs_actual = entity
+		mode: directLake
+		source
+			entityName: fact_budget_vs_actual
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

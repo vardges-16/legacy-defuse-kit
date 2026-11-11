@@ -1,0 +1,83 @@
+table dim_date
+	lineageTag: 18f06b0b-3040-4119-85ba-5aa5c6366d53
+	sourceLineageTag: [dbo].[dim_date]
+	dataCategory: Time
+
+	column date_key
+		dataType: dateTime
+		isKey
+		formatString: dd mmm yyyy
+		lineageTag: 22623eee-5c85-4c6e-a833-ccb5883ef458
+		sourceLineageTag: date_key
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b7a4b31-240c-4136-aff3-117cff26c78a
+		sourceLineageTag: year
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_no
+		dataType: int64
+		formatString: 0
+		lineageTag: a0588889-e1c6-4533-a8cf-cccc737da734
+		sourceLineageTag: month_no
+		summarizeBy: none
+		sourceColumn: month_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: b29bd53f-e3d3-408d-9a34-eee5dec7aec5
+		sourceLineageTag: month_start
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: c4cf7b3f-5e63-44ff-8ac9-566bed249a45
+		sourceLineageTag: month_name
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 10356306-d9b2-4d58-8641-af23df7572e3
+		sourceLineageTag: quarter_no
+		summarizeBy: none
+		sourceColumn: quarter_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: int64
+		formatString: 0
+		lineageTag: bca92c12-3cc9-4ff9-88e4-7f27103e851f
+		sourceLineageTag: is_weekend
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = entity
+		mode: directLake
+		source
+			entityName: dim_date
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+
