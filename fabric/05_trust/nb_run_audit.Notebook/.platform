@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "nb_run_audit",
+    "description": "Pipeline run audit: activity runs + data checks per run, drives pipeline pass/fail"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "985cab94-60d0-4220-9eaa-20de4aab94ce"
+  }
+}
