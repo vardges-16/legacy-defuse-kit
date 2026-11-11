@@ -48,11 +48,13 @@ SELF_NAME = "run_audit"                                      # this activity's n
 
 # CELL ********************
 
-import datetime, json, re
-import sempy.fabric as fabric
+import datetime, json, re, requests
 
 now = datetime.datetime.utcnow()
 WORKSPACE_ID = WORKSPACE_ID or notebookutils.runtime.context.get("currentWorkspaceId")
+if not PIPELINE_RUN_ID:
+    notebookutils.notebook.exit(json.dumps({"failed": 0, "steps": "none", "reconcile_fail": 0,
+                                            "note": "no pipeline run id: interactive run, nothing audited"}))
 
 
 def ts(s):
@@ -64,8 +66,9 @@ def ts(s):
 
 
 # 1. Activity runs of this pipeline run (paged by continuationToken)
-client = fabric.FabricRestClient()
-url = f"v1/workspaces/{WORKSPACE_ID}/datapipelines/pipelineruns/{PIPELINE_RUN_ID}/queryactivityruns"
+headers = {"Authorization": f"Bearer {notebookutils.credentials.getToken('pbi')}", "Content-Type": "application/json"}
+url = (f"https://api.fabric.microsoft.com/v1/workspaces/{WORKSPACE_ID}"
+       f"/datapipelines/pipelineruns/{PIPELINE_RUN_ID}/queryactivityruns")
 body = {"filters": [], "orderBy": [{"orderBy": "ActivityRunStart", "order": "ASC"}],
         "lastUpdatedAfter": (now - datetime.timedelta(days=2)).isoformat() + "Z",
         "lastUpdatedBefore": (now + datetime.timedelta(hours=1)).isoformat() + "Z"}
@@ -73,7 +76,7 @@ runs, token = [], None
 while True:
     if token:
         body["continuationToken"] = token
-    resp = client.post(url, json=body)
+    resp = requests.post(url, headers=headers, json=body, timeout=60)
     resp.raise_for_status()
     data = resp.json()
     runs += data if isinstance(data, list) else data.get("value", [])
@@ -81,6 +84,9 @@ while True:
     if not token:
         break
 print(len(runs), "activity runs returned by the API")
+if not runs:
+    raise RuntimeError(f"queryactivityruns returned no activity runs for run id {PIPELINE_RUN_ID}: "
+                       "cannot audit this run (check that the pipeline passes @pipeline().RunId)")
 
 # 2. One row per activity (last attempt wins), expected steps that never ran -> Skipped
 acts = {}
@@ -112,7 +118,7 @@ rec_fail = 0 if rec is None else rec.filter((F.col("run_id") == PIPELINE_RUN_ID)
 rec_total = 0 if rec is None else rec.filter(F.col("run_id") == PIPELINE_RUN_ID).count()
 
 # 4. Run summary
-failed = [a for a in expected if acts[a][3] == "Failed"]
+failed = [a for a in expected if acts[a][3] not in ("Succeeded", "Skipped")]   # Failed, Cancelled, ...
 skipped = [a for a in expected if acts[a][3] == "Skipped"]
 starts = [v[4] for v in acts.values() if v[4] is not None]
 started = min(starts) if starts else None
