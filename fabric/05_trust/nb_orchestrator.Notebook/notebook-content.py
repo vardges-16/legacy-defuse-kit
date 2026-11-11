@@ -7,6 +7,16 @@
 # META     "name": "synapse_pyspark"
 # META   },
 # META   "dependencies": {
+# META     "lakehouse": {
+# META       "default_lakehouse": "6c9baa84-5c32-41f1-80ae-e39555d6e429",
+# META       "default_lakehouse_name": "lh_silver",
+# META       "default_lakehouse_workspace_id": "84598118-e0d7-451b-b901-affefb6f0cca",
+# META       "known_lakehouses": [
+# META         {
+# META           "id": "6c9baa84-5c32-41f1-80ae-e39555d6e429"
+# META         }
+# META       ]
+# META     },
 # META     "environment": {
 # META       "environmentId": "fca9e1b6-f5b2-ac39-4093-43fd7058507c",
 # META       "workspaceId": "00000000-0000-0000-0000-000000000000"
