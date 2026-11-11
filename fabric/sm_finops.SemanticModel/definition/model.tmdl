@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DirectLake - wh_gold"]
+
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb"]
+
+ref table dim_application
+ref table dim_cost_center
+ref table dim_date
+ref table dim_product
+ref table dim_scope
+ref table dim_service
+ref table fact_backup_cost
+ref table fact_backup_job
+ref table fact_budget
+ref table fact_budget_vs_actual
+ref table fact_cost
+ref table fact_license_installation
+ref table fact_license_position
+ref table fact_vm_backup_coverage
+

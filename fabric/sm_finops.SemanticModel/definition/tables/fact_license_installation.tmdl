@@ -1,0 +1,136 @@
+table fact_license_installation
+	lineageTag: 5b2813ab-f97e-4250-9903-ef80591023c2
+	sourceLineageTag: [dbo].[fact_license_installation]
+
+	column installation_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a302c823-79c9-4086-9f83-57f838668696
+		sourceLineageTag: installation_id
+		summarizeBy: sum
+		sourceColumn: installation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column host_name
+		dataType: string
+		lineageTag: f2e58c61-e88c-4a54-bdf8-80c2a59f8f0a
+		sourceLineageTag: host_name
+		summarizeBy: none
+		sourceColumn: host_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: caf44524-31f8-4397-a976-577ce7fa5ef7
+		sourceLineageTag: product_id
+		summarizeBy: sum
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_method
+		dataType: string
+		lineageTag: fb2cd8ea-044d-49d8-a8e6-5854d0478f54
+		sourceLineageTag: product_method
+		summarizeBy: none
+		sourceColumn: product_method
+
+		annotation SummarizationSetBy = Automatic
+
+	column cores
+		dataType: int64
+		formatString: 0
+		lineageTag: 32b492c8-8fd1-4864-a6af-fea3992fbac9
+		sourceLineageTag: cores
+		summarizeBy: sum
+		sourceColumn: cores
+
+		annotation SummarizationSetBy = Automatic
+
+	column license_model
+		dataType: string
+		lineageTag: c9667f6f-cb64-48e1-a438-4bb4a79e0023
+		sourceLineageTag: license_model
+		summarizeBy: none
+		sourceColumn: license_model
+
+		annotation SummarizationSetBy = Automatic
+
+	column environment
+		dataType: string
+		lineageTag: a65b3aa0-7db5-437b-8cff-d4cbc4e0366c
+		sourceLineageTag: environment
+		summarizeBy: none
+		sourceColumn: environment
+
+		annotation SummarizationSetBy = Automatic
+
+	column install_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0419f6bf-e520-4cb3-9bd5-fc2193538152
+		sourceLineageTag: install_date
+		summarizeBy: none
+		sourceColumn: install_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_seen_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2a729edc-993c-478e-bf54-9e689f08cb14
+		sourceLineageTag: last_seen_date
+		summarizeBy: none
+		sourceColumn: last_seen_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column host_in_cloud
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: be667b2b-1077-4931-9116-c30a2040defe
+		sourceLineageTag: host_in_cloud
+		summarizeBy: none
+		sourceColumn: host_in_cloud
+
+		annotation SummarizationSetBy = Automatic
+
+	column vm_deleted_still_seen
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6bdf85d9-15a9-426a-a171-2cc815281f48
+		sourceLineageTag: vm_deleted_still_seen
+		summarizeBy: none
+		sourceColumn: vm_deleted_still_seen
+
+		annotation SummarizationSetBy = Automatic
+
+	column double_licensing
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 410c1dae-524c-43c2-bbaa-53e27179b3b1
+		sourceLineageTag: double_licensing
+		summarizeBy: none
+		sourceColumn: double_licensing
+
+		annotation SummarizationSetBy = Automatic
+
+	column _row_hash
+		dataType: string
+		lineageTag: 8ea021b6-02af-491d-9fe3-a018d6391b3b
+		sourceLineageTag: _row_hash
+		summarizeBy: none
+		sourceColumn: _row_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_license_installation = entity
+		mode: directLake
+		source
+			entityName: fact_license_installation
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

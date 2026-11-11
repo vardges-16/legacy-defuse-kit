@@ -1,0 +1,66 @@
+table dim_scope
+	lineageTag: 7ae041a4-4a52-4f3e-b012-b34ad9f7cef5
+	sourceLineageTag: [dbo].[dim_scope]
+
+	column scope_key
+		dataType: string
+		lineageTag: fc5fb76f-17fe-4115-931b-f14e29225b39
+		sourceLineageTag: scope_key
+		summarizeBy: none
+		sourceColumn: scope_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column provider
+		dataType: string
+		lineageTag: eb947770-1af4-4d5a-8908-db7dd6fcbe2d
+		sourceLineageTag: provider
+		summarizeBy: none
+		sourceColumn: provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column sub_account_name
+		dataType: string
+		lineageTag: 1e9b5cb3-5fd6-4e4a-b5ce-5b98501987bc
+		sourceLineageTag: sub_account_name
+		summarizeBy: none
+		sourceColumn: sub_account_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_code
+		dataType: string
+		lineageTag: c64507e7-5ff3-4872-a420-d91f8932aa09
+		sourceLineageTag: application_code
+		summarizeBy: none
+		sourceColumn: application_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_shadow_it
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b493381f-418d-4aba-8d76-e486d2884590
+		sourceLineageTag: is_shadow_it
+		summarizeBy: none
+		sourceColumn: is_shadow_it
+
+		annotation SummarizationSetBy = Automatic
+
+	column cmdb_status
+		dataType: string
+		lineageTag: c210d82b-840e-4c40-b382-764d97819a15
+		sourceLineageTag: cmdb_status
+		summarizeBy: none
+		sourceColumn: cmdb_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_scope = entity
+		mode: directLake
+		source
+			entityName: dim_scope
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

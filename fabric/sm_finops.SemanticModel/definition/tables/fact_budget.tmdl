@@ -1,0 +1,70 @@
+table fact_budget
+	lineageTag: db46a452-e9ee-40b8-a8da-b6d8a0d081b0
+	sourceLineageTag: [dbo].[fact_budget]
+
+	column month_start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a7fca481-779f-4c1b-ba73-e28a252e7c28
+		sourceLineageTag: month_start
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center_code
+		dataType: string
+		lineageTag: 254d33cf-5a22-47ac-a455-f2ca75375b47
+		sourceLineageTag: cost_center_code
+		summarizeBy: none
+		sourceColumn: cost_center_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 39983c12-766d-4730-85db-faef9d49afd2
+		sourceLineageTag: fiscal_year
+		summarizeBy: sum
+		sourceColumn: fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column budget_cost
+		dataType: double
+		lineageTag: 7dc85203-414f-4d72-bee1-81f2f44538ff
+		sourceLineageTag: budget_cost
+		summarizeBy: sum
+		sourceColumn: budget_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column amount_scaled_x1000
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4e0a352a-861b-433e-8a05-1a1b6035f6f9
+		sourceLineageTag: amount_scaled_x1000
+		summarizeBy: none
+		sourceColumn: amount_scaled_x1000
+
+		annotation SummarizationSetBy = Automatic
+
+	column _row_hash
+		dataType: string
+		lineageTag: 578da7ea-dfe3-4354-8095-2fe1440def3e
+		sourceLineageTag: _row_hash
+		summarizeBy: none
+		sourceColumn: _row_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_budget = entity
+		mode: directLake
+		source
+			entityName: fact_budget
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

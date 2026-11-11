@@ -1,0 +1,117 @@
+table fact_backup_cost
+	lineageTag: 71b7a0ea-5ed7-42b7-b1c0-5d308071cf17
+	sourceLineageTag: [dbo].[fact_backup_cost]
+
+	column month_start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f913155a-c692-4764-9f4a-0e897ea9e58a
+		sourceLineageTag: month_start
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column vm_name
+		dataType: string
+		lineageTag: 7ffc7514-d079-4d1b-822c-03bf505e982d
+		sourceLineageTag: vm_name
+		summarizeBy: none
+		sourceColumn: vm_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column resource_group
+		dataType: string
+		lineageTag: 56c11997-90da-4564-b73c-c7eaaa26bc0e
+		sourceLineageTag: resource_group
+		summarizeBy: none
+		sourceColumn: resource_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_code
+		dataType: string
+		lineageTag: 0059d398-e0dc-4841-9a2d-ae1219ccbd6c
+		sourceLineageTag: application_code
+		summarizeBy: none
+		sourceColumn: application_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center_code
+		dataType: string
+		lineageTag: d4ba6e70-15d4-49d9-a3e7-6f23c13a2572
+		sourceLineageTag: cost_center_code
+		summarizeBy: none
+		sourceColumn: cost_center_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column vm_in_cmdb
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3cfb63b3-50f0-4e94-b177-7c55873a807e
+		sourceLineageTag: vm_in_cmdb
+		summarizeBy: none
+		sourceColumn: vm_in_cmdb
+
+		annotation SummarizationSetBy = Automatic
+
+	column protection_state
+		dataType: string
+		lineageTag: 8d13ea1b-905c-4589-a1c4-71499dcaf953
+		sourceLineageTag: protection_state
+		summarizeBy: none
+		sourceColumn: protection_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column retained_storage_gb
+		dataType: double
+		lineageTag: df4ccca6-5a08-48eb-ab19-bb10f370fd2f
+		sourceLineageTag: retained_storage_gb
+		summarizeBy: sum
+		sourceColumn: retained_storage_gb
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column storage_cost_usd
+		dataType: double
+		lineageTag: de2101c0-7d28-4b60-a39b-12275113e788
+		sourceLineageTag: storage_cost_usd
+		summarizeBy: sum
+		sourceColumn: storage_cost_usd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_orphaned
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0b27eb40-9439-4b9b-9253-00f976ad2b8d
+		sourceLineageTag: is_orphaned
+		summarizeBy: none
+		sourceColumn: is_orphaned
+
+		annotation SummarizationSetBy = Automatic
+
+	column _row_hash
+		dataType: string
+		lineageTag: 999a44c6-e739-420f-93f1-1608067dac05
+		sourceLineageTag: _row_hash
+		summarizeBy: none
+		sourceColumn: _row_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_backup_cost = entity
+		mode: directLake
+		source
+			entityName: fact_backup_cost
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

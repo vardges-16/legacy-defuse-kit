@@ -1,0 +1,107 @@
+table fact_vm_backup_coverage
+	lineageTag: 544bc1b2-a860-42be-a9b6-57e507304d0f
+	sourceLineageTag: [dbo].[fact_vm_backup_coverage]
+
+	column vm_name
+		dataType: string
+		lineageTag: f3547042-ec80-416b-ae23-fd479d72922d
+		sourceLineageTag: vm_name
+		summarizeBy: none
+		sourceColumn: vm_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column resource_group
+		dataType: string
+		lineageTag: fcd57bec-cfef-4b90-81aa-a78f39e8b448
+		sourceLineageTag: resource_group
+		summarizeBy: none
+		sourceColumn: resource_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_code
+		dataType: string
+		lineageTag: 40207209-a92a-438c-8971-5b1350ba6d12
+		sourceLineageTag: application_code
+		summarizeBy: none
+		sourceColumn: application_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_cost_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4229cc80-2bd9-4d6e-9354-4b6b9d0fb6ca
+		sourceLineageTag: last_cost_date
+		summarizeBy: none
+		sourceColumn: last_cost_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column env_class
+		dataType: string
+		lineageTag: f104e2db-f7ad-4d46-97f5-e77f7183b09c
+		sourceLineageTag: env_class
+		summarizeBy: none
+		sourceColumn: env_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_backup_policy
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b620db83-9ccf-4bd3-94b8-f147a65ac0e5
+		sourceLineageTag: has_backup_policy
+		summarizeBy: none
+		sourceColumn: has_backup_policy
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_success
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e0ce231a-bb51-4e6f-8b34-87d8a29f8b58
+		sourceLineageTag: last_success
+		summarizeBy: none
+		sourceColumn: last_success
+
+		annotation SummarizationSetBy = Automatic
+
+	column jobs
+		dataType: int64
+		formatString: 0
+		lineageTag: ab0d3eba-b97f-4a39-964d-fd3651442532
+		sourceLineageTag: jobs
+		summarizeBy: sum
+		sourceColumn: jobs
+
+		annotation SummarizationSetBy = Automatic
+
+	column failed_jobs
+		dataType: int64
+		formatString: 0
+		lineageTag: 86f51bfb-1081-4aa8-a7eb-f61f9e2fb8d3
+		sourceLineageTag: failed_jobs
+		summarizeBy: sum
+		sourceColumn: failed_jobs
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_unprotected_prod
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bf9637ff-93ec-46f3-98fe-077a2e8937bb
+		sourceLineageTag: is_unprotected_prod
+		summarizeBy: none
+		sourceColumn: is_unprotected_prod
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_vm_backup_coverage = entity
+		mode: directLake
+		source
+			entityName: fact_vm_backup_coverage
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

@@ -1,0 +1,57 @@
+table dim_product
+	lineageTag: 7b4f5c92-b52e-4fa9-9535-9a5391f06ba7
+	sourceLineageTag: [dbo].[dim_product]
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: be8c00d4-4f9b-4ea0-ba2e-9309e4b53fa2
+		sourceLineageTag: product_id
+		summarizeBy: sum
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: b27905cc-a138-423d-8f72-cba30d8ba5ec
+		sourceLineageTag: product_name
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_family
+		dataType: string
+		lineageTag: c327257a-77c7-4806-b9f8-88550204ff70
+		sourceLineageTag: product_family
+		summarizeBy: none
+		sourceColumn: product_family
+
+		annotation SummarizationSetBy = Automatic
+
+	column edition
+		dataType: string
+		lineageTag: bbc86407-876c-4b85-b67a-9e9cbd679fcc
+		sourceLineageTag: edition
+		summarizeBy: none
+		sourceColumn: edition
+
+		annotation SummarizationSetBy = Automatic
+
+	column license_metric
+		dataType: string
+		lineageTag: d8b60639-fefd-4cb3-a6fd-b9fd14c47641
+		sourceLineageTag: license_metric
+		summarizeBy: none
+		sourceColumn: license_metric
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_product = entity
+		mode: directLake
+		source
+			entityName: dim_product
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

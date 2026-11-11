@@ -1,0 +1,95 @@
+table fact_backup_job
+	lineageTag: aba3e197-df75-466d-bfe8-200c6a52f659
+	sourceLineageTag: [dbo].[fact_backup_job]
+
+	column job_id
+		dataType: string
+		lineageTag: bfa38936-f354-4383-a152-fab4d58357ac
+		sourceLineageTag: job_id
+		summarizeBy: none
+		sourceColumn: job_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fe068d9f-c12f-4212-8043-5e0b9dd31adb
+		sourceLineageTag: date_key
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column vm_name
+		dataType: string
+		lineageTag: 0d28ac10-7fbd-4f39-95c0-c22fa1b8bc41
+		sourceLineageTag: vm_name
+		summarizeBy: none
+		sourceColumn: vm_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_code
+		dataType: string
+		lineageTag: 1dff0da5-3dc2-4466-ab7a-56bfd0a2dc77
+		sourceLineageTag: application_code
+		summarizeBy: none
+		sourceColumn: application_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_name
+		dataType: string
+		lineageTag: 9d3faeb2-5769-4c52-84a3-70c10eecca0b
+		sourceLineageTag: policy_name
+		summarizeBy: none
+		sourceColumn: policy_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 8610d07d-4c90-4e7e-b55e-eeedabbd636d
+		sourceLineageTag: status
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column backup_size_gb
+		dataType: double
+		lineageTag: 1609fd2e-918e-43cd-9c35-1e4b1ef5b135
+		sourceLineageTag: backup_size_gb
+		summarizeBy: sum
+		sourceColumn: backup_size_gb
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column error_code
+		dataType: string
+		lineageTag: cb66b2d4-c36e-420e-b2e7-7edb7192c537
+		sourceLineageTag: error_code
+		summarizeBy: none
+		sourceColumn: error_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column _row_hash
+		dataType: string
+		lineageTag: 3614e8e3-a5cc-4f1f-87e4-55a938b4613a
+		sourceLineageTag: _row_hash
+		summarizeBy: none
+		sourceColumn: _row_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_backup_job = entity
+		mode: directLake
+		source
+			entityName: fact_backup_job
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

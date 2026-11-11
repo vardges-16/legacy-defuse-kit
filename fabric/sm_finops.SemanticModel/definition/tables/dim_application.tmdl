@@ -1,0 +1,93 @@
+table dim_application
+	lineageTag: 7d660f6d-5286-441f-b3d8-975e6e5f5b6f
+	sourceLineageTag: [dbo].[dim_application]
+
+	column application_code
+		dataType: string
+		lineageTag: b6b51e5f-e70c-4240-9422-3c16fba32ef2
+		sourceLineageTag: application_code
+		summarizeBy: none
+		sourceColumn: application_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_id
+		dataType: string
+		lineageTag: d6153a03-0e2f-41d6-a8c1-f0dcfb258083
+		sourceLineageTag: application_id
+		summarizeBy: none
+		sourceColumn: application_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_name
+		dataType: string
+		lineageTag: 9e2bc88d-f0b6-4a12-a7d5-f86de9317a55
+		sourceLineageTag: application_name
+		summarizeBy: none
+		sourceColumn: application_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column department
+		dataType: string
+		lineageTag: fc007b7f-e133-4158-9ef4-cb417a98da12
+		sourceLineageTag: department
+		summarizeBy: none
+		sourceColumn: department
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center_code
+		dataType: string
+		lineageTag: fe5a9c46-46ce-4436-9ad8-631d53b03f9d
+		sourceLineageTag: cost_center_code
+		summarizeBy: none
+		sourceColumn: cost_center_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column criticality
+		dataType: string
+		lineageTag: 48c8a5d4-8ae6-4938-b1d7-c49f7b35f713
+		sourceLineageTag: criticality
+		summarizeBy: none
+		sourceColumn: criticality
+
+		annotation SummarizationSetBy = Automatic
+
+	column lifecycle_status
+		dataType: string
+		lineageTag: baa52445-2c48-4e24-9b97-6fce430e35e8
+		sourceLineageTag: lifecycle_status
+		summarizeBy: none
+		sourceColumn: lifecycle_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_email_hash
+		dataType: string
+		lineageTag: 9b0ba9b5-933b-4502-a25d-8505c6941778
+		sourceLineageTag: owner_email_hash
+		summarizeBy: none
+		sourceColumn: owner_email_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_email_valid
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7d692caf-d20d-40a2-a153-0fde2fe7187d
+		sourceLineageTag: owner_email_valid
+		summarizeBy: none
+		sourceColumn: owner_email_valid
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_application = entity
+		mode: directLake
+		source
+			entityName: dim_application
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

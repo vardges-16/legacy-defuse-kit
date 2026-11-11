@@ -1,0 +1,316 @@
+table fact_cost
+	lineageTag: 19646791-f535-4e27-a35c-36f74907a17f
+	sourceLineageTag: [dbo].[fact_cost]
+
+	column date_key
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: abb09cb8-9c92-4ee4-bc1c-39e05431d004
+		sourceLineageTag: date_key
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column billing_period_start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 39742912-3ec7-4580-b088-5f771251d59f
+		sourceLineageTag: billing_period_start
+		summarizeBy: none
+		sourceColumn: billing_period_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column provider
+		dataType: string
+		lineageTag: 16e45e91-fea0-4bef-8b99-56a75215dd0f
+		sourceLineageTag: provider
+		summarizeBy: none
+		sourceColumn: provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column billing_account_name
+		dataType: string
+		lineageTag: d216b010-a43e-4b6c-91c1-74ed923ef8db
+		sourceLineageTag: billing_account_name
+		summarizeBy: none
+		sourceColumn: billing_account_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column sub_account_id
+		dataType: string
+		lineageTag: 88c33bf9-e227-4131-a43b-03b953163aea
+		sourceLineageTag: sub_account_id
+		summarizeBy: none
+		sourceColumn: sub_account_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sub_account_name
+		dataType: string
+		lineageTag: 31618a9f-f250-448f-8816-bb1ba0c65c41
+		sourceLineageTag: sub_account_name
+		summarizeBy: none
+		sourceColumn: sub_account_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column scope_key
+		dataType: string
+		lineageTag: e9bc21e4-16c0-4e75-a96f-5c84a3f01bad
+		sourceLineageTag: scope_key
+		summarizeBy: none
+		sourceColumn: scope_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column resource_id
+		dataType: string
+		lineageTag: 7d45f154-eefd-4346-8032-9333609fc1c4
+		sourceLineageTag: resource_id
+		summarizeBy: none
+		sourceColumn: resource_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column resource_name
+		dataType: string
+		lineageTag: a1ce2be5-6bbd-4517-b688-4df6749955c8
+		sourceLineageTag: resource_name
+		summarizeBy: none
+		sourceColumn: resource_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column resource_type
+		dataType: string
+		lineageTag: ef90f454-71cf-444a-b714-079edc5b8e4d
+		sourceLineageTag: resource_type
+		summarizeBy: none
+		sourceColumn: resource_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_id
+		dataType: string
+		lineageTag: 42dfc77c-2686-4624-ba08-8050212e1470
+		sourceLineageTag: region_id
+		summarizeBy: none
+		sourceColumn: region_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_name
+		dataType: string
+		lineageTag: c47ad279-6529-4539-bcbf-c7b474921a7f
+		sourceLineageTag: service_name
+		summarizeBy: none
+		sourceColumn: service_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_category
+		dataType: string
+		lineageTag: d504174e-9735-444d-8695-55721c9b9938
+		sourceLineageTag: service_category
+		summarizeBy: none
+		sourceColumn: service_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column charge_category
+		dataType: string
+		lineageTag: 659bd48c-6129-403d-ba25-e19803ce6a14
+		sourceLineageTag: charge_category
+		summarizeBy: none
+		sourceColumn: charge_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column charge_frequency
+		dataType: string
+		lineageTag: 95dcc44a-ee0a-40e2-b6c7-8919deeac39e
+		sourceLineageTag: charge_frequency
+		summarizeBy: none
+		sourceColumn: charge_frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column pricing_category
+		dataType: string
+		lineageTag: b04c0bbd-c7f0-4432-87f8-42b38048f39b
+		sourceLineageTag: pricing_category
+		summarizeBy: none
+		sourceColumn: pricing_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column commitment_discount_name
+		dataType: string
+		lineageTag: 90fd0953-ccd6-4bfc-a886-9f9eefcdaf0f
+		sourceLineageTag: commitment_discount_name
+		summarizeBy: none
+		sourceColumn: commitment_discount_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_code
+		dataType: string
+		lineageTag: 2bf7d034-40dc-4245-b0a9-a6cfd11bf7be
+		sourceLineageTag: application_code
+		summarizeBy: none
+		sourceColumn: application_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center_code
+		dataType: string
+		lineageTag: 7d4be821-f023-49e1-81b0-508308976d1c
+		sourceLineageTag: cost_center_code
+		summarizeBy: none
+		sourceColumn: cost_center_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column allocation_method
+		dataType: string
+		lineageTag: 3fdfdf51-f678-47ee-8a45-d92f9796eac8
+		sourceLineageTag: allocation_method
+		summarizeBy: none
+		sourceColumn: allocation_method
+
+		annotation SummarizationSetBy = Automatic
+
+	column billed_cost
+		dataType: double
+		lineageTag: bafade40-577a-4d2d-b7e3-404e18d30528
+		sourceLineageTag: billed_cost
+		summarizeBy: sum
+		sourceColumn: billed_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column effective_cost
+		dataType: double
+		lineageTag: cf82f90e-bb7f-41cd-820d-1d942ef4be1e
+		sourceLineageTag: effective_cost
+		summarizeBy: sum
+		sourceColumn: effective_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column list_cost
+		dataType: double
+		lineageTag: 212471ea-4b9c-40f0-aeb1-b44bd5bbbe84
+		sourceLineageTag: list_cost
+		summarizeBy: sum
+		sourceColumn: list_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column contracted_cost
+		dataType: double
+		lineageTag: e5de863a-06dd-4ac9-bd92-be98440bd3d8
+		sourceLineageTag: contracted_cost
+		summarizeBy: sum
+		sourceColumn: contracted_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column consumed_quantity
+		dataType: double
+		lineageTag: 8fade5e6-ce8c-4ef5-a338-298b0d39f0ce
+		sourceLineageTag: consumed_quantity
+		summarizeBy: sum
+		sourceColumn: consumed_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column consumed_unit
+		dataType: string
+		lineageTag: a5ba03cd-412d-4461-8201-9c4737447ef3
+		sourceLineageTag: consumed_unit
+		summarizeBy: none
+		sourceColumn: consumed_unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_shadow_it
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2a026f7d-3252-41f2-ae27-7d3613f81d2d
+		sourceLineageTag: is_shadow_it
+		summarizeBy: none
+		sourceColumn: is_shadow_it
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_zombie_spend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7903b75f-4e40-4451-be80-703f947311b2
+		sourceLineageTag: is_zombie_spend
+		summarizeBy: none
+		sourceColumn: is_zombie_spend
+
+		annotation SummarizationSetBy = Automatic
+
+	column tag_missing
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8892ee32-18e6-4b02-bff9-4bbb8f9b27e4
+		sourceLineageTag: tag_missing
+		summarizeBy: none
+		sourceColumn: tag_missing
+
+		annotation SummarizationSetBy = Automatic
+
+	column tag_app_conflict
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 991eecaa-0180-4fb3-a974-09d14ec47f70
+		sourceLineageTag: tag_app_conflict
+		summarizeBy: none
+		sourceColumn: tag_app_conflict
+
+		annotation SummarizationSetBy = Automatic
+
+	column tag_cc_conflict
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 53f4a053-4ad8-4b77-9f4e-7f84e78cb3b8
+		sourceLineageTag: tag_cc_conflict
+		summarizeBy: none
+		sourceColumn: tag_cc_conflict
+
+		annotation SummarizationSetBy = Automatic
+
+	column _row_hash
+		dataType: string
+		lineageTag: 56ea51ce-8a9e-4fee-89d2-d6f716ca1080
+		sourceLineageTag: _row_hash
+		summarizeBy: none
+		sourceColumn: _row_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_cost = entity
+		mode: directLake
+		source
+			entityName: fact_cost
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

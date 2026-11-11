@@ -1,0 +1,38 @@
+table dim_service
+	lineageTag: c0b6568e-06db-48da-80f0-f20b54f03dfe
+	sourceLineageTag: [dbo].[dim_service]
+
+	column provider
+		dataType: string
+		lineageTag: 65645001-c1e5-40ad-af93-4d46e962eabf
+		sourceLineageTag: provider
+		summarizeBy: none
+		sourceColumn: provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_name
+		dataType: string
+		lineageTag: 6c8e211a-b3d8-466b-b656-8384e25a489a
+		sourceLineageTag: service_name
+		summarizeBy: none
+		sourceColumn: service_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_category
+		dataType: string
+		lineageTag: 4d774d3e-f33a-4417-9ac8-29df153449a1
+		sourceLineageTag: service_category
+		summarizeBy: none
+		sourceColumn: service_category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_service = entity
+		mode: directLake
+		source
+			entityName: dim_service
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

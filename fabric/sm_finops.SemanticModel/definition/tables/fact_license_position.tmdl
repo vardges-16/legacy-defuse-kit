@@ -1,0 +1,72 @@
+table fact_license_position
+	lineageTag: 99911d0c-0064-418c-a55f-dc49e7846329
+	sourceLineageTag: [dbo].[fact_license_position]
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: eee26ccb-2da8-43f7-b5d0-8d0c84acf8d7
+		sourceLineageTag: product_id
+		summarizeBy: sum
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column byol_cores_installed
+		dataType: int64
+		formatString: 0
+		lineageTag: daa622e1-fc8e-4ece-bbc3-d5ad2788c532
+		sourceLineageTag: byol_cores_installed
+		summarizeBy: sum
+		sourceColumn: byol_cores_installed
+
+		annotation SummarizationSetBy = Automatic
+
+	column cores_entitled_active
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f20fb81-5be8-4d80-8658-495f934c3f7b
+		sourceLineageTag: cores_entitled_active
+		summarizeBy: sum
+		sourceColumn: cores_entitled_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column cores_expired
+		dataType: int64
+		formatString: 0
+		lineageTag: 8088fa74-1299-4700-b5a8-843177e3142d
+		sourceLineageTag: cores_expired
+		summarizeBy: sum
+		sourceColumn: cores_expired
+
+		annotation SummarizationSetBy = Automatic
+
+	column core_shortfall
+		dataType: int64
+		formatString: 0
+		lineageTag: 41fd1fdb-dee3-49f4-baf3-3cb3fc542e26
+		sourceLineageTag: core_shortfall
+		summarizeBy: sum
+		sourceColumn: core_shortfall
+
+		annotation SummarizationSetBy = Automatic
+
+	column annual_entitlement_cost
+		dataType: double
+		lineageTag: 97fe996c-af43-4549-9737-490a3f860d86
+		sourceLineageTag: annual_entitlement_cost
+		summarizeBy: sum
+		sourceColumn: annual_entitlement_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_license_position = entity
+		mode: directLake
+		source
+			entityName: fact_license_position
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+

@@ -1,0 +1,93 @@
+table dim_cost_center
+	lineageTag: 7ba9a391-1c2c-49ff-91a4-1add1478401a
+	sourceLineageTag: [dbo].[dim_cost_center]
+
+	column cost_center_code
+		dataType: string
+		lineageTag: f1f1c7e4-bae5-43f8-863e-e491ae50ebfd
+		sourceLineageTag: cost_center_code
+		summarizeBy: none
+		sourceColumn: cost_center_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center_name
+		dataType: string
+		lineageTag: fb1868a4-f65c-44b6-88c4-de3d07a039f5
+		sourceLineageTag: cost_center_name
+		summarizeBy: none
+		sourceColumn: cost_center_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column department_code
+		dataType: string
+		lineageTag: 5ce4bb2d-5403-484e-822d-b5a738a68a87
+		sourceLineageTag: department_code
+		summarizeBy: none
+		sourceColumn: department_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column department_name
+		dataType: string
+		lineageTag: 0fc5483c-acda-45b7-b445-55a99dfeaff5
+		sourceLineageTag: department_name
+		summarizeBy: none
+		sourceColumn: department_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_code
+		dataType: string
+		lineageTag: 82b98c19-cf4d-4f0b-bcba-4b944e131525
+		sourceLineageTag: business_code
+		summarizeBy: none
+		sourceColumn: business_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_name
+		dataType: string
+		lineageTag: 9103d849-4a65-4df6-98dd-4008efca4986
+		sourceLineageTag: business_name
+		summarizeBy: none
+		sourceColumn: business_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_unit_code
+		dataType: string
+		lineageTag: 5db4be16-890b-41b8-b350-ea1fa949f810
+		sourceLineageTag: business_unit_code
+		summarizeBy: none
+		sourceColumn: business_unit_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_unit_name
+		dataType: string
+		lineageTag: 387f1118-04df-4d6c-9842-b61b3dbdd14d
+		sourceLineageTag: business_unit_name
+		summarizeBy: none
+		sourceColumn: business_unit_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_application
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c548c55f-81d6-48cf-9425-7bacd59d0d0b
+		sourceLineageTag: has_application
+		summarizeBy: none
+		sourceColumn: has_application
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_cost_center = entity
+		mode: directLake
+		source
+			entityName: dim_cost_center
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_gold'
+
