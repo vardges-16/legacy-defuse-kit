@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "p2slicer000000000003",
   "position": {
     "x": 16,
@@ -81,13 +81,6 @@
                   "Value": "'Segoe UI Semibold'"
                 }
               }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "9D"
-                }
-              }
             }
           }
         }
@@ -110,13 +103,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'Segoe UI'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
                 }
               }
             }

@@ -2,8 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "SemanticModel",
-    "displayName": "sm_finops",
-    "description": "Direct Lake (OneLake) model over wh_gold plus Trust Ledger status: 48 described measures for spend, budget, allocation hygiene, licenses and backups. Feeds rpt_finops_executive."
+    "displayName": "sm_finops"
   },
   "config": {
     "version": "2.0",
