@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "DataAgent",
-    "displayName": "trust-ledger-agent"
+    "displayName": "trust-ledger-agent",
+    "description": "Answers questions on IT/cloud spend (wh_gold) and data trust (lh_trust): cost, budget, unallocated, shadow IT, licenses, backups, reconciliation, quarantine, runs. Read-only, shows its SQL."
   },
   "config": {
     "version": "2.0",

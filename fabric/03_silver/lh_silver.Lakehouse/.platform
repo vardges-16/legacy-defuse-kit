@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Lakehouse",
-    "displayName": "lh_silver"
+    "displayName": "lh_silver",
+    "description": "Silver: cleansed and conformed data (rules first, gated AI second). Each row keeps its Bronze _row_hash; rejects are quarantined, duplicates merged. Contract views in schema contract."
   },
   "config": {
     "version": "2.0",

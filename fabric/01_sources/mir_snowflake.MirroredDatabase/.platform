@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "MirroredDatabase",
-    "displayName": "mir_snowflake"
+    "displayName": "mir_snowflake",
+    "description": "Mirror of legacy Snowflake ZONTIQUE_LEGACY: FOCUS 1.2 cloud cost (COST), CMDB assets and asset groups (CMDB), budgets (FIN). Read-only source for Bronze shortcuts."
   },
   "config": {
     "version": "2.0",

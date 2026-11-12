@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "nb_run_log"
+    "displayName": "nb_run_log",
+    "description": "Obsolete: per-step pipeline log, replaced by nb_run_audit. Candidate for deletion."
   },
   "config": {
     "version": "2.0",

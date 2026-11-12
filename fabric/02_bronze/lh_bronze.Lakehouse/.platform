@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Lakehouse",
-    "displayName": "lh_bronze"
+    "displayName": "lh_bronze",
+    "description": "Bronze: legacy data as delivered. Shortcuts to the Snowflake and Azure SQL mirrors, VM backup files from storage (landing/vm-backups) and their loaded tables. Every row carries a _row_hash."
   },
   "config": {
     "version": "2.0",

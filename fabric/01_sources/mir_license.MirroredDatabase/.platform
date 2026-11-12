@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "MirroredDatabase",
-    "displayName": "mir_license"
+    "displayName": "mir_license",
+    "description": "Mirror of the legacy Azure SQL License & Inventory database (dbo: license_products, license_entitlements, installations). Source for Bronze."
   },
   "config": {
     "version": "2.0",

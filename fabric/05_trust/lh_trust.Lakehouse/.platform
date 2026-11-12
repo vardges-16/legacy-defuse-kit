@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Lakehouse",
-    "displayName": "lh_trust"
+    "displayName": "lh_trust",
+    "description": "Trust Ledger: load ledger, reconciliation, quarantine, merge log, completeness gaps, pipeline runs and steps, AI decisions and scorecard. Proof that nothing was lost from source to Gold."
   },
   "config": {
     "version": "2.0",

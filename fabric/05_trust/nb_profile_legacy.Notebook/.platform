@@ -3,7 +3,7 @@
   "metadata": {
     "type": "Notebook",
     "displayName": "nb_profile_legacy",
-    "description": "New notebook"
+    "description": "Profiles a lakehouse (Bronze or Silver) and writes meta_profile_* findings. Superseded by the Trust Ledger checks; kept for reference."
   },
   "config": {
     "version": "2.0",

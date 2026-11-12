@@ -3,7 +3,7 @@
   "metadata": {
     "type": "Warehouse",
     "displayName": "wh_gold",
-    "description": ""
+    "description": "Gold star schema rebuilt by dbo.usp_build_gold: daily cloud cost, budgets, license positions, VM backup cost, jobs and coverage. Reconciled to Silver; source for sm_finops and the data agent."
   },
   "config": {
     "version": "2.0",

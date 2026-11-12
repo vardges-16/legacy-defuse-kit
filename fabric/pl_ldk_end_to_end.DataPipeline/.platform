@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "DataPipeline",
-    "displayName": "pl_ldk_end_to_end"
+    "displayName": "pl_ldk_end_to_end",
+    "description": "Daily end-to-end run: Bronze+Silver (nb_orchestrator), Gold (usp_build_gold), reconciliation, AI scoring, run audit. Turns red on any failed step or failed reconciliation check."
   },
   "config": {
     "version": "2.0",
