@@ -63,7 +63,7 @@ Solid arrows carry data; dotted arrows are what each layer writes to the Trust L
 | Contracts | `nb_silver_contract` | Materialized lake views that fail the run if a "ready for Gold" rule is broken |
 | Gold | `wh_gold`, `usp_build_gold` | Star schema, rebuilt each run. Tables only (Direct Lake on OneLake can't read views) |
 | Trust | `lh_trust`, `nb_reconcile`, `nb_ai_score`, `nb_ai_review`, `nb_profile_legacy` | The proof and the AI quality record |
-| Orchestration | `pl_ldk_end_to_end` | `nb_orchestrator` (Bronze + Silver + contracts in one Spark session) → stored procedure `usp_build_gold` → `nb_reconcile` → `nb_ai_score` → refresh of both semantic models |
+| Orchestration | `one_pipeline_to_rule_them_all` | `nb_orchestrator` (Bronze + Silver + contracts in one Spark session) → stored procedure `usp_build_gold` → `nb_reconcile` → `nb_ai_score` → refresh of both semantic models |
 
 ## How the five systems join
 
@@ -120,4 +120,4 @@ Rule for every Silver table: rows in = rows out + quarantined + merged, and ever
 
 ## Not built yet
 
-`pl_ldk_end_to_end`, the semantic models `sm_finops` and `sm_trust`, the two reports, the data agent sources, the policy scan.
+`one_pipeline_to_rule_them_all`, the semantic models `sm_finops` and `sm_trust`, the two reports, the data agent sources, the policy scan.

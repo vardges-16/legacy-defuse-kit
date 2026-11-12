@@ -32,12 +32,12 @@ export function Overview({ refreshKey }: { refreshKey: number }) {
 
   return (
     <div className="grid grid-cols-1 gap-500 lg:grid-cols-3">
-      <Card className="lg:col-span-2" eyebrow="Latest pipeline run" title="pl_ldk_end_to_end">
+      <Card className="lg:col-span-2" eyebrow="Latest pipeline run" title="one_pipeline_to_rule_them_all">
         <Loader
           state={runs}
           skeleton={<Skeleton className="h-[220px]" />}
           isEmpty={(d) => d.length === 0}
-          empty="No audited pipeline runs yet. Run pl_ldk_end_to_end once and refresh."
+          empty="No audited pipeline runs yet. Run one_pipeline_to_rule_them_all once and refresh."
         >
           {(d) => <LatestRun runs={d} />}
         </Loader>

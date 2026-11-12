@@ -28,7 +28,7 @@
 
 # # nb_orchestrator: Bronze + Silver in one Spark session
 # Runs the intake and the five Silver notebooks in dependency order (in parallel where possible), then the data
-# contracts. Pipeline `pl_ldk_end_to_end`:
+# contracts. Pipeline `one_pipeline_to_rule_them_all`:
 # **nb_orchestrator -> Stored procedure `wh_gold.dbo.usp_build_gold` -> nb_reconcile -> nb_ai_score**.
 
 # PARAMETERS CELL ********************

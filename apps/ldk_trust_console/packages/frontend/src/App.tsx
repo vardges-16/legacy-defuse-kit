@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------
 // Trust Ledger console — Legacy Defuse Kit (team de_dust2).
-// Read-only tracking of pl_ldk_end_to_end and the Trust Ledger in lh_trust.
+// Read-only tracking of one_pipeline_to_rule_them_all and the Trust Ledger in lh_trust.
 //-----------------------------------------------------------------------
 
 import { useState, type ReactNode } from 'react';

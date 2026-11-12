@@ -59,4 +59,4 @@ Change them in one place: the `ENTITIES` cell of `nb_reconcile`. Source = Bronze
 Gold is T-SQL in `wh_gold` (`usp_build_gold`), tables only. Nothing is logged from T-SQL: `nb_reconcile` reads the Gold tables afterwards and checks Silver amount = Gold amount. Fact tables keep the amount column names of Silver.
 
 ## Order of a full run
-Pipeline `pl_ldk_end_to_end`: `nb_orchestrator` (`nb_bronze_files` → five `nb_silver_*` → `nb_silver_contract`) → `usp_build_gold` → `nb_reconcile` → `nb_ai_score` → refresh of both semantic models.
+Pipeline `one_pipeline_to_rule_them_all`: `nb_orchestrator` (`nb_bronze_files` → five `nb_silver_*` → `nb_silver_contract`) → `usp_build_gold` → `nb_reconcile` → `nb_ai_score` → refresh of both semantic models.

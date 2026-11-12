@@ -12,7 +12,7 @@
 # MARKDOWN ********************
 
 # # nb_run_audit: pipeline run audit (Trust Ledger)
-# Last step of pl_ldk_end_to_end. Pulls every activity run of this pipeline run from the Fabric REST API
+# Last step of one_pipeline_to_rule_them_all. Pulls every activity run of this pipeline run from the Fabric REST API
 # (queryactivityruns), marks expected steps that never ran as Skipped, joins the data checks of the same run
 # (meta_load_ledger, meta_reconciliation) and writes:
 # * meta_pipeline_activity_runs: one row per activity (status, start, end, duration, error)
@@ -34,7 +34,7 @@
 
 PIPELINE_RUN_ID = ""                                         # @pipeline().RunId
 WORKSPACE_ID = ""                                            # @pipeline().DataFactory (Workspace ID)
-PIPELINE_NAME = "pl_ldk_end_to_end"
+PIPELINE_NAME = "one_pipeline_to_rule_them_all"
 TRIGGER_TYPE = ""                                            # @pipeline().TriggerType (optional)
 EXPECTED_STEPS = "bronze_silver,gold_build,reconcile,ai_score"
 SELF_NAME = "run_audit"                                      # this activity's name in the pipeline

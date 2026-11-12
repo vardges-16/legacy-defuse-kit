@@ -19,4 +19,4 @@
 2. Snowflake: run `legacy/snowflake/zontique_legacy.sql` part by part; upload `data/generated/snowflake/` files when the script says so.
 3. Azure SQL: run `data/generated/azure_sql/license_load.sql` (pause the license mirror first).
 4. VM Backups: upload `data/generated/vm_backups/` (`jobs/`, `storage/`) to the storage account container `vm-backups`; `lh_bronze` reads it through the OneLake shortcut `Files/landing/vm-backups`.
-5. Fabric: re-create the Snowflake mirror, then run the pipeline `pl_ldk_end_to_end`.
+5. Fabric: re-create the Snowflake mirror, then run the pipeline `one_pipeline_to_rule_them_all`.
