@@ -6,11 +6,13 @@
 
 | Path | Content |
 |---|---|
-| `fabric/` | Fabric workspace `ldk-workspace`, Git-synced (lakehouses, warehouse, notebooks, mirrors, reports). Folders `00_legacy` to `05_trust` |
+| `fabric/` | Fabric workspace `ldk-workspace`, Git-synced (mirrors, lakehouses, warehouse, notebooks, pipeline, semantic model, report, data agent). Folders `00_legacy` to `06_intelligence` |
+| `apps/ldk_trust_console/` | Fabric App (React) for pipeline and Trust Ledger monitoring; deploy with `npx rayfin up` |
+| `sql/wh_gold/` | Gold build procedure `usp_build_gold` |
 | `generators/generate_zontique.py` | Creates the five legacy systems with planted defects (seed 42) |
 | `legacy/snowflake/zontique_legacy.sql` | Builds the Snowflake legacy database `ZONTIQUE_LEGACY` (cost, CMDB, budget) and its legacy views |
 | `answer-keys/` | Ground truth for scoring only (see its README) |
-| `docs/` | Blueprint, SAD, Trust Ledger contract, data catalog (`docs/data-generation/README.md`), diagrams |
+| `docs/` | `architecture.md` (as built), Trust Ledger contract, Foundry agent setup, blueprint and SAD (submitted plan), data catalog (`docs/data-generation/README.md`), diagrams |
 | `data/generated/` | Generated data files, not committed |
 
 ## Rebuild the legacy world

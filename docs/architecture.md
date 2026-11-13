@@ -1,6 +1,6 @@
 # Legacy Defuse Kit: architecture (current)
 
-Team de_dust2. Zontique Corp's five legacy systems are consolidated in Microsoft Fabric, cleaned with rules and AI, and a Trust Ledger proves that nothing was lost. This page is the current design; `blueprint.md` and `sad.md` describe the earlier plan (storage accounts, Purview) and are kept for history.
+Team de_dust2. Zontique Corp's five legacy systems are consolidated in Microsoft Fabric, cleaned with rules and AI, and a Trust Ledger proves that nothing was lost. This page is the design as built. `blueprint.md` and `sad.md` are the plan we submitted and are kept for history; the differences are listed at the end of this page. Team guide in plain words: *Legacy Defuse Kit — How It Works* (shared doc).
 
 ## At a glance
 
@@ -28,13 +28,14 @@ flowchart TB
     G1["usp_build_gold<br/>dim_*, fact_cost, fact_budget_vs_actual,<br/>fact_license_position, fact_backup_cost, ..."]
   end
   subgraph TRU["Trust: lh_trust (Trust Ledger)"]
-    T1["load ledger, quarantine, merge log, completeness,<br/>file manifest, AI decisions, review queue, mappings"]
+    T1["load ledger, quarantine, merge log, completeness,<br/>file manifest, AI decisions, mappings, pipeline runs"]
     T2["nb_reconcile: source = Bronze = Silver = Gold<br/>nb_ai_score: precision and recall vs answer keys"]
   end
   subgraph OUT["Consumption"]
-    R1["sm_finops + FinOps Executive report"]
-    R2["sm_trust + Trust Ledger report"]
-    DA["Ask the Ledger (Fabric data agent)"]
+    R1["sm_finops (Direct Lake)<br/>rpt_finops_executive"]
+    APP["ldk_trust_console<br/>Fabric App"]
+    DA["trust-ledger-agent<br/>Fabric data agent"]
+    FA["ledger-explainer<br/>Foundry agent"]
   end
   SF --> M1 --> B1
   SQL --> M2 --> B1
@@ -45,9 +46,10 @@ flowchart TB
   B1 -.-> T1
   S1 -.-> T1
   G1 -.-> T2
-  T1 --> T2 --> R2
+  T1 --> T2 --> R1
+  T2 --> APP
   T2 --> DA
-  G1 --> DA
+  G1 --> DA --> FA
 ```
 
 Solid arrows carry data; dotted arrows are what each layer writes to the Trust Ledger.
@@ -62,8 +64,10 @@ Solid arrows carry data; dotted arrows are what each layer writes to the Trust L
 | Silver | `lh_silver` + 5 notebooks | Typed, de-duplicated, attributed to application and cost center; every Bronze row ends in Silver, quarantine or the merge log |
 | Contracts | `nb_silver_contract` | Materialized lake views that fail the run if a "ready for Gold" rule is broken |
 | Gold | `wh_gold`, `usp_build_gold` | Star schema, rebuilt each run. Tables only (Direct Lake on OneLake can't read views) |
-| Trust | `lh_trust`, `nb_reconcile`, `nb_ai_score`, `nb_ai_review`, `nb_profile_legacy` | The proof and the AI quality record |
-| Orchestration | `one_pipeline_to_rule_them_all` | `nb_orchestrator` (Bronze + Silver + contracts in one Spark session) → stored procedure `usp_build_gold` → `nb_reconcile` → `nb_ai_score` → refresh of both semantic models |
+| Trust | `lh_trust`, `nb_ledger_utils`, `nb_reconcile`, `nb_ai_score`, `nb_run_audit`, `env_ldk_reconcile` | The proof, the AI quality record and the pipeline run history |
+| Legacy profiling | `nb_profile_legacy` | One-off profiling of the legacy data (not part of the daily run) |
+| Orchestration | `one_pipeline_to_rule_them_all` (daily) | `nb_orchestrator` (Bronze + Silver + contracts in one Spark session) → `usp_build_gold` → `nb_reconcile` → `nb_ai_score` → `nb_run_audit` → `fail_run` if any step failed. No refresh step: `sm_finops` is Direct Lake |
+| Consumption | `sm_finops`, `rpt_finops_executive`, `ldk_trust_console`, `trust-ledger-agent`, Foundry `ledger-explainer` | See *Consumption* below |
 
 ## How the five systems join
 
@@ -80,7 +84,7 @@ FOCUS rule: `EffectiveCost` for chargeback and budget comparison, `BilledCost` f
 
 ## Where AI is used
 
-Rules always run first. AI Functions (`ai.classify`, `ai.similarity`, model `gpt-5-mini`) only see the distinct values the rules could not resolve. The answer must be one of the allowed labels and pass a similarity gate; otherwise it goes to a review queue. Accepted mappings become rules for the next run.
+Rules always run first. AI Functions (`ai.classify`, `ai.similarity`, model `gpt-5-mini`) only see the distinct values the rules could not resolve. The answer must be one of the allowed labels and pass a similarity gate; otherwise it is rejected and logged in `meta_ai_decisions` (never used). Accepted mappings become rules for the next run.
 
 | Notebook | Task | Allowed labels |
 |---|---|---|
@@ -99,25 +103,44 @@ Rules always run first. AI Functions (`ai.classify`, `ai.similarity`, model `gpt
 | `meta_load_ledger` | table written per run: rows in, out, quarantined, merged, amount |
 | `meta_quarantine`, `meta_merge_log` | rejected row / merged duplicate, by Bronze `_row_hash` |
 | `meta_file_manifest`, `meta_completeness` | delivered file / missing day, month or file |
-| `meta_ai_decisions`, `meta_ai_review_queue`, `meta_ai_mappings` | AI decision / open review item / approved mapping |
+| `meta_ai_decisions`, `meta_ai_mappings` | AI decision (accepted, rejected, unmatched) / approved mapping |
 | `meta_reconciliation`, `meta_trust_summary` | check (PASS, FAIL, PENDING) / entity per run |
 | `meta_ai_scorecard`, `meta_defect_detection` | cleansing task score / planted defect type |
-| `meta_profile_*` | profiled table, column, finding |
+| `meta_pipeline_runs`, `meta_pipeline_activity_runs` | pipeline run / step per run (written by `nb_run_audit`) |
+| `meta_profile_*` | profiled table, column, finding (one-off) |
 
 Rule for every Silver table: rows in = rows out + quarantined + merged, and every Bronze `_row_hash` is found in one of the three.
 
-## Governance inside Fabric (no Purview)
+## Consumption
+
+| Item | Audience | Notes |
+|---|---|---|
+| `sm_finops` | All tools below | Direct Lake on OneLake over `wh_gold` (14 tables) and two `lh_trust` tables; 48 measures; picks up new data automatically |
+| `rpt_finops_executive` | Finance, IT leads | 4 pages; trust banner on every page (Data Verified, Data As Of, Last Run Status) |
+| `ldk_trust_console` | Data team | Fabric App (React, `apps/ldk_trust_console`): run history, step timeline, reconciliation, quality. Read-only, delegated auth: users see only what they can already read |
+| `trust-ledger-agent` | Analysts | Fabric data agent over `wh_gold` and `lh_trust`, with instructions and example queries |
+| `ledger-explainer` | Executives, auditors | Microsoft Foundry agent that calls `trust-ledger-agent` on behalf of the user (setup: `foundry-ledger-explainer.md`) |
+
+## Governance
 
 | Need | How |
 |---|---|
-| Access | Workspace roles; reports shared through an app; row-level security in the semantic model |
+| Access | Workspace roles; read-only, signed-in-user access for the app and both agents |
 | Personal data | Owner names and emails hashed in Silver; never sent to AI |
-| Lineage | Fabric lineage view (items), materialized lake view lineage (tables), `_row_hash` (rows) |
-| Data quality | Contract views, reconciliation, profiling Bronze vs Silver |
-| Catalog | OneLake catalog, item descriptions, endorsement of the Gold model |
+| Lineage | Fabric lineage view (items), materialized lake view lineage (tables), `_row_hash` (rows), Purview |
+| Data quality | Contract views, reconciliation, AI scorecard, run audit |
+| Catalog | Microsoft Purview account `datatrace`: storage and Azure SQL scans succeed; Snowflake scan fails (error 3819, under investigation); Unified Catalog domain in Draft, waiting for roles |
+| Labels | Sensitivity labels (Restricted, General), endorsements (Certified, Promoted), descriptions on every item |
 | Secrets | Azure Key Vault `kv-ldk-2446996`; nothing in notebooks or Git |
-| Planned | Policy scan notebook (naming, descriptions, answer keys not read by Silver), semantic model best-practice check |
+| Change control | Fabric Git integration (`/fabric`); the app and docs live in the same repo |
 
-## Not built yet
+## Blueprint vs as built
 
-`one_pipeline_to_rule_them_all`, the semantic models `sm_finops` and `sm_trust`, the two reports, the data agent sources, the policy scan.
+| Blueprint | As built | Why |
+|---|---|---|
+| Financial and License systems on a SQL Server VM behind a data gateway | Budget in Snowflake `FIN`; License in Azure SQL | Simpler and cheaper to run for the hackathon; Mirroring covers both |
+| CMDB as a REST API on Azure Functions | CMDB in Snowflake `CMDB` | Same data and defects, no extra service to host |
+| Copilot converts legacy T-SQL and SSIS, placement engine | Silver and Gold written by hand with AI help; legacy views kept in `RPT` as the "before" | Time; the Trust Ledger was the priority |
+| Two semantic models and two reports | One model `sm_finops` and one report; the Fabric App covers pipeline health | Less to maintain, one source of truth |
+| Copilot Studio assistant in Teams | Fabric data agent + Foundry agent | Available in our tenant |
+| Purview DLP and data quality scans | Purview catalog scans, labels, endorsements | DLP not needed for synthetic data |
