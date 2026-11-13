@@ -1,5 +1,7 @@
 # Legacy Defuse Kit — AI-Accelerated Legacy-to-Fabric Modernization Factory
 
+> **Note:** this is the plan we submitted. For what we actually built and why it differs, see [architecture.md](architecture.md) (section *Blueprint vs as built*).
+
 | | |
 |---|---|
 | **Idea name** | Legacy Defuse Kit |

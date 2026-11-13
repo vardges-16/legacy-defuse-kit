@@ -1,3 +1,18 @@
+# LDK Trust Console
+
+Fabric App for **Legacy Defuse Kit**: pipeline run history with a step timeline and errors, reconciliation, and data quality, read from the Trust Ledger (`lh_trust`).
+
+| | |
+|---|---|
+| Views | Overview, Runs, Reconciliation, Quality (`packages/frontend/src/views`) |
+| Data | Connector `trust` (`rayfin/connectors/trust`), 8 read-only entities over the `lh_trust` SQL analytics endpoint |
+| Security | Delegated auth: users see only what they can already read; entities allow `read` for authenticated users only |
+| Deploy | `npm install`, then `npx rayfin up` (Windows: `npx.cmd rayfin up`) from this folder |
+
+The rest of this file is the Rayfin template documentation.
+
+---
+
 # Universal App Template
 
 > **⚠️ This repository is under active development.** Features and instructions may change.

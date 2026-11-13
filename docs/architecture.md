@@ -52,7 +52,7 @@ flowchart TB
   G1 --> DA --> FA
 ```
 
-Solid arrows carry data; dotted arrows are what each layer writes to the Trust Ledger.
+Solid arrows carry data; dotted arrows are what each layer writes to the Trust Ledger. Rendered image: [diagrams/architecture.png](diagrams/architecture.png).
 
 ## Layers and items
 

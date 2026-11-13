@@ -1,5 +1,7 @@
 # Legacy Defuse Kit — Software Architecture Document (SAD)
 
+> **Note:** this is the plan we submitted. For what we actually built and why it differs, see [architecture.md](architecture.md) (section *Blueprint vs as built*).
+
 | | |
 |---|---|
 | **System** | Legacy Defuse Kit — AI-Accelerated Legacy-to-Fabric Modernization Factory |
