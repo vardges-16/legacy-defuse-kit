@@ -22,18 +22,20 @@
 | `meta_file_manifest` | delivered file: name, rows, size | `nb_bronze_files` |
 | `meta_completeness` | missing day, month or file | `log_gap` |
 | `meta_ai_decisions` | AI decision: input, output, similarity, accepted | `ai_resolve`, `log_ai` |
-| `meta_ai_review_queue` | AI result the gate did not accept (waiting for a human) | `ai_resolve`, closed by `nb_ai_review` |
+| `meta_ai_review_queue` | AI result the gate did not accept (legacy: rejected results are now kept in `meta_ai_decisions`) | `ai_resolve` |
 | `meta_ai_mappings` | approved mapping, used as a rule on the next run | `ai_resolve`, `nb_ai_review` |
 | `meta_reconciliation` | check per entity and run (PASS, FAIL, PENDING) | `nb_reconcile` |
 | `meta_trust_summary` | entity per run: rows per layer, quarantined, merged, lost, amounts, status | `nb_reconcile` |
 | `meta_ai_scorecard`, `meta_defect_detection` | cleansing task score / planted defect type | `nb_ai_score` |
-| `meta_profile_tables`, `_columns`, `_findings` | profiled table, column, finding | `nb_profile_legacy` |
+| `meta_pipeline_runs` | pipeline run: status, start, end, duration, steps, ledger rows, reconciliation failures | `nb_run_audit` |
+| `meta_pipeline_activity_runs` | pipeline step per run: status, duration, error code and message | `nb_run_audit` |
+| `meta_profile_tables`, `_columns`, `_findings` | profiled table, column, finding (one-off profiling, not part of the daily run) | `nb_profile_legacy` |
 
 ## The 6 rules
 1. **Keep `_row_hash`.** Every Silver table carries the `_row_hash` of the Bronze row it came from. `bronze(name)` adds it before any change; it ignores the lineage columns `_SOURCE_FILE` and `_LOADED_AT`.
 2. **Never drop a row silently.** Every Bronze row ends up in exactly one place: the Silver table, `quarantine(...)` (with a reason code) or `dedupe(...)` / `log_merges(...)` (as a merged duplicate).
 3. **One `log_step` per table written**, with `rows_in`, `rows_out`, `quarantined`, `merged` and, where it applies, `amount`. Rule: rows in = rows out + quarantined + merged. The helper prints `OK` or `FAIL`.
-4. **One run id per notebook run:** `RUN_ID = new_run_id(PIPELINE_RUN_ID)`. Every notebook has a parameter cell `PIPELINE_RUN_ID = ""` that the pipeline fills.
+4. **One run id per notebook run:** `RUN_ID = new_run_id(PIPELINE_RUN_ID)`. Every notebook has a parameter cell `PIPELINE_RUN_ID = ""`; the pipeline fills it with `@pipeline().RunId`, so every ledger row of a run carries the same id as the pipeline run and `nb_run_audit`.
 5. **AI only on what rules could not resolve, and only with a gate.** `ai_resolve(...)` sends distinct leftover values to `ai.classify` with a list of allowed labels and checks the answer with `ai.similarity`. Accepted, rejected and unmatched results are all logged; rejected ones go to the review queue.
 6. **Hash personal data before Silver and before any AI step:** `hash_pii(df, [...])`. Names and emails are never sent to AI.
 
@@ -53,10 +55,10 @@ Change them in one place: the `ENTITIES` cell of `nb_reconcile`. Source = Bronze
 | `license_installations` | Azure SQL (by hand) | `dbo.installations` | `silver_license_installations` | `fact_license_installation` | none |
 
 ## Source check
-`nb_reconcile` queries Snowflake live for row counts and amounts (user `LEDGER_READER`, password in Key Vault secret `snowflake-ledger-reader-pwd`), so "source = Bronze" is a real check. VM Backups are checked against the file manifest; License (Azure SQL) against totals checked by hand. Mirrored column names are upper case, and the checks match column names case-insensitively.
+`nb_reconcile` queries Snowflake live for row counts and amounts (user `LEDGER_READER`, password in Key Vault secret `snowflake-ledger-reader-pwd`; the Snowflake connector comes from the Fabric environment `env_ldk_reconcile`, because `%pip` is disabled in pipeline runs), so "source = Bronze" is a real check. VM Backups are checked against the file manifest; License (Azure SQL) against totals checked by hand. Mirrored column names are upper case, and the checks match column names case-insensitively.
 
 ## Gold
 Gold is T-SQL in `wh_gold` (`usp_build_gold`), tables only. Nothing is logged from T-SQL: `nb_reconcile` reads the Gold tables afterwards and checks Silver amount = Gold amount. Fact tables keep the amount column names of Silver.
 
 ## Order of a full run
-Pipeline `one_pipeline_to_rule_them_all`: `nb_orchestrator` (`nb_bronze_files` → five `nb_silver_*` → `nb_silver_contract`) → `usp_build_gold` → `nb_reconcile` → `nb_ai_score` → refresh of both semantic models.
+Pipeline `one_pipeline_to_rule_them_all`: `nb_orchestrator` (`nb_bronze_files` → five `nb_silver_*` → `nb_silver_contract`) → `usp_build_gold` → `nb_reconcile` → `nb_ai_score` → `nb_run_audit` (runs even if a step failed or was skipped; reads the step results from the Fabric REST API and writes `meta_pipeline_runs` and `meta_pipeline_activity_runs`) → `if_run_failed` → `fail_run` (error `LDK_RUN_FAILED`) when any step failed, so the run shows red. No refresh step: `sm_finops` is Direct Lake and picks up new data automatically. Schedule: daily.
