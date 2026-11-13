@@ -28,7 +28,7 @@ flowchart TB
     G1["usp_build_gold<br/>dim_*, fact_cost, fact_budget_vs_actual,<br/>fact_license_position, fact_backup_cost, ..."]
   end
   subgraph TRU["Trust: lh_trust (Trust Ledger)"]
-    T1["load ledger, quarantine, merge log, completeness,<br/>file manifest, AI decisions, mappings, pipeline runs"]
+    T1["load ledger, quarantine, merge log, completeness,<br/>file manifest, AI decisions, review queue, mappings, pipeline runs"]
     T2["nb_reconcile: source = Bronze = Silver = Gold<br/>nb_ai_score: precision and recall vs answer keys"]
   end
   subgraph OUT["Consumption"]
@@ -64,7 +64,7 @@ Solid arrows carry data; dotted arrows are what each layer writes to the Trust L
 | Silver | `lh_silver` + 5 notebooks | Typed, de-duplicated, attributed to application and cost center; every Bronze row ends in Silver, quarantine or the merge log |
 | Contracts | `nb_silver_contract` | Materialized lake views that fail the run if a "ready for Gold" rule is broken |
 | Gold | `wh_gold`, `usp_build_gold` | Star schema, rebuilt each run. Tables only (Direct Lake on OneLake can't read views) |
-| Trust | `lh_trust`, `nb_ledger_utils`, `nb_reconcile`, `nb_ai_score`, `nb_run_audit`, `env_ldk_reconcile` | The proof, the AI quality record and the pipeline run history |
+| Trust | `lh_trust`, `nb_ledger_utils`, `nb_reconcile`, `nb_ai_score`, `nb_ai_review`, `nb_run_audit`, `env_ldk_reconcile` | The proof, the AI quality record and the pipeline run history |
 | Legacy profiling | `nb_profile_legacy` | One-off profiling of the legacy data (not part of the daily run) |
 | Orchestration | `one_pipeline_to_rule_them_all` (daily) | `nb_orchestrator` (Bronze + Silver + contracts in one Spark session) → `usp_build_gold` → `nb_reconcile` → `nb_ai_score` → `nb_run_audit` → `fail_run` if any step failed. No refresh step: `sm_finops` is Direct Lake |
 | Consumption | `sm_finops`, `rpt_finops_executive`, `ldk_trust_console`, `trust-ledger-agent`, Foundry `ledger-explainer` | See *Consumption* below |
@@ -84,7 +84,7 @@ FOCUS rule: `EffectiveCost` for chargeback and budget comparison, `BilledCost` f
 
 ## Where AI is used
 
-Rules always run first. AI Functions (`ai.classify`, `ai.similarity`, model `gpt-5-mini`) only see the distinct values the rules could not resolve. The answer must be one of the allowed labels and pass a similarity gate; otherwise it is rejected and logged in `meta_ai_decisions` (never used). Accepted mappings become rules for the next run.
+Rules always run first. AI Functions (`ai.classify`, `ai.similarity`, model `gpt-5-mini`) only see the distinct values the rules could not resolve. The answer must be one of the allowed labels and pass a similarity gate; otherwise it is not used and goes to the review queue (`meta_ai_review_queue`), where a person approves or rejects it in `nb_ai_review`. Accepted mappings become rules for the next run.
 
 | Notebook | Task | Allowed labels |
 |---|---|---|
@@ -103,7 +103,7 @@ Rules always run first. AI Functions (`ai.classify`, `ai.similarity`, model `gpt
 | `meta_load_ledger` | table written per run: rows in, out, quarantined, merged, amount |
 | `meta_quarantine`, `meta_merge_log` | rejected row / merged duplicate, by Bronze `_row_hash` |
 | `meta_file_manifest`, `meta_completeness` | delivered file / missing day, month or file |
-| `meta_ai_decisions`, `meta_ai_mappings` | AI decision (accepted, rejected, unmatched) / approved mapping |
+| `meta_ai_decisions`, `meta_ai_review_queue`, `meta_ai_mappings` | AI decision (accepted, rejected, unmatched) / open review item / approved mapping |
 | `meta_reconciliation`, `meta_trust_summary` | check (PASS, FAIL, PENDING) / entity per run |
 | `meta_ai_scorecard`, `meta_defect_detection` | cleansing task score / planted defect type |
 | `meta_pipeline_runs`, `meta_pipeline_activity_runs` | pipeline run / step per run (written by `nb_run_audit`) |

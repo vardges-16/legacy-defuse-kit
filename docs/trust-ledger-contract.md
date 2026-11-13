@@ -22,7 +22,7 @@
 | `meta_file_manifest` | delivered file: name, rows, size | `nb_bronze_files` |
 | `meta_completeness` | missing day, month or file | `log_gap` |
 | `meta_ai_decisions` | AI decision: input, output, similarity, accepted | `ai_resolve`, `log_ai` |
-| `meta_ai_review_queue` | AI result the gate did not accept (legacy: rejected results are now kept in `meta_ai_decisions`) | `ai_resolve` |
+| `meta_ai_review_queue` | AI result the gate did not accept (waiting for a human) | `ai_resolve`, closed by `nb_ai_review` |
 | `meta_ai_mappings` | approved mapping, used as a rule on the next run | `ai_resolve`, `nb_ai_review` |
 | `meta_reconciliation` | check per entity and run (PASS, FAIL, PENDING) | `nb_reconcile` |
 | `meta_trust_summary` | entity per run: rows per layer, quarantined, merged, lost, amounts, status | `nb_reconcile` |
