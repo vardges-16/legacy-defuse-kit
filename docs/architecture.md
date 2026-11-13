@@ -129,7 +129,7 @@ Rule for every Silver table: rows in = rows out + quarantined + merged, and ever
 | Personal data | Owner names and emails hashed in Silver; never sent to AI |
 | Lineage | Fabric lineage view (items), materialized lake view lineage (tables), `_row_hash` (rows), Purview |
 | Data quality | Contract views, reconciliation, AI scorecard, run audit |
-| Catalog | Microsoft Purview account `datatrace`: storage and Azure SQL scans succeed; Snowflake scan fails (error 3819, under investigation); Unified Catalog domain in Draft, waiting for roles |
+| Catalog | Microsoft Purview account `datatrace`: storage, Azure SQL, Snowflake and Fabric scans; the Snowflake scan role needs the read-only database role `SNOWFLAKE.OBJECT_VIEWER`. Unified Catalog domain *Legacy Defuse Kit* with glossary terms and data products |
 | Labels | Sensitivity labels (Restricted, General), endorsements (Certified, Promoted), descriptions on every item |
 | Secrets | Azure Key Vault `kv-ldk-2446996`; nothing in notebooks or Git |
 | Change control | Fabric Git integration (`/fabric`); the app and docs live in the same repo |
