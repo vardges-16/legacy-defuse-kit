@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "AppBackend",
+    "displayName": "ldk-trust-console"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d956e1bc-6c02-8e47-49ae-0f57309a06f2"
+  }
+}

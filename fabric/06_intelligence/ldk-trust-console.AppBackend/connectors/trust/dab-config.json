@@ -1,0 +1,587 @@
+{
+  "$schema": "https://github.com/Azure/data-api-builder/releases/download/v1.5.56/dab.draft.schema.json",
+  "entities": {
+    "MetaAiScorecard": {
+      "source": "dbo.meta_ai_scorecard",
+      "permissions": [
+        {
+          "role": "authenticated",
+          "actions": [
+            "read"
+          ]
+        }
+      ],
+      "x-schema": {
+        "fields": {
+          "run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "task": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "system": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "defect_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "method": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "cases": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "attempted": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "correct": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "precision": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "recall": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "f1": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "scored_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          }
+        },
+        "constraints": {}
+      },
+      "mappings": {
+        "run_id": "runId",
+        "defect_id": "defectId",
+        "scored_at": "scoredAt"
+      }
+    },
+    "MetaCompleteness": {
+      "source": "dbo.meta_completeness",
+      "permissions": [
+        {
+          "role": "authenticated",
+          "actions": [
+            "read"
+          ]
+        }
+      ],
+      "x-schema": {
+        "fields": {
+          "run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "layer": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "entity": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "gap_type": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "expected_key": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "detail": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "logged_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          }
+        },
+        "constraints": {}
+      },
+      "mappings": {
+        "run_id": "runId",
+        "gap_type": "gapType",
+        "expected_key": "expectedKey",
+        "logged_at": "loggedAt"
+      }
+    },
+    "MetaLoadLedger": {
+      "source": "dbo.meta_load_ledger",
+      "permissions": [
+        {
+          "role": "authenticated",
+          "actions": [
+            "read"
+          ]
+        }
+      ],
+      "x-schema": {
+        "fields": {
+          "run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "layer": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "entity": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "source_system": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "source_path": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "target_table": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "file_count": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "rows_in": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "row_count": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "rows_quarantined": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "rows_merged": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "amount": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "notebook": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "logged_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          }
+        },
+        "constraints": {}
+      },
+      "mappings": {
+        "run_id": "runId",
+        "source_system": "sourceSystem",
+        "source_path": "sourcePath",
+        "target_table": "targetTable",
+        "file_count": "fileCount",
+        "rows_in": "rowsIn",
+        "row_count": "rowCount",
+        "rows_quarantined": "rowsQuarantined",
+        "rows_merged": "rowsMerged",
+        "logged_at": "loggedAt"
+      }
+    },
+    "MetaPipelineActivityRuns": {
+      "source": "dbo.meta_pipeline_activity_runs",
+      "permissions": [
+        {
+          "role": "authenticated",
+          "actions": [
+            "read"
+          ]
+        }
+      ],
+      "x-schema": {
+        "fields": {
+          "run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "activity_name": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "activity_type": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "status": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "started_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          },
+          "ended_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          },
+          "duration_s": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "error_code": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "error_message": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "activity_run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "audited_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          }
+        },
+        "constraints": {}
+      },
+      "mappings": {
+        "run_id": "runId",
+        "activity_name": "activityName",
+        "activity_type": "activityType",
+        "started_at": "startedAt",
+        "ended_at": "endedAt",
+        "duration_s": "durationS",
+        "error_code": "errorCode",
+        "error_message": "errorMessage",
+        "activity_run_id": "activityRunId",
+        "audited_at": "auditedAt"
+      }
+    },
+    "MetaPipelineRuns": {
+      "source": "dbo.meta_pipeline_runs",
+      "permissions": [
+        {
+          "role": "authenticated",
+          "actions": [
+            "read"
+          ]
+        }
+      ],
+      "x-schema": {
+        "fields": {
+          "run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "pipeline_name": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "trigger_type": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "started_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          },
+          "ended_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          },
+          "duration_s": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "status": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "failed_steps": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "skipped_steps": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "ledger_rows": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "reconcile_checks": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "reconcile_fail": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "audited_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          }
+        },
+        "constraints": {}
+      },
+      "mappings": {
+        "run_id": "runId",
+        "pipeline_name": "pipelineName",
+        "trigger_type": "triggerType",
+        "started_at": "startedAt",
+        "ended_at": "endedAt",
+        "duration_s": "durationS",
+        "failed_steps": "failedSteps",
+        "skipped_steps": "skippedSteps",
+        "ledger_rows": "ledgerRows",
+        "reconcile_checks": "reconcileChecks",
+        "reconcile_fail": "reconcileFail",
+        "audited_at": "auditedAt"
+      }
+    },
+    "MetaQuarantine": {
+      "source": "dbo.meta_quarantine",
+      "permissions": [
+        {
+          "role": "authenticated",
+          "actions": [
+            "read"
+          ]
+        }
+      ],
+      "x-schema": {
+        "fields": {
+          "run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "layer": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "entity": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "_row_hash": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "reason_code": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "record_key": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "detail": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "logged_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          }
+        },
+        "constraints": {}
+      },
+      "mappings": {
+        "run_id": "runId",
+        "_row_hash": "rowHash",
+        "reason_code": "reasonCode",
+        "record_key": "recordKey",
+        "logged_at": "loggedAt"
+      }
+    },
+    "MetaReconciliation": {
+      "source": "dbo.meta_reconciliation",
+      "permissions": [
+        {
+          "role": "authenticated",
+          "actions": [
+            "read"
+          ]
+        }
+      ],
+      "x-schema": {
+        "fields": {
+          "run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "entity": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "check_name": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "left_layer": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "left_value": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "right_layer": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "right_value": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "difference": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "status": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "note": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "checked_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          }
+        },
+        "constraints": {}
+      },
+      "mappings": {
+        "run_id": "runId",
+        "check_name": "checkName",
+        "left_layer": "leftLayer",
+        "left_value": "leftValue",
+        "right_layer": "rightLayer",
+        "right_value": "rightValue",
+        "checked_at": "checkedAt"
+      }
+    },
+    "MetaTrustSummary": {
+      "source": "dbo.meta_trust_summary",
+      "permissions": [
+        {
+          "role": "authenticated",
+          "actions": [
+            "read"
+          ]
+        }
+      ],
+      "x-schema": {
+        "fields": {
+          "run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "checked_at": {
+            "dbType": "DATETIME2",
+            "nullable": true
+          },
+          "entity": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "status": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          },
+          "source_rows": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "bronze_rows": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "silver_rows": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "quarantined_rows": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "merged_rows": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "lost_rows": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "bronze_amount": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "silver_amount": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "gold_amount": {
+            "dbType": "DECIMAL(18,2)",
+            "nullable": true
+          },
+          "checks_pass": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "checks_fail": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "checks_pending": {
+            "dbType": "INT",
+            "nullable": true
+          },
+          "silver_run_id": {
+            "dbType": "VARCHAR(8000)",
+            "nullable": true
+          }
+        },
+        "constraints": {}
+      },
+      "mappings": {
+        "run_id": "runId",
+        "checked_at": "checkedAt",
+        "source_rows": "sourceRows",
+        "bronze_rows": "bronzeRows",
+        "silver_rows": "silverRows",
+        "quarantined_rows": "quarantinedRows",
+        "merged_rows": "mergedRows",
+        "lost_rows": "lostRows",
+        "bronze_amount": "bronzeAmount",
+        "silver_amount": "silverAmount",
+        "gold_amount": "goldAmount",
+        "checks_pass": "checksPass",
+        "checks_fail": "checksFail",
+        "checks_pending": "checksPending",
+        "silver_run_id": "silverRunId"
+      }
+    }
+  }
+}

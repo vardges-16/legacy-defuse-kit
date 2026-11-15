@@ -1,0 +1,36 @@
+services:
+  auth:
+    expiryInMinutes: 60
+    password:
+      enabled: false
+    fabric:
+      enabled: true
+      externalEntraExchange: true
+    allowedRedirectUris:
+    - http://localhost:5173
+    - http://127.0.0.1:5173
+    enabled: true
+  data:
+    dialect: ''
+    allowIntrospection: false
+    enabled: false
+  storage:
+    enabled: false
+  staticHosting:
+    indexDocument: index.html
+    anonymousAccess: false
+    embedded:
+      only: false
+    enabled: true
+  functions:
+    enabled: false
+connectors:
+  trust:
+    connector: fabric-sqlanalytics
+    operations:
+    - name: read
+    auth:
+      type: delegated
+    config:
+      workspaceId: 84598118-e0d7-451b-b901-affefb6f0cca
+      itemId: ee4214a1-ece7-480e-a54d-b32a16fe879d
